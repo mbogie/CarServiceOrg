@@ -1,0 +1,49 @@
+<apex:page standardController="Mechanic__c" extensions="CsMechanicSearchController" tabStyle="Search_Mechanic__tab">
+    <apex:form >
+        <apex:pageBlock id="searchBlock" Title="{!$Label.Mechanic_Search_Page_Label}">
+            <apex:pageMessages />
+            <apex:pageBlockSection id="searchFields">
+                <apex:inputField value="{!Mechanic__c.First_Name__c}"/>
+                <apex:inputText value="{!Mechanic__c.Email__c}"/>
+                <apex:inputField value="{!Mechanic__c.Name}" required="true" />
+                <apex:inputField value="{!Mechanic__c.Country__c}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons id="searchButtons" location="bottom">
+                <apex:commandButton value="{!$Label.Button_Search}" action="{!searchMechanic}"/>
+                <apex:commandButton value="{!$Label.Button_Clear}" action="{!clearPage}" immediate="true"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>
+    <apex:pageBlock id="resultsList" title="{!$Label.Search_Results_Label}">
+        <apex:pageBlockTable id="resultsTable" value="{!mechanicsSearchResultList}" var="mechanic">
+            <apex:column headerValue="{!$Label.Actions_Label}">
+                <apex:outputLink value="{! URLFOR($Action.Mechanic__c.View, mechanic.Id)}" target="_blank">View</apex:outputLink>&nbsp;|&nbsp;
+                <apex:outputLink value="{! URLFOR($Action.Mechanic__c.Edit, mechanic.Id)}" target="_blank">Edit</apex:outputLink>
+          </apex:column>
+          <apex:column value="{!mechanic.Full_Name__c}">
+              <apex:facet name="header">
+                  <apex:commandLink action="{!sortByFullName}"
+                                    reRender="resultsList">{!$Label.Field_First_Name}
+                          {!IF(sortField == 'Full_Name__c', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
+                  </apex:commandLink>
+              </apex:facet>
+          </apex:column>
+          <apex:column value="{!mechanic.Email__c}">
+              <apex:facet name="header">
+                  <apex:commandLink action="{!sortByEmail}"
+                                    reRender="resultsList">{!$Label.Field_Email}
+                          {!IF(sortField == 'Email__c', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
+                  </apex:commandLink>
+              </apex:facet>
+          </apex:column>
+          <apex:column value="{!mechanic.Country__c}">
+              <apex:facet name="header">
+                  <apex:commandLink action="{!sortByCountry}"
+                                    reRender="resultsList">{!$Label.Field_Country}
+                          {!IF(sortField == 'Country__c', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
+                  </apex:commandLink>
+              </apex:facet>
+          </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>
