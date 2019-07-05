@@ -23,6 +23,11 @@ trigger OverlappingError on Contract__c (before insert, before update) {
                     contract.addError(errorMessage, false);
                 }
             }
+            if(contract.End_Date__c == null){
+                if (contract.Start_Date__c >= con.Start_Date__c && contract.Start_Date__c <= con.End_Date__c) {
+                    contract.addError('Start Date is between contract ' + con.Name +': '+ con.Start_Date__c.format() +' - '+con.End_Date__c.format());
+                }
+            }
         }
     }
 }

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="378619f6-206d-4b97-be6c-0e71661895b4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/labels/CustomLabels.labels" beforeDir="false" afterPath="$PROJECT_DIR$/src/labels/CustomLabels.labels" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/testJS.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/testJS.page" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/triggers/OverlappingError.trigger" beforeDir="false" afterPath="$PROJECT_DIR$/src/triggers/OverlappingError.trigger" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="123" column="42" selection-start-line="123" selection-start-column="42" selection-end-line="123" selection-end-column="42" />
+            <state relative-caret-position="354">
+              <caret line="94" column="102" lean-forward="true" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="102" />
               <folding>
                 <element signature="e#1103#1116#0" expanded="true" />
               </folding>
@@ -56,8 +56,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="986">
-              <caret line="130" column="135" lean-forward="true" selection-start-line="130" selection-start-column="135" selection-end-line="130" selection-end-column="135" />
+            <state relative-caret-position="195">
+              <caret line="66" column="44" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/triggers/OverlappingError.trigger">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="27" column="148" selection-start-line="27" selection-start-column="148" selection-end-line="27" selection-end-column="148" />
+              <folding>
+                <element signature="e#115#128#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicSearch.page">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="126" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="126" />
             </state>
           </provider>
         </entry>
@@ -109,7 +130,6 @@
         <option value="$PROJECT_DIR$/src/classes/QueryBuilder.cls" />
         <option value="$PROJECT_DIR$/src/classes/popup.cls" />
         <option value="$PROJECT_DIR$/src/classes/BH_SoqlQueryBuilder.cls" />
-        <option value="$PROJECT_DIR$/src/triggers/OverlappingError.trigger" />
         <option value="$PROJECT_DIR$/src/classes/SortBy.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicSearchController.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsMechanicSearch.page" />
@@ -117,6 +137,7 @@
         <option value="$PROJECT_DIR$/src/pages/testJS.page" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" />
+        <option value="$PROJECT_DIR$/src/triggers/OverlappingError.trigger" />
       </list>
     </option>
   </component>
@@ -169,7 +190,7 @@
                       <entry key="OBJECTTRANSLATIONS/CONTRACT__C-EN_US.OBJECTTRANSLATION" value="1562095376000" />
                       <entry key="OBJECTTRANSLATIONS/MECHANIC__C-EN_US.OBJECTTRANSLATION" value="1562095376000" />
                       <entry key="OBJECTTRANSLATIONS/WORKSHOP__C-EN_US.OBJECTTRANSLATION" value="1562095376000" />
-                      <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1562312168641" />
+                      <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1562313291908" />
                       <entry key="PAGES/CSMECHANICEDIT.PAGE" value="1562095983162" />
                       <entry key="PAGES/CSMECHANICSEARCH.PAGE" value="1562255232913" />
                       <entry key="PAGES/CSWORKSHOPDETAIL.PAGE" value="1562096132511" />
@@ -188,7 +209,7 @@
                       <entry key="TOPICSFOROBJECTS/CONTRACT__C.TOPICSFOROBJECTS" value="1562095376000" />
                       <entry key="TOPICSFOROBJECTS/MECHANIC__C.TOPICSFOROBJECTS" value="1562095376000" />
                       <entry key="TOPICSFOROBJECTS/WORKSHOP__C.TOPICSFOROBJECTS" value="1562095376000" />
-                      <entry key="TRIGGERS/OVERLAPPINGERROR.TRIGGER" value="1562236465958" />
+                      <entry key="TRIGGERS/OVERLAPPINGERROR.TRIGGER" value="1562313820325" />
                     </map>
                   </option>
                   <option name="lastBuildScope" value="CONTEXT" />
@@ -1193,7 +1214,19 @@
               <item name="CarServiceOrg" type="b2602c69:ProjectViewProjectNode" />
               <item name="CarServiceOrg" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="labels" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CarServiceOrg" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CarServiceOrg" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CarServiceOrg" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CarServiceOrg" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="triggers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -1248,7 +1281,7 @@
       <workItem from="1562186946498" duration="6626000" />
       <workItem from="1562220113493" duration="26487000" />
       <workItem from="1562253887979" duration="11924000" />
-      <workItem from="1562306168075" duration="6077000" />
+      <workItem from="1562306168075" duration="7820000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1562265664633</created>
@@ -1261,13 +1294,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172240000" />
+    <option name="totallyTimeSpent" value="173983000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14232409" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14232409" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1281,16 +1314,16 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Log Viewer" order="7" sideWeight="0.7302772" weight="0.6923077" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.6487207" weight="0.32827735" />
+      <window_info anchor="bottom" id="Log Viewer" order="7" sideWeight="0.72974414" weight="0.6923077" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.6476546" weight="0.32827735" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.35127932" side_tool="true" visible="true" weight="0.32827735" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5026652" side_tool="true" weight="0.6923077" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.3286119" />
       <window_info anchor="bottom" id="Anonymous Apex" order="12" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
-      <window_info anchor="bottom" id="Version Control" order="14" weight="0.32827735" />
+      <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.49946696" weight="0.32827735" />
       <window_info anchor="bottom" id="SOQL Query" order="15" sideWeight="0.49530202" weight="0.82231855" />
-      <window_info anchor="bottom" id="Problems" order="16" sideWeight="0.49798658" weight="0.3286119" />
+      <window_info anchor="bottom" id="Problems" order="16" sideWeight="0.49733475" weight="0.32827735" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1424,16 +1457,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/QueryBuilder.cls" />
-    <entry file="file://$PROJECT_DIR$/src/triggers/OverlappingError.trigger">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="54" lean-forward="true" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
-          <folding>
-            <element signature="e#115#128#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/SortBy.java" />
     <entry file="file://$PROJECT_DIR$/src/classes/SortBy.cls" />
     <entry file="file://$PROJECT_DIR$/src/pages/CsWorkshopEdit.page">
@@ -1474,13 +1497,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicSearch.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="40" column="81" selection-start-line="40" selection-start-column="81" selection-end-line="40" selection-end-column="81" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicSearchController.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-203">
@@ -1497,17 +1513,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="986">
-          <caret line="130" column="135" lean-forward="true" selection-start-line="130" selection-start-column="135" selection-end-line="130" selection-end-column="135" />
+        <state relative-caret-position="195">
+          <caret line="66" column="44" selection-start-line="66" selection-start-column="44" selection-end-line="66" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="123" column="42" selection-start-line="123" selection-start-column="42" selection-end-line="123" selection-end-column="42" />
+        <state relative-caret-position="354">
+          <caret line="94" column="102" lean-forward="true" selection-start-line="94" selection-start-column="12" selection-end-line="94" selection-end-column="102" />
           <folding>
             <element signature="e#1103#1116#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicSearch.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="126" selection-start-line="25" selection-start-column="26" selection-end-line="25" selection-end-column="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/triggers/OverlappingError.trigger">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="148" selection-start-line="27" selection-start-column="148" selection-end-line="27" selection-end-column="148" />
+          <folding>
+            <element signature="e#115#128#0" expanded="true" />
           </folding>
         </state>
       </provider>
