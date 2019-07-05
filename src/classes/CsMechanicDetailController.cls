@@ -100,11 +100,8 @@ public with sharing class CsMechanicDetailController {
                     addSortOrder(sortDirection).
                     build();
             workshopsQuery = queryBuilder.getQueryString();
-            this.workshopsSearchResultList = Database.query(workshopsQuery);
-            if (workshopsSearchResultList.size() > 0) workshopSectionReady = true; else {
-                workshopSectionReady = false;
-                contractSectionReady = false;
-            }
+            workshopsSearchResultList = Database.query(workshopsQuery);
+            if (workshopsSearchResultList.size() > 0) workshopSectionReady = true;
             sortDirection = (sortDirection.equals('ASC')) ? 'DESC' : 'ASC';
         } else {
             ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.error, 'Name is required'));
