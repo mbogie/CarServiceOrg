@@ -104,7 +104,7 @@ public with sharing class CsMechanicDetailController {
             if (workshopsSearchResultList.size() > 0) workshopSectionReady = true;
             sortDirection = (sortDirection.equals('ASC')) ? 'DESC' : 'ASC';
         } else {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.error, 'Name is required'));
+           // ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.error, 'Name is required'));
             workshopController.Name.addError('Name is required');
         }
     }

@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="378619f6-206d-4b97-be6c-0e71661895b4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+            <state relative-caret-position="306">
+              <caret line="119" column="10" selection-start-line="119" selection-start-column="10" selection-end-line="119" selection-end-column="10" />
               <folding>
                 <element signature="e#1103#1116#0" expanded="true" />
               </folding>
@@ -54,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="685">
-              <caret line="114" column="35" lean-forward="true" selection-start-line="114" selection-start-column="35" selection-end-line="114" selection-end-column="35" />
+            <state relative-caret-position="340">
+              <caret line="86" column="51" lean-forward="true" selection-start-line="86" selection-start-column="51" selection-end-line="86" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -147,7 +148,7 @@
                   <option name="buildSuccessDatesBySourceRootRelativePath">
                     <map>
                       <entry key="CLASSES/BH_SOQLQUERYBUILDER.CLS" value="1562193449148" />
-                      <entry key="CLASSES/CSMECHANICDETAILCONTROLLER.CLS" value="1562321157169" />
+                      <entry key="CLASSES/CSMECHANICDETAILCONTROLLER.CLS" value="1562324472762" />
                       <entry key="CLASSES/CSMECHANICEDITCONTROLLER.CLS" value="1562256267969" />
                       <entry key="CLASSES/CSMECHANICSEARCHCONTROLLER.CLS" value="1562242402869" />
                       <entry key="CLASSES/MECHANICCONTOLLER.CLS" value="1561898655721" />
@@ -167,7 +168,7 @@
                       <entry key="OBJECTTRANSLATIONS/CONTRACT__C-EN_US.OBJECTTRANSLATION" value="1562095376000" />
                       <entry key="OBJECTTRANSLATIONS/MECHANIC__C-EN_US.OBJECTTRANSLATION" value="1562095376000" />
                       <entry key="OBJECTTRANSLATIONS/WORKSHOP__C-EN_US.OBJECTTRANSLATION" value="1562095376000" />
-                      <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1562320566037" />
+                      <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1562324662757" />
                       <entry key="PAGES/CSMECHANICEDIT.PAGE" value="1562095983162" />
                       <entry key="PAGES/CSMECHANICSEARCH.PAGE" value="1562255232913" />
                       <entry key="PAGES/CSWORKSHOPDETAIL.PAGE" value="1562096132511" />
@@ -1258,7 +1259,7 @@
       <workItem from="1562186946498" duration="6626000" />
       <workItem from="1562220113493" duration="26487000" />
       <workItem from="1562253887979" duration="11924000" />
-      <workItem from="1562306168075" duration="14135000" />
+      <workItem from="1562306168075" duration="15933000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1562265664633</created>
@@ -1271,13 +1272,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="180298000" />
+    <option name="totallyTimeSpent" value="182096000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14232409" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14232409" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1292,10 +1293,10 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Log Viewer" order="7" sideWeight="0.72974414" weight="0.6923077" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.6465885" weight="0.32827735" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.6465885" visible="true" weight="0.32827735" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.35341153" side_tool="true" weight="0.32827735" />
-      <window_info anchor="bottom" id="Messages" order="11" weight="0.3286119" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.32827735" />
       <window_info anchor="bottom" id="Anonymous Apex" order="12" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="Version Control" order="14" sideWeight="0.49946696" weight="0.32827735" />
@@ -1443,13 +1444,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsWorkshopDetail.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="31" column="44" selection-start-line="31" selection-start-column="44" selection-end-line="31" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicEdit.page">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -1505,17 +1499,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsWorkshopDetail.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="33" column="67" selection-start-line="33" selection-start-column="67" selection-end-line="33" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="685">
-          <caret line="114" column="35" lean-forward="true" selection-start-line="114" selection-start-column="35" selection-end-line="114" selection-end-column="35" />
+        <state relative-caret-position="340">
+          <caret line="86" column="51" lean-forward="true" selection-start-line="86" selection-start-column="51" selection-end-line="86" selection-end-column="51" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
+        <state relative-caret-position="306">
+          <caret line="119" column="10" selection-start-line="119" selection-start-column="10" selection-end-line="119" selection-end-column="10" />
           <folding>
             <element signature="e#1103#1116#0" expanded="true" />
           </folding>

@@ -81,7 +81,7 @@
                                              var="workshop">
                             <apex:column headerValue="{!$Label.Action_Table_Label}">
                                 <apex:commandLink action="{!choose}" immediate="true"
-                                                  reRender="form">{!IF(workshop.Id==selectedWorkshopId, '', $Label.Select )}
+                                                  reRender="form,contractForm">{!IF(workshop.Id==selectedWorkshopId, '', $Label.Select )}
                                     <apex:param name="selectedWorkshop" value="{!workshop.Id}"
                                                 assignTo="{!selectedWorkshopId}"></apex:param>
                                 </apex:commandLink>
