@@ -1,6 +1,8 @@
 <apex:page id="pg" >
 
+    <apex:pageBlock id="contractBlock">
 
+    </apex:pageBlock>
 
 
 

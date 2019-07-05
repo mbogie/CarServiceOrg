@@ -116,14 +116,13 @@ public with sharing class CsMechanicDetailController {
     }
 
     public PageReference cancel() {
-        pageReference = new ApexPages.StandardController(mechanicController).view();
-        pageReference.setRedirect(true);
         workshopsSearchResultList.clear();
         workshopController.clear();
         contractController.clear();
         workshopChoosen.clear();
-        contractSectionReady = false;
-        return pageReference;
+        this.workshopSectionReady = false;
+        this.contractSectionReady = false;
+        return null;
     }
 
     public PageReference choose() {

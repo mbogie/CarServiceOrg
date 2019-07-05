@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Contract</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Contracts</value>
+    </caseValues>
+    <fields>
+        <label><!-- Compare Cities --></label>
+        <name>Compare_Cities__c</name>
+    </fields>
+    <fields>
+        <label><!-- Display Date --></label>
+        <name>Display_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- End Date --></label>
+        <name>End_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mechanic Name --></label>
+        <name>Mechani_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- Mechanic --></label>
+        <name>Mechanic__c</name>
+        <relationshipLabel><!-- Agreements --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Start Date Plus One Year --></label>
+        <name>Start_Date_Plus_One_Year__c</name>
+    </fields>
+    <fields>
+        <label><!-- Start Date --></label>
+        <name>Start_Date__c</name>
+    </fields>
+    <fields>
+        <label><!-- Workshop --></label>
+        <name>Workshop__c</name>
+        <relationshipLabel><!-- Agreements --></relationshipLabel>
+    </fields>
+    <layouts>
+        <layout>Contract Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- End Day can&apos;t be before Start Day. --></errorMessage>
+        <name>End_Day_After_Start_Day</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- End Date must be after today. --></errorMessage>
+        <name>End_Day_After_Today</name>
+    </validationRules>
+</CustomObjectTranslation>

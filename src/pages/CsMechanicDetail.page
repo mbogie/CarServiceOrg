@@ -58,74 +58,82 @@
                 </script>
             </apex:outputPanel>
         </div>
+
+        <apex:outputPanel id="form">
         <apex:form id="workshopForm">
-            <apex:pageBlock id="searchWorkshop">
-                <apex:pageBlockSection id="workshopsSearchFields">
-                    <apex:inputField value="{!workshopController.Name}" required="true"/>
-                    <apex:inputField value="{!workshopController.Country__c}"/>
-                    <apex:inputField value="{!workshopController.City__c}"/>
-                </apex:pageBlockSection>
-                <apex:pageBlockButtons id="workshopsSearchButtons" location="bottom">
-                    <apex:commandButton value="{!$Label.Button_Search}" action="{!search}"
-                                        reRender="searchWorkshop,workshopsSearchBlock"/>
-                    <apex:commandButton value="{!$Label.Button_Clear}" action="{!clear}" immediate="true"
-                                        reRender="searchWorkshop,workshopsSearchBlock,messages"/>
-                </apex:pageBlockButtons>
-            </apex:pageBlock>
-        </apex:form>
-        <apex:form id="contractForm">
-            <apex:pageBlock id="workshopsSearchBlock">
-                <apex:pageBlockTable id="workshopsTableBlock" value="{!workshopsSearchResultList}" var="workshop"
-                                     rendered="{!workshopSectionReady}">
-                    <apex:column headerValue="{!$Label.Action_Table_Label}">
-                        <apex:commandLink action="{!choose}" value="Select" immediate="true"
-                                          reRender="workshopsSearchBlock,agreementsButtons">
-                            <apex:param name="selectedWorkshop" value="{!workshop.Id}"
-                                        assignTo="{!selectedWorkshopId}"></apex:param>
-                        </apex:commandLink>
-                    </apex:column>
-                    <apex:column value="{!workshop.Name}">
-                        <apex:facet name="header">
-                            <apex:commandLink action="{!sortByName}" immediate="true"
-                                              reRender="workshopsTableBlock">{!$Label.Field_Name}
+            <apex:outputPanel id="fieldPanel">
+                <apex:pageBlock id="workshopInfo">
+                    <apex:pageBlockSection id="workshopsSearchFields">
+                        <apex:inputField value="{!workshopController.Name}" required="true"/>
+                        <apex:inputField value="{!workshopController.Country__c}"/>
+                        <apex:inputField value="{!workshopController.City__c}"/>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockButtons id="workshopsSearchButtons" location="bottom">
+                        <apex:commandButton value="{!$Label.Button_Search}" action="{!search}"
+                                            reRender="form"/>
+                        <apex:commandButton value="{!$Label.Button_Clear}" action="{!clear}" immediate="true"
+                                            reRender="form"/>
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+            </apex:outputPanel>
+
+            <apex:outputPanel id="listPanel" rendered="{!workshopSectionReady}">
+                <apex:pageBlock id="workshopList">
+                    <apex:pageBlockTable id="workshopsTableBlock" value="{!workshopsSearchResultList}" var="workshop">
+                        <apex:column headerValue="{!$Label.Action_Table_Label}">
+                            <apex:commandLink action="{!choose}" value="Select" immediate="true"
+                                              reRender="form">
+                                <apex:param name="selectedWorkshop" value="{!workshop.Id}"
+                                            assignTo="{!selectedWorkshopId}"></apex:param>
+                            </apex:commandLink>
+                        </apex:column>
+                        <apex:column value="{!workshop.Name}">
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!sortByName}" immediate="true"
+                                                  reRender="workshopsTableBlock">{!$Label.Field_Name}
                                     {!IF(sortField == 'Name', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
-                            </apex:commandLink>
-                        </apex:facet>
-                    </apex:column>
-                    <apex:column value="{!workshop.City__c}">
-                        <apex:facet name="header">
-                            <apex:commandLink action="{!sortByCity}" immediate="true"
-                                              reRender="workshopsTableBlock">{!$Label.Field_City}
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!workshop.City__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!sortByCity}" immediate="true"
+                                                  reRender="workshopsTableBlock">{!$Label.Field_City}
                                     {!IF(sortField == 'City__c', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
-                            </apex:commandLink>
-                        </apex:facet>
-                    </apex:column>
-                    <apex:column value="{!workshop.Country__c}">
-                        <apex:facet name="header">
-                            <apex:commandLink action="{!sortByCountry}" immediate="true"
-                                              reRender="workshopsTableBlock">{!$Label.Field_Country}
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                        <apex:column value="{!workshop.Country__c}">
+                            <apex:facet name="header">
+                                <apex:commandLink action="{!sortByCountry}" immediate="true"
+                                                  reRender="workshopsTableBlock">{!$Label.Field_Country}
                                     {!IF(sortField == 'Country__c', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
-                            </apex:commandLink>
-                        </apex:facet>
-                    </apex:column>
-                </apex:pageBlockTable>
-                <apex:pageBlockSection id="mechanicWorkshopNameSection" rendered="{!contractSectionReady}">
-                    <apex:pageBlockSectionItem/>
-                    <apex:pageBlockSectionItem/>
-                    <apex:outputField value="{!Mechanic__c.Full_Name__c}"/>
-                    <apex:pageBlockSectionItem/>
-                    <apex:outputField value="{!workshopChoosen.Name}"/>
-                    <apex:pageBlockSectionItem/>
-                    <apex:inputField value="{!contractController.Start_Date__c}" required="true"/>
-                    <apex:inputField value="{!contractController.End_Date__c}"/>
-                </apex:pageBlockSection>
-                <apex:pageBlockButtons id="agreementsButtons" location="bottom" rendered="{!contractSectionReady}">
-                    <apex:commandButton value="{!$Label.Button_Hire}" action="{!hire}" onComplete="checkHideModal();"
-                                        reRender="messages"/>
-                    <apex:commandButton value="{!$Label.Button_Cancel}" action="{!cancel}"/>
-                </apex:pageBlockButtons>
-            </apex:pageBlock>
+                                </apex:commandLink>
+                            </apex:facet>
+                        </apex:column>
+                    </apex:pageBlockTable>
+                </apex:pageBlock>
+            </apex:outputPanel>
+
+            <apex:outputPanel id="contractPanel" rendered="{!contractSectionReady}">
+                <apex:pageBlock id="contractBlock" title="Agreement" rendered="{!contractSectionReady}">
+                    <apex:pageBlockSection id="mechanicWorkshopNameSection">
+                        <apex:outputField value="{!Mechanic__c.Full_Name__c}"/>
+                        <apex:pageBlockSectionItem/>
+                        <apex:outputField value="{!workshopChoosen.Name}"/>
+                        <apex:pageBlockSectionItem/>
+                        <apex:inputField value="{!contractController.Start_Date__c}" required="true"/>
+                        <apex:inputField value="{!contractController.End_Date__c}"/>
+                    </apex:pageBlockSection>
+                    <apex:pageBlockButtons id="agreementsButtons" location="bottom">
+                        <apex:commandButton value="{!$Label.Button_Hire}" action="{!hire}" reRender="form,messages"
+                                            onComplete="checkHideModal();"/>
+                        <apex:commandButton value="{!$Label.Button_Cancel}" action="{!cancel}" reRender="form,messages" onComplete="close();"/>
+                    </apex:pageBlockButtons>
+                </apex:pageBlock>
+            </apex:outputPanel>
         </apex:form>
+    </apex:outputPanel>
     </div>
 
     <script type="text/javascript">
