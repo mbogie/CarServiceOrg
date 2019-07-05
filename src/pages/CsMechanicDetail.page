@@ -58,7 +58,6 @@
                 </script>
             </apex:outputPanel>
         </div>
-
         <apex:outputPanel id="form">
             <apex:form id="workshopForm">
                 <apex:outputPanel id="fieldPanel">
@@ -72,11 +71,12 @@
                             <apex:commandButton value="{!$Label.Button_Search}" action="{!search}"
                                                 reRender="form"/>
                             <apex:commandButton value="{!$Label.Button_Clear}" action="{!clear}" immediate="true"
-                                                reRender="form"/>
+                                                reRender="form,messages"/>
                         </apex:pageBlockButtons>
                     </apex:pageBlock>
                 </apex:outputPanel>
-
+            </apex:form>
+            <apex:form id="contractForm">
                 <apex:outputPanel id="listPanel" rendered="{!workshopSectionReady}">
                     <apex:pageBlock id="workshopList">
                         <apex:pageBlockTable id="workshopsTableBlock" value="{!workshopsSearchResultList}"
@@ -115,7 +115,6 @@
                         </apex:pageBlockTable>
                     </apex:pageBlock>
                 </apex:outputPanel>
-
                 <apex:outputPanel id="contractPanel" rendered="{!contractSectionReady}">
                     <apex:pageBlock id="contractBlock" title="Agreement" rendered="{!contractSectionReady}">
                         <apex:pageBlockSection id="mechanicWorkshopNameSection">
@@ -147,7 +146,6 @@
                 my: 'top',
                 at: 'top'
             },
-            modal:true,
         });
 
         function openHirePage() {

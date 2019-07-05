@@ -30,7 +30,7 @@ public with sharing class CsMechanicDetailController {
 
     public PageReference deleteM() {
         delete mechanicController;
-        PageReference pageReference = new PageReference('/' + SObjectType.Mechanic__c.getKeyPrefix() + '/o');
+        pageReference = new PageReference('/' + SObjectType.Mechanic__c.getKeyPrefix() + '/o');
         pageReference.setRedirect(true);
         return pageReference;
     }
@@ -66,7 +66,9 @@ public with sharing class CsMechanicDetailController {
     public void search() {
         if (!String.isBlank(workshopController.Name)) {
             if (String.isBlank(sortField)) sortField = 'Name';
+            selectedWorkshopId = null;
             workshopSectionReady = false;
+            contractSectionReady = false;
             queryBuilder.clear();
             workshopsSearchResultList.clear();
             contractController.clear();
@@ -109,7 +111,6 @@ public with sharing class CsMechanicDetailController {
         try {
             insert contractToInsert;
         } catch (DmlException error) {
-            contractToInsert.addError(error.getMessage(), false);
             return null;
         }
         return pageReference;
