@@ -1,35 +1,38 @@
 public with sharing class CsMechanicDetailController {
 
-    public Workshop__c workshopController { get; set; }
-    public Contract__c contractController { get; set; }
-    private Mechanic__c mechanicController { get; set; }
+    public Workshop__c formWorkshopController { get; set; }
+    public Contract__c formContractController { get; set; }
+    private Mechanic__c formMechanicController { get; set; }
     public Workshop__c workshopChoosen { get; set; }
     private Contract__c contractToInsert;
     public List<Workshop__c> workshopsSearchResultList;
-    public String selectedWorkshopId { get; set; }
     private String workshopsQuery;
     private BH_SoqlQueryBuilder queryBuilder;
     public String sortField { get; set; }
     public String sortDirection { get; set; }
-    public Boolean workshopSectionReady { get; set; }
-    public Boolean contractSectionReady { get; set; }
+    public Boolean ifWorkshopSectionReady { get; set; }
+    public Boolean ifContractSectionReady { get; set; }
     public PageReference pageReference;
+    public String hirePopupName { get; set; }
 
     public CsMechanicDetailController(ApexPages.StandardController controller) {
-        this.mechanicController = (Mechanic__c) controller.getRecord();
-        this.workshopController = new Workshop__c();
-        this.contractController = new Contract__c();
+        this.formMechanicController = (Mechanic__c) controller.getRecord();
+        this.formWorkshopController = new Workshop__c();
+        this.formContractController = new Contract__c();
         this.workshopChoosen = new Workshop__c();
         this.workshopsSearchResultList = new List<Workshop__c>();
         this.queryBuilder = new BH_SoqlQueryBuilder();
         this.contractToInsert = new Contract__c();
-        this.workshopSectionReady = false;
-        this.contractSectionReady = false;
-        sortDirection = 'DESC';
+        this.ifWorkshopSectionReady = false;
+        this.ifContractSectionReady = false;
+        this.sortDirection = 'DESC';
+        hirePopupName = String.format(System.Label.Mechanic_Hire_Label, new List<String>{
+                formMechanicController.Full_Name__c
+        });
     }
 
-    public PageReference deleteM() {
-        delete mechanicController;
+    public PageReference deleteMechanic() {
+        delete formMechanicController;
         pageReference = new PageReference('/' + SObjectType.Mechanic__c.getKeyPrefix() + '/o');
         pageReference.setRedirect(true);
         return pageReference;
@@ -41,82 +44,75 @@ public with sharing class CsMechanicDetailController {
 
     public void sortByName() {
         sortField = 'Name';
-        sort();
+        search();
     }
 
     public void sortByCity() {
         sortField = 'City__c';
-        sort();
+        search();
     }
 
     public void sortByCountry() {
         sortField = 'Country__c';
-        sort();
+        search();
     }
 
     public PageReference clear() {
         clearData();
-        workshopController.clear();
+        formWorkshopController.clear();
         sortField = null;
-        selectedWorkshopId = null;
-        return null;
-    }
-    public PageReference cancel() {
-        clearData();
-        workshopController.clear();
         workshopChoosen.clear();
-        selectedWorkshopId = null;
+        ifContractSectionReady = false;
         return null;
     }
 
-    private void clearData(){
+    public PageReference cancel() {
+        clearData();
+        formWorkshopController.clear();
+        ifContractSectionReady = false;
+        return null;
+    }
+
+    private void clearData() {
         workshopsSearchResultList.clear();
-        contractSectionReady = false;
-        workshopSectionReady = false;
-        contractController.clear();
+        ifWorkshopSectionReady = false;
+        formContractController.clear();
         queryBuilder.clear();
     }
 
-    public void search(){
-        selectedWorkshopId = null;
-        sort();
-    }
-    public void sort() {
-        if (!String.isBlank(workshopController.Name)) {
+    public void search() {
+        if (!String.isBlank(formWorkshopController.Name)) {
             clearData();
             if (String.isBlank(sortField)) sortField = 'Name';
             queryBuilder.addResultField('Name').
                     addResultField('City__c').
                     addResultField('Country__c').
                     addTableName('Workshop__c').
-                    addSearchFieldWithValue('Name', workshopController.Name);
-            if (!String.isBlank(workshopController.City__c)) {
-                queryBuilder.addSearchFieldWithValue('City__c', workshopController.City__c);
-            }
-            if (!String.isBlank(workshopController.Country__c)) {
-                queryBuilder.addSearchFieldWithValue('Country__c', workshopController.Country__c);
-            }
-            queryBuilder.addSortField(sortField).
+                    addSearchFieldWithValue('Name', formWorkshopController.Name).
+                    addSearchFieldWithValue('City__c', formWorkshopController.City__c).
+                    addSearchFieldWithValue('Country__c', formWorkshopController.Country__c).
+                    addSortField(sortField).
                     addSortOrder(sortDirection).
                     build();
             workshopsQuery = queryBuilder.getQueryString();
             workshopsSearchResultList = Database.query(workshopsQuery);
-            if (workshopsSearchResultList.size() > 0) workshopSectionReady = true;
+            if (workshopsSearchResultList.size() > 0) ifWorkshopSectionReady = true;
             sortDirection = (sortDirection.equals('ASC')) ? 'DESC' : 'ASC';
         } else {
-           // ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.error, 'Name is required'));
-            workshopController.Name.addError('Name is required');
+            formWorkshopController.addError(String.format(System.Label.Required_Input_Field_Error, new List<String>{
+                    Schema.getGlobalDescribe().get('Workshop__c').getDescribe().fields.getMap().get('Name').getDescribe().getLabel()
+            }));
         }
     }
 
     public PageReference hire() {
-        pageReference = new ApexPages.StandardController(mechanicController).view();
+        pageReference = new ApexPages.StandardController(formMechanicController).view();
         pageReference.setRedirect(true);
-        contractToInsert.Mechanic__c = mechanicController.Id;
+        contractToInsert.Mechanic__c = formMechanicController.Id;
         contractToInsert.Workshop__c = workshopChoosen.Id;
-        contractToInsert.Start_Date__c = contractController.Start_Date__c;
-        if (contractController != null) {
-            contractToInsert.End_Date__c = contractController.End_Date__c;
+        contractToInsert.Start_Date__c = formContractController.Start_Date__c;
+        if (formContractController != null) {
+            contractToInsert.End_Date__c = formContractController.End_Date__c;
         }
         try {
             insert contractToInsert;
@@ -127,8 +123,13 @@ public with sharing class CsMechanicDetailController {
     }
 
     public PageReference choose() {
-        contractSectionReady = true;
-        workshopChoosen = [SELECT Id, Name FROM Workshop__c WHERE Id = :selectedWorkshopId].get(0);
+        ifContractSectionReady = true;
+        for (Workshop__c workshop : workshopsSearchResultList) {
+            if (workshop.Id == workshopChoosen.Id) {
+                workshopChoosen = workshop.clone(true);
+                break;
+            }
+        }
         return null;
     }
 }

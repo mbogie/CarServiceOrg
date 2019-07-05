@@ -52,24 +52,18 @@ public with sharing class CsMechanicSearchController {
 
     public PageReference searchMechanic() {
         if (!(String.isBlank(mechanicController.Name))) {
-            if(String.isBlank(sortField)) sortField = 'Full_Name__c';
+            if (String.isBlank(sortField)) sortField = 'Full_Name__c';
             queryBuilder.clear();
             mechanicsSearchResultList.clear();
             queryBuilder.addResultField('Full_Name__c').
                     addResultField('Email__c').
                     addResultField('Country__c').
                     addTableName('Mechanic__c').
-                    addSearchFieldStartsWithValue('Name', mechanicController.Name);
-            if(!String.isBlank(mechanicController.First_Name__c)){
-                queryBuilder.addSearchFieldStartsWithValue('First_Name__c',mechanicController.First_Name__c);
-            }
-            if(!String.isBlank(mechanicController.Country__c)){
-                queryBuilder.addSearchFieldStartsWithValue('Country__c',mechanicController.Country__c);
-            }
-            if(!String.isBlank(mechanicController.Email__c)){
-                queryBuilder.addSearchFieldStartsWithValue('Email__c',mechanicController.Email__c);
-            }
-            queryBuilder.addSortField(sortField).
+                    addSearchFieldStartsWithValue('Name', mechanicController.Name).
+                    addSearchFieldStartsWithValue('First_Name__c', mechanicController.First_Name__c).
+                    addSearchFieldStartsWithValue('Country__c', mechanicController.Country__c).
+                    addSearchFieldStartsWithValue('Email__c', mechanicController.Email__c).
+                    addSortField(sortField).
                     addSortOrder(sortDirection).
                     build();
             mechanicsSearchResultList = Database.query(queryBuilder.getQueryString());

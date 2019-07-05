@@ -60,17 +60,20 @@ public class BH_SoqlQueryBuilder {
     }
 
     public BH_SoqlQueryBuilder addSearchFieldWithValue(String fieldName, String value) {
-        this.searchFieldsWithValues.put(fieldName, value);
+        if(String.isBlank(value)) return this;
+        else this.searchFieldsWithValues.put(fieldName, value);
         return this;
     }
 
     public BH_SoqlQueryBuilder addSearchFieldEqualsWithValue(String fieldName, String value) {
-        this.searchFieldsEqualsWithValues.put(fieldName, value);
+        if(String.isBlank(value)) return this;
+        else this.searchFieldsEqualsWithValues.put(fieldName, value);
         return this;
     }
 
     public BH_SoqlQueryBuilder addSearchFieldStartsWithValue(String fieldName, String value) {
-        this.searchFieldsStartsWithValues.put(fieldName, value);
+        if(String.isBlank(value)) return this;
+        else this.searchFieldsStartsWithValues.put(fieldName, value);
         return this;
     }
 

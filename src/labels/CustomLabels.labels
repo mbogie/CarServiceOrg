@@ -134,13 +134,6 @@
         <value>Full Name</value>
     </labels>
     <labels>
-        <fullName>Field_Last_Name</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Field Last Name</shortDescription>
-        <value>Last Name</value>
-    </labels>
-    <labels>
         <fullName>Field_Name</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -148,11 +141,25 @@
         <value>Name</value>
     </labels>
     <labels>
+        <fullName>Mechanic_Hire_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Mechanic Hire Label</shortDescription>
+        <value>Hire {0} to...</value>
+    </labels>
+    <labels>
         <fullName>Mechanic_Search_Page_Label</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Mechanic Search Page Label</shortDescription>
         <value>Search Mechanic</value>
+    </labels>
+    <labels>
+        <fullName>Required_Input_Field_Error</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Required Input Field Error</shortDescription>
+        <value>{0} is required.</value>
     </labels>
     <labels>
         <fullName>Search_Results_Label</fullName>

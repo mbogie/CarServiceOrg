@@ -27,7 +27,7 @@
                 <apex:commandButton value="{!$Label.Button_Hire}" onClick="openHirePage()" onComplete="refresh"/>
                 <apex:commandButton value="{!$Label.Button_Delete}"
                                     onclick="if(!confirm('{!$Label.Delete_Confirm_Message}')) return false;"
-                                    action="{!deleteM}"/>
+                                    action="{!deleteMechanic}"/>
             </apex:pageBlockButtons>
         </apex:pageBlock>
         <apex:pageBlock id="historyBlock" title="{!$Label.Section_History_Tracking}">
@@ -49,7 +49,7 @@
         </apex:pageBlock>
     </apex:form>
 
-    <div id="agreement" title="Hire {!Mechanic__c.Full_Name__c} to...">
+    <div id="agreement" title="{!hirePopupName}">
         <div id="myMessagess">
             <apex:outputPanel id="messages">
                 <apex:pageMessages id="messageTxt" showDetail="false"/>
@@ -63,9 +63,9 @@
                 <apex:outputPanel id="fieldPanel">
                     <apex:pageBlock id="workshopInfo">
                         <apex:pageBlockSection id="workshopsSearchFields">
-                            <apex:inputField value="{!workshopController.Name}" required="true"/>
-                            <apex:inputField value="{!workshopController.Country__c}"/>
-                            <apex:inputField value="{!workshopController.City__c}"/>
+                            <apex:inputField value="{!formWorkshopController.Name}" required="true"/>
+                            <apex:inputField value="{!formWorkshopController.Country__c}"/>
+                            <apex:inputField value="{!formWorkshopController.City__c}"/>
                         </apex:pageBlockSection>
                         <apex:pageBlockButtons id="workshopsSearchButtons" location="bottom">
                             <apex:commandButton value="{!$Label.Button_Search}" action="{!search}"
@@ -75,21 +75,21 @@
                         </apex:pageBlockButtons>
                     </apex:pageBlock>
                 </apex:outputPanel>
-                <apex:outputPanel id="listPanel" rendered="{!workshopSectionReady}">
+                <apex:outputPanel id="listPanel" rendered="{!ifWorkshopSectionReady}">
                     <apex:pageBlock id="workshopList">
                         <apex:pageBlockTable id="workshopsTableBlock" value="{!workshopsSearchResultList}"
                                              var="workshop">
                             <apex:column headerValue="{!$Label.Action_Table_Label}">
                                 <apex:commandLink action="{!choose}" immediate="true"
-                                                  reRender="form,contractForm">{!IF(workshop.Id==selectedWorkshopId, '', $Label.Select )}
+                                                  reRender="form,contractForm">{!IF(workshop.Id==workshopChoosen.Id, '', $Label.Select )}
                                     <apex:param name="selectedWorkshop" value="{!workshop.Id}"
-                                                assignTo="{!selectedWorkshopId}"></apex:param>
+                                                assignTo="{!workshopChoosen.Id}"></apex:param>
                                 </apex:commandLink>
                             </apex:column>
                             <apex:column value="{!workshop.Name}">
                                 <apex:facet name="header">
                                     <apex:commandLink action="{!sortByName}" immediate="true"
-                                                      reRender="workshopsTableBlock,contractPanel">{!$Label.Field_Name}
+                                                      reRender="workshopsTableBlock,contractPanel">{!$ObjectType.Workshop__c.fields.Name.Label}
                                     {!IF(sortField == 'Name', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
                                     </apex:commandLink>
                                 </apex:facet>
@@ -97,7 +97,7 @@
                             <apex:column value="{!workshop.City__c}">
                                 <apex:facet name="header">
                                     <apex:commandLink action="{!sortByCity}" immediate="true"
-                                                      reRender="workshopsTableBlock,contractPanel">{!$Label.Field_City}
+                                                      reRender="workshopsTableBlock,contractPanel">{!$ObjectType.Workshop__c.fields.City__c.Label}
                                     {!IF(sortField == 'City__c', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
                                     </apex:commandLink>
                                 </apex:facet>
@@ -105,7 +105,7 @@
                             <apex:column value="{!workshop.Country__c}">
                                 <apex:facet name="header">
                                     <apex:commandLink action="{!sortByCountry}" immediate="true"
-                                                      reRender="workshopsTableBlock,contractPanel">{!$Label.Field_Country}
+                                                      reRender="workshopsTableBlock,contractPanel">{!$ObjectType.Workshop__c.fields.Country__c.Label}
                                     {!IF(sortField == 'Country__c', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
                                     </apex:commandLink>
                                 </apex:facet>
@@ -115,15 +115,15 @@
                 </apex:outputPanel>
             </apex:form>
             <apex:form id="contractForm">
-                <apex:outputPanel id="contractPanel" rendered="{!contractSectionReady}">
-                    <apex:pageBlock id="contractBlock" title="Agreement" rendered="{!contractSectionReady}">
+                <apex:outputPanel id="contractPanel" rendered="{!ifContractSectionReady}">
+                    <apex:pageBlock id="contractBlock" title="Agreement" rendered="{!ifContractSectionReady}">
                         <apex:pageBlockSection id="mechanicWorkshopNameSection">
                             <apex:outputField value="{!Mechanic__c.Full_Name__c}"/>
                             <apex:pageBlockSectionItem/>
                             <apex:outputField value="{!workshopChoosen.Name}"/>
                             <apex:pageBlockSectionItem/>
-                            <apex:inputField value="{!contractController.Start_Date__c}" required="true"/>
-                            <apex:inputField value="{!contractController.End_Date__c}"/>
+                            <apex:inputField value="{!formContractController.Start_Date__c}" required="true"/>
+                            <apex:inputField value="{!formContractController.End_Date__c}"/>
                         </apex:pageBlockSection>
                         <apex:pageBlockButtons id="agreementsButtons" location="bottom">
                             <apex:commandButton value="{!$Label.Button_Hire}" action="{!hire}" reRender="form,messages"
