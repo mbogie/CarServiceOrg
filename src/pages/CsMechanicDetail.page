@@ -69,14 +69,12 @@
                         </apex:pageBlockSection>
                         <apex:pageBlockButtons id="workshopsSearchButtons" location="bottom">
                             <apex:commandButton value="{!$Label.Button_Search}" action="{!search}"
-                                                reRender="form"/>
+                                                reRender="form,messages"/>
                             <apex:commandButton value="{!$Label.Button_Clear}" action="{!clear}" immediate="true"
                                                 reRender="form,messages"/>
                         </apex:pageBlockButtons>
                     </apex:pageBlock>
                 </apex:outputPanel>
-            </apex:form>
-            <apex:form id="contractForm">
                 <apex:outputPanel id="listPanel" rendered="{!workshopSectionReady}">
                     <apex:pageBlock id="workshopList">
                         <apex:pageBlockTable id="workshopsTableBlock" value="{!workshopsSearchResultList}"
@@ -91,7 +89,7 @@
                             <apex:column value="{!workshop.Name}">
                                 <apex:facet name="header">
                                     <apex:commandLink action="{!sortByName}" immediate="true"
-                                                      reRender="workshopsTableBlock">{!$Label.Field_Name}
+                                                      reRender="workshopsTableBlock,contractPanel">{!$Label.Field_Name}
                                     {!IF(sortField == 'Name', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
                                     </apex:commandLink>
                                 </apex:facet>
@@ -99,7 +97,7 @@
                             <apex:column value="{!workshop.City__c}">
                                 <apex:facet name="header">
                                     <apex:commandLink action="{!sortByCity}" immediate="true"
-                                                      reRender="workshopsTableBlock">{!$Label.Field_City}
+                                                      reRender="workshopsTableBlock,contractPanel">{!$Label.Field_City}
                                     {!IF(sortField == 'City__c', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
                                     </apex:commandLink>
                                 </apex:facet>
@@ -107,7 +105,7 @@
                             <apex:column value="{!workshop.Country__c}">
                                 <apex:facet name="header">
                                     <apex:commandLink action="{!sortByCountry}" immediate="true"
-                                                      reRender="workshopsTableBlock">{!$Label.Field_Country}
+                                                      reRender="workshopsTableBlock,contractPanel">{!$Label.Field_Country}
                                     {!IF(sortField == 'Country__c', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
                                     </apex:commandLink>
                                 </apex:facet>
@@ -115,6 +113,8 @@
                         </apex:pageBlockTable>
                     </apex:pageBlock>
                 </apex:outputPanel>
+            </apex:form>
+            <apex:form id="contractForm">
                 <apex:outputPanel id="contractPanel" rendered="{!contractSectionReady}">
                     <apex:pageBlock id="contractBlock" title="Agreement" rendered="{!contractSectionReady}">
                         <apex:pageBlockSection id="mechanicWorkshopNameSection">

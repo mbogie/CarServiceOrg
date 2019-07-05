@@ -35,43 +35,56 @@ public with sharing class CsMechanicDetailController {
         return pageReference;
     }
 
-    public PageReference clear() {
-        this.workshopController.clear();
-        this.workshopsSearchResultList.clear();
-        sortField = null;
-        this.workshopSectionReady = false;
-        this.contractSectionReady = false;
-        return null;
-    }
-
     public List<Workshop__c> getWorkshopsSearchResultList() {
         return workshopsSearchResultList;
     }
 
     public void sortByName() {
         sortField = 'Name';
-        search();
+        sort();
     }
 
     public void sortByCity() {
         sortField = 'City__c';
-        search();
+        sort();
     }
 
     public void sortByCountry() {
         sortField = 'Country__c';
-        search();
+        sort();
     }
 
-    public void search() {
+    public PageReference clear() {
+        clearData();
+        workshopController.clear();
+        sortField = null;
+        selectedWorkshopId = null;
+        return null;
+    }
+    public PageReference cancel() {
+        clearData();
+        workshopController.clear();
+        workshopChoosen.clear();
+        selectedWorkshopId = null;
+        return null;
+    }
+
+    private void clearData(){
+        workshopsSearchResultList.clear();
+        contractSectionReady = false;
+        workshopSectionReady = false;
+        contractController.clear();
+        queryBuilder.clear();
+    }
+
+    public void search(){
+        selectedWorkshopId = null;
+        sort();
+    }
+    public void sort() {
         if (!String.isBlank(workshopController.Name)) {
+            clearData();
             if (String.isBlank(sortField)) sortField = 'Name';
-            selectedWorkshopId = null;
-            workshopSectionReady = false;
-            contractSectionReady = false;
-            queryBuilder.clear();
-            workshopsSearchResultList.clear();
-            contractController.clear();
             queryBuilder.addResultField('Name').
                     addResultField('City__c').
                     addResultField('Country__c').
@@ -114,16 +127,6 @@ public with sharing class CsMechanicDetailController {
             return null;
         }
         return pageReference;
-    }
-
-    public PageReference cancel() {
-        workshopsSearchResultList.clear();
-        workshopController.clear();
-        contractController.clear();
-        workshopChoosen.clear();
-        this.workshopSectionReady = false;
-        this.contractSectionReady = false;
-        return null;
     }
 
     public PageReference choose() {
