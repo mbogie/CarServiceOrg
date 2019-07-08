@@ -1,20 +1,20 @@
 <apex:page standardController="Workshop__c" tabStyle="Workshop__c">
-        <apex:form >
-            <apex:pageBlock id="workshopBlock" title="{!$Label.Edit_Label} '{!Workshop__c.Name}'">
-                <apex:pageMessages />
-                <apex:pageBlockSection id="detailSection" columns="1">
-                    <apex:inputField value="{!Workshop__c.Name}" required="true"/>
-                    <apex:inputField value="{!Workshop__c.Phone__c}"/>
-                    <apex:inputField value="{!Workshop__c.Website__c}"/>
-                    <apex:inputField value="{!Workshop__c.Address__c}"/>
-                    <apex:inputField value="{!Workshop__c.City__c}"/>
-                    <apex:inputField value="{!Workshop__c.Country__c}"/>
-                    <apex:inputField value="{!Workshop__c.Zip_Code__c}"/>
-                </apex:pageBlockSection>
-                <apex:pageBlockButtons id="buttonSection" location="bottom">
-                    <apex:commandButton value="{!$Label.Button_Save}" action="{!save}"/>
-                    <apex:commandButton value="{!$Label.Button_Cancel}" action="{!cancel}"/>
-                </apex:pageBlockButtons>
-            </apex:pageBlock>
-        </apex:form>
+    <apex:form>
+        <apex:pageBlock id="workshopBlock" title="{!$Label.Edit} '{!Workshop__c.Name}'">
+            <apex:pageMessages/>
+            <apex:pageBlockSection id="detailSection" columns="1">
+                <apex:inputField value="{!Workshop__c.Name}" required="true"/>
+                <apex:inputField value="{!Workshop__c.Phone__c}"/>
+                <apex:inputField value="{!Workshop__c.Website__c}"/>
+                <apex:inputField value="{!Workshop__c.Address__c}"/>
+                <apex:inputField value="{!Workshop__c.City__c}"/>
+                <apex:inputField value="{!Workshop__c.Country__c}"/>
+                <apex:inputField value="{!Workshop__c.Zip_Code__c}"/>
+            </apex:pageBlockSection>
+            <div id="buttons" align="center" draggable="false">
+                <apex:commandButton value="{!$Label.Button_Save}" action="{!save}"/>
+                <apex:commandButton value="{!$Label.Button_Cancel}" action="{!cancel}"/>
+            </div>
+        </apex:pageBlock>
+    </apex:form>
 </apex:page>

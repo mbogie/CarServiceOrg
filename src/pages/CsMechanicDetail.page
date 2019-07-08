@@ -14,7 +14,10 @@
                 <apex:outputField value="{!Mechanic__c.Skill__c}"/>
                 <apex:outputField value="{!Mechanic__c.License_Number__c}"/>
                 <apex:outputField value="{!Mechanic__c.Email__c}"/>
-                <apex:outputField value="{!Mechanic__c.Phone__c}"/>
+                <apex:outputField id="copyPhone" value="{!Mechanic__c.Phone__c}">
+                    <apex:commandButton value="{!$Label.Copy_To_Clipboard}"
+                                        onClick="clipBoard('{!$Component.copyPhone}')" reRender="copytext"/>
+                </apex:outputField>
             </apex:pageBlockSection>
             <apex:pageBlockSection id="addressSection" title="{!$Label.Section_Address}">
                 <apex:outputField value="{!Mechanic__c.Address__c}"/>
@@ -22,13 +25,13 @@
                 <apex:outputField value="{!Mechanic__c.Country__c}"/>
                 <apex:outputField value="{!Mechanic__c.Zip_Code__c}"/>
             </apex:pageBlockSection>
-            <apex:pageBlockButtons id="buttonSection" location="bottom">
+            <div id="buttonSection" align="center" draggable="false">
                 <apex:commandButton value="{!$Label.Button_Edit}" action="{!edit}"/>
-                <apex:commandButton value="{!$Label.Button_Hire}" onClick="openHirePage()" onComplete="refresh"/>
+                <apex:commandButton value="{!$Label.Button_Hire}" onClick="openHirePopup()" onComplete="refresh"/>
                 <apex:commandButton value="{!$Label.Button_Delete}"
                                     onclick="if(!confirm('{!$Label.Delete_Confirm_Message}')) return false;"
                                     action="{!deleteMechanic}"/>
-            </apex:pageBlockButtons>
+            </div>
         </apex:pageBlock>
         <apex:pageBlock id="historyBlock" title="{!$Label.Section_History_Tracking}">
             <apex:pageBlockTable id="historyTable" value="{!Mechanic__c.Histories}" var="history">
@@ -49,7 +52,7 @@
         </apex:pageBlock>
     </apex:form>
 
-    <div id="agreement" title="{!hirePopupName}">
+    <div id="agreement" title="{!hirePopupLabel}">
         <div id="myMessagess">
             <apex:outputPanel id="messages">
                 <apex:pageMessages id="messageTxt" showDetail="false"/>
@@ -60,28 +63,33 @@
         </div>
         <apex:outputPanel id="form">
             <apex:form id="workshopForm">
-                <apex:outputPanel id="fieldPanel">
-                    <apex:pageBlock id="workshopInfo">
-                        <apex:pageBlockSection id="workshopsSearchFields">
-                            <apex:inputField value="{!formWorkshopController.Name}" required="true"/>
-                            <apex:inputField value="{!formWorkshopController.Country__c}"/>
-                            <apex:inputField value="{!formWorkshopController.City__c}"/>
-                        </apex:pageBlockSection>
-                        <apex:pageBlockButtons id="workshopsSearchButtons" location="bottom">
-                            <apex:commandButton value="{!$Label.Button_Search}" action="{!search}"
-                                                reRender="form,messages"/>
-                            <apex:commandButton value="{!$Label.Button_Clear}" action="{!clear}" immediate="true"
-                                                reRender="form,messages"/>
-                        </apex:pageBlockButtons>
-                    </apex:pageBlock>
-                </apex:outputPanel>
-                <apex:outputPanel id="listPanel" rendered="{!ifWorkshopSectionReady}">
+                <apex:actionRegion id="searchRegion">
+                    <apex:outputPanel id="fieldPanel">
+                        <apex:pageBlock id="workshopInfo">
+                            <apex:pageBlockSection id="workshopsSearchFields">
+                                <apex:inputField value="{!workshopPageFormController.Name}" required="true"/>
+                                <apex:inputField value="{!workshopPageFormController.Country__c}"/>
+                                <apex:inputField value="{!workshopPageFormController.City__c}"/>
+                            </apex:pageBlockSection>
+                            <div id="workshopsSearchButtons" align="center" draggable="false">
+                                <apex:actionFunction name="xclear" action="{!cancel}" immediate="true"
+                                                     reRender="form,messages"/>
+                                <apex:commandButton value="{!$Label.Button_Search}" action="{!search}"
+                                                    reRender="form,messages"/>
+                                <apex:commandButton value="{!$Label.Button_Clear}" onclick="this.form.reset();"
+                                                    action="{!clear}" immediate="true"
+                                                    reRender="form,messages"/>
+                            </div>
+                        </apex:pageBlock>
+                    </apex:outputPanel>
+                </apex:actionRegion>
+                <apex:outputPanel id="listPanel" rendered="{!isWorkshopSectionReady}">
                     <apex:pageBlock id="workshopList">
                         <apex:pageBlockTable id="workshopsTableBlock" value="{!workshopsSearchResultList}"
                                              var="workshop">
                             <apex:column headerValue="{!$Label.Action_Table_Label}">
                                 <apex:commandLink action="{!choose}" immediate="true"
-                                                  reRender="form,contractForm">{!IF(workshop.Id==workshopChoosen.Id, '', $Label.Select )}
+                                                  reRender="form,form,messages">{!IF(workshop.Id==workshopChoosen.Id, '', $Label.Select )}
                                     <apex:param name="selectedWorkshop" value="{!workshop.Id}"
                                                 assignTo="{!workshopChoosen.Id}"></apex:param>
                                 </apex:commandLink>
@@ -113,26 +121,28 @@
                         </apex:pageBlockTable>
                     </apex:pageBlock>
                 </apex:outputPanel>
-            </apex:form>
-            <apex:form id="contractForm">
-                <apex:outputPanel id="contractPanel" rendered="{!ifContractSectionReady}">
-                    <apex:pageBlock id="contractBlock" title="Agreement" rendered="{!ifContractSectionReady}">
-                        <apex:pageBlockSection id="mechanicWorkshopNameSection">
-                            <apex:outputField value="{!Mechanic__c.Full_Name__c}"/>
-                            <apex:pageBlockSectionItem/>
-                            <apex:outputField value="{!workshopChoosen.Name}"/>
-                            <apex:pageBlockSectionItem/>
-                            <apex:inputField value="{!formContractController.Start_Date__c}" required="true"/>
-                            <apex:inputField value="{!formContractController.End_Date__c}"/>
-                        </apex:pageBlockSection>
-                        <apex:pageBlockButtons id="agreementsButtons" location="bottom">
-                            <apex:commandButton value="{!$Label.Button_Hire}" action="{!hire}" reRender="form,messages"
-                                                onComplete="checkHideModal();"/>
-                            <apex:commandButton value="{!$Label.Button_Cancel}" action="{!cancel}"
-                                                reRender="form,messages" onComplete="close();"/>
-                        </apex:pageBlockButtons>
-                    </apex:pageBlock>
-                </apex:outputPanel>
+                <apex:actionRegion id="contractFormRegion">
+                    <apex:outputPanel id="contractPanel" rendered="{!isContractSectionReady}">
+                        <apex:pageBlock id="contractBlock" title="{!$Label.Agreement}"
+                                        rendered="{!isContractSectionReady}">
+                            <apex:pageBlockSection id="mechanicWorkshopNameSection">
+                                <apex:outputField value="{!Mechanic__c.Full_Name__c}"/>
+                                <apex:pageBlockSectionItem/>
+                                <apex:outputField value="{!workshopChoosen.Name}"/>
+                                <apex:pageBlockSectionItem/>
+                                <apex:inputField value="{!contractPageFormController.Start_Date__c}" required="true"/>
+                                <apex:inputField value="{!contractPageFormController.End_Date__c}"/>
+                            </apex:pageBlockSection>
+                            <div id="agreementsButtons" align="center" draggable="false">
+                                <apex:commandButton value="{!$Label.Button_Hire}" action="{!hire}"
+                                                    reRender="form,messages"
+                                                    onComplete="checkHideModal();"/>
+                                <apex:commandButton value="{!$Label.Button_Cancel}" action="{!cancel}"
+                                                    reRender="form,messages" onComplete="closeHirePopup();"/>
+                            </div>
+                        </apex:pageBlock>
+                    </apex:outputPanel>
+                </apex:actionRegion>
             </apex:form>
         </apex:outputPanel>
     </div>
@@ -146,21 +156,34 @@
                 my: 'top',
                 at: 'top'
             },
+            beforeClose: function () {
+                xclear();
+            }
+
         });
 
-        function openHirePage() {
+        function openHirePopup() {
             $('#agreement').dialog("open");
         }
 
-        function close() {
+        function closeHirePopup() {
             $('#agreement').dialog("close");
         }
 
         function checkHideModal() {
             let errors = document.getElementById('messageID').textContent;
             if (!(errors.indexOf('Er') != -1)) {
-                close();
+                closeHirePopup();
             }
+        }
+
+        function clipBoard(copyPhone) {
+            var aux = document.createElement("input");
+            aux.setAttribute("value", document.getElementById(copyPhone).innerHTML);
+            document.body.appendChild(aux);
+            aux.select();
+            document.execCommand("copy");
+            document.body.removeChild(aux);
         }
     </script>
 

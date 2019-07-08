@@ -15,6 +15,13 @@
         <value>Actions</value>
     </labels>
     <labels>
+        <fullName>Agreement</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Agreement</shortDescription>
+        <value>Agreement</value>
+    </labels>
+    <labels>
         <fullName>Button_Cancel</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -85,6 +92,13 @@
         <value>Start Date</value>
     </labels>
     <labels>
+        <fullName>Copy_To_Clipboard</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Copy To Clipboard</shortDescription>
+        <value>Copy To Clipboard</value>
+    </labels>
+    <labels>
         <fullName>Delete_Confirm_Message</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -92,53 +106,25 @@
         <value>Confirm?</value>
     </labels>
     <labels>
-        <fullName>Edit_Label</fullName>
+        <fullName>Edit</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Edit Label</shortDescription>
+        <shortDescription>Edit</shortDescription>
         <value>Edit</value>
     </labels>
     <labels>
-        <fullName>Field_City</fullName>
+        <fullName>Export_To_XML</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Field City</shortDescription>
-        <value>City</value>
+        <shortDescription>Export To XML</shortDescription>
+        <value>Export to .xml</value>
     </labels>
     <labels>
-        <fullName>Field_Country</fullName>
+        <fullName>Export_to_CSV</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Field Country</shortDescription>
-        <value>Country</value>
-    </labels>
-    <labels>
-        <fullName>Field_Email</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Field Email</shortDescription>
-        <value>Email</value>
-    </labels>
-    <labels>
-        <fullName>Field_First_Name</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Field First Name</shortDescription>
-        <value>First Name</value>
-    </labels>
-    <labels>
-        <fullName>Field_Full_Name</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Field Full Name</shortDescription>
-        <value>Full Name</value>
-    </labels>
-    <labels>
-        <fullName>Field_Name</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Field Name</shortDescription>
-        <value>Name</value>
+        <shortDescription>Export to CSV</shortDescription>
+        <value>Export to .csv</value>
     </labels>
     <labels>
         <fullName>Mechanic_Hire_Label</fullName>

@@ -1,0 +1,6 @@
+<apex:page id="CsCopyResultMechanicListToCsv" standardController="Mechanic__c" extensions="CsMechanicSearchController"
+           cache="true" contentType="text/csv#Mechanic Result List.csv" language="en-US">{!$ObjectType.Mechanic__c.fields.Full_Name__c.Label},{!$ObjectType.Mechanic__c.fields.Email__c.Label},{!$ObjectType.Mechanic__c.fields.Country__c.Label}
+    <apex:repeat value="{!mechanicsSearchResultList}" var="mechanic">
+{!mechanic.Full_Name__c},{!mechanic.Email__c},{!mechanic.Country__c}
+    </apex:repeat>
+</apex:page>

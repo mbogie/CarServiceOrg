@@ -1,18 +1,19 @@
 public with sharing class CsMechanicEditController {
-    private Mechanic__c mechanicController;
+    private Mechanic__c mechanicPageFormController;
+    PageReference pageReference;
 
     public CsMechanicEditController(ApexPages.StandardController controller) {
-        this.mechanicController = (Mechanic__c) controller.getRecord();
+        this.mechanicPageFormController = (Mechanic__c) controller.getRecord();
     }
 
     public PageReference cancel() {
-        PageReference pageReference = new ApexPages.StandardController(mechanicController).view();
+        pageReference = new ApexPages.StandardController(mechanicPageFormController).view();
         pageReference.setRedirect(true);
         return pageReference;
     }
     public PageReference save() {
-        update mechanicController;
-        PageReference pageReference = new ApexPages.StandardController(mechanicController).view();
+        update mechanicPageFormController;
+        pageReference = new ApexPages.StandardController(mechanicPageFormController).view();
         pageReference.setRedirect(true);
         return pageReference;
     }

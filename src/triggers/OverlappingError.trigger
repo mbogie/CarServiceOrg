@@ -14,16 +14,20 @@ trigger OverlappingError on Contract__c (before insert, before update) {
         }
         contList = Database.query(query);
         for (Contract__c con : contList) {
-            if ((contract.Start_Date__c != null) && (contract.End_Date__c != null)) {
+            if ((contract.Start_Date__c != null) && (contract.End_Date__c != null) && (con.End_Date__c != null)) {
                 if (contract.Start_Date__c <= con.End_Date__c && contract.End_Date__c >= con.Start_Date__c) {
                     errorMessage += con.Name + ': ' + con.Start_Date__c.format() + ' - ' + con.End_Date__c.format() + ', ';
                     error = true;
                 }
             }
-            if (contract.End_Date__c == null) {
-                if (contract.Start_Date__c >= con.Start_Date__c && contract.Start_Date__c <= con.End_Date__c) {
-                    contract.addError('Start Date is between contract ' + con.Name + ': ' + con.Start_Date__c.format() + ' - ' + con.End_Date__c.format());
-                }
+            if ((contract.End_Date__c == null) && (con.End_Date__c != null)) {
+                if ((contract.Start_Date__c <= con.Start_Date__c || contract.Start_Date__c <= con.End_Date__c))
+                    errorMessage+=con.Name + ': ' + con.Start_Date__c.format() + ' - ' + con.End_Date__c.format() + ', ';
+                error = true;
+            }
+            if((contract.End_Date__c == null) && (con.End_Date__c == null)){
+                errorMessage+= con.Name + ': ' + con.Start_Date__c.format() + '- without notice'+', ';
+                error = true;
             }
         }
         if (error) {
