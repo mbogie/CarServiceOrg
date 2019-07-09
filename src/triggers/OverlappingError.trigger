@@ -22,11 +22,11 @@ trigger OverlappingError on Contract__c (before insert, before update) {
             }
             if ((contract.End_Date__c == null) && (con.End_Date__c != null)) {
                 if ((contract.Start_Date__c <= con.Start_Date__c || contract.Start_Date__c <= con.End_Date__c))
-                    errorMessage+=con.Name + ': ' + con.Start_Date__c.format() + ' - ' + con.End_Date__c.format() + ', ';
+                    errorMessage += con.Name + ': ' + con.Start_Date__c.format() + ' - ' + con.End_Date__c.format() + ', ';
                 error = true;
             }
-            if((contract.End_Date__c == null) && (con.End_Date__c == null)){
-                errorMessage+= con.Name + ': ' + con.Start_Date__c.format() + '- without notice'+', ';
+            if ((contract.End_Date__c == null) && (con.End_Date__c == null)) {
+                errorMessage += con.Name + ': ' + con.Start_Date__c.format() + '- without notice' + ', ';
                 error = true;
             }
         }

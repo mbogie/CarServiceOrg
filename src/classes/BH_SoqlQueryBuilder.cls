@@ -18,7 +18,7 @@ public class BH_SoqlQueryBuilder {
         this.sortFieldsNames = new List<String>();
     }
 
-    public void clear(){
+    public void clear() {
         resultFieldsNames.clear();
         sortFieldsNames.clear();
         searchFieldsWithValues.clear();
@@ -29,7 +29,7 @@ public class BH_SoqlQueryBuilder {
         this.sortOrder = 'ASC';
         this.sortLimit = 1000;
     }
-    
+
     public String getQueryString() {
         return this.queryString;
     }
@@ -60,20 +60,17 @@ public class BH_SoqlQueryBuilder {
     }
 
     public BH_SoqlQueryBuilder addSearchFieldWithValue(String fieldName, String value) {
-        if(String.isBlank(value)) return this;
-        else this.searchFieldsWithValues.put(fieldName, value);
+        if (String.isBlank(value)) return this; else this.searchFieldsWithValues.put(fieldName, value);
         return this;
     }
 
     public BH_SoqlQueryBuilder addSearchFieldEqualsWithValue(String fieldName, String value) {
-        if(String.isBlank(value)) return this;
-        else this.searchFieldsEqualsWithValues.put(fieldName, value);
+        if (String.isBlank(value)) return this; else this.searchFieldsEqualsWithValues.put(fieldName, value);
         return this;
     }
 
     public BH_SoqlQueryBuilder addSearchFieldStartsWithValue(String fieldName, String value) {
-        if(String.isBlank(value)) return this;
-        else this.searchFieldsStartsWithValues.put(fieldName, value);
+        if (String.isBlank(value)) return this; else this.searchFieldsStartsWithValues.put(fieldName, value);
         return this;
     }
 
@@ -89,7 +86,6 @@ public class BH_SoqlQueryBuilder {
 
     private void buildResultFields() {
         String resultFields = '';
-
         for (String fieldName : resultFieldsNames) {
             resultFields += ' ' + fieldName + ',';
         }
@@ -102,7 +98,6 @@ public class BH_SoqlQueryBuilder {
 
     private void buildSearchFields() {
         String searchText = '';
-
         if (searchFieldsWithValues.isEmpty()) {
             return;
         }
@@ -114,9 +109,9 @@ public class BH_SoqlQueryBuilder {
         if (!String.isEmpty(searchText))
             this.queryString += ' WHERE' + searchText.removeEnd(' AND');
     }
+
     private void buildSearchStartFields() {
         String searchText = '';
-
         if (searchFieldsStartsWithValues.isEmpty()) {
             return;
         }
@@ -131,11 +126,9 @@ public class BH_SoqlQueryBuilder {
 
     private void buildSearchEqualsFields() {
         String searchText = '';
-
         if (searchFieldsEqualsWithValues.isEmpty()) {
             return;
         }
-
         for (String fieldName : searchFieldsEqualsWithValues.keySet()) {
             if (!String.isEmpty(searchFieldsEqualsWithValues.get(fieldName))) {
                 searchText += ' ' + fieldName + ' =\'' + searchFieldsEqualsWithValues.get(fieldName) + '\' AND';

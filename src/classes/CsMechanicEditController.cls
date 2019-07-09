@@ -1,6 +1,6 @@
 public with sharing class CsMechanicEditController {
     private Mechanic__c mechanicPageFormController;
-    PageReference pageReference;
+    private PageReference pageReference;
 
     public CsMechanicEditController(ApexPages.StandardController controller) {
         this.mechanicPageFormController = (Mechanic__c) controller.getRecord();

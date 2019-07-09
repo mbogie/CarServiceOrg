@@ -43,6 +43,14 @@
                             <option name="name" value="CsMechanicSearchController" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsWorkshopDetailController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="LocationCallouts" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="ApexClass" />
@@ -54,6 +62,14 @@
                     <MetadataType>
                       <option name="entries">
                         <list>
+                          <MetadataEntry>
+                            <option name="name" value="CsCopyResultMechanicListToCsv" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsCopyResultMechanicListToXml" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsMechanicDetail" />
                             <option name="selected" value="true" />
@@ -72,18 +88,6 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsWorkshopEdit" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="testJS" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="CsCopyResultMechanicListToXml" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="CsCopyResultMechanicListToCsv" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -489,7 +493,15 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
+                            <option name="name" value="Action_Table_Label" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Actions_Label" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Agreement" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -533,15 +545,35 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Copy_To_Clipboard" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Delete_Confirm_Message" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="Edit_Label" />
+                            <option name="name" value="Edit" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Export_To_XML" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Export_to_CSV" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Mechanic_Hire_Label" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Mechanic_Search_Page_Label" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Required_Input_Field_Error" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -562,6 +594,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Section_History_Tracking" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Select" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -1998,6 +2034,9 @@
                           <MetadataEntry>
                             <option name="name" value="ApexDevNet" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Google_Maps_API" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="RemoteSiteSetting" />
@@ -2452,6 +2491,14 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
+                            <option name="name" value="DefaultPicture" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Default_Picture" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="jQuery" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -2528,6 +2575,10 @@
                     </MetadataType>
                     <MetadataType>
                       <option name="name" value="TransactionSecurityPolicy" />
+                      <option name="wildcard" value="false" />
+                    </MetadataType>
+                    <MetadataType>
+                      <option name="name" value="Translations" />
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>

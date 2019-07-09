@@ -1,12 +1,31 @@
 <apex:page standardController="Mechanic__c" extensions="CsMechanicDetailController" tabStyle="Mechanic__c">
 
     <apex:includeScript value="{!$Resource.jQuery}"/>
+    <apex:includeScript value="{!$Resource.DefaultPicture}"/>
     <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.js')}"/>
     <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.css')}"/>
+
+    <style>
+        #pictureDiv{
+            width: 10%;
+            float: left;
+            height: 120px;
+        }
+        #detailsDiv{
+            width: 90%;
+            float: right;
+            height: 130px;
+        }
+    </style>
 
     <apex:form id="mechanicForm">
         <apex:message/>
         <apex:pageBlock id="mechanicBlock" title="{!Mechanic__c.Full_Name__c}">
+            <div id="detailSectionDiv">
+                <div id="pictureDiv">
+                <apex:image alt="Profile Picture" title="Picture" url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" style="height: 120px"/>
+                </div>
+                <div id="detailsDiv">
             <apex:pageBlockSection id="detailSection" title="{!$Label.Section_Details}">
                 <apex:outputField value="{!Mechanic__c.First_Name__c}"/>
                 <apex:outputField value="{!Mechanic__c.Speciality__c}"/>
@@ -19,12 +38,16 @@
                                         onClick="clipBoard('{!$Component.copyPhone}')" reRender="copytext"/>
                 </apex:outputField>
             </apex:pageBlockSection>
+                </div>
+            </div>
+            <div style="clear: both">
             <apex:pageBlockSection id="addressSection" title="{!$Label.Section_Address}">
                 <apex:outputField value="{!Mechanic__c.Address__c}"/>
                 <apex:outputField value="{!Mechanic__c.City__c}"/>
                 <apex:outputField value="{!Mechanic__c.Country__c}"/>
                 <apex:outputField value="{!Mechanic__c.Zip_Code__c}"/>
             </apex:pageBlockSection>
+            </div>
             <div id="buttonSection" align="center" draggable="false">
                 <apex:commandButton value="{!$Label.Button_Edit}" action="{!edit}"/>
                 <apex:commandButton value="{!$Label.Button_Hire}" onClick="openHirePopup()" onComplete="refresh"/>

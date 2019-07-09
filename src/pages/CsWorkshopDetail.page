@@ -1,4 +1,4 @@
-<apex:page standardController="Workshop__c" tabStyle="Workshop__c">
+<apex:page standardController="Workshop__c" extensions="CsWorkshopDetailController" tabStyle="Workshop__c">
 
     <style>
         #map {
@@ -56,15 +56,15 @@
         // Initialize and add the map
         function initMap() {
             // The location of Uluru
-            var uluru = {lat: 51.458030, lng: 22.613770};
+            var uluru = {lat: {!lat}, lng: {!lon}};
             // The map, centered at Uluru
             var map = new google.maps.Map(
-                    document.getElementById('map'), {zoom: 8, center: uluru});
+                    document.getElementById('map'), {zoom: 5, center: uluru});
             // The marker, positioned at Uluru
             var marker = new google.maps.Marker({position: uluru, map: map});
         }
     </script>
     <script async="async" defer="defer"
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyATOGCEQy0wTB-34Ru71NXPQgJxOtpMsVA&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAuc9CZJTHNAGjTLg85spMeQw2MJl03u4&callback=initMap">
     </script>
 </apex:page>

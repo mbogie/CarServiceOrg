@@ -11,7 +11,7 @@
             <div id="buttonsSection" align="center" draggable="false">
                 <apex:outputPanel id="buttons">
                     <apex:commandButton value="{!$Label.Button_Search}" action="{!searchMechanic}"
-                                        reRender="mechanicSearchform" />
+                                        reRender="mechanicSearchform"/>
                     <apex:commandButton value="{!$Label.Button_Clear}" action="{!clearPage}" immediate="true"
                                         reRender="mechanicSearchform"
                                         onClick="this.form.reset();"/>
@@ -23,7 +23,7 @@
             </div>
         </apex:pageBlock>
         <apex:pageBlock id="resultsList" title="{!$Label.Search_Results_Label}">
-            <apex:pageBlockTable id="resultsTable" value="{!mechanicsSearchResultList}" var="mechanic">
+            <apex:pageBlockTable id="resultsTable" value="{!mechanicsSearchResultListToShow}" var="mechanic">
                 <apex:column headerValue="{!$Label.Actions_Label}">
                     <apex:outputLink value="{! URLFOR($Action.Mechanic__c.View, mechanic.Id)}" target="_blank">View
                     </apex:outputLink>&nbsp;|&nbsp;
@@ -34,7 +34,8 @@
                     <apex:facet name="header">
                         <apex:commandLink action="{!sortByFullName}"
                                           reRender="resultsList">{!$ObjectType.Mechanic__c.fields.Full_Name__c.Label}
-                          {!IF(sortField == 'Full_Name__c', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
+                            {!IF(sortField == 'Full_Name__c', IF(sortDirection=="ASC", $Label.Sign_Down, $Label.Sign_Up
+                                ), '')}
                         </apex:commandLink>
                     </apex:facet>
                 </apex:column>
@@ -42,7 +43,8 @@
                     <apex:facet name="header">
                         <apex:commandLink action="{!sortByEmail}"
                                           reRender="resultsList">{!$ObjectType.Mechanic__c.fields.Email__c.Label}
-                          {!IF(sortField == 'Email__c', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
+                            {!IF(sortField == 'Email__c', IF(sortDirection=="ASC", $Label.Sign_Down, $Label.Sign_Up ),
+                                '')}
                         </apex:commandLink>
                     </apex:facet>
                 </apex:column>
@@ -50,11 +52,47 @@
                     <apex:facet name="header">
                         <apex:commandLink action="{!sortByCountry}"
                                           reRender="resultsList">{!$ObjectType.Mechanic__c.fields.Country__c.Label}
-                          {!IF(sortField == 'Country__c', IF(sortDirection=="ASC", $Label.Sign_Down,  $Label.Sign_Up ), '')}
+                            {!IF(sortField == 'Country__c', IF(sortDirection=="ASC", $Label.Sign_Down, $Label.Sign_Up ),
+                                '')}
                         </apex:commandLink>
                     </apex:facet>
                 </apex:column>
             </apex:pageBlockTable>
+            <apex:outputPanel id="resultListPanel" rendered="{!isResultListNotEmpty}">
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                            Page:
+                            <apex:outputText
+                                    value=" {!pageNumber} of {! CEILING(mechanicsSearchResultList.size / recordsOnPage) }"/>
+                        </td>
+                        <td align="center">
+                            <apex:commandLink action="{! previous }" value="« Previous"
+                                              rendered="{!isMechanicResultListHasPrevious}" reRender="resultsList"/>
+                            <apex:outputText style="color: #ccc;" value="« Previous"
+                                             rendered="{!NOT(isMechanicResultListHasPrevious)}"/>
+                            &nbsp;&nbsp;
+                            <apex:commandLink action="{! next }" value="Next »"
+                                              rendered="{!isMechanicResultListHasNext}" reRender="resultsList"/>
+                            <apex:outputText style="color: #ccc;" value="Next »"
+                                             rendered="{!NOT(isMechanicResultListHasNext)}"/>
+                        </td>
+                        <td align="right">
+                            Records per page:
+                            <apex:selectList value="{! recordsOnPage }" size="1">
+                                <apex:selectOption itemValue="2" itemLabel="2"/>
+                                <apex:selectOption itemValue="4" itemLabel="4"/>
+                                <apex:selectOption itemValue="6" itemLabel="6"/>
+                                <apex:selectOption itemValue="8" itemLabel="8"/>
+                                <apex:selectOption itemValue="10" itemLabel="10"/>
+                                <apex:selectOption itemValue="{!mechanicsSearchResultList.size}" itemLabel="All"/>
+                                <apex:actionSupport event="onchange" action="{!setRecordOnPage}"
+                                                    reRender="resultsList"/>
+                            </apex:selectList>
+                        </td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
         </apex:pageBlock>
     </apex:form>
 </apex:page>
