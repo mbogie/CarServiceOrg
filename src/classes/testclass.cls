@@ -111,7 +111,6 @@ public with sharing class CsMechanicDetailController {
             insert contractToInsert;
         } catch (DmlException error) {
             System.debug(error.getMessage());
-            return null;
         }
         return pageReference;
     }
@@ -130,9 +129,8 @@ public with sharing class CsMechanicDetailController {
 
     public PageReference saveToPdf() {
         pageReference = Page.CsSaveMechanicRecordToPdf;
-        pageReference.setRedirect(false);
-      //  pageReference.getParameters().put('id', mechanicPageFormController.Id);
-       // pageReference.getHeaders().put('filename',mechanicPageFormController.Full_Name__c);
+        pageReference.getParameters().put('id', mechanicPageFormController.Id);
+        pageReference.getHeaders().put('content-disposition', 'attachement; filename=' + mechanicPageFormController.Full_Name__c.escapeCsv() + '.pdf');
         return pageReference;
     }
 

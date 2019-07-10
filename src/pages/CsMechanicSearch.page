@@ -1,7 +1,7 @@
 <apex:page standardController="Mechanic__c" extensions="CsMechanicSearchController" tabStyle="Search_Mechanic__tab">
     <apex:form id="mechanicSearchform">
         <apex:pageBlock id="searchBlock" Title="{!$Label.Mechanic_Search_Page_Label}">
-            <apex:pageMessages/>
+            <apex:pageMessages />
             <apex:pageBlockSection id="searchFields">
                 <apex:inputField value="{!mechanicPageFormController.First_Name__c}"/>
                 <apex:inputText value="{!mechanicPageFormController.Email__c}"/>
@@ -19,6 +19,7 @@
                 <apex:outputPanel id="buttonsToExport" rendered="{!isResultListNotEmpty}">
                     <apex:commandButton value="{!$Label.Export_to_CSV}" action="{!exportToCsv}"/>
                     <apex:commandButton value="{!$Label.Export_To_XML}" action="{!exportToXml}"/>
+                    <apex:commandButton value="{!$Label.Button_Save_To_Json}" action="{!saveToJson}"/>
                 </apex:outputPanel>
             </div>
         </apex:pageBlock>
@@ -63,8 +64,7 @@
                     <tr>
                         <td>
                             Page:
-                            <apex:outputText
-                                    value=" {!pageNumber} of {! CEILING(mechanicsSearchResultList.size / recordsOnPage) }"/>
+                            <apex:outputText value=" {!pageNumber} of {! CEILING(mechanicsSearchResultList.size / recordsOnPage) }"/>
                         </td>
                         <td align="center">
                             <apex:commandLink action="{! previous }" value="« Previous"

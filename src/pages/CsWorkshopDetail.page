@@ -8,19 +8,21 @@
         }
     </style>
 
-    <apex:form>
+    <apex:form >
         <apex:pageBlock id="workshopBlock" title="{!Workshop__c.Name}">
-            <apex:pageMessages/>
+            <apex:pageMessages />
             <apex:pageBlockSection id="detailSection" title="{!$Label.Section_Details}">
                 <apex:outputField value="{!Workshop__c.Name}"/>
                 <apex:outputField value="{!Workshop__c.Phone__c}"/>
                 <apex:outputField value="{!Workshop__c.Website__c}"/>
             </apex:pageBlockSection>
-            <apex:pageBlockSection id="addressSection" title="{!$Label.Section_Address}" columns="2">
-                <apex:outputField value="{!Workshop__c.Address__c}"/>
-                <apex:outputField value="{!Workshop__c.City__c}"/>
-                <apex:outputField value="{!Workshop__c.Country__c}"/>
-                <apex:outputField value="{!Workshop__c.Zip_Code__c}"/>
+            <apex:pageBlockSection id="addressSection" title="{!$Label.Section_Address}" columns="1">
+                <apex:pageBlockSection columns="2" collapsible="false">
+                    <apex:outputField value="{!Workshop__c.Address__c}"/>
+                    <apex:outputField value="{!Workshop__c.City__c}"/>
+                    <apex:outputField value="{!Workshop__c.Country__c}"/>
+                    <apex:outputField value="{!Workshop__c.Zip_Code__c}"/>
+                </apex:pageBlockSection>
                 <script>
                     twistSection(document.getElementById('img_{!$Component.addressSection}'));
                 </script>
@@ -65,6 +67,6 @@
         }
     </script>
     <script async="async" defer="defer"
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBAuc9CZJTHNAGjTLg85spMeQw2MJl03u4&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhoQ14dEy_qpmaYadeaizUjiMpZwM6ObQ&callback=initMap">
     </script>
 </apex:page>

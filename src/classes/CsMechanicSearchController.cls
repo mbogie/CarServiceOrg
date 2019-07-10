@@ -2,7 +2,7 @@ public with sharing class CsMechanicSearchController {
 
     public Mechanic__c mechanicPageFormController { get; set; }
     public List<Mechanic__c> mechanicsSearchResultList { get; private set; }
-    public String mechanicSearchStringToExport { get; private set; }
+    public String mechanicSearchStringToExport { get; set; }
     public List<Mechanic__c> mechanicsSearchResultListToShow { get; set; }
     private String sortField;
     private String sortDirection = 'DESC';
@@ -15,6 +15,8 @@ public with sharing class CsMechanicSearchController {
     public Boolean isMechanicResultListHasNext { get; set; }
     public Boolean isMechanicResultListHasPrevious { get; set; }
     public ApexPages.StandardSetController resultListController { get; set; }
+    private static final String separator = '||';
+    public String mechanicResultListJson { get; set; }
 
     public CsMechanicSearchController(ApexPages.StandardController controller) {
         this.mechanicPageFormController = (Mechanic__c) controller.getRecord();
@@ -110,14 +112,27 @@ public with sharing class CsMechanicSearchController {
     }
 
     public PageReference exportToCsv() {
-        mechanicSearchStringToExport = '\'Full Name\',\'Email\',\'Country\'\n';
+        mechanicSearchStringToExport = prepareStringToCsv(getFieldName('Mechanic__c','Full_Name__c'))+ separator + prepareStringToCsv(getFieldName('Mechanic__c','Email__c')) +separator + prepareStringToCsv(getFieldName('Mechanic__c','Country__c'))+'\n';
         for (Mechanic__c mechanic : mechanicsSearchResultList) {
-            if (mechanic.Email__c == null) mechanic.Email__c = '';
-            if (mechanic.Country__c == null) mechanic.Country__c = '';
-            mechanicSearchStringToExport += mechanic.Full_Name__c.escapeCsv() + '||' + mechanic.Email__c + '||' + mechanic.Country__c.escapeCsv() + '\n';
+            mechanicSearchStringToExport += prepareStringToCsv(mechanic.Full_Name__c) + separator + prepareStringToCsv(mechanic.Email__c) + separator + prepareStringToCsv(mechanic.Country__c) + '\n';
         }
         mechanicSearchStringToExport.removeEnd('\n');
         pageReference = Page.CsCopyResultMechanicListToCsv;
+        pageReference.setRedirect(false);
+        return pageReference;
+    }
+
+    private String getFieldName(String obj, String field){
+        return Schema.getGlobalDescribe().get(obj).getDescribe().fields.getMap().get(field).getDescribe().getLabel();
+    }
+
+    private String prepareStringToCsv(Object obj) {
+        if (obj != null) return '\'' + String.valueOf(obj).escapeCsv() + '\''; else return '';
+    }
+
+    public PageReference saveToJson(){
+        pageReference = Page.CsCopyMechanicListToJson; 
+        mechanicResultListJson = JSON.serializePretty(mechanicsSearchResultList);
         pageReference.setRedirect(false);
         return pageReference;
     }

@@ -1,7 +1,7 @@
 <apex:page standardController="Workshop__c" tabStyle="Workshop__c">
-    <apex:form>
+    <apex:form >
         <apex:pageBlock id="workshopBlock" title="{!$Label.Edit} '{!Workshop__c.Name}'">
-            <apex:pageMessages/>
+            <apex:pageMessages />
             <apex:pageBlockSection id="detailSection" columns="1">
                 <apex:inputField value="{!Workshop__c.Name}" required="true"/>
                 <apex:inputField value="{!Workshop__c.Phone__c}"/>

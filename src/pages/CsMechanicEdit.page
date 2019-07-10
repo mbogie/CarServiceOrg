@@ -1,7 +1,7 @@
 <apex:page standardController="Mechanic__c" extensions="CsMechanicEditController" tabStyle="Mechanic__c">
-    <apex:form>
+    <apex:form >
         <apex:pageBlock id="mechanicBlock" title="{!$Label.Edit} '{!Mechanic__c.Full_Name__c}'">
-            <apex:pageMessages/>
+            <apex:pageMessages />
             <apex:pageBlockSection id="detailSection" columns="1">
                 <apex:inputField value="{!Mechanic__c.First_Name__c}"/>
                 <apex:inputField value="{!Mechanic__c.Name}" required="true"/>
@@ -10,6 +10,7 @@
                 <apex:inputField value="{!Mechanic__c.Skill__c}"/>
                 <apex:inputField value="{!Mechanic__c.Email__c}"/>
                 <apex:inputField value="{!Mechanic__c.Phone__c}"/>
+                <apex:inputField value="{!Mechanic__c.Birthday__c}"/>
                 <apex:inputField value="{!Mechanic__c.Address__c}"/>
                 <apex:inputField value="{!Mechanic__c.City__c}"/>
                 <apex:inputField value="{!Mechanic__c.Zip_Code__c}"/>

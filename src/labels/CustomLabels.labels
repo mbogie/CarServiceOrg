@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>Action_Dissmiss</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Action Dismiss</shortDescription>
+        <value>Dismiss</value>
+    </labels>
+    <labels>
         <fullName>Action_Table_Label</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -62,6 +69,20 @@
         <protected>true</protected>
         <shortDescription>Button Save</shortDescription>
         <value>Save</value>
+    </labels>
+    <labels>
+        <fullName>Button_Save_To_Json</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Save To Json</shortDescription>
+        <value>Save to .json</value>
+    </labels>
+    <labels>
+        <fullName>Button_Save_To_Pdf</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Save To Pdf</shortDescription>
+        <value>Save To .pdf</value>
     </labels>
     <labels>
         <fullName>Button_Search</fullName>

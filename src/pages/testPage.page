@@ -53,7 +53,6 @@
             </div>
             <div id="buttonSection" align="center" draggable="false">
                 <apex:commandButton value="{!$Label.Button_Edit}" action="{!edit}"/>
-                <apex:actionFunction name="clearBeforeOpen" action="{!clear}" reRender="workshopForm,messages"/>
                 <apex:commandButton value="{!$Label.Button_Hire}" onClick="openHirePopup()" onComplete="refresh"/>
                 <apex:commandButton value="{!$Label.Button_Save_To_Pdf}" action="{!saveToPdf}"/>
                 <apex:commandButton value="{!$Label.Button_Delete}"
@@ -75,7 +74,7 @@
                 <apex:pageBlockTable id="agreementsTable" value="{!Mechanic__c.Contracts__r}" var="contract">
                     <apex:column headerValue="{!$Label.Action_Table_Label}">
                         <apex:commandLink action="{!dismiss}"
-                                          reRender="mechanicForm,messages,relatedLists,AgreementsBlock" onComplete="refresh">{!IF(ISNULL(contract.End_Date__c), $Label.Action_Dissmiss, IF(contract.End_Date__c <= TODAY(),'',$Label.Action_Dissmiss))}
+                                          reRender="mechanicForm,messages,relatedLists">{!IF(ISNULL(contract.End_Date__c), $Label.Action_Dissmiss, IF(contract.End_Date__c > TODAY(),$Label.Action_Dissmiss,''))}
                             <apex:param name="selectedContract" value="{!contract.Id}"
                                         assignTo="{!contractToInsert.Id}"></apex:param>
                         </apex:commandLink>
@@ -199,7 +198,6 @@
         });
 
         function openHirePopup() {
-            clearBeforeOpen();
             $('#agreement').dialog("open");
         }
 
@@ -225,3 +223,4 @@
     </script>
 
 </apex:page>
+
