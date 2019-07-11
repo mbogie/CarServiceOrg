@@ -1,12 +1,9 @@
 <apex:page id="iEdit">
 
-    <apex:includeScript value="{!$Resource.jQuery}"/>
-    <apex:includeScript value="{!$Resource.iEdit}"/>
+
     <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.js')}"/>
     <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.css')}"/>
-    <apex:includeScript value="{!URLFOR($Resource.iEdit,'iEdit/iEdit.js')}"/>
-    <apex:includeScript value="{!URLFOR($Resource.iEdit,'iEdit/script.js')}"/>
-    <apex:stylesheet value="{!URLFOR($Resource.iEdit,'iEdit/iEdit.css')}"/>
+
 
     <html>
     <head>

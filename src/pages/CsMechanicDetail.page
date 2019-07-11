@@ -30,7 +30,7 @@
                                         url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" style="height: 120px" rendered="{!profileImageId == null}"/>
                         </div>
                             <apex:image alt="{!$Label.Picture_Default}" title="{!$Label.Picture_Profile}"
-                                        url="{!URLFOR($Action.Attachment.Download, profileImageId)}" rendered="{!profileImageId != null}" style="height: 120px"/>
+                                        url="{!URLFOR($Action.Attachment.Download, idOfAttachment)}" rendered="{!profileImageId != null}" style="height: 120px"/>
                     <div align="center" draggable="false">
                     <apex:commandButton onClick="openImagePopup()" value="{!$Label.Upload_Picture}" onComplete="refresh"/>
                     <apex:commandButton onClick="openEditPopup()" value="{!$Label.Edit_Picture}" onComplete="refresh" rendered="{!profileImageId != null}"/>

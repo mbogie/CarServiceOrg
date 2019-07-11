@@ -41,6 +41,7 @@ public with sharing class CsMechanicDetailController {
             profileImageId = attachments.get(0).Id;
             isAttachmentPictureUploadReady = true;
         } else isAttachmentPictureUploadReady = false;
+        setLogo();
     }
 
     public void refreshAgreementsList() {
@@ -192,6 +193,29 @@ public with sharing class CsMechanicDetailController {
             }
         }
     }
+
+    public String idOfAttachment {get; set;}
+    public Boolean defaultPhoto {get; set;}
+
+    public void setLogo() {
+        List<Attachment> attachedFiles = [ SELECT Id FROM Attachment WHERE ParentId=:this.mechanicPageFormController.Id ORDER BY LastModifiedDate DESC LIMIT 1];
+        if (attachedFiles.isEmpty()) {
+            defaultPhoto = true;
+        } else {
+            defaultPhoto = false;
+            idOfAttachment = attachedFiles[0].Id;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
 
     public PageReference uploadPicture() {
         isAttachmentPictureUploadReady = true;
