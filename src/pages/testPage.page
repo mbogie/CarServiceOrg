@@ -1,5 +1,5 @@
-<apex:page id="FCC_ShopEdit" standardController="FCC_Shop__c" extensions="FCC_ShopEditController">
-    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/jquery-ui-1.9.2.custom/css/base/jquery-ui-1.9.2.custom.css')}"/>
+<apex:page id="testPage" standardController="Mechanic__c">
+ <!--   <apex:stylesheet value="{!URLFOR($Resource.jQueryUI, '/jquery-ui-1.9.2.custom/css/base/jquery-ui-1.9.2.custom.css')}"/>
     <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jquery-ui-1.9.2.custom/js/jquery-1.8.3.js')}"/>
     <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js')}"/>
     <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js')}"/>
@@ -130,5 +130,6 @@
             return false;
         });
 
-    </script>
+    </script>-->
 </apex:page>
+

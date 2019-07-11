@@ -1,16 +1,16 @@
 <apex:page standardController="Mechanic__c" extensions="CsMechanicDetailController" tabStyle="Mechanic__c">
 
     <apex:includeScript value="{!$Resource.jQuery}"/>
+    <apex:includeScript value="{!$Resource.jQueryUI}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'/jquery-ui-1.12.1.custom/jquery-ui.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'/jquery-ui-1.12.1.custom/jquery-ui.css')}"/>
+    <apex:includeScript value="{!$Resource.iEditJS}"/>
+    <apex:stylesheet value="{!$Resource.iEditCSS}"/>
     <apex:includeScript value="{!$Resource.DefaultPicture}"/>
-    <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.js')}"/>
-    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.css')}"/>
 
     <style type="text/css">
         .picture {
-            min-width: 11%;
-            width: 11%;
             text-align: center;
-            max-width: 11%;
         }
 
         .details {
@@ -23,21 +23,27 @@
         <apex:message/>
         <apex:pageBlock id="mechanicBlock" title="{!Mechanic__c.Full_Name__c}">
             <apex:panelGrid columns="2" columnClasses="picture,details" style="width:100%">
-                <apex:actionRegion id="imageActionRegion">
-                <apex:outputPanel id="picturePanel">
-                        <div align="center" draggable="false">
-                            <apex:image alt="{!$Label.Picture_Default}" title="{!$Label.Picture_Profile}"
-                                        url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" style="height: 120px" rendered="{!profileImageId == null}"/>
-                        </div>
-                            <apex:image alt="{!$Label.Picture_Default}" title="{!$Label.Picture_Profile}"
-                                        url="{!URLFOR($Action.Attachment.Download, idOfAttachment)}" rendered="{!profileImageId != null}" style="height: 120px"/>
-                    <div align="center" draggable="false">
-                    <apex:commandButton onClick="openImagePopup()" value="{!$Label.Upload_Picture}" onComplete="refresh"/>
-                    <apex:commandButton onClick="openEditPopup()" value="{!$Label.Edit_Picture}" onComplete="refresh" rendered="{!profileImageId != null}"/>
-                    <apex:commandButton action="{!deletePicture}" value="{!$Label.Delete_Picture}"/>
+                <apex:outputPanel id="imagePanel">
+                    <input type="file" id="file" accept="image/jpeg, image/png" style="display:none;"/>
+                    <apex:image url="/servlet/servlet.FileDownload?file={!idOfAttachment}" width="150"
+                                height="150" id="final" rendered="{!!isDefaultPhotoDisplayed}"/>
+                    <apex:image url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" width="150" height="150"
+                                id="default"
+                                rendered="{!isDefaultPhotoDisplayed}"/>
+                    <apex:inputHidden id="valueOfImage" value="{!imageBody}"/>
+                    <apex:image id="result" width="150" height="150" style="display: none;"/>
+                    <div align="center" id="buttons">
+                        <apex:commandButton id="save" action="{!save}" value="{!$Label.Button_Save}"
+                                            style="display:none;"/>
+                        <apex:commandButton id="update" value="{!$Label.Upload_Picture}"/>
+                        <apex:actionFunction name="deleteImage" action="{!deleteImage}"
+                                             reRender="mechanicForm,imagePanel"/>
+                        <apex:commandButton id="delete" value="{!$Label.Button_Delete}"
+                                            rendered="{!!isDefaultPhotoDisplayed}" reRender="mechanicForm,imagePanel"/>
+                        <apex:commandButton id="cancel" value="{!$Label.Button_Cancel}" style="display:none;"/>
                     </div>
+                    <div id="popUpWindow" title="{!$Label.Delete_Confirm_Popup}"></div>
                 </apex:outputPanel>
-                </apex:actionRegion>
                 <apex:outputPanel id="detailsPanel">
                     <apex:pageBlockSection id="detailSection" title="{!$Label.Section_Details}">
                         <apex:outputField value="{!Mechanic__c.First_Name__c}"/>
@@ -60,6 +66,8 @@
                 <apex:outputField value="{!Mechanic__c.Country__c}"/>
                 <apex:outputField value="{!Mechanic__c.Zip_Code__c}"/>
             </apex:pageBlockSection>
+
+
             <div id="buttonSection" align="center" draggable="false">
                 <apex:commandButton value="{!$Label.Button_Edit}" action="{!edit}"/>
                 <apex:actionFunction name="clearBeforeOpen" action="{!clear}" reRender="workshopForm,messages"/>
@@ -100,7 +108,7 @@
         </apex:outputPanel>
     </apex:form>
     <div id="agreement" title="{!HirePopupLabel}">
-            <div id="myMessagess">
+        <div id="myMessagess">
             <apex:outputPanel id="messages">
                 <apex:pageMessages id="messageTxt" showDetail="false"/>
                 <script>
@@ -194,26 +202,10 @@
             </apex:form>
         </apex:outputPanel>
     </div>
-    <div id="imagePopup">
-        <apex:form id="imageForm">
-        <apex:outputPanel id="imagePanel">
-            <apex:inputFile value="{!imageBlobBody}"/>
-            <apex:commandButton action="{!uploadPicture}" value="{!$Label.Upload_Picture}"/>
-        </apex:outputPanel>
-        </apex:form>
-    </div>
-    <div id="imageEditPopup">
-        <apex:form id="imageEditForm">
-                <apex:outputPanel id="imageEditPanel">
-                  <!-- <img id="imageToEdit" src="{!URLFOR($Action.Attachment.Download, profileImageId)}"/>-->
-                <apex:commandButton action="{!edicPicture}" value="{!$Label.Edit_Picture}"/>
-            </apex:outputPanel>
-        </apex:form>
-    </div>
-
     <script>
 
-        $('#agreement').dialog({
+        $j = jQuery.noConflict();
+        $j('#agreement').dialog({
             autoOpen: false,
             height: "auto",
             width: 600,
@@ -224,49 +216,20 @@
             beforeClose: function () {
                 clear();
             }
-
         });
-
-        $('#imageEditPopup').dialog({
-            autoOpen: false,
-            height: "auto",
-            width: "auto",
-        });
-
-        function openEditPopup() {
-            $('#imageEditPopup').dialog("open");
-        }
-
-        function closeEditePopup() {
-            $('#imageEditPopup').dialog("close");
-        }
-
-        $('#imagePopup').dialog({
-            autoOpen: false,
-            height: "auto",
-            width: "auto",
-        });
-
-        function openImagePopup() {
-            $('#imagePopup').dialog("open");
-        }
-
-        function closeImagePopup() {
-            $('#imagePopup').dialog("close");
-        }
 
         function openHirePopup() {
             clearBeforeOpen();
-            $('#agreement').dialog("open");
+            $j('#agreement').dialog("open");
         }
 
         function closeHirePopup() {
-            $('#agreement').dialog("close");
+            $j('#agreement').dialog("close");
         }
 
         function checkHideModal() {
             if (jQuery('.errorM3').length <= 0) {
-                $('#agreement').dialog("close")
+                $j('#agreement').dialog("close")
             }
         }
 
@@ -278,6 +241,98 @@
             document.execCommand("copy");
             document.body.removeChild(aux);
         }
-    </script>
 
+        $j(document).ready(function () {
+            $j("#popUpWindow").dialog({
+                autoOpen: false,
+                modal: true,
+                position: {
+                    my: 'center',
+                    at: 'center',
+                },
+            });
+        });
+
+        $j("[id$='delete']").click(function () {
+            $j("#popUpWindow").dialog("open");
+            $j("#popUpWindow").html("{!$Label.Delete_Confirm_Popup}");
+
+            $j("#popUpWindow").dialog({
+                buttons: {
+                    "Confirm": function () {
+                        $j(this).dialog("close");
+                        deleteImage();
+                    },
+                    "Cancel": function () {
+                        $j(this).dialog("close");
+                    }
+                }
+            });
+            return false;
+        });
+
+        $j("[id$='default'], [id$='final'], [id$='result'], [id$='update']").click(function () {
+            $j("#file").click();
+            return false;
+        });
+
+        $j("#file").change(function (e) {
+            var img = e.target.files[0];
+            if ((!img.type.match('image.jpg')) && (!img.type.match('image.png'))) {
+                alert("{!$Label.Error_Wrong_Type}");
+                return;
+            }
+            if (this.files[0].size < 1048576) {
+                iEdit.open(img, true, function (res) {
+                    $j("[id$='result']").attr("src", res);
+                    $j("[id$='result'], [id$='cancel']").css("display", "inline");
+                    $j("[id$='result'], [id$='save']").css("display", "inline");
+                    $j("[id$='default'], [id$='final']").css("display", "none");
+                    $j("[id$='default'], [id$='delete']").css("display", "none");
+
+                });
+            } else {
+                $j("[id$='result']").css("display", "none");
+                this.value = '';
+                alert("{!$Label.Error_To_Big_File}");
+            }
+        });
+
+        $j("[id$='result']").click(function (e) {
+            var img = e.target.files[0];
+            if ((!img.type.match('image.jpg')) && (!img.type.match('image.png'))) {
+                alert("{!$Label.Error_Wrong_Type}");
+                return;
+            }
+            if (this.files[0].size < 1048576) {
+                iEdit.open(img, true, function (res) {
+                    $j("[id$='result']").attr("src", res);
+                    $j("[id$='result'], [id$='cancel']").css("display", "block");
+                    $j("[id$='result'], [id$='save']").css("display", "block");
+                    $j("[id$='default'], [id$='final']").css("display", "none");
+                });
+            } else {
+                $j("[id$='result']").css("display", "none");
+                this.value = '';
+                alert("{!$Label.Error_To_Big_File}");
+            }
+        });
+
+        $j("[id$='save']").click(function () {
+            var str = $j("[id$='result']").attr('src');
+            $j("[id$='valueOfImage']").val(str);
+            $j("[id$='cancel']").css("display", "none");
+            $j("[id$='default'], [id$='delete']").css("display", "block");
+
+        });
+
+        $j("[id$='cancel']").click(function () {
+            $j("[id$='result']").css("display", "none");
+            $j("[id$='default']").css("display", "block");
+            $j("[id$='final']").css("display", "block");
+            $j("[id$='save']").css("display", "none");
+            $j("[id$='cancel']").css("display", "none");
+            return false;
+        });
+    </script>
 </apex:page>

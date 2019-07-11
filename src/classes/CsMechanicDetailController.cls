@@ -13,15 +13,12 @@ public with sharing class CsMechanicDetailController {
     public String sortDirection { get; set; }
     public Boolean isWorkshopSectionReady { get; set; }
     public Boolean isContractSectionReady { get; set; }
-    public Boolean isAttachmentPictureUploadReady { get; set; }
     private PageReference pageReference;
-    public String hirePopupLabel;
-    public String profileImageId { get; set; }
-    public Attachment profileImage { get; set; }
-    public List<Attachment> attachments { get; set; }
-    public List<Attachment> savedPicture { get; set; }
-    public static final String IMAGENAME = 'profielImageName';
-    public Blob imageBlobBody { get; set; }
+    public Attachment logoAttachment { get; set; }
+    public Attachment image { get; set; }
+    public String idOfAttachment { get; set; }
+    public Boolean isDefaultPhotoDisplayed { get; set; }
+    public transient String imageBody { get; set; }
 
     public CsMechanicDetailController(ApexPages.StandardController controller) {
         this.mechanicPageFormController = (Mechanic__c) controller.getRecord();
@@ -36,11 +33,6 @@ public with sharing class CsMechanicDetailController {
         this.editedContractInUse = new Contract__c();
         this.agreementsForMechanicPageFormController = new List<Contract__c>();
         refreshAgreementsList();
-        List<Attachment> attachments = [SELECT Id FROM Attachment WHERE parentId = :mechanicPageFormController.Id AND name = :IMAGENAME LIMIT 1];
-        if (attachments.size() != 0) {
-            profileImageId = attachments.get(0).Id;
-            isAttachmentPictureUploadReady = true;
-        } else isAttachmentPictureUploadReady = false;
         setLogo();
     }
 
@@ -194,54 +186,48 @@ public with sharing class CsMechanicDetailController {
         }
     }
 
-    public String idOfAttachment {get; set;}
-    public Boolean defaultPhoto {get; set;}
+    public PageReference save() {
+        if (!String.isEmpty(imageBody)) {
+            System.debug('attach');
+            logoAttachment = new Attachment();
+            logoAttachment.parentId = mechanicPageFormController.Id;
+            logoAttachment.Name = 'image';
+            logoAttachment.ContentType = 'image/jpeg;base64';
+            imageBody = imageBody.removeStart('data:image/jpeg;base64,');
+            Blob body = EncodingUtil.base64Decode(imageBody);
+            logoAttachment.body = body;
+            try {
+                insert logoAttachment;
+            } catch (DmlException error) {
+                System.debug(error.getMessage());
+            }
+        }
+        pageReference = new ApexPages.StandardController(mechanicPageFormController).view();
+        pageReference.setRedirect(true);
+        return pageReference;
+    }
+
+    public PageReference deleteImage() {
+        List<Attachment> attachedFiles = [SELECT Id FROM Attachment WHERE ParentId = :this.mechanicPageFormController.Id ORDER BY LastModifiedDate];
+        try {
+            delete attachedFiles;
+        } catch (DmlException error) {
+            System.debug(error.getMessage());
+        }
+        isDefaultPhotoDisplayed = true;
+        pageReference = new ApexPages.StandardController(mechanicPageFormController).view();
+        pageReference.setRedirect(true);
+        return pageReference;
+    }
 
     public void setLogo() {
-        List<Attachment> attachedFiles = [ SELECT Id FROM Attachment WHERE ParentId=:this.mechanicPageFormController.Id ORDER BY LastModifiedDate DESC LIMIT 1];
+        List<Attachment> attachedFiles = [SELECT Id FROM Attachment WHERE ParentId = :this.mechanicPageFormController.Id ORDER BY LastModifiedDate DESC LIMIT 1];
         if (attachedFiles.isEmpty()) {
-            defaultPhoto = true;
+            isDefaultPhotoDisplayed = true;
         } else {
-            defaultPhoto = false;
+            isDefaultPhotoDisplayed = false;
             idOfAttachment = attachedFiles[0].Id;
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-    public PageReference uploadPicture() {
-        isAttachmentPictureUploadReady = true;
-        List<Attachment> savedPicture = [SELECT Id, name, body FROM Attachment WHERE parentId = :mechanicPageFormController.Id AND name = :IMAGENAME];
-        if (savedPicture.size() > 0) {
-            delete savedPicture;
-        }
-        profileImage = new Attachment(parentId = mechanicPageFormController.Id, name = IMAGENAME, body = imageBlobBody);
-        insert profileImage;
-        profileImageId = profileImage.Id;
-        return null;
-    }
-
-    public PageReference edicPicture() {
-
-        return null;
-    }
-
-    public PageReference deletePicture() {
-        pageReference = new ApexPages.StandardController(mechanicPageFormController).view();
-        pageReference.setRedirect(true);
-        isAttachmentPictureUploadReady = false;
-        List<Attachment> savedPicture = [SELECT Id, name, body FROM Attachment WHERE parentId = :mechanicPageFormController.Id AND name = :IMAGENAME];
-        if (savedPicture.size() > 0) {
-            delete savedPicture;
-        }
-        return pageReference;
-    }
 }

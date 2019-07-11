@@ -1,37 +1,8 @@
 <apex:page standardController="Mechanic__c" extensions="CsMechanicEditController" tabStyle="Mechanic__c">
 
-    <apex:includeScript value="{!$Resource.jQuery}"/>
-    <apex:includeScript value="{!$Resource.jQueryUI}"/>
-    <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'/jquery-ui-1.12.1.custom/jquery-ui.js')}"/>
-    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'/jquery-ui-1.12.1.custom/jquery-ui.css')}"/>
-    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'/jquery-ui-1.12.1.custom/jquery-ui.min.css')}"/>
-    <apex:includeScript value="{!URLFOR($Resource.jQueryUI, '/jquery-ui-1.12.1.custom/jquery-ui.min.js')}"/>
-    <apex:includeScript value="{!$Resource.iEditJS}"/>
-    <apex:stylesheet value="{!$Resource.iEditCSS}"/>
-    <apex:includeScript value="{!$Resource.DefaultPicture}"/>
-
-    <apex:pageMessages/>
-    <apex:form id="shopForm">
+    <apex:pageMessages />
+    <apex:form id="mechanicEditForm">
         <apex:pageBlock id="mechanicBlock" title="{!$Label.Edit} '{!Mechanic__c.Full_Name__c}'">
-            <apex:outputPanel id="foto">
-
-                <input type="file" id="file" accept="image/jpeg, image/png" style="display:none;"/>
-                <apex:image url="/servlet/servlet.FileDownload?file={!idOfAttachment}" width="180"
-                            height="180" id="final" rendered="{!!defaultPhoto}"/>
-                <apex:image url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" width="150" height="150"
-                            id="default"
-                            rendered="{!defaultPhoto}"/>
-                <apex:inputHidden id="valueOfImage" value="{!imageBody}"/>
-                <apex:image id="result" width="150" height="150" style="display: none;"/>
-                <div align="center" id="buttons">
-                    <apex:commandButton id="update" value="update"/>
-                    <apex:actionFunction name="deleteImage" action="{!deleteImage}" reRender="shopForm"/>
-                    <apex:commandButton id="delete" value="delete"
-                                        rendered="{!!defaultPhoto}" reRender="shopForm"/>
-                    <apex:commandButton id="cancel" value="cancel" style="display:none;"/>
-                </div>
-                <div id="popUpWindow" title="potwieerdz"></div>
-            </apex:outputPanel>
             <apex:pageBlockSection id="detailSection" columns="1">
                 <apex:inputField value="{!Mechanic__c.First_Name__c}"/>
                 <apex:inputField value="{!Mechanic__c.Name}" required="true"/>
@@ -47,91 +18,9 @@
                 <apex:inputField value="{!Mechanic__c.Country__c}"/>
             </apex:pageBlockSection>
             <div id="buttonSection" align="center" draggable="false">
-                <apex:commandButton value="{!$Label.Button_Save}" id="save" action="{!save}"/>
+                <apex:commandButton value="{!$Label.Button_Save}" action="{!save}"/>
                 <apex:commandButton value="{!$Label.Button_Cancel}" action="{!cancel}"/>
             </div>
         </apex:pageBlock>
     </apex:form>
-    <script>
-        $j = jQuery.noConflict();
-        $j(document).ready(function () {
-            $j("#popUpWindow").dialog({autoOpen: false, modal: true, position: 'center'});
-        });
-
-        $j("[id$='delete']").click(function () {
-            $j("#popUpWindow").dialog("open");
-            $j("#popUpWindow").html("delete");
-
-            $j("#popUpWindow").dialog({
-                buttons: {
-                    "Confirm": function () {
-                        $j(this).dialog("close");
-                        deleteImage();
-                        ;
-                    },
-                    "Cancel": function () {
-                        $j(this).dialog("close");
-                    }
-                }
-            });
-            return false;
-        });
-
-        $j("[id$='default'], [id$='final'], [id$='result'], [id$='update']").click(function () {
-            $j("#file").click();
-            return false;
-        });
-
-        $j("#file").change(function (e) {
-            var img = e.target.files[0];
-            if (!img.type.match('image.*')) {
-                alert("bad");
-                return;
-            }
-            if (this.files[0].size < 1048576) {
-                iEdit.open(img, true, function (res) {
-                    $j("[id$='result']").attr("src", res);
-                    $j("[id$='result'], [id$='cancel']").css("display", "inline");
-                    $j("[id$='default'], [id$='final']").css("display", "none");
-                });
-            } else {
-                $j("[id$='result']").css("display", "none");
-                this.value = '';
-                alert("big");
-            }
-        });
-
-        $j("[id$='result']").click(function (e) {
-            var img = e.target.files[0];
-            if (!img.type.match('image.*')) {
-                alert("bad");
-                return;
-            }
-            if (this.files[0].size < 1048576) {
-                iEdit.open(img, true, function (res) {
-                    $j("[id$='result']").attr("src", res);
-                    $j("[id$='result'], [id$='cancel']").css("display", "block");
-                    $j("[id$='default'], [id$='final']").css("display", "none");
-                });
-            } else {
-                $j("[id$='result']").css("display", "none");
-                this.value = '';
-                alert("big");
-            }
-        });
-
-        $j("[id$='save']").click(function () {
-            var str = $j("[id$='result']").attr('src');
-            $j("[id$='valueOfImage']").val(str);
-            $j("[id$='cancel']").css("display", "none");
-        });
-
-        $j("[id$='cancel']").click(function () {
-            $j("[id$='result']").css("display", "none");
-            $j("[id$='default']").css("display", "block");
-            $j("[id$='final']").css("display", "block");
-            $j("[id$='cancel']").css("display", "none");
-            return false;
-        });
-    </script>
 </apex:page>

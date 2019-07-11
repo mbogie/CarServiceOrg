@@ -120,6 +120,20 @@
         <value>Confirm?</value>
     </labels>
     <labels>
+        <fullName>Delete_Confirm_Popup</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Delete Confirm Popup</shortDescription>
+        <value>Delete?</value>
+    </labels>
+    <labels>
+        <fullName>Delete_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Delete Message</shortDescription>
+        <value>Are you sure you want to remove profile picture?</value>
+    </labels>
+    <labels>
         <fullName>Delete_Picture</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -139,6 +153,20 @@
         <protected>true</protected>
         <shortDescription>Edit Picture</shortDescription>
         <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>Error_To_Big_File</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error To Big File</shortDescription>
+        <value>The file is to big.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Wrong_Type</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Wrong Type</shortDescription>
+        <value>Wrong type. Only .jpg and .png.</value>
     </labels>
     <labels>
         <fullName>Export_To_Json</fullName>
