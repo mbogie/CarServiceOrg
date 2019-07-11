@@ -1,0 +1,34 @@
+<apex:page id="iEdit">
+
+    <apex:includeScript value="{!$Resource.jQuery}"/>
+    <apex:includeScript value="{!$Resource.iEdit}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.css')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.iEdit,'iEdit/iEdit.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.iEdit,'iEdit/script.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.iEdit,'iEdit/iEdit.css')}"/>
+
+    <html>
+    <head>
+        <title>iEdit Demo.</title>
+
+        <meta charset="utf-8"/>
+
+        <style type="text/css">
+            #result{
+                display: block;
+                position: relative;
+                width: 30%;
+                margin: auto;
+                margin-top: 100px;
+            }
+        </style>
+
+    </head>
+    <body>
+    <input id="file" type="file" />
+    <img id="result"/>
+    </body>
+    </html>
+
+</apex:page>

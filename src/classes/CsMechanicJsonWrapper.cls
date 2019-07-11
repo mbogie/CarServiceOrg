@@ -5,14 +5,11 @@ public with sharing class CsMechanicJsonWrapper {
     private String Email;
     private String Country;
 
-    public CsMechanicJsonWrapper(String id, String name, String email, String country){
-        this.Id = id;
-        this.Full_Name = name;
-        this.Email = email;
-        this.Country = country;
+    public CsMechanicJsonWrapper(Mechanic__c mechanic){
+        this.Id = mechanic.Id;
+        this.Full_Name = mechanic.Full_Name__c;
+        this.Email = mechanic.Email__c;
+        this.Country = mechanic.Country__c;
     }
 
-    public static CsMechanicJsonWrapper mechanicToWrapper(Mechanic__c mechanic){
-        return new CsMechanicJsonWrapper(mechanic.Id, mechanic.Full_Name__c,mechanic.Email__c,mechanic.Country__c);
-    }
 }

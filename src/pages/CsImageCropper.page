@@ -27,7 +27,7 @@
         <!--<apex:inputHidden id="DocId" value="{!DocID}"/>-->
         <apex:outputPanel rendered="{!NOT(doneuploading)}">
             <apex:form id="frm1">
-                <apex:actionFunction name="EditProfilePicture" id="editpic" action="{!uploadPicture}">
+                <apex:actionFunction name="EditProfilePicture" id="editpic" action="{!uploadPicture}" reRender="">
                     <apex:param value="false" name="uploadDoc" assignTo="{!uploadCroping}"/>
                 </apex:actionFunction>
                 <!--Start ChangeProfile_picture-->

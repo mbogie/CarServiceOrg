@@ -8,13 +8,20 @@ public with sharing class CsMechanicDetailController {
     public Contract__c editedContractInUse { get; set; }
     public List<Workshop__c> workshopsSearchResultList { get; private set; }
     private String workshopsQuery;
-    private BH_SoqlQueryBuilder queryBuilder;
+    private CsSoqlQueryBuilder queryBuilder;
     public String sortField { get; set; }
     public String sortDirection { get; set; }
     public Boolean isWorkshopSectionReady { get; set; }
     public Boolean isContractSectionReady { get; set; }
+    public Boolean isAttachmentPictureUploadReady { get; set; }
     private PageReference pageReference;
     public String hirePopupLabel;
+    public String profileImageId { get; set; }
+    public Attachment profileImage { get; set; }
+    public List<Attachment> attachments { get; set; }
+    public List<Attachment> savedPicture { get; set; }
+    public static final String IMAGENAME = 'profielImageName';
+    public Blob imageBlobBody { get; set; }
 
     public CsMechanicDetailController(ApexPages.StandardController controller) {
         this.mechanicPageFormController = (Mechanic__c) controller.getRecord();
@@ -22,17 +29,22 @@ public with sharing class CsMechanicDetailController {
         this.contractPageFormController = new Contract__c();
         this.workshopChoosen = new Workshop__c();
         this.workshopsSearchResultList = new List<Workshop__c>();
-        this.queryBuilder = new BH_SoqlQueryBuilder();
+        this.queryBuilder = new CsSoqlQueryBuilder();
         this.isWorkshopSectionReady = false;
         this.isContractSectionReady = false;
         this.sortDirection = 'DESC';
         this.editedContractInUse = new Contract__c();
         this.agreementsForMechanicPageFormController = new List<Contract__c>();
         refreshAgreementsList();
+        List<Attachment> attachments = [SELECT Id FROM Attachment WHERE parentId = :mechanicPageFormController.Id AND name = :IMAGENAME LIMIT 1];
+        if (attachments.size() != 0) {
+            profileImageId = attachments.get(0).Id;
+            isAttachmentPictureUploadReady = true;
+        } else isAttachmentPictureUploadReady = false;
     }
 
     public void refreshAgreementsList() {
-        queryBuilder = new BH_SoqlQueryBuilder();
+        queryBuilder = new CsSoqlQueryBuilder();
         queryBuilder.addResultField('Id').addResultField('Name').
                 addResultField('Workshop__c').
                 addResultField('Start_Date__c').
@@ -102,7 +114,7 @@ public with sharing class CsMechanicDetailController {
 
     public void search() {
         if (String.isBlank(sortField)) sortField = 'Name';
-        queryBuilder = new BH_SoqlQueryBuilder();
+        queryBuilder = new CsSoqlQueryBuilder();
         workshopsQuery = '';
         queryBuilder.addResultField('Name').
                 addResultField('City__c').
@@ -181,9 +193,31 @@ public with sharing class CsMechanicDetailController {
         }
     }
 
-    public PageReference uploadPicture(){
-        pageReference = Page.CsImageCropper;
+    public PageReference uploadPicture() {
+        isAttachmentPictureUploadReady = true;
+        List<Attachment> savedPicture = [SELECT Id, name, body FROM Attachment WHERE parentId = :mechanicPageFormController.Id AND name = :IMAGENAME];
+        if (savedPicture.size() > 0) {
+            delete savedPicture;
+        }
+        profileImage = new Attachment(parentId = mechanicPageFormController.Id, name = IMAGENAME, body = imageBlobBody);
+        insert profileImage;
+        profileImageId = profileImage.Id;
+        return null;
+    }
+
+    public PageReference edicPicture() {
+
+        return null;
+    }
+
+    public PageReference deletePicture() {
+        pageReference = new ApexPages.StandardController(mechanicPageFormController).view();
         pageReference.setRedirect(true);
+        isAttachmentPictureUploadReady = false;
+        List<Attachment> savedPicture = [SELECT Id, name, body FROM Attachment WHERE parentId = :mechanicPageFormController.Id AND name = :IMAGENAME];
+        if (savedPicture.size() > 0) {
+            delete savedPicture;
+        }
         return pageReference;
     }
 }

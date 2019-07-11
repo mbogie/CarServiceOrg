@@ -12,7 +12,17 @@ public with sharing class CsMechanicEditController {
         return pageReference;
     }
     public PageReference save() {
-        update mechanicPageFormController;
+        Database.SaveResult saveResult = Database.update(mechanicPageFormController, false);
+        if (!saveResult.isSuccess()) {
+            for (Database.Error error : saveResult.getErrors()) {
+                if (error instanceof Database.DuplicateError) {
+                    Database.DuplicateError duplicateError = (Database.DuplicateError) error;
+                    Datacloud.DuplicateResult duplicateResult = duplicateError.getDuplicateResult();
+                    ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.ERROR, 'Duplicate Error: ' + duplicateResult.getErrorMessage()));
+                }
+            }
+            return null;
+        }
         pageReference = new ApexPages.StandardController(mechanicPageFormController).view();
         pageReference.setRedirect(true);
         return pageReference;

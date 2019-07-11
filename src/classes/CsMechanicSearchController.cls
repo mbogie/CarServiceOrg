@@ -6,7 +6,7 @@ public with sharing class CsMechanicSearchController {
     public List<Mechanic__c> mechanicsSearchResultListToShow { get; set; }
     private String sortField;
     private String sortDirection = 'DESC';
-    private BH_SoqlQueryBuilder queryBuilder;
+    private CsSoqlQueryBuilder queryBuilder;
     public Boolean isResultListNotEmpty { get; set; }
     private PageReference pageReference;
     public Integer recordsOnPage { get; set; }
@@ -17,11 +17,11 @@ public with sharing class CsMechanicSearchController {
     public ApexPages.StandardSetController resultListController { get; set; }
     private static final String separator = '||';
     public String mechanicResultListJson { get; set; }
-    List<CsMechanicJsonWrapper> wrappedMechanicList { get; set; }
+    public List<CsMechanicJsonWrapper> wrappedMechanicList { get; set; }
 
     public CsMechanicSearchController(ApexPages.StandardController controller) {
         this.mechanicPageFormController = (Mechanic__c) controller.getRecord();
-        this.queryBuilder = new BH_SoqlQueryBuilder();
+        this.queryBuilder = new CsSoqlQueryBuilder();
         this.mechanicsSearchResultList = new List<Mechanic__c>();
         this.isResultListNotEmpty = false;
     }
@@ -113,7 +113,7 @@ public with sharing class CsMechanicSearchController {
     }
 
     public PageReference exportToCsv() {
-        mechanicSearchStringToExport = prepareStringToCsv(getFieldName('Mechanic__c','Full_Name__c'))+ separator + prepareStringToCsv(getFieldName('Mechanic__c','Email__c')) +separator + prepareStringToCsv(getFieldName('Mechanic__c','Country__c'))+'\n';
+        mechanicSearchStringToExport = prepareStringToCsv(getFieldName('Mechanic__c', 'Full_Name__c')) + separator + prepareStringToCsv(getFieldName('Mechanic__c', 'Email__c')) + separator + prepareStringToCsv(getFieldName('Mechanic__c', 'Country__c')) + '\n';
         for (Mechanic__c mechanic : mechanicsSearchResultList) {
             mechanicSearchStringToExport += prepareStringToCsv(mechanic.Full_Name__c) + separator + prepareStringToCsv(mechanic.Email__c) + separator + prepareStringToCsv(mechanic.Country__c) + '\n';
         }
@@ -123,20 +123,20 @@ public with sharing class CsMechanicSearchController {
         return pageReference;
     }
 
-    private String getFieldName(String obj, String field){
+    private String getFieldName(String obj, String field) {
         return Schema.getGlobalDescribe().get(obj).getDescribe().fields.getMap().get(field).getDescribe().getLabel();
     }
 
     private String prepareStringToCsv(Object obj) {
-        if (obj != null) return '\'' + String.valueOf(obj).escapeCsv() + '\''; else return '';
+        return (obj != null) ? '\'' + String.valueOf(obj).escapeCsv() + '\'' : '';
     }
 
-    public PageReference saveToJson(){
+    public PageReference saveToJson() {
         wrappedMechanicList = new List<CsMechanicJsonWrapper>();
-        for(Mechanic__c mechanic : mechanicsSearchResultList){
-            wrappedMechanicList.add(CsMechanicJsonWrapper.mechanicToWrapper(mechanic));
+        for (Mechanic__c mechanic : mechanicsSearchResultList) {
+            wrappedMechanicList.add(new CsMechanicJsonWrapper(mechanic));
         }
-        pageReference = Page.CsCopyMechanicListToJson; 
+        pageReference = Page.CsCopyMechanicListToJson;
         mechanicResultListJson = JSON.serializePretty(wrappedMechanicList);
         pageReference.setRedirect(false);
         return pageReference;

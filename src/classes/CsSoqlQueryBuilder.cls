@@ -1,4 +1,4 @@
-public class BH_SoqlQueryBuilder {
+public class CsSoqlQueryBuilder {
     private List<String> resultFieldsNames;
     private List<String> sortFieldsNames;
     private Map<String, String> searchFieldsWithValues;
@@ -10,7 +10,7 @@ public class BH_SoqlQueryBuilder {
     private String sortOrder = 'ASC';
     private Integer sortLimit = 1000;
 
-    public BH_SoqlQueryBuilder() {
+    public CsSoqlQueryBuilder() {
         this.resultFieldsNames = new List<String>();
         this.searchFieldsWithValues = new Map<String, String>();
         this.searchFieldsEqualsWithValues = new Map<String, String>();
@@ -34,47 +34,47 @@ public class BH_SoqlQueryBuilder {
         return this.queryString;
     }
 
-    public BH_SoqlQueryBuilder addResultField(String fieldName) {
+    public CsSoqlQueryBuilder addResultField(String fieldName) {
         this.resultFieldsNames.add(fieldName);
         return this;
     }
 
-    public BH_SoqlQueryBuilder addTableName(String fieldName) {
+    public CsSoqlQueryBuilder addTableName(String fieldName) {
         this.tableName = fieldName;
         return this;
     }
 
-    public BH_SoqlQueryBuilder addSortField(String fieldName) {
+    public CsSoqlQueryBuilder addSortField(String fieldName) {
         this.sortFieldsNames.add(fieldName);
         return this;
     }
 
-    public BH_SoqlQueryBuilder addSortOrder(String sortOrder) {
+    public CsSoqlQueryBuilder addSortOrder(String sortOrder) {
         this.sortOrder = sortOrder;
         return this;
     }
 
-    public BH_SoqlQueryBuilder addSortLimit(Integer sortLimit) {
+    public CsSoqlQueryBuilder addSortLimit(Integer sortLimit) {
         this.sortLimit = sortLimit;
         return this;
     }
 
-    public BH_SoqlQueryBuilder addSearchFieldWithValue(String fieldName, String value) {
+    public CsSoqlQueryBuilder addSearchFieldWithValue(String fieldName, String value) {
         if (String.isBlank(value)) return this; else this.searchFieldsWithValues.put(fieldName, value);
         return this;
     }
 
-    public BH_SoqlQueryBuilder addSearchFieldEqualsWithValue(String fieldName, String value) {
+    public CsSoqlQueryBuilder addSearchFieldEqualsWithValue(String fieldName, String value) {
         if (String.isBlank(value)) return this; else this.searchFieldsEqualsWithValues.put(fieldName, value);
         return this;
     }
 
-    public BH_SoqlQueryBuilder addSearchFieldStartsWithValue(String fieldName, String value) {
+    public CsSoqlQueryBuilder addSearchFieldStartsWithValue(String fieldName, String value) {
         if (String.isBlank(value)) return this; else this.searchFieldsStartsWithValues.put(fieldName, value);
         return this;
     }
 
-    public BH_SoqlQueryBuilder build() {
+    public CsSoqlQueryBuilder build() {
         buildResultFields();
         buildFromTable();
         buildSearchFields();

@@ -120,10 +120,24 @@
         <value>Confirm?</value>
     </labels>
     <labels>
+        <fullName>Delete_Picture</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Delete Picture</shortDescription>
+        <value>Delete</value>
+    </labels>
+    <labels>
         <fullName>Edit</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Edit</shortDescription>
+        <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>Edit_Picture</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Edit Picture</shortDescription>
         <value>Edit</value>
     </labels>
     <labels>
@@ -250,6 +264,6 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Upload Picture</shortDescription>
-        <value>Upload Picture</value>
+        <value>Upload</value>
     </labels>
 </CustomLabels>
