@@ -19,7 +19,7 @@
                 <apex:outputPanel id="buttonsToExport" rendered="{!isResultListNotEmpty}">
                     <apex:commandButton value="{!$Label.Export_to_CSV}" action="{!exportToCsv}"/>
                     <apex:commandButton value="{!$Label.Export_To_XML}" action="{!exportToXml}"/>
-                    <apex:commandButton value="{!$Label.Button_Save_To_Json}" action="{!saveToJson}"/>
+                    <apex:commandButton value="{!$Label.Export_To_Json}" action="{!saveToJson}"/>
                 </apex:outputPanel>
             </div>
         </apex:pageBlock>

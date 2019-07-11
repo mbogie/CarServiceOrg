@@ -3,8 +3,9 @@ public with sharing class CsMechanicDetailController {
     public Workshop__c workshopPageFormController { get; set; }
     public Contract__c contractPageFormController { get; set; }
     public Mechanic__c mechanicPageFormController { get; set; }
+    public List<Contract__c> agreementsForMechanicPageFormController { get; set; }
     public Workshop__c workshopChoosen { get; set; }
-    public Contract__c contractToInsert { get; set; }
+    public Contract__c editedContractInUse { get; set; }
     public List<Workshop__c> workshopsSearchResultList { get; private set; }
     private String workshopsQuery;
     private BH_SoqlQueryBuilder queryBuilder;
@@ -25,13 +26,33 @@ public with sharing class CsMechanicDetailController {
         this.isWorkshopSectionReady = false;
         this.isContractSectionReady = false;
         this.sortDirection = 'DESC';
-        this.contractToInsert = new Contract__c();
+        this.editedContractInUse = new Contract__c();
+        this.agreementsForMechanicPageFormController = new List<Contract__c>();
+        refreshAgreementsList();
+    }
+
+    public void refreshAgreementsList() {
+        queryBuilder = new BH_SoqlQueryBuilder();
+        queryBuilder.addResultField('Id').addResultField('Name').
+                addResultField('Workshop__c').
+                addResultField('Start_Date__c').
+                addResultField('End_Date__c').
+                addTableName('Contract__c').
+                addSearchFieldEqualsWithValue('Mechanic__r.Id', mechanicPageFormController.Id).
+                addSortField('Name').
+                addSortOrder('DESC').
+                build();
+        agreementsForMechanicPageFormController = Database.query(queryBuilder.getQueryString());
     }
 
     public String getHirePopupLabel() {
-        return hirePopupLabel = String.format(System.Label.Mechanic_Hire_Label, new List<String>{
+        return String.format(System.Label.Mechanic_Hire_Label, new List<String>{
                 mechanicPageFormController.Full_Name__c
         });
+    }
+
+    public List<Contract__c> getAgreementsForMechanicPageFormController() {
+        return agreementsForMechanicPageFormController;
     }
 
     public PageReference deleteMechanic() {
@@ -99,25 +120,21 @@ public with sharing class CsMechanicDetailController {
         sortDirection = (sortDirection.equals('ASC')) ? 'DESC' : 'ASC';
     }
 
-    public PageReference hire() {
-        contractToInsert = new Contract__c();
-        pageReference = new ApexPages.StandardController(mechanicPageFormController).view();
-        pageReference.setRedirect(true);
-        contractToInsert.Mechanic__c = mechanicPageFormController.Id;
-        contractToInsert.Workshop__c = workshopChoosen.Id;
-        contractToInsert.Start_Date__c = contractPageFormController.Start_Date__c;
-        contractToInsert.End_Date__c = contractPageFormController.End_Date__c;
+    public void hire() {
+        editedContractInUse.Mechanic__c = mechanicPageFormController.Id;
+        editedContractInUse.Workshop__c = workshopChoosen.Id;
+        editedContractInUse.Start_Date__c = contractPageFormController.Start_Date__c;
+        editedContractInUse.End_Date__c = (contractPageFormController.End_Date__c != null) ? contractPageFormController.End_Date__c : null;
         try {
-            insert contractToInsert;
+            insert editedContractInUse;
+            cancel();
+            refreshAgreementsList();
         } catch (DmlException error) {
             System.debug(error.getMessage());
-            return null;
         }
-        return pageReference;
     }
 
     public PageReference choose() {
-        contractPageFormController = new Contract__c();
         isContractSectionReady = true;
         for (Workshop__c workshop : workshopsSearchResultList) {
             if (workshop.Id == workshopChoosen.Id) {
@@ -125,38 +142,48 @@ public with sharing class CsMechanicDetailController {
                 break;
             }
         }
+        editedContractInUse = new Contract__c();
         return null;
     }
 
     public PageReference saveToPdf() {
         pageReference = Page.CsSaveMechanicRecordToPdf;
         pageReference.setRedirect(false);
-      //  pageReference.getParameters().put('id', mechanicPageFormController.Id);
-       // pageReference.getHeaders().put('filename',mechanicPageFormController.Full_Name__c);
         return pageReference;
     }
 
+    public String getMechanicFullNameToPdfName() {
+        return mechanicPageFormController.Full_Name__c.replaceAll(',', ' ');
+    }
+
     public void dismiss() {
-        queryBuilder.addResultField('Id').addResultField('Name').
-                addResultField('Start_Date__c').
-                addResultField('End_Date__c').
-                addTableName('Contract__c').
-                addSearchFieldEqualsWithValue('Id', contractToInsert.Id).
-                build();
-        contractToInsert = (Contract__c) Database.query(queryBuilder.getQueryString()).get(0);
-        if (contractToInsert.Start_Date__c > System.today()) {
+        for (Contract__c contract : agreementsForMechanicPageFormController) {
+            if (editedContractInUse.Id == contract.Id) {
+                editedContractInUse = contract.clone(true);
+                break;
+            }
+        }
+        if (editedContractInUse.Start_Date__c > System.today()) {
             try {
-                delete contractToInsert;
+                delete editedContractInUse;
+                refreshAgreementsList();
             } catch (DmlException error) {
                 System.debug(error.getMessage());
             }
         } else {
-            contractToInsert.End_Date__c = System.today();
+            editedContractInUse.End_Date__c = System.today();
             try {
-                update contractToInsert;
+                update editedContractInUse;
+                refreshAgreementsList();
             } catch (DmlException error) {
                 System.debug(error.getMessage());
             }
         }
+    }
+
+    public PageReference uploadPicture(){
+        pageReference = Page.CsImageCropper;
+        pageReference.setRedirect(true);
+        return pageReference;
     }
 }

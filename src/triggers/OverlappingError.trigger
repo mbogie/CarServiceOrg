@@ -5,33 +5,34 @@ trigger OverlappingError on Contract__c (before insert, before update) {
     String errorMessage = 'Overlapping Dates:';
     Boolean error = false;
 
-    for (Contract__c contract : Trigger.new) {
+    for (Contract__c triggerContract : Trigger.new) {
         if (Trigger.isUpdate) {
-            query += 'Mechanic__r.id = \'' + contract.Mechanic__c + '\' AND Workshop__r.Id = \'' + contract.Workshop__c + '\' AND id != \'' + contract.Id + '\' ORDER BY Start_Date__c';
+            query += 'Mechanic__r.id = \'' + triggerContract.Mechanic__c + '\' AND Workshop__r.Id = \'' + triggerContract.Workshop__c + '\' AND id != \'' + triggerContract.Id + '\' ORDER BY Start_Date__c';
         }
         if (Trigger.isInsert) {
-            query += 'Mechanic__r.id = \'' + contract.Mechanic__c + '\' AND Workshop__r.Id = \'' + contract.Workshop__c + '\' ORDER BY Start_Date__c';
+            query += 'Mechanic__r.id = \'' + triggerContract.Mechanic__c + '\' AND Workshop__r.Id = \'' + triggerContract.Workshop__c + '\' ORDER BY Start_Date__c';
         }
         contList = Database.query(query);
-        for (Contract__c con : contList) {
-            if ((contract.Start_Date__c != null) && (contract.End_Date__c != null) && (con.End_Date__c != null)) {
-                if (contract.Start_Date__c <= con.End_Date__c && contract.End_Date__c >= con.Start_Date__c) {
-                    errorMessage += con.Name + ': ' + con.Start_Date__c.format() + ' - ' + con.End_Date__c.format() + ', ';
+        for (Contract__c AgreementsContract : contList) {
+            if ((triggerContract.Start_Date__c != null) && (triggerContract.End_Date__c != null) && (AgreementsContract.End_Date__c != null)) {
+                if (triggerContract.Start_Date__c <= AgreementsContract.End_Date__c && triggerContract.End_Date__c >= AgreementsContract.Start_Date__c) {
+                    errorMessage += AgreementsContract.Name + ': ' + AgreementsContract.Start_Date__c.format() + ' - ' + AgreementsContract.End_Date__c.format() + ', ';
                     error = true;
                 }
             }
-            if ((contract.End_Date__c == null) && (con.End_Date__c != null)) {
-                if ((contract.Start_Date__c <= con.Start_Date__c || contract.Start_Date__c <= con.End_Date__c))
-                    errorMessage += con.Name + ': ' + con.Start_Date__c.format() + ' - ' + con.End_Date__c.format() + ', ';
-                error = true;
+            if ((triggerContract.End_Date__c == null) && (AgreementsContract.End_Date__c != null)) {
+                if ((triggerContract.Start_Date__c <= AgreementsContract.Start_Date__c || triggerContract.Start_Date__c <= AgreementsContract.End_Date__c)) {
+                    errorMessage += AgreementsContract.Name + ': ' + AgreementsContract.Start_Date__c.format() + ' - ' + AgreementsContract.End_Date__c.format() + ', ';
+                    error = true;
+                }
             }
-            if ((contract.End_Date__c == null) && (con.End_Date__c == null)) {
-                errorMessage += con.Name + ': ' + con.Start_Date__c.format() + '- without notice' + ', ';
+            if ((triggerContract.End_Date__c == null) && (AgreementsContract.End_Date__c == null)) {
+                errorMessage += AgreementsContract.Name + ': ' + AgreementsContract.Start_Date__c.format() + ' - without notice' + ', ';
                 error = true;
             }
         }
         if (error) {
-            contract.addError(errorMessage.removeEnd(', '), false);
+            triggerContract.addError(errorMessage.removeEnd(', '), false);
         }
     }
 }

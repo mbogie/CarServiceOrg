@@ -5,29 +5,30 @@
     <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.js')}"/>
     <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.css')}"/>
 
-    <style>
-        #pictureDiv {
-            width: 10%;
-            float: left;
-            height: 120px;
+    <style type="text/css">
+        .picture {
+            min-width: 11%;
+            width: 11%;
+            text-align: center;
+            max-width: 11%;
         }
 
-        #detailsDiv {
-            width: 90%;
-            float: right;
-            height: 130px;
+        .details {
+            min-width: 89%;
+            width: 89%;
         }
     </style>
 
     <apex:form id="mechanicForm">
-        <apex:message />
+        <apex:message/>
         <apex:pageBlock id="mechanicBlock" title="{!Mechanic__c.Full_Name__c}">
-            <div id="detailSectionDiv">
-                <div id="pictureDiv">
-                    <apex:image alt="Profile Picture" title="Picture"
+            <apex:panelGrid columns="2" columnClasses="picture,details" style="width:100%">
+                <apex:outputPanel id="picturePanel">
+                    <apex:image alt="{!$Label.Picture_Default}" title="{!$Label.Picture_Profile}"
                                 url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" style="height: 120px"/>
-                </div>
-                <div id="detailsDiv">
+                    <apex:commandButton value="{!$Label.Upload_Picture}" action="{!uploadPicture}"/>
+                </apex:outputPanel>
+                <apex:outputPanel id="detailsPanel">
                     <apex:pageBlockSection id="detailSection" title="{!$Label.Section_Details}">
                         <apex:outputField value="{!Mechanic__c.First_Name__c}"/>
                         <apex:outputField value="{!Mechanic__c.Speciality__c}"/>
@@ -41,21 +42,21 @@
                         </apex:outputField>
                         <apex:outputField value="{!Mechanic__c.Birthday__c}"/>
                     </apex:pageBlockSection>
-                </div>
-            </div>
-            <div style="clear: both">
-                <apex:pageBlockSection id="addressSection" title="{!$Label.Section_Address}">
-                    <apex:outputField value="{!Mechanic__c.Address__c}"/>
-                    <apex:outputField value="{!Mechanic__c.City__c}"/>
-                    <apex:outputField value="{!Mechanic__c.Country__c}"/>
-                    <apex:outputField value="{!Mechanic__c.Zip_Code__c}"/>
-                </apex:pageBlockSection>
-            </div>
+                </apex:outputPanel>
+            </apex:panelGrid>
+            <apex:pageBlockSection id="addressSection" title="{!$Label.Section_Address}">
+                <apex:outputField value="{!Mechanic__c.Address__c}"/>
+                <apex:outputField value="{!Mechanic__c.City__c}"/>
+                <apex:outputField value="{!Mechanic__c.Country__c}"/>
+                <apex:outputField value="{!Mechanic__c.Zip_Code__c}"/>
+            </apex:pageBlockSection>
+
+
             <div id="buttonSection" align="center" draggable="false">
                 <apex:commandButton value="{!$Label.Button_Edit}" action="{!edit}"/>
                 <apex:actionFunction name="clearBeforeOpen" action="{!clear}" reRender="workshopForm,messages"/>
                 <apex:commandButton value="{!$Label.Button_Hire}" onClick="openHirePopup()" onComplete="refresh"/>
-                <apex:commandButton value="{!$Label.Button_Save_To_Pdf}" action="{!saveToPdf}"/>
+                <apex:commandButton value="{!$Label.Export_To_Pdf}" action="{!saveToPdf}"/>
                 <apex:commandButton value="{!$Label.Button_Delete}"
                                     onclick="if(!confirm('{!$Label.Delete_Confirm_Message}')) return false;"
                                     action="{!deleteMechanic}"/>
@@ -72,12 +73,14 @@
                 </apex:pageBlockTable>
             </apex:pageBlock>
             <apex:pageBlock id="AgreementsBlock" title="{!$Label.Section_Agreements}">
-                <apex:pageBlockTable id="agreementsTable" value="{!Mechanic__c.Contracts__r}" var="contract">
-                    <apex:column headerValue="{!$Label.Action_Table_Label}">
+                <apex:pageBlockTable id="agreementsTable" value="{!agreementsForMechanicPageFormController}"
+                                     var="contract">
+                    <apex:column headerValue="{!$Label.Actions_Label}">
                         <apex:commandLink action="{!dismiss}"
-                                          reRender="mechanicForm,messages,relatedLists,AgreementsBlock" onComplete="refresh">{!IF(ISNULL(contract.End_Date__c), $Label.Action_Dissmiss, IF(contract.End_Date__c <= TODAY(),'',$Label.Action_Dissmiss))}
+                                          reRender="mechanicForm,messages,relatedLists,AgreementsBlock"
+                                          onComplete="refresh">{!IF(ISNULL(contract.End_Date__c), $Label.Action_Dissmiss, IF(contract.End_Date__c <= TODAY(),'',$Label.Action_Dissmiss))}
                             <apex:param name="selectedContract" value="{!contract.Id}"
-                                        assignTo="{!contractToInsert.Id}"></apex:param>
+                                        assignTo="{!editedContractInUse.Id}"></apex:param>
                         </apex:commandLink>
                     </apex:column>
                     <apex:column value="{!contract.Name}"/>
@@ -88,13 +91,12 @@
             </apex:pageBlock>
         </apex:outputPanel>
     </apex:form>
-
-    <div id="agreement" title="{!hirePopupLabel}">
-        <div id="myMessagess">
+    <div id="agreement" title="{!HirePopupLabel}">
+            <div id="myMessagess">
             <apex:outputPanel id="messages">
                 <apex:pageMessages id="messageTxt" showDetail="false"/>
                 <script>
-                    var messageID = '{!$Component.messageTxt}';
+                    let messageID = '{!$Component.messageTxt}';
                 </script>
             </apex:outputPanel>
         </div>
@@ -124,7 +126,7 @@
                     <apex:pageBlock id="workshopList">
                         <apex:pageBlockTable id="workshopsTableBlock" value="{!workshopsSearchResultList}"
                                              var="workshop">
-                            <apex:column headerValue="{!$Label.Action_Table_Label}">
+                            <apex:column headerValue="{!$Label.Actions_Label}">
                                 <apex:commandLink action="{!choose}" immediate="true"
                                                   reRender="form,messages">{!IF(workshop.Id==workshopChoosen.Id, '', $Label.Select )}
                                     <apex:param name="selectedWorkshop" value="{!workshop.Id}"
@@ -164,15 +166,17 @@
                                         rendered="{!isContractSectionReady}">
                             <apex:pageBlockSection id="mechanicWorkshopNameSection">
                                 <apex:outputField value="{!Mechanic__c.Full_Name__c}"/>
-                                <apex:pageBlockSectionItem />
+                                <apex:pageBlockSectionItem/>
                                 <apex:outputField value="{!workshopChoosen.Name}"/>
-                                <apex:pageBlockSectionItem />
-                                <apex:inputField value="{!contractPageFormController.Start_Date__c}" required="true"/>
+                                <apex:pageBlockSectionItem/>
+                                <apex:inputField value="{!contractPageFormController.Start_Date__c}"
+                                                 required="true"/>
                                 <apex:inputField value="{!contractPageFormController.End_Date__c}"/>
                             </apex:pageBlockSection>
                             <div id="agreementsButtons" align="center" draggable="false">
-                                <apex:commandButton value="{!$Label.Button_Hire}" action="{!hire}" onComplete="checkHideModal();"
-                                                    reRender="form,messages,mechanicForm"/>
+                                <apex:commandButton value="{!$Label.Button_Hire}" action="{!hire}"
+                                                    onComplete="checkHideModal();"
+                                                    reRender="form,messages,mechanicForm,listPanel"/>
                                 <apex:commandButton value="{!$Label.Button_Cancel}" action="{!cancel}"
                                                     reRender="form,messages" onComplete="closeHirePopup();"/>
                             </div>
@@ -182,8 +186,7 @@
             </apex:form>
         </apex:outputPanel>
     </div>
-
-    <script type="text/javascript">
+    <script>
         $('#agreement').dialog({
             autoOpen: false,
             height: "auto",
@@ -208,9 +211,8 @@
         }
 
         function checkHideModal() {
-            let errors = document.getElementById('messageID').textContent;
-            if (!(errors.indexOf('Er') != -1)) {
-                closeHirePopup();
+            if (jQuery('.errorM3').length <= 0) {
+                $('#agreement').dialog("close")
             }
         }
 
@@ -221,6 +223,20 @@
             aux.select();
             document.execCommand("copy");
             document.body.removeChild(aux);
+        }
+        var w;
+        function ChangeProfile_picture()
+        {
+            var windowWidth = document.documentElement.clientWidth;
+            var windowHeight = document.documentElement.clientHeight;
+            w = window.open('/apex/CsImageCropper','ProfilePicture','channelmode=0,directories=0,fullscreen=0,height=190,width=453,left='+(windowWidth/2-453/2)+',top='+(windowHeight/2-190/2)+',location=0,menubar=0,resizable=0,scrollbars=0,status=0,titlebar=0,toolbar=0');
+        }
+
+        function updateURL(DocId)
+        {
+            var imgTag =  document.getElementById('imgval');
+            imgTag.src = "/servlet/servlet.FileDownload?file="+DocId;
+            w.close();
         }
     </script>
 

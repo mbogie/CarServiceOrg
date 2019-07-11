@@ -1,48 +1,40 @@
-<apex:page id="CsPrepareRecordToSaveToPdf" standardController="Mechanic__c" extensions="CsMechanicDetailController" cache="true" renderAs="advanced_pdf">
+<apex:page id="CsPrepareRecordToSaveToPdf" standardController="Mechanic__c" extensions="CsMechanicDetailController" applyBodyTag="true" cache="true" renderAs="advanced_pdf" applyHtmlTag="true">
     <head>
         <apex:includeScript value="{!$Resource.jQuery}"/>
         <apex:includeScript value="{!$Resource.DefaultPicture}"/>
         <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.js')}"/>
         <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.css')}"/>
-        <style>
-            #pictureDiv {
-                width: 10%;
-                float: left;
-                height: 120px;
-            }
-            #detailsDiv {
-                width: 90%;
-                float: right;
-                height: 130px;
-            }
+        <style type="text/css">
+            .picture {min-width: 10%; width:10%; text-align:center; max-width:10%}
+            .details {min-width: 90%; width:90%;}
         </style>
     </head>
-    <apex:pageBlock id="mechanicBlock" title="{!Mechanic__c.Full_Name__c}">
-        <div id="detailSectionDiv">
-            <div id="pictureDiv">
-                <apex:image alt="Profile Picture" title="Picture"
-                            url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" style="height: 120px"/>
-            </div>
-            <div id="detailsDiv">
-                <apex:pageBlockSection id="detailSection" title="{!$Label.Section_Details}">
-                    <apex:outputField value="{!Mechanic__c.First_Name__c}"/>
-                    <apex:outputField value="{!Mechanic__c.Speciality__c}"/>
-                    <apex:outputField value="{!Mechanic__c.Name}"/>
-                    <apex:outputField value="{!Mechanic__c.Skill__c}"/>
-                    <apex:outputField value="{!Mechanic__c.License_Number__c}"/>
-                    <apex:outputField value="{!Mechanic__c.Email__c}"/>
-                    <apex:outputField id="copyPhone" value="{!Mechanic__c.Phone__c}"/>
-                </apex:pageBlockSection>
-            </div>
-        </div>
-        <div style="clear: both">
+        <apex:pageBlock id="mechanicBlock" title="{!Mechanic__c.Full_Name__c}">
+            <apex:panelGrid columns="2" columnClasses="picture,details" style="width:100%">
+                <apex:outputPanel id ="picturePanel">
+                    <apex:image alt="Profile Picture" title="Picture"
+                                url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" style="height: 120px"/>
+                </apex:outputPanel>
+                <apex:outputPanel id ="detailsPanel">
+                    <apex:pageBlockSection id="detailSection" title="{!$Label.Section_Details}">
+                        <apex:outputField value="{!Mechanic__c.First_Name__c}"/>
+                        <apex:outputField value="{!Mechanic__c.Speciality__c}"/>
+                        <apex:outputField value="{!Mechanic__c.Name}"/>
+                        <apex:outputField value="{!Mechanic__c.Skill__c}"/>
+                        <apex:outputField value="{!Mechanic__c.License_Number__c}"/>
+                        <apex:outputField value="{!Mechanic__c.Email__c}"/>
+                        <apex:outputField id="copyPhone" value="{!Mechanic__c.Phone__c}"/>
+                        <apex:outputField value="{!Mechanic__c.Birthday__c}"/>
+                    </apex:pageBlockSection>
+                </apex:outputPanel>
+            </apex:panelGrid>
             <apex:pageBlockSection id="addressSection" title="{!$Label.Section_Address}">
                 <apex:outputField value="{!Mechanic__c.Address__c}"/>
                 <apex:outputField value="{!Mechanic__c.City__c}"/>
                 <apex:outputField value="{!Mechanic__c.Country__c}"/>
                 <apex:outputField value="{!Mechanic__c.Zip_Code__c}"/>
             </apex:pageBlockSection>
-        </div>
+
     </apex:pageBlock>
     <apex:pageBlock id="historyBlock" title="{!$Label.Section_History_Tracking}">
         <apex:pageBlockTable id="historyTable" value="{!Mechanic__c.Histories}" var="history">
@@ -54,7 +46,7 @@
         </apex:pageBlockTable>
     </apex:pageBlock>
     <apex:pageBlock id="AgreementsBlock" title="{!$Label.Section_Agreements}">
-        <apex:pageBlockTable id="agreementsTable" value="{!Mechanic__c.Contracts__r}" var="contract">
+        <apex:pageBlockTable id="agreementsTable" value="{!agreementsForMechanicPageFormController}" var="contract">
             <apex:column value="{!contract.Name}"/>
             <apex:column value="{!contract.Workshop__c}"/>
             <apex:column value="{!contract.Start_Date__c}"/>

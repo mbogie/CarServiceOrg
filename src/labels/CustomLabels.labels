@@ -8,13 +8,6 @@
         <value>Dismiss</value>
     </labels>
     <labels>
-        <fullName>Action_Table_Label</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Action Table Label</shortDescription>
-        <value>Action</value>
-    </labels>
-    <labels>
         <fullName>Actions_Label</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -75,7 +68,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Button Save To Json</shortDescription>
-        <value>Save to .json</value>
+        <value>Export to .json</value>
     </labels>
     <labels>
         <fullName>Button_Save_To_Pdf</fullName>
@@ -134,6 +127,20 @@
         <value>Edit</value>
     </labels>
     <labels>
+        <fullName>Export_To_Json</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export To Json</shortDescription>
+        <value>Export to .json</value>
+    </labels>
+    <labels>
+        <fullName>Export_To_Pdf</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Export To Pdf</shortDescription>
+        <value>Export to .pdf</value>
+    </labels>
+    <labels>
         <fullName>Export_To_XML</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -160,6 +167,20 @@
         <protected>true</protected>
         <shortDescription>Mechanic Search Page Label</shortDescription>
         <value>Search Mechanic</value>
+    </labels>
+    <labels>
+        <fullName>Picture_Default</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Picture Default</shortDescription>
+        <value>Default Picture</value>
+    </labels>
+    <labels>
+        <fullName>Picture_Profile</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Picture Profile</shortDescription>
+        <value>Profile Picture</value>
     </labels>
     <labels>
         <fullName>Required_Input_Field_Error</fullName>
@@ -223,5 +244,12 @@
         <protected>true</protected>
         <shortDescription>Sign Up</shortDescription>
         <value>▲</value>
+    </labels>
+    <labels>
+        <fullName>Upload_Picture</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Upload Picture</shortDescription>
+        <value>Upload Picture</value>
     </labels>
 </CustomLabels>

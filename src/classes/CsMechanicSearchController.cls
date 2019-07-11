@@ -17,6 +17,7 @@ public with sharing class CsMechanicSearchController {
     public ApexPages.StandardSetController resultListController { get; set; }
     private static final String separator = '||';
     public String mechanicResultListJson { get; set; }
+    List<CsMechanicJsonWrapper> wrappedMechanicList { get; set; }
 
     public CsMechanicSearchController(ApexPages.StandardController controller) {
         this.mechanicPageFormController = (Mechanic__c) controller.getRecord();
@@ -131,8 +132,12 @@ public with sharing class CsMechanicSearchController {
     }
 
     public PageReference saveToJson(){
+        wrappedMechanicList = new List<CsMechanicJsonWrapper>();
+        for(Mechanic__c mechanic : mechanicsSearchResultList){
+            wrappedMechanicList.add(CsMechanicJsonWrapper.mechanicToWrapper(mechanic));
+        }
         pageReference = Page.CsCopyMechanicListToJson; 
-        mechanicResultListJson = JSON.serializePretty(mechanicsSearchResultList);
+        mechanicResultListJson = JSON.serializePretty(wrappedMechanicList);
         pageReference.setRedirect(false);
         return pageReference;
     }

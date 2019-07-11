@@ -1,4 +1,4 @@
-public with sharing class LocationCallouts {
+public with sharing class CsLocationCallouts {
 
     public String address { get; set; }
     public double lat { get; set; }
