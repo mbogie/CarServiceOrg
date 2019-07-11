@@ -25,7 +25,7 @@
             <apex:panelGrid columns="2" columnClasses="picture,details" style="width:100%">
                 <apex:outputPanel id="imagePanel">
                     <input type="file" id="file" accept="image/jpeg, image/png" style="display:none;"/>
-                    <apex:image url="/servlet/servlet.FileDownload?file={!idOfAttachment}" width="150"
+                    <apex:image value="{!URLFOR($Action.Attachment.Download, idOfAttachment)}" width="150"
                                 height="150" id="final" rendered="{!!isDefaultPhotoDisplayed}"/>
                     <apex:image url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" width="150" height="150"
                                 id="default"
@@ -255,7 +255,7 @@
 
         $j("[id$='delete']").click(function () {
             $j("#popUpWindow").dialog("open");
-            $j("#popUpWindow").html("{!$Label.Delete_Confirm_Popup}");
+            $j("#popUpWindow").html("{!$Label.Delete_Message}");
 
             $j("#popUpWindow").dialog({
                 buttons: {
@@ -278,7 +278,7 @@
 
         $j("#file").change(function (e) {
             var img = e.target.files[0];
-            if ((!img.type.match('image.jpg')) && (!img.type.match('image.png'))) {
+            if (!img.type.match('image.*')) {
                 alert("{!$Label.Error_Wrong_Type}");
                 return;
             }
@@ -300,7 +300,7 @@
 
         $j("[id$='result']").click(function (e) {
             var img = e.target.files[0];
-            if ((!img.type.match('image.jpg')) && (!img.type.match('image.png'))) {
+            if (!img.type.match('image.*')) {
                 alert("{!$Label.Error_Wrong_Type}");
                 return;
             }

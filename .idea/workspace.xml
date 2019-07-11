@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="378619f6-206d-4b97-be6c-0e71661895b4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsMechanicEditController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsMechanicEditController.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/labels/CustomLabels.labels" beforeDir="false" afterPath="$PROJECT_DIR$/src/labels/CustomLabels.labels" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/CsMechanicEdit.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsMechanicEdit.page" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/testPage.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/testPage.page" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,11 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="535">
-              <caret line="302" column="49" selection-start-line="302" selection-start-column="49" selection-end-line="302" selection-end-column="49" />
+            <state relative-caret-position="393">
+              <caret line="278" column="42" selection-start-line="278" selection-start-column="42" selection-end-line="278" selection-end-column="42" />
               <folding>
                 <element signature="n#style#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
@@ -52,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="219" column="29" selection-start-line="219" selection-start-column="29" selection-end-line="219" selection-end-column="29" />
+            <state relative-caret-position="536">
+              <caret line="228" column="22" selection-start-line="228" selection-start-column="22" selection-end-line="228" selection-end-column="22" />
               <folding>
                 <element signature="e#1470#1483#0" expanded="true" />
                 <element signature="e#1785#1798#0" expanded="true" />
@@ -183,8 +177,8 @@
         <option value="$PROJECT_DIR$/src/pages/testPage.page" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicEditController.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsMechanicEdit.page" />
-        <option value="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" />
+        <option value="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" />
       </list>
     </option>
   </component>
@@ -225,7 +219,7 @@
                       <entry key="CLASSES/BH_SOQLQUERYBUILDER.CLS" value="1562769573850" />
                       <entry key="CLASSES/CSIMAGECROPPER.CLS" value="1562826189247" />
                       <entry key="CLASSES/CSLOCATIONCALLOUTS.CLS" value="1562769573850" />
-                      <entry key="CLASSES/CSMECHANICDETAILCONTROLLER.CLS" value="1562883093051" />
+                      <entry key="CLASSES/CSMECHANICDETAILCONTROLLER.CLS" value="1562883415558" />
                       <entry key="CLASSES/CSMECHANICEDITCONTROLLER.CLS" value="1562881884770" />
                       <entry key="CLASSES/CSMECHANICJSONWRAPPER.CLS" value="1562842693021" />
                       <entry key="CLASSES/CSMECHANICSEARCHCONTROLLER.CLS" value="1562861822000" />
@@ -254,7 +248,7 @@
                       <entry key="PAGES/CSCOPYRESULTMECHANICLISTTOCSV.PAGE" value="1562769595725" />
                       <entry key="PAGES/CSCOPYRESULTMECHANICLISTTOXML.PAGE" value="1562770480662" />
                       <entry key="PAGES/CSIMAGECROPPER.PAGE" value="1562861822000" />
-                      <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1562883367889" />
+                      <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1562883863175" />
                       <entry key="PAGES/CSMECHANICEDIT.PAGE" value="1562881931961" />
                       <entry key="PAGES/CSMECHANICSEARCH.PAGE" value="1562769596347" />
                       <entry key="PAGES/CSPREPARERECORDTOSAVETOPDF.PAGE" value="1562798811954" />
@@ -1427,7 +1421,7 @@
       <workItem from="1562738882508" duration="28080000" />
       <workItem from="1562793440566" duration="4635000" />
       <workItem from="1562825311134" duration="34912000" />
-      <workItem from="1562876597362" duration="6799000" />
+      <workItem from="1562876597362" duration="7332000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1562265664633</created>
@@ -1440,13 +1434,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="357108000" />
+    <option name="totallyTimeSpent" value="357641000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1748401" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1748401" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1461,7 +1455,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Log Viewer" order="7" sideWeight="0.60394454" weight="0.3943662" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.5607676" weight="0.20801733" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.5607676" visible="true" weight="0.20801733" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5026652" side_tool="true" weight="0.39111593" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32827735" />
@@ -1801,28 +1795,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="228" column="22" selection-start-line="228" selection-start-column="22" selection-end-line="228" selection-end-column="22" />
+          <folding>
+            <element signature="e#1470#1483#0" expanded="true" />
+            <element signature="e#1785#1798#0" expanded="true" />
+            <element signature="e#2618#2626#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="302" column="49" selection-start-line="302" selection-start-column="49" selection-end-line="302" selection-end-column="49" />
+        <state relative-caret-position="393">
+          <caret line="278" column="42" selection-start-line="278" selection-start-column="42" selection-end-line="278" selection-end-column="42" />
           <folding>
             <element signature="n#style#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#apex:image#2;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#apex:commandButton#0;n#div#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#apex:commandButton#2;n#div#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="219" column="29" selection-start-line="219" selection-start-column="29" selection-end-line="219" selection-end-column="29" />
-          <folding>
-            <element signature="e#1470#1483#0" expanded="true" />
-            <element signature="e#1785#1798#0" expanded="true" />
-            <element signature="e#2618#2626#0" expanded="true" />
           </folding>
         </state>
       </provider>
