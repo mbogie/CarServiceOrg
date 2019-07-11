@@ -5,15 +5,23 @@
         <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.js')}"/>
         <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'jquery-ui-1.12.1.custom/jquery-ui.css')}"/>
         <style type="text/css">
-            .picture {min-width: 10%; width:10%; text-align:center; max-width:10%}
-            .details {min-width: 90%; width:90%;}
+            .picture {
+                text-align:center;
+                }
+            .details {
+                min-width: 89%;
+                width:89%;
+            }
         </style>
     </head>
         <apex:pageBlock id="mechanicBlock" title="{!Mechanic__c.Full_Name__c}">
             <apex:panelGrid columns="2" columnClasses="picture,details" style="width:100%">
                 <apex:outputPanel id ="picturePanel">
-                    <apex:image alt="Profile Picture" title="Picture"
-                                url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" style="height: 120px"/>
+                    <apex:image value="{!URLFOR($Action.Attachment.Download, idOfAttachment)}" width="150"
+                                height="150" id="final" rendered="{!!isDefaultPhotoDisplayed}"/>
+                    <apex:image url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" width="150" height="150"
+                                id="default"
+                                rendered="{!isDefaultPhotoDisplayed}"/>
                 </apex:outputPanel>
                 <apex:outputPanel id ="detailsPanel">
                     <apex:pageBlockSection id="detailSection" title="{!$Label.Section_Details}">

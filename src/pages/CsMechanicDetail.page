@@ -66,8 +66,6 @@
                 <apex:outputField value="{!Mechanic__c.Country__c}"/>
                 <apex:outputField value="{!Mechanic__c.Zip_Code__c}"/>
             </apex:pageBlockSection>
-
-
             <div id="buttonSection" align="center" draggable="false">
                 <apex:commandButton value="{!$Label.Button_Edit}" action="{!edit}"/>
                 <apex:actionFunction name="clearBeforeOpen" action="{!clear}" reRender="workshopForm,messages"/>
@@ -203,7 +201,6 @@
         </apex:outputPanel>
     </div>
     <script>
-
         $j = jQuery.noConflict();
         $j('#agreement').dialog({
             autoOpen: false,

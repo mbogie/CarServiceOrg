@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="378619f6-206d-4b97-be6c-0e71661895b4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,11 +31,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="278" column="42" selection-start-line="278" selection-start-column="42" selection-end-line="278" selection-end-column="42" />
+            <state relative-caret-position="408">
+              <caret line="27" selection-start-line="27" selection-end-line="31" selection-end-column="71" />
               <folding>
                 <element signature="n#style#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
@@ -42,6 +43,15 @@
                 <element signature="n#style#0;n#apex:commandButton#0;n#div#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#apex:commandButton#2;n#div#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="408">
+              <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -163,7 +173,6 @@
         <option value="$PROJECT_DIR$/src/pages/CsCopyResultMechanicListToXml.page" />
         <option value="$PROJECT_DIR$/src/triggers/OverlappingError.trigger" />
         <option value="$PROJECT_DIR$/src/pages/CsSaveMechanicRecordToPdf.page" />
-        <option value="$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page" />
         <option value="$PROJECT_DIR$/src/classes/CsImageCropper.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsImageCropper.page" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicJsonWrapper.cls" />
@@ -179,6 +188,7 @@
         <option value="$PROJECT_DIR$/src/pages/CsMechanicEdit.page" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" />
+        <option value="$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page" />
       </list>
     </option>
   </component>
@@ -248,7 +258,7 @@
                       <entry key="PAGES/CSCOPYRESULTMECHANICLISTTOCSV.PAGE" value="1562769595725" />
                       <entry key="PAGES/CSCOPYRESULTMECHANICLISTTOXML.PAGE" value="1562770480662" />
                       <entry key="PAGES/CSIMAGECROPPER.PAGE" value="1562861822000" />
-                      <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1562883863175" />
+                      <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1562884018348" />
                       <entry key="PAGES/CSMECHANICEDIT.PAGE" value="1562881931961" />
                       <entry key="PAGES/CSMECHANICSEARCH.PAGE" value="1562769596347" />
                       <entry key="PAGES/CSPREPARERECORDTOSAVETOPDF.PAGE" value="1562798811954" />
@@ -1421,7 +1431,7 @@
       <workItem from="1562738882508" duration="28080000" />
       <workItem from="1562793440566" duration="4635000" />
       <workItem from="1562825311134" duration="34912000" />
-      <workItem from="1562876597362" duration="7332000" />
+      <workItem from="1562876597362" duration="7611000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1562265664633</created>
@@ -1434,7 +1444,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="357641000" />
+    <option name="totallyTimeSpent" value="357920000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1455,9 +1465,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Log Viewer" order="7" sideWeight="0.60394454" weight="0.3943662" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.5607676" visible="true" weight="0.20801733" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.52665246" visible="true" weight="0.20801733" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5026652" side_tool="true" weight="0.39111593" />
+      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.47334754" side_tool="true" visible="true" weight="0.20801733" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32827735" />
       <window_info anchor="bottom" id="Anonymous Apex" order="12" sideWeight="0.586887" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
@@ -1767,13 +1777,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CsSaveMechanicRecordToPdf.page">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -1809,8 +1812,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="278" column="42" selection-start-line="278" selection-start-column="42" selection-end-line="278" selection-end-column="42" />
+        <state relative-caret-position="408">
+          <caret line="27" selection-start-line="27" selection-end-line="31" selection-end-column="71" />
           <folding>
             <element signature="n#style#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
@@ -1818,6 +1821,13 @@
             <element signature="n#style#0;n#apex:commandButton#0;n#div#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#apex:commandButton#2;n#div#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
         </state>
       </provider>
     </entry>
