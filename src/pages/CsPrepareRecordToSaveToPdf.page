@@ -61,5 +61,4 @@
             <apex:column value="{!contract.End_Date__c}"/>
         </apex:pageBlockTable>
     </apex:pageBlock>
-
 </apex:page>

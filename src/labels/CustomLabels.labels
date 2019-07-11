@@ -288,6 +288,20 @@
         <value>▲</value>
     </labels>
     <labels>
+        <fullName>Table_Pagination_Next</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Table Pagination Next</shortDescription>
+        <value>Next ▸▸</value>
+    </labels>
+    <labels>
+        <fullName>Table_Pagination_Previous</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Table Pagination Previous</shortDescription>
+        <value>◂◂Previous</value>
+    </labels>
+    <labels>
         <fullName>Upload_Picture</fullName>
         <language>en_US</language>
         <protected>true</protected>

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="378619f6-206d-4b97-be6c-0e71661895b4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/labels/CustomLabels.labels" beforeDir="false" afterPath="$PROJECT_DIR$/src/labels/CustomLabels.labels" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/CsMechanicSearch.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsMechanicSearch.page" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -31,41 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="27" selection-start-line="27" selection-end-line="31" selection-end-column="71" />
-              <folding>
-                <element signature="n#style#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#input#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#apex:image#2;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#apex:commandButton#0;n#div#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#apex:commandButton#2;n#div#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page">
+        <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicSearch.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="536">
-              <caret line="228" column="22" selection-start-line="228" selection-start-column="22" selection-end-line="228" selection-end-column="22" />
-              <folding>
-                <element signature="e#1470#1483#0" expanded="true" />
-                <element signature="e#1785#1798#0" expanded="true" />
-                <element signature="e#2618#2626#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="258">
+              <caret line="78" column="29" lean-forward="true" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -167,7 +140,6 @@
         <option value="$PROJECT_DIR$/src/pages/CsCopyMechanicListToJson.page" />
         <option value="$PROJECT_DIR$/src/classes/testclass.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsWorkshopDetail.page" />
-        <option value="$PROJECT_DIR$/src/pages/CsMechanicSearch.page" />
         <option value="$PROJECT_DIR$/src/classes/LocationCallouts.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsCopyResultMechanicListToXml.page" />
@@ -186,9 +158,10 @@
         <option value="$PROJECT_DIR$/src/pages/testPage.page" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicEditController.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsMechanicEdit.page" />
-        <option value="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" />
         <option value="$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page" />
+        <option value="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" />
+        <option value="$PROJECT_DIR$/src/pages/CsMechanicSearch.page" />
       </list>
     </option>
   </component>
@@ -229,7 +202,7 @@
                       <entry key="CLASSES/BH_SOQLQUERYBUILDER.CLS" value="1562769573850" />
                       <entry key="CLASSES/CSIMAGECROPPER.CLS" value="1562826189247" />
                       <entry key="CLASSES/CSLOCATIONCALLOUTS.CLS" value="1562769573850" />
-                      <entry key="CLASSES/CSMECHANICDETAILCONTROLLER.CLS" value="1562883415558" />
+                      <entry key="CLASSES/CSMECHANICDETAILCONTROLLER.CLS" value="1562884316129" />
                       <entry key="CLASSES/CSMECHANICEDITCONTROLLER.CLS" value="1562881884770" />
                       <entry key="CLASSES/CSMECHANICJSONWRAPPER.CLS" value="1562842693021" />
                       <entry key="CLASSES/CSMECHANICSEARCHCONTROLLER.CLS" value="1562861822000" />
@@ -260,8 +233,8 @@
                       <entry key="PAGES/CSIMAGECROPPER.PAGE" value="1562861822000" />
                       <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1562884018348" />
                       <entry key="PAGES/CSMECHANICEDIT.PAGE" value="1562881931961" />
-                      <entry key="PAGES/CSMECHANICSEARCH.PAGE" value="1562769596347" />
-                      <entry key="PAGES/CSPREPARERECORDTOSAVETOPDF.PAGE" value="1562798811954" />
+                      <entry key="PAGES/CSMECHANICSEARCH.PAGE" value="1562885254764" />
+                      <entry key="PAGES/CSPREPARERECORDTOSAVETOPDF.PAGE" value="1562884311110" />
                       <entry key="PAGES/CSSAVEMECHANICRECORDTOPDF.PAGE" value="1562798785835" />
                       <entry key="PAGES/CSWORKSHOPDETAIL.PAGE" value="1562769596851" />
                       <entry key="PAGES/CSWORKSHOPEDIT.PAGE" value="1562769596165" />
@@ -1333,7 +1306,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -1375,6 +1347,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1431,7 +1404,8 @@
       <workItem from="1562738882508" duration="28080000" />
       <workItem from="1562793440566" duration="4635000" />
       <workItem from="1562825311134" duration="34912000" />
-      <workItem from="1562876597362" duration="7611000" />
+      <workItem from="1562876597362" duration="7758000" />
+      <workItem from="1562884651301" duration="654000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1562265664633</created>
@@ -1444,13 +1418,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="357920000" />
+    <option name="totallyTimeSpent" value="358721000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1748401" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17643923" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1465,9 +1439,9 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Log Viewer" order="7" sideWeight="0.60394454" weight="0.3943662" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.52665246" visible="true" weight="0.20801733" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.5261194" visible="true" weight="0.20801733" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Event Log" order="10" sideWeight="0.47334754" side_tool="true" visible="true" weight="0.20801733" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.4738806" side_tool="true" visible="true" weight="0.20801733" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32827735" />
       <window_info anchor="bottom" id="Anonymous Apex" order="12" sideWeight="0.586887" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
@@ -1685,13 +1659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicSearch.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="76" column="75" lean-forward="true" selection-start-line="76" selection-start-column="75" selection-end-line="76" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsImageCropper.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -1798,10 +1765,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1054">
+          <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="536">
-          <caret line="228" column="22" selection-start-line="228" selection-start-column="22" selection-end-line="228" selection-end-column="22" />
+        <state relative-caret-position="3910">
+          <caret line="230" column="5" selection-start-line="230" selection-start-column="5" selection-end-line="230" selection-end-column="5" />
           <folding>
             <element signature="e#1470#1483#0" expanded="true" />
             <element signature="e#1785#1798#0" expanded="true" />
@@ -1812,22 +1786,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
+        <state relative-caret-position="357">
           <caret line="27" selection-start-line="27" selection-end-line="31" selection-end-column="71" />
-          <folding>
-            <element signature="n#style#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#apex:image#2;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#apex:commandButton#0;n#div#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#apex:commandButton#2;n#div#0;n#apex:outputPanel#0;n#apex:panelGrid#0;n#apex:pageBlock#0;n#apex:form#0;n#apex:page#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page">
+    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicSearch.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="35" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
+        <state relative-caret-position="258">
+          <caret line="78" column="29" lean-forward="true" selection-start-line="78" selection-start-column="29" selection-end-line="78" selection-end-column="29" />
         </state>
       </provider>
     </entry>

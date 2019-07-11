@@ -67,14 +67,14 @@
                             <apex:outputText value=" {!pageNumber} of {! CEILING(mechanicsSearchResultList.size / recordsOnPage) }"/>
                         </td>
                         <td align="center">
-                            <apex:commandLink action="{! previous }" value="« Previous"
+                            <apex:commandLink action="{! previous }" value="{!$Label.Table_Pagination_Previous}"
                                               rendered="{!isMechanicResultListHasPrevious}" reRender="resultsList"/>
-                            <apex:outputText style="color: #ccc;" value="« Previous"
+                            <apex:outputText style="color: #ccc;" value="{!$Label.Table_Pagination_Previous}"
                                              rendered="{!NOT(isMechanicResultListHasPrevious)}"/>
                             &nbsp;&nbsp;
-                            <apex:commandLink action="{! next }" value="Next »"
+                            <apex:commandLink action="{! next }" value="{!$Label.Table_Pagination_Next}"
                                               rendered="{!isMechanicResultListHasNext}" reRender="resultsList"/>
-                            <apex:outputText style="color: #ccc;" value="Next »"
+                            <apex:outputText style="color: #ccc;" value="{!$Label.Table_Pagination_Next}"
                                              rendered="{!NOT(isMechanicResultListHasNext)}"/>
                         </td>
                         <td align="right">

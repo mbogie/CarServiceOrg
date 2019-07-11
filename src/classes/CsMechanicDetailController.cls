@@ -229,5 +229,4 @@ public with sharing class CsMechanicDetailController {
             idOfAttachment = attachedFiles[0].Id;
         }
     }
-
 }
