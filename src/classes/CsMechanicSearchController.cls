@@ -11,6 +11,7 @@ public with sharing class CsMechanicSearchController {
     private PageReference pageReference;
     public Integer recordsOnPage { get; set; }
     public Integer pageNumber { get; set; }
+    public String pageOf { get; set; }
     public Boolean isMechanicResultListReady { get; set; }
     public Boolean isMechanicResultListHasNext { get; set; }
     public Boolean isMechanicResultListHasPrevious { get; set; }
@@ -99,11 +100,17 @@ public with sharing class CsMechanicSearchController {
         setDataToShow();
     }
 
+    public void pageOf(){
+        pageOf = String.format(System.Label.Table_Page_Of, new List<String>{
+                String.valueOf(pageNumber) , String.valueOf((integer)Math.ceil((double)mechanicsSearchResultList.size()/(double)recordsOnPage))});
+    }
+
     public void setDataToShow() {
         mechanicsSearchResultListToShow = (List<Mechanic__c>) resultListController.getRecords();
         isMechanicResultListHasNext = resultListController.getHasNext();
         isMechanicResultListHasPrevious = resultListController.getHasPrevious();
         pageNumber = resultListController.getPageNumber();
+        pageOf();
     }
 
     public PageReference exportToXml() {

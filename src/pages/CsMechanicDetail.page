@@ -23,27 +23,31 @@
         <apex:message/>
         <apex:pageBlock id="mechanicBlock" title="{!Mechanic__c.Full_Name__c}">
             <apex:panelGrid columns="2" columnClasses="picture,details" style="width:100%">
+
                 <apex:outputPanel id="imagePanel">
-                    <input type="file" id="file" accept="image/jpeg, image/png" style="display:none;"/>
-                    <apex:image value="{!URLFOR($Action.Attachment.Download, idOfAttachment)}" width="150"
-                                height="150" id="final" rendered="{!!isDefaultPhotoDisplayed}"/>
-                    <apex:image url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" width="150" height="150"
-                                id="default"
-                                rendered="{!isDefaultPhotoDisplayed}"/>
-                    <apex:inputHidden id="valueOfImage" value="{!imageBody}"/>
-                    <apex:image id="result" width="150" height="150" style="display: none;"/>
-                    <div align="center" id="buttons">
-                        <apex:commandButton id="save" action="{!save}" value="{!$Label.Button_Save}"
-                                            style="display:none;"/>
-                        <apex:commandButton id="update" value="{!$Label.Upload_Picture}"/>
-                        <apex:actionFunction name="deleteImage" action="{!deleteImage}"
-                                             reRender="mechanicForm,imagePanel"/>
-                        <apex:commandButton id="delete" value="{!$Label.Button_Delete}"
-                                            rendered="{!!isDefaultPhotoDisplayed}" reRender="mechanicForm,imagePanel"/>
-                        <apex:commandButton id="cancel" value="{!$Label.Button_Cancel}" style="display:none;"/>
-                    </div>
-                    <div id="popUpWindow" title="{!$Label.Delete_Confirm_Popup}"></div>
+                    <actionRegion id="pictureRegion">
+                        <input type="file" id="file" accept="image/jpeg, image/png" style="display:none;"/>
+                        <apex:image url="/servlet/servlet.FileDownload?file={!idOfAttachment}" width="150"
+                                    height="150" id="final" rendered="{!!isDefaultPhotoDisplayed}"/>
+                        <apex:image url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" width="150" height="150"
+                                    id="default"
+                                    rendered="{!isDefaultPhotoDisplayed}"/>
+                        <apex:inputHidden id="valueOfImage" value="{!imageBody}"/>
+                        <apex:image id="result" width="150" height="150" style="display: none;"/>
+                        <div align="center" id="buttons">
+                            <apex:commandButton id="save" action="{!save}" value="{!$Label.Button_Save}"
+                                                style="display:none;"/>
+                            <apex:commandButton id="update" value="{!$Label.Upload_Picture}" reRender="pictureRegion"/>
+                            <apex:actionFunction name="deleteImage" action="{!deleteImage}"
+                                                 reRender="pictureRegion"/>
+                            <apex:commandButton id="delete" value="{!$Label.Button_Delete}"
+                                                rendered="{!!isDefaultPhotoDisplayed}" reRender="pictureRegion"/>
+                            <apex:commandButton id="cancel" value="{!$Label.Button_Cancel}" style="display:none;"/>
+                        </div>
+                        <div id="popUpWindow" title="{!$Label.Delete_Confirm_Popup}"></div>
+                    </actionRegion>
                 </apex:outputPanel>
+
                 <apex:outputPanel id="detailsPanel">
                     <apex:pageBlockSection id="detailSection" title="{!$Label.Section_Details}">
                         <apex:outputField value="{!Mechanic__c.First_Name__c}"/>
@@ -88,7 +92,7 @@
             </apex:pageBlock>
             <apex:pageBlock id="AgreementsBlock" title="{!$Label.Section_Agreements}">
                 <apex:pageBlockTable id="agreementsTable" value="{!agreementsForMechanicPageFormController}"
-                                     var="contract">
+                                     var="contract" rendered="{!(agreementsForMechanicPageFormController.size>0)}">
                     <apex:column headerValue="{!$Label.Actions_Label}">
                         <apex:commandLink action="{!dismiss}"
                                           reRender="mechanicForm,messages,relatedLists,AgreementsBlock"
@@ -97,7 +101,10 @@
                                         assignTo="{!editedContractInUse.Id}"></apex:param>
                         </apex:commandLink>
                     </apex:column>
-                    <apex:column value="{!contract.Name}"/>
+                    <apex:column headerValue="{!$ObjectType.Contract__c.fields.Name.Label}">
+                        <apex:outputLink value="{! URLFOR($Action.Contract__c.View, contract)}"> {!contract.Name}
+                        </apex:outputLink>
+                    </apex:column>
                     <apex:column value="{!contract.Workshop__c}"/>
                     <apex:column value="{!contract.Start_Date__c}"/>
                     <apex:column value="{!contract.End_Date__c}"/>
@@ -275,7 +282,7 @@
 
         $j("#file").change(function (e) {
             var img = e.target.files[0];
-            if (!img.type.match('image.*')) {
+            if ((!img.type.match('image.png')) && (!img.type.match('image.jpeg'))) {
                 alert("{!$Label.Error_Wrong_Type}");
                 return;
             }
@@ -297,7 +304,7 @@
 
         $j("[id$='result']").click(function (e) {
             var img = e.target.files[0];
-            if (!img.type.match('image.*')) {
+            if ((!img.type.match('image.png')) && (!img.type.match('image.jpeg'))) {
                 alert("{!$Label.Error_Wrong_Type}");
                 return;
             }

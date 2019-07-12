@@ -159,7 +159,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Error To Big File</shortDescription>
-        <value>The file is to big.</value>
+        <value>The file is to big. Max size 1Mb.</value>
     </labels>
     <labels>
         <fullName>Error_Wrong_Type</fullName>
@@ -195,6 +195,20 @@
         <protected>true</protected>
         <shortDescription>Export to CSV</shortDescription>
         <value>Export to .csv</value>
+    </labels>
+    <labels>
+        <fullName>Import_File</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Import File</shortDescription>
+        <value>Choose .csv file.</value>
+    </labels>
+    <labels>
+        <fullName>Import_Mechanic_Table</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Import Mechanic Table</shortDescription>
+        <value>Mechanics to import:</value>
     </labels>
     <labels>
         <fullName>Mechanic_Hire_Label</fullName>
@@ -288,18 +302,46 @@
         <value>▲</value>
     </labels>
     <labels>
+        <fullName>Table_All_Records</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Table All Records</shortDescription>
+        <value>All</value>
+    </labels>
+    <labels>
+        <fullName>Table_Page_Of</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Table Page Of</shortDescription>
+        <value>Page: {0} of {1}</value>
+    </labels>
+    <labels>
         <fullName>Table_Pagination_Next</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Table Pagination Next</shortDescription>
-        <value>Next ▸▸</value>
+        <value>Next »</value>
     </labels>
     <labels>
         <fullName>Table_Pagination_Previous</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Table Pagination Previous</shortDescription>
-        <value>◂◂Previous</value>
+        <value>« Previous</value>
+    </labels>
+    <labels>
+        <fullName>Table_Records_Per_Page</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Table Records Per Page</shortDescription>
+        <value>Records per page:</value>
+    </labels>
+    <labels>
+        <fullName>To_Import</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>To Import</shortDescription>
+        <value>To Import</value>
     </labels>
     <labels>
         <fullName>Upload_Picture</fullName>

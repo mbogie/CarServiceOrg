@@ -58,7 +58,9 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
-        <type>Default</type>
+        <content>CsWorkshopEdit</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>Edit</actionName>
@@ -128,7 +130,9 @@
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
-        <type>Default</type>
+        <content>CsWorkshopDetail</content>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Visualforce</type>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>

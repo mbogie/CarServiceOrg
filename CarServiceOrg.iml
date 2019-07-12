@@ -56,15 +56,15 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsSoqlQueryBuilder" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsWorkshopDetailController" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="testClass" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="CsSoqlQueryBuilder" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -128,6 +128,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="testPage" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsImportMechanics" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -473,7 +477,13 @@
                             <option name="name" value="Mechanic__c.License_Number__c" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Mechanic__c.Next_Birthday__c" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Mechanic__c.Phone__c" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Mechanic__c.Reset_Birthday_Email_System__c" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Mechanic__c.Skill__c" />
@@ -604,6 +614,14 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Delete_Confirm_Popup" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Delete_Message" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Delete_Picture" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -613,6 +631,14 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Edit_Picture" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Error_To_Big_File" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Error_Wrong_Type" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -681,6 +707,26 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Sign_Up" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Table_All_Records" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Table_Page_Of" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Table_Pagination_Next" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Table_Pagination_Previous" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Table_Records_Per_Page" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -2591,19 +2637,19 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="jQuery" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="jQueryUI" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
                             <option name="name" value="iEditCSS" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="iEditJS" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="jQuery" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="jQueryUI" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -2731,6 +2777,9 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
+                            <option name="name" value="Mechanic__c.Birthday_Email" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Mechanic__c.Birthday_Reminder" />
                           </MetadataEntry>
                         </list>
@@ -2739,6 +2788,19 @@
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
+                      <option name="entries">
+                        <list>
+                          <MetadataEntry>
+                            <option name="name" value="Mechanic__c.Check_Reset_Birthday_Email_System_Box" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Mechanic__c.Reset_Birthday_Email_System" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Mechanic__c.Reset_Next_Birthday" />
+                          </MetadataEntry>
+                        </list>
+                      </option>
                       <option name="name" value="WorkflowFieldUpdate" />
                       <option name="wildcard" value="false" />
                     </MetadataType>
@@ -2754,7 +2816,13 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
-                            <option name="name" value="Mechanic__c.Birthday Reminder" />
+                            <option name="name" value="Mechanic__c.Birthday Change" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Mechanic__c.Reset Birthday Email" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Mechanic__c.Send Birthday Email" />
                           </MetadataEntry>
                         </list>
                       </option>

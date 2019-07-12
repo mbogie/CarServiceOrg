@@ -63,8 +63,7 @@
                 <table style="width: 100%">
                     <tr>
                         <td>
-                            Page:
-                            <apex:outputText value=" {!pageNumber} of {! CEILING(mechanicsSearchResultList.size / recordsOnPage) }"/>
+                             <apex:outputText value="{!pageOf}"/>
                         </td>
                         <td align="center">
                             <apex:commandLink action="{! previous }" value="{!$Label.Table_Pagination_Previous}"
@@ -78,14 +77,14 @@
                                              rendered="{!NOT(isMechanicResultListHasNext)}"/>
                         </td>
                         <td align="right">
-                            Records per page:
+                            {!$Label.Table_Records_Per_Page}
                             <apex:selectList value="{! recordsOnPage }" size="1">
                                 <apex:selectOption itemValue="2" itemLabel="2"/>
                                 <apex:selectOption itemValue="4" itemLabel="4"/>
                                 <apex:selectOption itemValue="6" itemLabel="6"/>
                                 <apex:selectOption itemValue="8" itemLabel="8"/>
                                 <apex:selectOption itemValue="10" itemLabel="10"/>
-                                <apex:selectOption itemValue="{!mechanicsSearchResultList.size}" itemLabel="All"/>
+                                <apex:selectOption itemValue="{!mechanicsSearchResultList.size}" itemLabel="{!$Label.Table_All_Records}"/>
                                 <apex:actionSupport event="onchange" action="{!setRecordOnPage}"
                                                     reRender="resultsList"/>
                             </apex:selectList>
