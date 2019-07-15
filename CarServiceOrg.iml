@@ -28,11 +28,19 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
-                            <option name="name" value="BH_SoqlQueryBuilder" />
+                            <option name="name" value="ChangePasswordController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="ChangePasswordControllerTest" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsImageCropper" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsImportMechanicWrapper" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -48,11 +56,19 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsMechanicImportController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsMechanicJsonWrapper" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsMechanicSearchController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsPublicSite" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -64,6 +80,38 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="ForgotPasswordController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="ForgotPasswordControllerTest" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="MyProfilePageController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="MyProfilePageControllerTest" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteLoginController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteLoginControllerTest" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteRegisterController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteRegisterControllerTest" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="testClass" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -72,12 +120,40 @@
                       <option name="name" value="ApexClass" />
                     </MetadataType>
                     <MetadataType>
+                      <option name="entries">
+                        <list>
+                          <MetadataEntry>
+                            <option name="name" value="SiteFooter" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteHeader" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteLogin" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SitePoweredBy" />
+                          </MetadataEntry>
+                        </list>
+                      </option>
                       <option name="name" value="ApexComponent" />
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
                       <option name="entries">
                         <list>
+                          <MetadataEntry>
+                            <option name="name" value="AnswersHome" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="BandwidthExceeded" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="ChangePassword" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsCopyMechanicListToJson" />
                             <option name="selected" value="true" />
@@ -95,6 +171,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsImportMechanics" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsMechanicDetail" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -103,11 +183,19 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsMechanicImport" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsMechanicSearch" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsPrepareRecordToSaveToPdf" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsPublicSite" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -123,15 +211,59 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="iEdit" />
+                            <option name="name" value="Exception" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="testPage" />
+                            <option name="name" value="FileNotFound" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsImportMechanics" />
+                            <option name="name" value="ForgotPassword" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="ForgotPasswordConfirm" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="IdeasHome" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="InMaintenance" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="MyProfilePage" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteLogin" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteRegister" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteRegisterConfirm" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteTemplate" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="StdExceptionTemplate" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Unauthorized" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="UnderConstruction" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -375,13 +507,13 @@
                             <option name="name" value="Account.NumberofLocations__c" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Account.SLA__c" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Account.SLAExpirationDate__c" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Account.SLASerialNumber__c" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="Account.SLA__c" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Account.UpsellOpportunity__c" />
@@ -426,10 +558,10 @@
                             <option name="name" value="Contract__c.Mechanic__c" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="Contract__c.Start_Date_Plus_One_Year__c" />
+                            <option name="name" value="Contract__c.Start_Date__c" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="Contract__c.Start_Date__c" />
+                            <option name="name" value="Contract__c.Start_Date_Plus_One_Year__c" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Contract__c.Workshop__c" />
@@ -481,9 +613,6 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Mechanic__c.Phone__c" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="Mechanic__c.Reset_Birthday_Email_System__c" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Mechanic__c.Skill__c" />
@@ -558,6 +687,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Bad_File_Extenion" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Button_Cancel" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -570,11 +703,27 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Button_Deselect_All" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Button_Edit" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Button_Hire" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Button_Import" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Button_Process" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Button_Reverse_Selection" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -591,6 +740,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Button_Search" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Button_Select_All" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -642,6 +795,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Export_to_CSV" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Export_To_Json" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -654,7 +811,15 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="Export_to_CSV" />
+                            <option name="name" value="Import_File" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Import_Mechanic_Table" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Import_Status_Success" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -727,6 +892,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Table_Records_Per_Page" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="To_Import" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -826,11 +995,11 @@
                             <option name="name" value="Contract" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="ContractContactRole" />
-                          </MetadataEntry>
-                          <MetadataEntry>
                             <option name="name" value="Contract__c" />
                             <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="ContractContactRole" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="DandBCompany" />
@@ -1020,6 +1189,13 @@
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
+                      <option name="entries">
+                        <list>
+                          <MetadataEntry>
+                            <option name="name" value="Random_Mechanics" />
+                          </MetadataEntry>
+                        </list>
+                      </option>
                       <option name="name" value="CustomSite" />
                       <option name="wildcard" value="false" />
                     </MetadataType>
@@ -1035,11 +1211,11 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="Search_Mechanic" />
+                            <option name="name" value="Mechanics_Import" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="Workshop__c" />
+                            <option name="name" value="Search_Mechanic" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -1106,6 +1282,9 @@
                             <option name="name" value="standard-Forecasting3" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="standard-home" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="standard-Idea" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -1148,6 +1327,9 @@
                             <option name="name" value="standard-Recommendation" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="standard-report" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="standard-Sites" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -1169,10 +1351,8 @@
                             <option name="name" value="standard-Workspace" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="standard-home" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="standard-report" />
+                            <option name="name" value="Workshop__c" />
+                            <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
                       </option>
@@ -1239,18 +1419,6 @@
                             <option name="parentFolder" value="unfiled$public" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="unfiled$public/SUPPORTSelfServiceNewCommentNotificationSAMPLE" />
-                            <option name="parentFolder" value="unfiled$public" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="unfiled$public/SUPPORTSelfServiceNewUserLoginInformationSAMPLE" />
-                            <option name="parentFolder" value="unfiled$public" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="unfiled$public/SUPPORTSelfServiceResetPasswordSAMPLE" />
-                            <option name="parentFolder" value="unfiled$public" />
-                          </MetadataEntry>
-                          <MetadataEntry>
                             <option name="name" value="unfiled$public/SalesNewCustomerEmail" />
                             <option name="parentFolder" value="unfiled$public" />
                           </MetadataEntry>
@@ -1279,11 +1447,23 @@
                             <option name="parentFolder" value="unfiled$public" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="unfiled$public/SUPPORTSelfServiceNewCommentNotificationSAMPLE" />
+                            <option name="parentFolder" value="unfiled$public" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="unfiled$public/SupportSelfServiceNewLoginandPassword" />
                             <option name="parentFolder" value="unfiled$public" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="unfiled$public/SUPPORTSelfServiceNewUserLoginInformationSAMPLE" />
+                            <option name="parentFolder" value="unfiled$public" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="unfiled$public/SupportSelfServiceResetPassword" />
+                            <option name="parentFolder" value="unfiled$public" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="unfiled$public/SUPPORTSelfServiceResetPasswordSAMPLE" />
                             <option name="parentFolder" value="unfiled$public" />
                           </MetadataEntry>
                         </list>
@@ -1990,6 +2170,9 @@
                             <option name="name" value="Gold Partner User" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Guest" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="High Volume Customer Portal User" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -2012,6 +2195,9 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="PlatformPortal" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Random Mechanics Profile" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="ReadOnly" />
@@ -2037,10 +2223,24 @@
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
+                      <option name="entries">
+                        <list>
+                          <MetadataEntry>
+                            <option name="name" value="Random_Mechanics_Profile_profilePasswordPolicy1563057247048" />
+                          </MetadataEntry>
+                        </list>
+                      </option>
                       <option name="name" value="ProfilePasswordPolicy" />
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
+                      <option name="entries">
+                        <list>
+                          <MetadataEntry>
+                            <option name="name" value="Random_Mechanics_Profile_profileSessionSetting1563057247115" />
+                          </MetadataEntry>
+                        </list>
+                      </option>
                       <option name="name" value="ProfileSessionSetting" />
                       <option name="wildcard" value="false" />
                     </MetadataType>
@@ -2205,10 +2405,10 @@
                             <option name="name" value="CFO" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="COO" />
+                            <option name="name" value="ChannelSalesTeam" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="ChannelSalesTeam" />
+                            <option name="name" value="COO" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CustomerSupportInternational" />
@@ -2629,11 +2829,11 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
-                            <option name="name" value="DefaultPicture" />
+                            <option name="name" value="Default_Picture" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="Default_Picture" />
+                            <option name="name" value="DefaultPicture" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -2650,6 +2850,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="jQueryUI" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteSamples" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -2777,10 +2981,7 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
-                            <option name="name" value="Mechanic__c.Birthday_Email" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="Mechanic__c.Birthday_Reminder" />
+                            <option name="name" value="Mechanic__c.Birthday_Reminder_Email" />
                           </MetadataEntry>
                         </list>
                       </option>
@@ -2791,13 +2992,7 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
-                            <option name="name" value="Mechanic__c.Check_Reset_Birthday_Email_System_Box" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="Mechanic__c.Reset_Birthday_Email_System" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="Mechanic__c.Reset_Next_Birthday" />
+                            <option name="name" value="Mechanic__c.Next_Birthday_Evaluate" />
                           </MetadataEntry>
                         </list>
                       </option>
@@ -2819,10 +3014,7 @@
                             <option name="name" value="Mechanic__c.Birthday Change" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="Mechanic__c.Reset Birthday Email" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="Mechanic__c.Send Birthday Email" />
+                            <option name="name" value="Mechanic__c.Send Birthday Reminder" />
                           </MetadataEntry>
                         </list>
                       </option>

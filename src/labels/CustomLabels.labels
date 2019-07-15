@@ -22,6 +22,13 @@
         <value>Agreement</value>
     </labels>
     <labels>
+        <fullName>Bad_File_Extension</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Bad File Extension</shortDescription>
+        <value>Bad file extension. Only {0}.</value>
+    </labels>
+    <labels>
         <fullName>Button_Cancel</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -43,6 +50,13 @@
         <value>Delete</value>
     </labels>
     <labels>
+        <fullName>Button_Deselect_All</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Deselect All</shortDescription>
+        <value>Deselect All</value>
+    </labels>
+    <labels>
         <fullName>Button_Edit</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -55,6 +69,27 @@
         <protected>true</protected>
         <shortDescription>Button Hire</shortDescription>
         <value>Hire</value>
+    </labels>
+    <labels>
+        <fullName>Button_Import</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Import</shortDescription>
+        <value>Import</value>
+    </labels>
+    <labels>
+        <fullName>Button_Process</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Process</shortDescription>
+        <value>Process</value>
+    </labels>
+    <labels>
+        <fullName>Button_Reverse_Selection</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Reverse Selection</shortDescription>
+        <value>Reverse Selection</value>
     </labels>
     <labels>
         <fullName>Button_Save</fullName>
@@ -83,6 +118,13 @@
         <protected>true</protected>
         <shortDescription>Button Search</shortDescription>
         <value>Search</value>
+    </labels>
+    <labels>
+        <fullName>Button_Select_All</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Select All</shortDescription>
+        <value>Select All</value>
     </labels>
     <labels>
         <fullName>Button_View</fullName>
@@ -201,7 +243,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Import File</shortDescription>
-        <value>Choose .csv file.</value>
+        <value>Choose .csv file:</value>
     </labels>
     <labels>
         <fullName>Import_Mechanic_Table</fullName>
@@ -209,6 +251,34 @@
         <protected>true</protected>
         <shortDescription>Import Mechanic Table</shortDescription>
         <value>Mechanics to import:</value>
+    </labels>
+    <labels>
+        <fullName>Import_Status_Error</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Import Status Failed</shortDescription>
+        <value>Failed</value>
+    </labels>
+    <labels>
+        <fullName>Import_Status_Success</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Import Status Success</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>Info</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Info</shortDescription>
+        <value>Info</value>
+    </labels>
+    <labels>
+        <fullName>Input_No_File</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Input No File</shortDescription>
+        <value>No file. Choose one.</value>
     </labels>
     <labels>
         <fullName>Mechanic_Hire_Label</fullName>

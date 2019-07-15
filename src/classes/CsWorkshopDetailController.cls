@@ -1,4 +1,5 @@
 public with sharing class CsWorkshopDetailController {
+
     public Workshop__c workshopFormPageController { get; set; }
     public CsLocationCallouts locationController;
     public double lat { get; set; }

@@ -7,11 +7,10 @@
             background-color: grey;
         }
     </style>
-
+ 
     <apex:form id="workshopForm">
         <apex:pageMessages id="messages"/>
         <apex:pageBlock id="workshopBlock" title="{!Workshop__c.Name}">
-            <apex:pageMessages/>
             <apex:pageBlockSection id="detailSection" title="{!$Label.Section_Details}">
                 <apex:outputField value="{!Workshop__c.Name}"/>
                 <apex:outputField value="{!Workshop__c.Phone__c}"/>

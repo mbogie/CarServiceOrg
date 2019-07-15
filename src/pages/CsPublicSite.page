@@ -1,0 +1,9 @@
+<apex:page id="CsPublicSite" controller="CsPublicSite">
+    <apex:pageBlock id="randomMechanic">
+        <apex:pageBlockTable id="mechanicTable" value="{!RandomMechanicList}" var="mechanic">
+            <apex:column value="{!mechanic.First_Name__c}"/>
+            <apex:column value="{!mechanic.Name}"/>
+            <apex:column value="{!mechanic.Email__c}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

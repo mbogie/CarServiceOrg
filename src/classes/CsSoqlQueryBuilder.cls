@@ -9,6 +9,7 @@ public class CsSoqlQueryBuilder {
     private String queryString = '';
     private String sortOrder = 'ASC';
     private Integer sortLimit = 1000;
+    private Integer offsetNumber = 0;
 
     public CsSoqlQueryBuilder() {
         this.resultFieldsNames = new List<String>();
@@ -28,6 +29,7 @@ public class CsSoqlQueryBuilder {
         this.queryString = '';
         this.sortOrder = 'ASC';
         this.sortLimit = 1000;
+        this.offsetNumber = 0;
     }
 
     public String getQueryString() {
@@ -56,6 +58,11 @@ public class CsSoqlQueryBuilder {
 
     public CsSoqlQueryBuilder addSortLimit(Integer sortLimit) {
         this.sortLimit = sortLimit;
+        return this;
+    }
+
+    public CsSoqlQueryBuilder addOffset(Integer offsetNumber) {
+        this.offsetNumber = offsetNumber;
         return this;
     }
 
@@ -152,6 +159,6 @@ public class CsSoqlQueryBuilder {
         for (String fieldName : sortFieldsNames) {
             sortText += fieldName + ' ' + sortOrder + ', ';
         }
-        this.queryString += ' ORDER BY ' + sortText.removeEnd(', ') + ' LIMIT ' + this.sortLimit;
+        this.queryString += ' ORDER BY ' + sortText.removeEnd(', ') + ' LIMIT ' + this.sortLimit + ' OFFSET ' + this.offsetNumber;
     }
 }
