@@ -57,6 +57,13 @@
         <value>Deselect All</value>
     </labels>
     <labels>
+        <fullName>Button_Download_Template</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Download Template</shortDescription>
+        <value>Download Template .csv</value>
+    </labels>
+    <labels>
         <fullName>Button_Edit</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -201,7 +208,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Error To Big File</shortDescription>
-        <value>The file is to big. Max size 1Mb.</value>
+        <value>The file is to big. Max size 1MB.</value>
     </labels>
     <labels>
         <fullName>Error_Wrong_Type</fullName>

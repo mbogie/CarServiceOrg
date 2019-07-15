@@ -1,4 +1,4 @@
-public with sharing class CsPublicSite {
+public with sharing class CsPublicSiteController {
 
     public List<Mechanic__c> randomMechanicList { get; set; }
     private Integer sqlListSize;
@@ -8,13 +8,13 @@ public with sharing class CsPublicSite {
     private Integer offset;
     private String sortOrder = 'ASC';
 
-    public CsPublicSite() {
+    public CsPublicSiteController() {
         sqlListSize = [SELECT COUNT() From Mechanic__c];
         orderList = new List<String>{
                 'Name', 'First_Name__c', 'Email__c'
         };
         orderBy = orderList.get(Math.floor(Math.random() * orderList.size()).intValue());
-        offset = Math.floor(Math.random() * (sqlListSize - 5)).intValue();
+        offset = (sqlListSize <= 5) ? 0 : Math.floor(Math.random() * (sqlListSize - 5)).intValue();
         randomMechanicList = setRandomList();
     }
 

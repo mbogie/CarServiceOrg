@@ -68,10 +68,6 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsPublicSite" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
                             <option name="name" value="CsSoqlQueryBuilder" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -113,6 +109,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="testClass" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsPublicSiteController" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -264,6 +264,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="UnderConstruction" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsMechanicImportTemplate" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>

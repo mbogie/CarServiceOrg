@@ -7,7 +7,9 @@ public with sharing class CsMechanicImportController {
     public List<CsImportMechanicWrapper> wrappedMechanicList { get; set; }
     public List<CsImportMechanicWrapper> selectedMechanicsList;
     public List<Mechanic__c> mechanicsListToInsert = new List<Mechanic__c>();
-    Public Boolean isWrappedMechanicListReady { get; set; }
+    public Boolean isWrappedMechanicListReady { get; set; }
+    public String mechanicStringTemplate { get; set; }
+    private PageReference pageReference;
 
     public CsMechanicImportController(ApexPages.StandardController controller) {
         wrappedMechanicList = new List<CsImportMechanicWrapper>();
@@ -51,6 +53,21 @@ public with sharing class CsMechanicImportController {
         return null;
     }
 
+    public PageReference downloadTemplateCsv() {
+        mechanicStringTemplate = getFieldName('Mechanic__c', 'First_Name__c').escapeCsv() +
+                columnSeparator + getFieldName('Mechanic__c', 'Name').escapeCsv() +
+                columnSeparator + getFieldName('Mechanic__c', 'City__c').escapeCsv() +
+                columnSeparator + getFieldName('Mechanic__c', 'Email__c').escapeCsv() +
+                '\n';
+        pageReference = Page.CsMechanicImportTemplate;
+        pageReference.setRedirect(false);
+        return pageReference;
+    }
+
+    private String getFieldName(String obj, String field) {
+        return Schema.getGlobalDescribe().get(obj).getDescribe().fields.getMap().get(field).getDescribe().getLabel();
+    }
+
     public void insertMechanics() {
         getSelectedRecords();
         if (selectedMechanicsList.isEmpty()) return;
@@ -58,14 +75,13 @@ public with sharing class CsMechanicImportController {
         for (CsImportMechanicWrapper mechanicWrapper : selectedMechanicsList) {
             mechanicsListToInsert.add(mechanicWrapper.wrappedMechanic);
         }
-        Database.SaveResult[] saveResults = Database.insert(mechanicsListToInsert, false);
+        Database.UpsertResult[] upsertResult = Database.upsert(mechanicsListToInsert, false);
         for (Integer i = 0; i < selectedMechanicsList.size(); i++) {
-            if (saveResults.get(i).isSuccess()) {
+            if (upsertResult.get(i).isSuccess()) {
                 selectedMechanicsList.get(i).isInsertedSuccessfully = true;
             } else {
                 selectedMechanicsList.get(i).isInsertedSuccessfully = false;
-                for (Database.Error err : saveResults.get(i).getErrors()) {
-
+                for (Database.Error err : upsertResult.get(i).getErrors()) {
                     selectedMechanicsList.get(i).errorMessage = err.getMessage();
                 }
             }
@@ -117,13 +133,15 @@ public with sharing class CsMechanicImportController {
                 tempMechanic.Email__c = inputValues[3];
                 CsImportMechanicWrapper tempWrapper = new CsImportMechanicWrapper(tempMechanic);
                 tempWrapper.indexOnList = i;
-                if(!checkForDuplicate(tempWrapper)) {
+                if (!checkForDuplicate(tempWrapper)) {
                     wrappedMechanicList.add(tempWrapper);
                 }
             }
             isWrappedMechanicListReady = true;
         } catch (Exception e) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, e.getMessage()));
+            if (selectedFile == null) {
+                ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, System.Label.Input_No_File));
+            } else ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, e.getMessage()));
         }
         return null;
     }

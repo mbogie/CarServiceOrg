@@ -1,9 +1,35 @@
-<apex:page id="CsPublicSite" controller="CsPublicSite">
-    <apex:pageBlock id="randomMechanic">
-        <apex:pageBlockTable id="mechanicTable" value="{!RandomMechanicList}" var="mechanic">
-            <apex:column value="{!mechanic.First_Name__c}"/>
-            <apex:column value="{!mechanic.Name}"/>
-            <apex:column value="{!mechanic.Email__c}"/>
-        </apex:pageBlockTable>
-    </apex:pageBlock>
+<apex:page id="CsPublicSite" controller="CsPublicSiteController">
+
+    <style>
+        #mechanicTable {
+            width: 100%;
+            border: 1px solid black;
+            text-align: center;
+            font-size: large;
+        }
+
+        #mechanicTable th {
+            text-align: center;
+            background-color: #aaaaaa;
+            border: 1px solid brown;
+        }
+
+        #mechanicTable td {
+            border: 1px solid black;
+        }
+    </style>
+    <table id="mechanicTable">
+        <tr>
+            <th>{!$ObjectType.Mechanic__c.fields.First_Name__c.Label}</th>
+            <th>{!$ObjectType.Mechanic__c.fields.Name.Label}</th>
+            <th>{!$ObjectType.Mechanic__c.fields.Email__c.Label}</th>
+        </tr>
+        <apex:repeat value="{!randomMechanicList}" var="mechanic">
+            <tr>
+                <td>{! mechanic.First_Name__c }</td>
+                <td>{! mechanic.Name }</td>
+                <td>{! mechanic.Email__c }</td>
+            </tr>
+        </apex:repeat>
+    </table>
 </apex:page>
