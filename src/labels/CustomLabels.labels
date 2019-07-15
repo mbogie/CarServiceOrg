@@ -92,6 +92,13 @@
         <value>Process</value>
     </labels>
     <labels>
+        <fullName>Button_Remove</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Remove</shortDescription>
+        <value>Remove</value>
+    </labels>
+    <labels>
         <fullName>Button_Reverse_Selection</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -132,6 +139,13 @@
         <protected>true</protected>
         <shortDescription>Button Select All</shortDescription>
         <value>Select All</value>
+    </labels>
+    <labels>
+        <fullName>Button_Template</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Template</shortDescription>
+        <value>Template</value>
     </labels>
     <labels>
         <fullName>Button_View</fullName>
@@ -204,6 +218,13 @@
         <value>Edit</value>
     </labels>
     <labels>
+        <fullName>Employees_To_Hire</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Employees To Hire</shortDescription>
+        <value>Employees To Hire</value>
+    </labels>
+    <labels>
         <fullName>Error_To_Big_File</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -244,6 +265,13 @@
         <protected>true</protected>
         <shortDescription>Export to CSV</shortDescription>
         <value>Export to .csv</value>
+    </labels>
+    <labels>
+        <fullName>Hire_Workshop_Popup_Label</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Hire Workshop Popup Label</shortDescription>
+        <value>Hire Employees To {0}</value>
     </labels>
     <labels>
         <fullName>Import_File</fullName>
@@ -321,6 +349,13 @@
         <protected>true</protected>
         <shortDescription>Required Input Field Error</shortDescription>
         <value>{0} is required.</value>
+    </labels>
+    <labels>
+        <fullName>Search_For</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Search For</shortDescription>
+        <value>Search For:</value>
     </labels>
     <labels>
         <fullName>Search_Results_Label</fullName>

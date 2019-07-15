@@ -6,7 +6,18 @@ public with sharing class CsWorkshopDetailController {
     public double lon { get; set; }
     public List<Contract__c> agreementsForWorkshopPageFormController { get; set; }
     private CsSoqlQueryBuilder queryBuilder;
+    public Mechanic__c mechanicSearchPageController { get; set; }
+    public List<Mechanic__c> mechanicSearchResultList { get; set; }
+    public Boolean isMechanicListSectionReady { get; set; }
+    public Mechanic__c mechanicChoosen { get; set; }
+    public Mechanic__c mechanicToDelete { get; set; }
     public Contract__c editedContractInUse { get; set; }
+    public Boolean isContractSectionReady { get; set; }
+    public List<CsContractInsertWrapper> wrappedContractToInsertList { get; set; }
+    public List<Contract__c> contractToInsertList { get; set; }
+    public CsImportMechanicWrapper wrappedMechanic { get; set; }
+    public List<CsImportMechanicWrapper> wrappedMechanicsList { get; set; }
+
 
     public CsWorkshopDetailController(ApexPages.StandardController controller) {
         this.workshopFormPageController = (Workshop__c) controller.getRecord();
@@ -18,6 +29,15 @@ public with sharing class CsWorkshopDetailController {
         this.agreementsForWorkshopPageFormController = new List<Contract__c>();
         this.editedContractInUse = new Contract__c();
         refreshAgreementsList();
+        this.mechanicSearchPageController = new Mechanic__c();
+        this.isMechanicListSectionReady = false;
+        this.isContractSectionReady = false;
+        this.mechanicSearchResultList = new List<Mechanic__c>();
+        this.wrappedMechanicsList = new List<CsImportMechanicWrapper>();
+        this.mechanicChoosen = new Mechanic__c();
+        this.mechanicToDelete = new Mechanic__c();
+        this.contractToInsertList = new List<Contract__c>();
+        this.wrappedContractToInsertList = new List<CsContractInsertWrapper>();
     }
 
     public void refreshAgreementsList() {
@@ -57,5 +77,82 @@ public with sharing class CsWorkshopDetailController {
                 System.debug(error.getMessage());
             }
         }
+    }
+
+    public String getHirePopupLabel() {
+        return String.format(System.Label.Hire_Workshop_Popup_Label, new List<String>{
+                workshopFormPageController.Name
+        });
+    }
+
+    public void search() {
+        queryBuilder = new CsSoqlQueryBuilder();
+        wrappedMechanicsList = new List<CsImportMechanicWrapper>();
+        mechanicSearchResultList = new List<Mechanic__c>();
+        queryBuilder.addResultField('Full_Name__c').
+                addResultField('Email__c').
+                addResultField('Country__c').
+                addTableName('Mechanic__c').
+                addSearchFieldStartsWithValue('Name', mechanicSearchPageController.Name).
+                addSearchFieldStartsWithValue('First_Name__c', mechanicSearchPageController.First_Name__c).
+                addSearchFieldStartsWithValue('Country__c', mechanicSearchPageController.Country__c).
+                addSearchFieldStartsWithValue('Email__c', mechanicSearchPageController.Email__c).
+                build();
+        mechanicSearchResultList = Database.query(queryBuilder.getQueryString());
+        if (mechanicSearchResultList.size() > 0) {
+            isMechanicListSectionReady = true;
+        }
+        for (Mechanic__c mechanic : mechanicSearchResultList) {
+            wrappedMechanicsList.add(new CsImportMechanicWrapper(mechanic, false));
+        }
+    }
+
+    public void clear() {
+        queryBuilder.clear();
+        mechanicSearchResultList.clear();
+        isMechanicListSectionReady = false;
+        mechanicSearchPageController = new Mechanic__c();
+    }
+
+    public void selectMechanic() {
+        isContractSectionReady = true;
+        for (CsImportMechanicWrapper wrappedMechanic : wrappedMechanicsList) {
+            if (wrappedMechanic.wrappedMechanic.Id == mechanicChoosen.Id) {
+                wrappedMechanic.isSelectedFromList = true;
+                mechanicChoosen = wrappedMechanic.wrappedMechanic.clone(true);
+                editedContractInUse = new Contract__c();
+                editedContractInUse.Mechanic__r = mechanicChoosen;
+                editedContractInUse.Workshop__c = workshopFormPageController.Id;
+                contractToInsertList.add(editedContractInUse);
+            //    wrappedContractToInsertList.add(new CsContractInsertWrapper(editedContractInUse));
+                break;
+            }
+        }
+        mechanicChoosen = new Mechanic__c();
+    }
+
+    public void remove() {
+        for (CsImportMechanicWrapper wrappedMechanic : wrappedMechanicsList) {
+            if (wrappedMechanic.wrappedMechanic.Id == mechanicToDelete.Id) {
+                wrappedMechanic.isSelectedFromList = false;
+            }
+        }
+        Integer indexToDelete;
+        for(Integer i = 0; i<contractToInsertList.size();i++){
+            if(contractToInsertList.get(i).Mechanic__r.Id == mechanicToDelete.Id){
+                indexToDelete = i;
+            }
+        }
+        contractToInsertList.remove(indexToDelete);
+        if(contractToInsertList.size()==0) isContractSectionReady = false;
+        mechanicToDelete = new Mechanic__c();
+    }
+
+    public void edit(){
+
+    }
+
+    public void template(){
+
     }
 }

@@ -1,5 +1,10 @@
 <apex:page standardController="Workshop__c" extensions="CsWorkshopDetailController" tabStyle="Workshop__c">
 
+    <apex:includeScript value="{!$Resource.jQuery}"/>
+    <apex:includeScript value="{!$Resource.jQueryUI}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'/jquery-ui-1.12.1.custom/jquery-ui.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'/jquery-ui-1.12.1.custom/jquery-ui.css')}"/>
+
     <style>
         #map {
             width: 100%;
@@ -7,7 +12,7 @@
             background-color: grey;
         }
     </style>
- 
+
     <apex:form id="workshopForm">
         <apex:pageMessages id="messages"/>
         <apex:pageBlock id="workshopBlock" title="{!Workshop__c.Name}">
@@ -30,6 +35,7 @@
             </apex:pageBlockSection>
             <div id="buttonSection" align="center" draggable="false">
                 <apex:commandButton value="{!$Label.Button_Edit}" action="{!edit}"/>
+                <apex:commandButton value="{!$Label.Button_Hire}" onClick="openHirePopup()" onComplete="refresh"/>
                 <apex:commandButton value="{!$Label.Button_Delete}"
                                     onclick="if(!confirm('{!$Label.Delete_Confirm_Message}')) return false;"
                                     action="{!delete}"/>
@@ -69,7 +75,126 @@
             </apex:pageBlockTable>
         </apex:pageBlock>
     </apex:form>
+
+    <div id="agreement" title="{!HirePopupLabel}">
+        <div id="myMessagess">
+            <apex:outputPanel id="messages">
+                <apex:pageMessages id="messageTxt" showDetail="false"/>
+                <script>
+                    let messageID = '{!$Component.messageTxt}';
+                </script>
+            </apex:outputPanel>
+        </div>
+        <apex:form id="hireForm">
+            <apex:outputPanel id="allHirePopup">
+                <apex:actionRegion id="mechanicSearchRegion">
+                    <apex:pageBlock id="searchBlock" Title="{!$Label.Search_For}">
+                        <apex:pageBlockSection id="searchFields">
+                            <apex:inputField value="{!mechanicSearchPageController.First_Name__c}"/>
+                            <apex:inputText value="{!mechanicSearchPageController.Email__c}"/>
+                            <apex:inputField value="{!mechanicSearchPageController.Name}" required="true"/>
+                            <apex:inputField value="{!mechanicSearchPageController.Country__c}"/>
+                        </apex:pageBlockSection>
+                        <div id="buttonsSection" align="center" draggable="false">
+                                <apex:commandButton value="{!$Label.Button_Search}" action="{!search}"
+                                                    reRender="messages,hireForm"/>
+                                <apex:commandButton value="{!$Label.Button_Clear}" action="{!clear}" immediate="true"
+                                                    reRender="messages,hireForm"
+                                                    onClick="this.form.reset();"/>
+                        </div>
+                    </apex:pageBlock>
+                </apex:actionRegion>
+
+
+                <apex:actionRegion id="mechanicResultListRegion" rendered="{!isMechanicListSectionReady}">
+                    <apex:pageBlock id="mechanicList">
+                        <apex:pageBlockTable id="mechanicTableBlock" value="{!wrappedMechanicsList}"
+                                             var="mechanic">
+                            <apex:column headerValue="{!$Label.Actions_Label}">
+                                <apex:commandLink action="{!selectMechanic}" immediate="true"
+                                                  reRender="hireForm,messages">{!IF(mechanic.isSelectedFromList, '', $Label.Select )}
+                                    <apex:param name="selectedMechanic" value="{!mechanic.wrappedMechanic.Id}"
+                                                assignTo="{!mechanicChoosen.Id}"></apex:param>
+                                </apex:commandLink>
+                            </apex:column>
+                            <apex:column value="{!mechanic.wrappedMechanic.Full_Name__c}" headerValue="{!$ObjectType.Mechanic__c.fields.Full_Name__c.Label}"/>
+                            <apex:column value="{!mechanic.wrappedMechanic.Email__c}" headerValue="{!$ObjectType.Mechanic__c.fields.Email__c.Label}"/>
+                            <apex:column value="{!mechanic.wrappedMechanic.Country__c}" headerValue="{!$ObjectType.Mechanic__c.fields.Country__c.Label}"/>
+                        </apex:pageBlockTable>
+                    </apex:pageBlock>
+                </apex:actionRegion>
+
+
+                <apex:actionRegion id="contractRegion" rendered="{!isContractSectionReady}">
+                    <apex:pageBlock id="contractList">
+                        <apex:pageBlockTable id="contracTableBlock" value="{!contractToInsertList}"
+                                             var="contract">
+                            <apex:column headerValue="{!$Label.Actions_Label}">
+                                <apex:commandButton action="{!edit}" immediate="true"
+                                                    reRender="hireForm,messages" value="{!$Label.Button_Edit}">
+                                    <apex:param name="selectedMechanicToEdit" value="{!contract.Mechanic__r.Id}"
+                                                assignTo="{!mechanicToDelete.Id}"></apex:param>
+                                </apex:commandButton>
+                                <apex:commandButton action="{!template}" immediate="true"
+                                                    reRender="hireForm,messages" value="{!$Label.Button_Template}">
+                                    <apex:param name="selectedtemplate" value="{!contract.Mechanic__r.Id}"
+                                                assignTo="{!mechanicToDelete.Id}"></apex:param>
+                                </apex:commandButton>
+                                <apex:commandButton action="{!remove}" immediate="true"
+                                                  reRender="hireForm,messages" value="{!$Label.Button_Remove}">
+                                    <apex:param name="selectedMechanicToRemove" value="{!contract.Mechanic__r.Id}"
+                                                assignTo="{!mechanicToDelete.Id}"></apex:param>
+                                </apex:commandButton>
+                            </apex:column>
+                            <apex:column value="{!contract.Mechanic__r.Full_Name__c}" title="{!$ObjectType.Mechanic__c.fields.Full_Name__c.Label}"/>
+                            <apex:column value="{!contract.Workshop__c}"/>
+                            <apex:column value="{!contract.Start_Date__c}"/>
+                            <apex:column value="{!contract.End_Date__c}"/>
+                      <!--      <apex:column headerValue="{!$Label.Info}">
+                                <apex:outputLink rendered="{!contract.isInsertedSuccessfully}"
+                                                 value="{! URLFOR($Action.Contract__c.View, contract.wrappedMechanic.Id) }"
+                                                 target="_blank">{!$Label.Import_Status_Success}
+                                </apex:outputLink>
+                                <apex:pageMessage title="{!$Label.Import_Status_Error}" severity="error"
+                                                  strength="0"
+                                                  rendered="{! (wrapper.displayInsertStatus) && (!wrapper.isInsertedSuccessfully)}"
+                                                  summary="{!wrapper.errorMessage}"/>
+                            </apex:column>-->
+                        </apex:pageBlockTable>
+                    </apex:pageBlock>
+                </apex:actionRegion>
+
+
+            </apex:outputPanel>
+        </apex:form>
+    </div>
+
     <script>
+        $j = jQuery.noConflict();
+        $j('#agreement').dialog({
+            autoOpen: false,
+            height: "auto",
+            width: 800,
+            position: {
+                my: 'top',
+                at: 'top'
+            },
+        });
+
+        function openHirePopup() {
+            $j('#agreement').dialog("open");
+        }
+
+        function closeHirePopup() {
+            $j('#agreement').dialog("close");
+        }
+
+        function checkHideModal() {
+            if (jQuery('.errorM3').length <= 0) {
+                $j('#agreement').dialog("close")
+            }
+        }
+
         function initMap() {
             var uluru = {lat: {!lat}, lng: {!lon}};
             var map = new google.maps.Map(document.getElementById('map'), {zoom: 5, center: uluru});

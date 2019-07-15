@@ -16,4 +16,9 @@ public with sharing class CsImportMechanicWrapper {
         errorMessage = '';
     }
 
+    public CsImportMechanicWrapper(Mechanic__c mechanic, Boolean isSelected){
+        wrappedMechanic = mechanic;
+        isSelectedFromList = isSelected;
+    }
+
 }
