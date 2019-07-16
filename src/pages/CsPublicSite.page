@@ -1,4 +1,4 @@
-<apex:page id="CsPublicSite" controller="CsPublicSiteController">
+<apex:page id="CsPublicSite" controller="CsPublicSiteController" showHeader="false">
 
     <style>
         #mechanicTable {
@@ -6,6 +6,8 @@
             border: 1px solid black;
             text-align: center;
             font-size: large;
+            margin-top: 20px;
+
         }
 
         #mechanicTable th {
@@ -18,6 +20,7 @@
             border: 1px solid black;
         }
     </style>
+    <body>
     <table id="mechanicTable">
         <tr>
             <th>{!$ObjectType.Mechanic__c.fields.First_Name__c.Label}</th>
@@ -32,4 +35,5 @@
             </tr>
         </apex:repeat>
     </table>
+    </body>
 </apex:page>
