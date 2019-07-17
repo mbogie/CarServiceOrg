@@ -11,14 +11,17 @@
             height: 400px;
             background-color: grey;
         }
+
         .ui-dialog-titlebar-close {
             visibility: hidden;
         }
-
     </style>
 
     <apex:form id="workshopForm">
-        <apex:pageMessages id="messages"/>
+        <apex:outputPanel id="inputHidden">
+            <apex:inputHidden id="isAllSuccess" value="{!isAllInsertContractSuccess}"/>
+        </apex:outputPanel>
+        <apex:pageMessages id="workshopMessages"/>
         <apex:pageBlock id="workshopBlock" title="{!Workshop__c.Name}">
             <apex:pageBlockSection id="detailSection" title="{!$Label.Section_Details}">
                 <apex:outputField value="{!Workshop__c.Name}"/>
@@ -59,10 +62,10 @@
                                  rendered="{!(agreementsForWorkshopPageFormController.size>0)}">
                 <apex:column headerValue="{!$Label.Actions_Label}">
                     <apex:commandLink action="{!dismiss}"
-                                      reRender="workshopForm,messages,agreementsBlock"
+                                      reRender="workshopMessages,agreementsBlock"
                                       onComplete="refresh">{!IF(ISNULL(contract.End_Date__c), $Label.Action_Dissmiss, IF(contract.End_Date__c <= TODAY(),'',$Label.Action_Dissmiss))}
                         <apex:param name="selectedContract" value="{!contract.Id}"
-                                    assignTo="{!editedContractInUse.Id}"/>
+                                    assignTo="{!editedContractFromAgreementsList.Id}"/>
                     </apex:commandLink>
                 </apex:column>
                 <apex:column headerValue="{!$ObjectType.Contract__c.fields.Name.Label}">
@@ -94,105 +97,107 @@
                 <apex:actionRegion id="mechanicSearchRegion">
                     <apex:pageBlock id="searchBlock" Title="{!$Label.Search_For}">
                         <apex:pageBlockSection id="searchFields">
-                            <apex:inputField value="{!mechanicSearchPageController.First_Name__c}"/>
-                            <apex:inputText value="{!mechanicSearchPageController.Email__c}"/>
-                            <apex:inputField value="{!mechanicSearchPageController.Name}" required="true"/>
-                            <apex:inputField value="{!mechanicSearchPageController.Country__c}"/>
+                            <apex:inputField value="{!mechanicSearchFormController.First_Name__c}"/>
+                            <apex:inputText value="{!mechanicSearchFormController.Email__c}"/>
+                            <apex:inputField value="{!mechanicSearchFormController.Name}" required="true"/>
+                            <apex:inputField value="{!mechanicSearchFormController.Country__c}"/>
                         </apex:pageBlockSection>
                         <div id="buttonsSection" align="center" draggable="false">
                             <apex:commandButton value="{!$Label.Button_Search}" action="{!search}"
-                                                reRender="messages,hireForm"/>
+                                                reRender="messages,allHirePopup"/>
                             <apex:commandButton value="{!$Label.Button_Clear}" action="{!clear}" immediate="true"
-                                                reRender="messages,hireForm"
+                                                reRender="messages,allHirePopup"
                                                 onClick="this.form.reset();"/>
                         </div>
                     </apex:pageBlock>
                 </apex:actionRegion>
-
                 <apex:actionRegion id="mechanicResultListRegion" rendered="{!isMechanicListSectionReady}">
                     <apex:pageBlock id="mechanicList">
-                        <apex:pageBlockTable id="mechanicTableBlock" value="{!wrappedMechanicsList}"
-                                             var="mechanic">
+                        <apex:pageBlockTable id="mechanicTableBlock" value="{!wrappedMechanicResultList}"
+                                             var="wrappedMechanic">
                             <apex:column headerValue="{!$Label.Actions_Label}">
                                 <apex:commandLink action="{!selectMechanic}" immediate="true"
-                                                  reRender="hireForm,messages">{!IF(mechanic.isSelectedFromList, '', $Label.Select )}
-                                    <apex:param name="selectedMechanic" value="{!mechanic.wrappedMechanic.Id}"
-                                                assignTo="{!mechanicChoosen.Id}"></apex:param>
+                                                  reRender="messages,allHirePopup,hireForm">{!IF(wrappedMechanic.isSelectedFromList, '', $Label.Select )}
+                                    <apex:param name="selectedMechanic" value="{!wrappedMechanic.innerMechanic.Id}"
+                                                assignTo="{!selectedMechanic.Id}"></apex:param>
                                 </apex:commandLink>
                             </apex:column>
-                            <apex:column value="{!mechanic.wrappedMechanic.Full_Name__c}"
+                            <apex:column value="{!wrappedMechanic.innerMechanic.Full_Name__c}"
                                          headerValue="{!$ObjectType.Mechanic__c.fields.Full_Name__c.Label}"/>
-                            <apex:column value="{!mechanic.wrappedMechanic.Email__c}"
+                            <apex:column value="{!wrappedMechanic.innerMechanic.Email__c}"
                                          headerValue="{!$ObjectType.Mechanic__c.fields.Email__c.Label}"/>
-                            <apex:column value="{!mechanic.wrappedMechanic.Country__c}"
+                            <apex:column value="{!wrappedMechanic.innerMechanic.Country__c}"
                                          headerValue="{!$ObjectType.Mechanic__c.fields.Country__c.Label}"/>
                         </apex:pageBlockTable>
                     </apex:pageBlock>
                 </apex:actionRegion>
-
                 <apex:actionRegion id="contractRegion" rendered="{!isContractSectionReady}">
                     <apex:pageBlock id="contractList">
-                        <apex:pageBlockTable id="contracTableBlock" value="{!wrappedContractToInsertList}"
+                        <apex:pageBlockTable id="contractTableBlock" value="{!wrappedContractsListToInsert}"
                                              var="wrappedContract">
                             <apex:column headerValue="{!$Label.Actions_Label}">
-                                <apex:commandButton action="{!editContract}" reRender="hireForm,messages"
+                                <apex:commandButton action="{!editContract}" reRender="messages,allHirePopup,hireForm"
                                                     value="{!$Label.Button_Edit}"
-                                                    rendered="{!NOT(wrappedContract.isChoosenToEdit)}" immediate="true">
+                                                    rendered="{!NOT(wrappedContract.isEdited)}" immediate="true">
                                     <apex:param name="selectedMechanicToEdit"
-                                                value="{!wrappedContract.contractToInsert.Mechanic__r.Id}"
-                                                assignTo="{!mechanicChoosen.Id}"></apex:param>
+                                                value="{!wrappedContract.innerContract.Mechanic__r.Id}"
+                                                assignTo="{!mechanicToEditFromContractList.Id}"></apex:param>
                                 </apex:commandButton>
-                                <apex:commandButton action="{!saveContract}" reRender="hireForm,messages"
+                                <apex:commandButton action="{!saveContract}" reRender="messages,allHirePopup,hireForm"
                                                     value="{!$Label.Button_Save}"
-                                                    rendered="{!wrappedContract.isChoosenToEdit}">
+                                                    rendered="{!wrappedContract.isEdited}">
                                     <apex:param name="selectedMechanicToEdit"
-                                                value="{!wrappedContract.contractToInsert.Mechanic__r.Id}"
-                                                assignTo="{!mechanicChoosen.Id}"></apex:param>
+                                                value="{!wrappedContract.innerContract.Mechanic__r.Id}"
+                                                assignTo="{!mechanicToSaveFromContractList.Id}"></apex:param>
                                 </apex:commandButton>
-                                <apex:commandButton action="{!template}" reRender="hireForm,messages"
+                                <apex:commandButton action="{!template}" reRender="messages,allHirePopup,hireForm"
                                                     value="{!$Label.Button_Template}" immediate="true">
-                                    <apex:param name="selectedtemplate"
-                                                value="{!wrappedContract.contractToInsert.Mechanic__r.Id}"
-                                                assignTo="{!mechanicChoosen.Id}"></apex:param>
+                                    <apex:param name="selectedTemplate"
+                                                value="{!wrappedContract.innerContract.Mechanic__r.Id}"
+                                                assignTo="{!mechanicTemplateFromContractList.Id}"></apex:param>
                                 </apex:commandButton>
-                                <apex:commandButton action="{!removeContract}" reRender="hireForm,messages"
+                                <apex:commandButton action="{!removeContract}" reRender="messages,allHirePopup,hireForm"
                                                     value="{!$Label.Button_Remove}" immediate="true">
                                     <apex:param name="selectedMechanicToRemove"
-                                                value="{!wrappedContract.contractToInsert.Mechanic__r.Id}"
-                                                assignTo="{!mechanicToDelete.Id}"></apex:param>
+                                                value="{!wrappedContract.innerContract.Mechanic__r.Id}"
+                                                assignTo="{!mechanicToDeleteFromContractList.Id}"></apex:param>
                                 </apex:commandButton>
                             </apex:column>
-                            <apex:column value="{!wrappedContract.contractToInsert.Mechanic__r.Full_Name__c}"
+                            <apex:column value="{!wrappedContract.innerContract.Mechanic__r.Full_Name__c}"
                                          title="{!$ObjectType.Mechanic__c.fields.Full_Name__c.Label}"/>
-                                <apex:column headerValue="{!$ObjectType.Contract__c.fields.Start_Date__c.Label}">
-                                    <apex:outputField value="{!wrappedContract.contractToInsert.Start_Date__c}" rendered="{!NOT(wrappedContract.isChoosenToEdit)}"/>
-                                    <apex:inputField value="{!editedContractInUse.Start_Date__c}" required="true" rendered="{!wrappedContract.isChoosenToEdit}"/>
-                                </apex:column>
-                                <apex:column headerValue="{!$ObjectType.Contract__c.fields.End_Date__c.Label}">
-                                    <apex:outputField value="{!wrappedContract.contractToInsert.End_Date__c}" rendered="{!NOT(wrappedContract.isChoosenToEdit)}"/>
-                                    <apex:inputField value="{!editedContractInUse.End_Date__c}" rendered="{!wrappedContract.isChoosenToEdit}"/>
-                                </apex:column>
+                            <apex:column headerValue="{!$ObjectType.Contract__c.fields.Start_Date__c.Label}">
+                                <apex:outputField value="{!wrappedContract.innerContract.Start_Date__c}"
+                                                  rendered="{!NOT(wrappedContract.isEdited)}"/>
+                                <apex:inputField value="{!newContractToAdd.Start_Date__c}" required="true"
+                                                 rendered="{!wrappedContract.isEdited}"/>
+                            </apex:column>
+                            <apex:column headerValue="{!$ObjectType.Contract__c.fields.End_Date__c.Label}">
+                                <apex:outputField value="{!wrappedContract.innerContract.End_Date__c}"
+                                                  rendered="{!NOT(wrappedContract.isEdited)}"/>
+                                <apex:inputField value="{!newContractToAdd.End_Date__c}"
+                                                 rendered="{!wrappedContract.isEdited}"/>
+                            </apex:column>
                             <apex:column headerValue="{!$Label.Info}">
-                                <apex:outputLink rendered="{!wrappedContract.isInsertedSuccessfully}"
-                                                 value="{! URLFOR($Action.Contract__c.View, wrappedContract.contractToInsert.Id) }"
+                                <apex:outputLink rendered="{!wrappedContract.isInsertSuccess}"
+                                                 value="{! URLFOR($Action.Contract__c.View, wrappedContract.innerContract.Id) }"
                                                  target="_blank">{!$Label.Import_Status_Success}
                                 </apex:outputLink>
                                 <apex:pageMessage title="{!$Label.Import_Status_Error}" severity="error"
                                                   strength="0"
-                                                  rendered="{! (wrappedContract.displayInsertStatus) && (!wrappedContract.isInsertedSuccessfully)}"
+                                                  rendered="{!(wrappedContract.errorMessage != '')}"
                                                   summary="{!wrappedContract.errorMessage}"/>
                             </apex:column>
                         </apex:pageBlockTable>
                         <div id="agreementsButtons" align="center" draggable="false">
                             <apex:commandButton value="{!$Label.Button_Hire}" action="{!hire}"
-                                                onComplete="checkHideModal();"
-                                                reRender="hireForm,messages"/>
+                                                reRender="messages,allHirePopup,agreementsBlock,inputHidden"
+                                                onComplete="checkHideModal();"/>
+                            <apex:actionFunction name="clearAfterHire" action="{!cancelHire}" reRender="hireForm"/>
                             <apex:commandButton value="{!$Label.Button_Cancel}" action="{!cancelHire}" immediate="true"
-                                                reRender="hireForm,messages" onComplete="closeHirePopup();"/>
+                                                reRender="messages,allHirePopup" onComplete="closeHirePopup();"/>
                         </div>
                     </apex:pageBlock>
                 </apex:actionRegion>
-
             </apex:outputPanel>
         </apex:form>
     </div>
@@ -218,8 +223,10 @@
         }
 
         function checkHideModal() {
-            if (jQuery('.errorM3').length <= 0) {
-                $j('#agreement').dialog("close")
+            var isAllSuccessValue = $j("[id$='isAllSuccess']").val();
+            if (isAllSuccessValue =='true') {
+                clearAfterHire();
+                $j('#agreement').dialog("close");
             }
         }
 

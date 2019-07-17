@@ -6,18 +6,24 @@ public with sharing class CsWorkshopDetailController {
     public double lon { get; set; }
     public List<Contract__c> agreementsForWorkshopPageFormController { get; set; }
     private CsSoqlQueryBuilder queryBuilder;
-    public Mechanic__c mechanicSearchPageController { get; set; }
-    public List<Mechanic__c> mechanicSearchResultList { get; set; }
+    public Contract__c editedContractFromAgreementsList { get; set; }
+    public Mechanic__c mechanicSearchFormController { get; set; }
+    private List<Mechanic__c> mechanicsSearchResultList;
     public Boolean isMechanicListSectionReady { get; set; }
-    public Mechanic__c mechanicChoosen { get; set; }
-    public Mechanic__c mechanicToDelete { get; set; }
-    public Contract__c editedContractInUse { get; set; }
+    public List<CsWrapperMechanic> wrappedMechanicResultList { get; set; }
     public Boolean isContractSectionReady { get; set; }
-    public List<CsContractInsertWrapper> wrappedContractToInsertList { get; set; }
-    public List<Contract__c> contractToInsertList { get; set; }
-    public CsImportMechanicWrapper wrappedMechanic { get; set; }
-    public List<CsImportMechanicWrapper> wrappedMechanicsList { get; set; }
-    public Boolean isMechanicOnTheWrapperList;
+    public Mechanic__c selectedMechanic { get; set; }
+    public Contract__c newContractToAdd { get; set; }
+    private Contract__c contractTemplate;
+    public List<CsWrapperContract> wrappedContractsListToInsert { get; set; }
+    private List<Contract__c> contractListToInsert;
+    private Boolean isMechanicOnTheWrapperContractList;
+    public Mechanic__c mechanicToDeleteFromContractList { get; set; }
+    public Mechanic__c mechanicToEditFromContractList { get; set; }
+    public Mechanic__c mechanicToSaveFromContractList { get; set; }
+    public Mechanic__c mechanicTemplateFromContractList { get; set; }
+    private Integer indexOfUpsertResult;
+    public Boolean isAllInsertContractSuccess { get; set; }
 
     public CsWorkshopDetailController(ApexPages.StandardController controller) {
         this.workshopFormPageController = (Workshop__c) controller.getRecord();
@@ -27,18 +33,13 @@ public with sharing class CsWorkshopDetailController {
         this.lat = locationController.getLat();
         this.lon = locationController.getLon();
         this.agreementsForWorkshopPageFormController = new List<Contract__c>();
-        this.editedContractInUse = new Contract__c();
+        this.editedContractFromAgreementsList = new Contract__c();
         refreshAgreementsList();
-        this.mechanicSearchPageController = new Mechanic__c();
+        this.mechanicSearchFormController = new Mechanic__c();
         this.isMechanicListSectionReady = false;
         this.isContractSectionReady = false;
-        this.mechanicSearchResultList = new List<Mechanic__c>();
-        this.wrappedMechanicsList = new List<CsImportMechanicWrapper>();
-        this.mechanicChoosen = new Mechanic__c();
-        this.mechanicToDelete = new Mechanic__c();
-        this.contractToInsertList = new List<Contract__c>();
-        this.wrappedContractToInsertList = new List<CsContractInsertWrapper>();
-        this.isMechanicOnTheWrapperList = false;
+        this.wrappedContractsListToInsert = new List<CsWrapperContract>();
+        this.newContractToAdd = new Contract__c();
     }
 
     public void refreshAgreementsList() {
@@ -57,22 +58,22 @@ public with sharing class CsWorkshopDetailController {
 
     public void dismiss() {
         for (Contract__c contract : agreementsForWorkshopPageFormController) {
-            if (editedContractInUse.Id == contract.Id) {
-                editedContractInUse = contract.clone(true);
+            if (editedContractFromAgreementsList.Id == contract.Id) {
+                editedContractFromAgreementsList = contract.clone(true);
                 break;
             }
         }
-        if (editedContractInUse.Start_Date__c > System.today()) {
+        if (editedContractFromAgreementsList.Start_Date__c > System.today()) {
             try {
-                delete editedContractInUse;
+                delete editedContractFromAgreementsList;
                 refreshAgreementsList();
             } catch (DmlException error) {
                 System.debug(error.getMessage());
             }
         } else {
-            editedContractInUse.End_Date__c = System.today();
+            editedContractFromAgreementsList.End_Date__c = System.today();
             try {
-                update editedContractInUse;
+                update editedContractFromAgreementsList;
                 refreshAgreementsList();
             } catch (DmlException error) {
                 System.debug(error.getMessage());
@@ -81,132 +82,175 @@ public with sharing class CsWorkshopDetailController {
     }
 
     public String getHirePopupLabel() {
-        return String.format(System.Label.Hire_Workshop_Popup_Label, new List<String>{
-                workshopFormPageController.Name
-        });
+        return String.format(System.Label.Hire_Workshop_Popup_Label, new List<String>{workshopFormPageController.Name});
     }
 
     public void search() {
         queryBuilder = new CsSoqlQueryBuilder();
-        wrappedMechanicsList = new List<CsImportMechanicWrapper>();
-        mechanicSearchResultList = new List<Mechanic__c>();
+        mechanicsSearchResultList = new List<Mechanic__c>();
+        wrappedMechanicResultList = new List<CsWrapperMechanic>();
         queryBuilder.addResultField('Full_Name__c').
                 addResultField('Email__c').
                 addResultField('Country__c').
                 addTableName('Mechanic__c').
-                addSearchFieldStartsWithValue('Name', mechanicSearchPageController.Name).
-                addSearchFieldStartsWithValue('First_Name__c', mechanicSearchPageController.First_Name__c).
-                addSearchFieldStartsWithValue('Country__c', mechanicSearchPageController.Country__c).
-                addSearchFieldStartsWithValue('Email__c', mechanicSearchPageController.Email__c).
+                addSearchFieldStartsWithValue('Name', mechanicSearchFormController.Name).
+                addSearchFieldStartsWithValue('First_Name__c', mechanicSearchFormController.First_Name__c).
+                addSearchFieldStartsWithValue('Country__c', mechanicSearchFormController.Country__c).
+                addSearchFieldStartsWithValue('Email__c', mechanicSearchFormController.Email__c).
                 build();
-        mechanicSearchResultList = Database.query(queryBuilder.getQueryString());
-        if (mechanicSearchResultList.size() > 0) {
+        mechanicsSearchResultList = Database.query(queryBuilder.getQueryString());
+        if (mechanicsSearchResultList.size() > 0) {
             isMechanicListSectionReady = true;
         }
-        for (Mechanic__c mechanic : mechanicSearchResultList) {
-            isMechanicOnTheWrapperList = false;
-            for(CsContractInsertWrapper wrappedMechanic : wrappedContractToInsertList){
-                if(mechanic.Id == wrappedMechanic.contractToInsert.Mechanic__r.Id){
-                    isMechanicOnTheWrapperList = true;
+        for (Mechanic__c mechanic : mechanicsSearchResultList) {
+            isMechanicOnTheWrapperContractList = false;
+            for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
+                if (mechanic.Id == wrappedContract.innerContract.Mechanic__r.Id) {
+                    isMechanicOnTheWrapperContractList = true;
                 }
             }
-            if(isMechanicOnTheWrapperList) wrappedMechanicsList.add(new CsImportMechanicWrapper(mechanic, true));
-            else wrappedMechanicsList.add(new CsImportMechanicWrapper(mechanic, false));
-
+            wrappedMechanicResultList.add(new CsWrapperMechanic(mechanic, isMechanicOnTheWrapperContractList));
         }
+        selectedMechanic = new Mechanic__c();
     }
 
     public void clear() {
-        queryBuilder.clear();
-        mechanicSearchResultList.clear();
+        queryBuilder = new CsSoqlQueryBuilder();
+        mechanicsSearchResultList = new List<Mechanic__c>();
         isMechanicListSectionReady = false;
-        mechanicSearchPageController = new Mechanic__c();
+        mechanicSearchFormController = new Mechanic__c();
     }
 
     public void selectMechanic() {
+        mechanicTemplateFromContractList = new Mechanic__c();
+        mechanicToDeleteFromContractList = new Mechanic__c();
+        mechanicToEditFromContractList = new Mechanic__c();
+        mechanicToSaveFromContractList = new Mechanic__c();
         isContractSectionReady = true;
-        for (CsImportMechanicWrapper wrappedMechanic : wrappedMechanicsList) {
-            if (wrappedMechanic.wrappedMechanic.Id == mechanicChoosen.Id) {
+        for (CsWrapperMechanic wrappedMechanic : wrappedMechanicResultList) {
+            if (wrappedMechanic.innerMechanic.Id == selectedMechanic.Id) {
                 wrappedMechanic.isSelectedFromList = true;
-                mechanicChoosen = wrappedMechanic.wrappedMechanic.clone(true);
-                editedContractInUse = new Contract__c();
-                editedContractInUse.Mechanic__r = mechanicChoosen;
-                editedContractInUse.Workshop__c = workshopFormPageController.Id;
-                wrappedContractToInsertList.add(new CsContractInsertWrapper(editedContractInUse));
-                break;
+                newContractToAdd.Mechanic__c = wrappedMechanic.innerMechanic.Id;
+                newContractToAdd.Mechanic__r = wrappedMechanic.innerMechanic;
+                newContractToAdd.Workshop__c = workshopFormPageController.Id;
+                newContractToAdd.Start_Date__c = null;
+                newContractToAdd.End_Date__c = null;
+                wrappedContractsListToInsert.add(new CsWrapperContract(newContractToAdd));
             }
         }
-        mechanicChoosen = new Mechanic__c();
-        editedContractInUse = new Contract__c();
+        selectedMechanic = new Mechanic__c();
+        newContractToAdd = new Contract__c();
     }
 
     public void removeContract() {
-        for (CsImportMechanicWrapper wrappedMechanic : wrappedMechanicsList) {
-            if (wrappedMechanic.wrappedMechanic.Id == mechanicToDelete.Id) {
+        for (CsWrapperMechanic wrappedMechanic : wrappedMechanicResultList) {
+            if (wrappedMechanic.innerMechanic.Id == mechanicToDeleteFromContractList.Id) {
                 wrappedMechanic.isSelectedFromList = false;
             }
         }
         Integer indexToDelete;
-        for(Integer i = 0; i<wrappedContractToInsertList.size();i++){
-            if(wrappedContractToInsertList.get(i).contractToInsert.Mechanic__r.Id == mechanicToDelete.Id){
+        for (Integer i = 0; i < wrappedContractsListToInsert.size(); i++) {
+            if (wrappedContractsListToInsert.get(i).innerContract.Mechanic__r.Id == mechanicToDeleteFromContractList.Id) {
                 indexToDelete = i;
             }
         }
-        wrappedContractToInsertList.remove(indexToDelete);
-        if(wrappedContractToInsertList.size()==0) isContractSectionReady = false;
-        mechanicToDelete = new Mechanic__c();
+        wrappedContractsListToInsert.remove(indexToDelete);
+        if (wrappedContractsListToInsert.size() == 0) isContractSectionReady = false;
+        mechanicToDeleteFromContractList = new Mechanic__c();
     }
 
-    public void editContract(){
-        for(CsContractInsertWrapper wrappedContract : wrappedContractToInsertList){
-            if(wrappedContract.contractToInsert.Mechanic__r.Id == mechanicChoosen.Id){
-                wrappedContract.isChoosenToEdit = true;
+    public void editContract() {
+        for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
+            if (wrappedContract.innerContract.Mechanic__r.Id == mechanicToEditFromContractList.Id) {
+                wrappedContract.isEdited = true;
             }
         }
-        mechanicChoosen = new Mechanic__c();
+        mechanicToEditFromContractList = new Mechanic__c();
     }
 
-    public void template(){
-        for(CsContractInsertWrapper wrappedContract : wrappedContractToInsertList){
-            if(wrappedContract.contractToInsert.Mechanic__r.Id == mechanicChoosen.Id){
-                editedContractInUse = wrappedContract.contractToInsert.clone(true);
+    public void saveContract() {
+        for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
+            if (wrappedContract.innerContract.Mechanic__r.Id == mechanicToSaveFromContractList.Id) {
+                wrappedContract.innerContract.Mechanic__c = mechanicToSaveFromContractList.Id;
+                wrappedContract.innerContract.Start_Date__c = newContractToAdd.Start_Date__c;
+                wrappedContract.innerContract.End_Date__c = newContractToAdd.End_Date__c;
+                wrappedContract.errorMessage = '';
+                wrappedContract.isEdited = false;
             }
         }
-        for(CsContractInsertWrapper wrappedContract : wrappedContractToInsertList){
-            wrappedContract.contractToInsert.Start_Date__c = editedContractInUse.Start_Date__c;
-            wrappedContract.contractToInsert.End_Date__c = editedContractInUse.End_Date__c;
-        }
-
+        mechanicToSaveFromContractList = new Mechanic__c();
+        newContractToAdd = new Contract__c();
     }
 
-    public void saveContract(){
-        for(CsContractInsertWrapper wrappedContract : wrappedContractToInsertList){
-            if(wrappedContract.contractToInsert.Mechanic__r.Id == mechanicChoosen.Id){
-                wrappedContract.contractToInsert.Start_Date__c = editedContractInUse.Start_Date__c;
-                wrappedContract.contractToInsert.End_Date__c = editedContractInUse.End_Date__c;
-                wrappedContract.isChoosenToEdit = false;
+    public void template() {
+        contractTemplate = new Contract__c();
+        for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
+            if (wrappedContract.innerContract.Mechanic__r.Id == mechanicTemplateFromContractList.Id) {
+                contractTemplate = wrappedContract.innerContract.clone(true);
             }
         }
-        mechanicChoosen = new Mechanic__c();
-        editedContractInUse = new Contract__c();
+        if (!((contractTemplate.Start_Date__c == null) && (contractTemplate.End_Date__c == null))) {
+            for (CsWrapperContract wrapperContract : wrappedContractsListToInsert) {
+                wrapperContract.innerContract.Mechanic__c = wrapperContract.innerContract.Mechanic__c;
+                wrapperContract.innerContract.Start_Date__c = contractTemplate.Start_Date__c;
+                wrapperContract.innerContract.End_Date__c = contractTemplate.End_Date__c;
+                wrapperContract.errorMessage = '';
+            }
+        }
+        newContractToAdd = new Contract__c();
+        mechanicTemplateFromContractList = new Mechanic__c();
     }
 
     public void cancelHire() {
-        editedContractInUse = new Contract__c();
-        mechanicSearchPageController = new Mechanic__c();
         isMechanicListSectionReady = false;
         isContractSectionReady = false;
-        mechanicSearchResultList = new List<Mechanic__c>();
-        wrappedMechanicsList = new List<CsImportMechanicWrapper>();
-        mechanicChoosen = new Mechanic__c();
-        mechanicToDelete = new Mechanic__c();
-        contractToInsertList = new List<Contract__c>();
-        wrappedContractToInsertList = new List<CsContractInsertWrapper>();
+        mechanicToSaveFromContractList = new Mechanic__c();
+        mechanicToEditFromContractList = new Mechanic__c();
+        mechanicTemplateFromContractList = new Mechanic__c();
+        mechanicToDeleteFromContractList = new Mechanic__c();
+        selectedMechanic = new Mechanic__c();
+        newContractToAdd = new Contract__c();
+        mechanicSearchFormController = new Mechanic__c();
+        mechanicsSearchResultList = new List<Mechanic__c>();
+        wrappedContractsListToInsert = new List<CsWrapperContract>();
+        wrappedMechanicResultList = new List<CsWrapperMechanic>();
     }
 
-    public void hire(){
+    public void hire() {
+        isAllInsertContractSuccess = true;
+        indexOfUpsertResult = 0;
+        contractListToInsert = new List<Contract__c>();
+        for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
+            contractListToInsert.add(wrappedContract.innerContract);
+        }
+        Database.UpsertResult[] upsertResult = Database.upsert(contractListToInsert, Contract__c.Id, false);
+        for (Database.UpsertResult result : upsertResult) {
+        }
+        for (CsWrapperContract wrapperContract : wrappedContractsListToInsert) {
+            wrapperContract.errorMessage = '';
+            if (upsertResult.get(indexOfUpsertResult).isSuccess()) {
+                wrapperContract.isInsertSuccess = true;
+                wrapperContract.errorMessage = '';
+            } else {
+                wrapperContract.isInsertSuccess = false;
+                for (Database.Error err : upsertResult.get(indexOfUpsertResult).getErrors()) {
+                    wrapperContract.errorMessage = err.getMessage();
+                    System.debug('error message --> '+ wrapperContract.errorMessage);
+                }
+            }
+            indexOfUpsertResult++;
+        }
+        isAllInsertContractSuccess = check();
+        System.debug('is -->> ' + isAllInsertContractSuccess);
+        refreshAgreementsList();
+    }
 
-
-
+    private Boolean check(){
+        for (CsWrapperContract wrapperContract : wrappedContractsListToInsert) {
+            if(wrapperContract.isInsertSuccess == false){
+                return false;
+            }
+        }
+        return true;
     }
 }

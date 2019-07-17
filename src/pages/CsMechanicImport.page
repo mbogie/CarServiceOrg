@@ -1,5 +1,6 @@
 <apex:page id="CsMechanicImport" standardController="Mechanic__c" extensions="CsMechanicImportController"
            tabStyle="Mechanics_Import__tab">
+
     <apex:includeScript value="{!$Resource.jQuery}"/>
     <apex:includeScript value="{!$Resource.jQueryUI}"/>
     <apex:includeScript value="{!URLFOR($Resource.jQueryUI,'/jquery-ui-1.12.1.custom/jquery-ui.js')}"/>
@@ -8,35 +9,34 @@
     <apex:form id="formMechanicImport">
         <apex:pageMessages/>
         <apex:pageBlock id="fileBlock" title="{!$Label.Import_File}">
-            <apex:outputPanel/>
-            <div align="center" draggable="false">
-                <apex:inputFile value="{!fileContent}" filename="{!selectedFile}" accept=".csv"
-                                onChange="TestFileType(this.id, ['.csv']);"/>
-                <apex:commandButton action="{!readFile}" value="{!$Label.Button_Process}"/>
-                <apex:commandButton action="{!downloadTemplateCsv}" value="{!$Label.Button_Download_Template}"/>
-            </div>
-            <apex:outputPanel/>
+            <apex:outputPanel>
+                <div align="center" draggable="false">
+                    <apex:inputFile value="{!fileContent}" filename="{!selectedFile}" accept=".csv"
+                                    onChange="TestFileType(this.id, ['.csv']);"/>
+                    <apex:commandButton action="{!readFile}" value="{!$Label.Button_Process}"/>
+                    <apex:commandButton action="{!downloadTemplateCsv}" value="{!$Label.Button_Download_Template}"/>
+                </div>
+            </apex:outputPanel>
         </apex:pageBlock>
         <apex:pageBlock id="tableBlock" title="{!$Label.Import_Mechanic_Table}">
             <apex:actionRegion id="tableRegion">
-                <apex:pageBlockTable id="tableMechanics" value="{!wrappedMechanicList}" var="wrapper"
+                <apex:pageBlockTable id="tableMechanics" value="{!wrappedMechanicList}" var="wrappedMechanic"
                                      rendered="{!isWrappedMechanicListReady}">
                     <apex:column headerValue="{!$Label.To_Import}">
-                        <apex:inputCheckbox value="{!wrapper.isSelectedFromList}"/>
+                        <apex:inputCheckbox value="{!wrappedMechanic.isSelectedFromList}"/>
                     </apex:column>
-                    <apex:column value="{!wrapper.wrappedMechanic.First_Name__c}"/>
-                    <apex:column value="{!wrapper.wrappedMechanic.Name}"/>
-                    <apex:column value="{!wrapper.wrappedMechanic.City__c}"/>
-                    <apex:column value="{!wrapper.wrappedMechanic.Email__c}"/>
+                    <apex:column value="{!wrappedMechanic.innerMechanic.First_Name__c}"/>
+                    <apex:column value="{!wrappedMechanic.innerMechanic.Name}"/>
+                    <apex:column value="{!wrappedMechanic.innerMechanic.City__c}"/>
+                    <apex:column value="{!wrappedMechanic.innerMechanic.Email__c}"/>
                     <apex:column headerValue="{!$Label.Info}">
-                        <apex:outputLink rendered="{!wrapper.isInsertedSuccessfully}"
-                                         value="{! URLFOR($Action.Mechanic__c.View, wrapper.wrappedMechanic.Id) }"
+                        <apex:outputLink rendered="{!wrappedMechanic.isInsertSuccess}"
+                                         value="{!URLFOR($Action.Mechanic__c.View, wrappedMechanic.innerMechanic.Id)}"
                                          target="_blank">{!$Label.Import_Status_Success}
                         </apex:outputLink>
-                        <apex:pageMessage title="{!$Label.Import_Status_Error}" severity="error"
-                                          strength="0"
-                                          rendered="{! (wrapper.displayInsertStatus) && (!wrapper.isInsertedSuccessfully)}"
-                                          summary="{!wrapper.errorMessage}"/>
+                        <apex:pageMessage title="{!$Label.Import_Status_Error}" severity="error" strength="0"
+                                          rendered="{!(wrappedMechanic.errorMessage!='')}"
+                                          summary="{!wrappedMechanic.errorMessage}"/>
                     </apex:column>
                 </apex:pageBlockTable>
                 <apex:outputPanel rendered="{!isWrappedMechanicListReady}">
@@ -62,8 +62,7 @@
             if (!fileName) return;
             dots = fileName.split(".")
             fileType = "." + dots[dots.length - 1];
-            if (fileTypes.indexOf(fileType) != -1) {
-            } else {
+            if (fileTypes.indexOf(fileType) == -1) {
                 alert("{!BadFileExtension} ");
                 document.getElementById(elementId).fileName = "";
                 document.getElementById(elementId).value = "";

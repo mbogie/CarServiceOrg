@@ -19,6 +19,8 @@ public with sharing class CsMechanicDetailController {
     public String idOfAttachment { get; set; }
     public Boolean isDefaultPhotoDisplayed { get; set; }
     public transient String imageBody { get; set; }
+    public String emailSubject { get; set; }
+    public String emailBody { get; set; }
 
     public CsMechanicDetailController(ApexPages.StandardController controller) {
         this.mechanicPageFormController = (Mechanic__c) controller.getRecord();
@@ -34,6 +36,8 @@ public with sharing class CsMechanicDetailController {
         this.agreementsForMechanicPageFormController = new List<Contract__c>();
         refreshAgreementsList();
         setLogo();
+        emailSubject = '';
+        emailBody = '';
     }
 
     public void refreshAgreementsList() {
@@ -228,5 +232,26 @@ public with sharing class CsMechanicDetailController {
             isDefaultPhotoDisplayed = false;
             idOfAttachment = attachedFiles[0].Id;
         }
+    }
+
+    public void sendEmailToMechanic() {
+        Messaging.SingleEmailMessage message = new Messaging.SingleEmailMessage();
+        String[] emailList = new String []{
+                mechanicPageFormController.Email__c
+        };
+        message.setToAddresses(emailList);
+        message.setSubject(emailSubject);
+        message.setPlainTextBody(emailBody);
+        Messaging.sendEmail(new Messaging.SingleEmailMessage[]{message});
+        clearEmail();
+    }
+
+    public void clearEmail(){
+        emailBody = '';
+        emailSubject = '';
+    }
+
+    public String getEmailPopupLabel(){
+        return String.format(System.Label.Send_Email_To, new List<String>{mechanicPageFormController.Full_Name__c});
     }
 }

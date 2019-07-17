@@ -40,10 +40,6 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsImportMechanicWrapper" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
                             <option name="name" value="CsLocationCallouts" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -116,7 +112,11 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsContractInsertWrapper" />
+                            <option name="name" value="CsWrapperMechanic" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsWrapperContract" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -272,6 +272,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsMechanicImportTemplate" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="testPage" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>

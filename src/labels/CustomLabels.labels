@@ -141,6 +141,13 @@
         <value>Select All</value>
     </labels>
     <labels>
+        <fullName>Button_Send</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Send</shortDescription>
+        <value>Send</value>
+    </labels>
+    <labels>
         <fullName>Button_Template</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -216,6 +223,20 @@
         <protected>true</protected>
         <shortDescription>Edit Picture</shortDescription>
         <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>Email_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Email Message</shortDescription>
+        <value>Message:</value>
+    </labels>
+    <labels>
+        <fullName>Email_Subject</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Email Subject</shortDescription>
+        <value>Subject:</value>
     </labels>
     <labels>
         <fullName>Employees_To_Hire</fullName>
@@ -398,6 +419,20 @@
         <protected>true</protected>
         <shortDescription>Select</shortDescription>
         <value>Select</value>
+    </labels>
+    <labels>
+        <fullName>Send_Email</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Send Email</shortDescription>
+        <value>Send Email</value>
+    </labels>
+    <labels>
+        <fullName>Send_Email_To</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Send Email To</shortDescription>
+        <value>To {0}:</value>
     </labels>
     <labels>
         <fullName>Sign_Down</fullName>

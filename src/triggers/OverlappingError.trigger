@@ -6,12 +6,16 @@ trigger OverlappingError on Contract__c (before insert, before update) {
     Boolean error = false;
 
     for (Contract__c triggerContract : Trigger.new) {
+        error = false;
         if (Trigger.isUpdate) {
+            query = 'SELECT Name, Start_Date__c, End_Date__c FROM Contract__c WHERE ';
             query += 'Mechanic__r.id = \'' + triggerContract.Mechanic__c + '\' AND Workshop__r.Id = \'' + triggerContract.Workshop__c + '\' AND id != \'' + triggerContract.Id + '\' ORDER BY Start_Date__c';
         }
         if (Trigger.isInsert) {
+            query = 'SELECT Name, Start_Date__c, End_Date__c FROM Contract__c WHERE ';
             query += 'Mechanic__r.id = \'' + triggerContract.Mechanic__c + '\' AND Workshop__r.Id = \'' + triggerContract.Workshop__c + '\' ORDER BY Start_Date__c';
         }
+        System.debug(query);
         contList = Database.query(query);
         for (Contract__c AgreementsContract : contList) {
             if ((triggerContract.Start_Date__c != null) && (triggerContract.End_Date__c != null) && (AgreementsContract.End_Date__c != null)) {
