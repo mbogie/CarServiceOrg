@@ -229,6 +229,18 @@
         <type>Date</type>
     </fields>
     <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF((TODAY() &lt;  Start_Date__c) || (TODAY() &gt;  End_Date__c), IMAGE(&quot;/servlet/servlet.FileDownload?file=0152p000006BcmF&quot;, &quot;RedSquare&quot;), IMAGE(&quot;/servlet/servlet.FileDownload?file=0152p000006BcmK&quot;, &quot;GreenSquare&quot;))</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Workshop__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
         <externalId>false</externalId>
@@ -247,9 +259,13 @@
         <columns>NAME</columns>
         <columns>Start_Date__c</columns>
         <columns>Start_Date_Plus_One_Year__c</columns>
+        <columns>Status__c</columns>
         <columns>Display_Date__c</columns>
+        <columns>Mechanic__c</columns>
+        <columns>Workshop__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
+        <language>en_US</language>
     </listViews>
     <nameField>
         <displayFormat>CON-{00000}</displayFormat>
@@ -282,6 +298,12 @@
         <errorConditionFormula>End_Date__c &lt;  TODAY()</errorConditionFormula>
         <errorDisplayField>End_Date__c</errorDisplayField>
         <errorMessage>End Date must be after today.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Required_Start_Date</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISBLANK( Start_Date__c )</errorConditionFormula>
+        <errorMessage>Start Date is required.</errorMessage>
     </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

@@ -263,15 +263,6 @@
         <type>Phone</type>
     </fields>
     <fields>
-        <fullName>Reset_Birthday_Email_System__c</fullName>
-        <defaultValue>true</defaultValue>
-        <externalId>false</externalId>
-        <label>Reset Birthday Email System</label>
-        <trackHistory>false</trackHistory>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Skill__c</fullName>
         <externalId>false</externalId>
         <label>Skill</label>
@@ -412,7 +403,6 @@
         <columns>Country__c</columns>
         <columns>Birthday__c</columns>
         <columns>Next_Birthday__c</columns>
-        <columns>Reset_Birthday_Email_System__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
         <language>en_US</language>
@@ -435,5 +425,12 @@
         <lookupDialogsAdditionalFields>Speciality__c</lookupDialogsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
+    <validationRules>
+        <fullName>Required_Name</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISBLANK( Name )</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>Last Name is required.</errorMessage>
+    </validationRules>
     <visibility>Public</visibility>
 </CustomObject>

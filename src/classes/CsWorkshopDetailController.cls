@@ -48,6 +48,7 @@ public with sharing class CsWorkshopDetailController {
                 addResultField('Mechanic__r.Full_Name__c').
                 addResultField('Start_Date__c').
                 addResultField('End_Date__c').
+                addResultField('Status__c').
                 addTableName('Contract__c').
                 addSearchFieldEqualsWithValue('Workshop__c', workshopFormPageController.Id).
                 addSortField('Name').
@@ -234,14 +235,12 @@ public with sharing class CsWorkshopDetailController {
             } else {
                 wrapperContract.isInsertSuccess = false;
                 for (Database.Error err : upsertResult.get(indexOfUpsertResult).getErrors()) {
-                    wrapperContract.errorMessage = err.getMessage();
-                    System.debug('error message --> '+ wrapperContract.errorMessage);
+                    wrapperContract.errorMessage += err.getMessage();
                 }
             }
             indexOfUpsertResult++;
         }
         isAllInsertContractSuccess = check();
-        System.debug('is -->> ' + isAllInsertContractSuccess);
         refreshAgreementsList();
     }
 

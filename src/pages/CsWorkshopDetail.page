@@ -79,6 +79,7 @@
                 </apex:column>
                 <apex:column value="{!contract.Start_Date__c}"/>
                 <apex:column value="{!contract.End_Date__c}"/>
+                <apex:column value="{!contract.Status__c}"/>
             </apex:pageBlockTable>
         </apex:pageBlock>
     </apex:form>

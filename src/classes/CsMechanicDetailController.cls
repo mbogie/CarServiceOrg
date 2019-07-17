@@ -46,6 +46,7 @@ public with sharing class CsMechanicDetailController {
                 addResultField('Workshop__c').
                 addResultField('Start_Date__c').
                 addResultField('End_Date__c').
+                addResultField('Status__c').
                 addTableName('Contract__c').
                 addSearchFieldEqualsWithValue('Mechanic__r.Id', mechanicPageFormController.Id).
                 addSortField('Name').
