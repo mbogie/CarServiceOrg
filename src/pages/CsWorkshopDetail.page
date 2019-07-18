@@ -142,26 +142,26 @@
                                                     rendered="{!NOT(wrappedContract.isEdited)}" immediate="true">
                                     <apex:param name="selectedMechanicToEdit"
                                                 value="{!wrappedContract.innerContract.Mechanic__r.Id}"
-                                                assignTo="{!mechanicToEditFromContractList.Id}"></apex:param>
+                                                assignTo="{!selectedMechanic.Id}"></apex:param>
                                 </apex:commandButton>
                                 <apex:commandButton action="{!saveContract}" reRender="messages,allHirePopup,hireForm"
                                                     value="{!$Label.Button_Save}"
                                                     rendered="{!wrappedContract.isEdited}">
                                     <apex:param name="selectedMechanicToEdit"
                                                 value="{!wrappedContract.innerContract.Mechanic__r.Id}"
-                                                assignTo="{!mechanicToSaveFromContractList.Id}"></apex:param>
+                                                assignTo="{!selectedMechanic.Id}"></apex:param>
                                 </apex:commandButton>
                                 <apex:commandButton action="{!template}" reRender="messages,allHirePopup,hireForm"
                                                     value="{!$Label.Button_Template}" immediate="true">
                                     <apex:param name="selectedTemplate"
                                                 value="{!wrappedContract.innerContract.Mechanic__r.Id}"
-                                                assignTo="{!mechanicTemplateFromContractList.Id}"></apex:param>
+                                                assignTo="{!selectedMechanic.Id}"></apex:param>
                                 </apex:commandButton>
                                 <apex:commandButton action="{!removeContract}" reRender="messages,allHirePopup,hireForm"
                                                     value="{!$Label.Button_Remove}" immediate="true">
                                     <apex:param name="selectedMechanicToRemove"
                                                 value="{!wrappedContract.innerContract.Mechanic__r.Id}"
-                                                assignTo="{!mechanicToDeleteFromContractList.Id}"></apex:param>
+                                                assignTo="{!selectedMechanic.Id}"></apex:param>
                                 </apex:commandButton>
                             </apex:column>
                             <apex:column value="{!wrappedContract.innerContract.Mechanic__r.Full_Name__c}"
@@ -169,13 +169,13 @@
                             <apex:column headerValue="{!$ObjectType.Contract__c.fields.Start_Date__c.Label}">
                                 <apex:outputField value="{!wrappedContract.innerContract.Start_Date__c}"
                                                   rendered="{!NOT(wrappedContract.isEdited)}"/>
-                                <apex:inputField value="{!newContractToAdd.Start_Date__c}" required="true"
+                                <apex:inputField value="{!editedContract.Start_Date__c}" required="true"
                                                  rendered="{!wrappedContract.isEdited}"/>
                             </apex:column>
                             <apex:column headerValue="{!$ObjectType.Contract__c.fields.End_Date__c.Label}">
                                 <apex:outputField value="{!wrappedContract.innerContract.End_Date__c}"
                                                   rendered="{!NOT(wrappedContract.isEdited)}"/>
-                                <apex:inputField value="{!newContractToAdd.End_Date__c}"
+                                <apex:inputField value="{!editedContract.End_Date__c}"
                                                  rendered="{!wrappedContract.isEdited}"/>
                             </apex:column>
                             <apex:column headerValue="{!$Label.Info}">

@@ -96,7 +96,7 @@ public with sharing class CsMechanicImportController {
 
     public void reverseRecordsSelection() {
         for (CsWrapperMechanic wrappedMechanic : wrappedMechanicList) {
-            wrappedMechanic.isSelectedFromList = (wrappedMechanic.isSelectedFromList == false) ? true : false;
+            wrappedMechanic.isSelectedFromList = (wrappedMechanic.isSelectedFromList) ? false : true;
         }
     }
 

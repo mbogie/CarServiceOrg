@@ -216,12 +216,9 @@
         <apex:form id="emailForm">
             <apex:pageBlock id="emailBlock" title="{!EmailPopupLabel}">
                 <apex:pageBlockSection id="emailBody" columns="1" collapsible="false">
-                    <apex:pageBlockSection columns="2" collapsible="false">
-                        <apex:outputText value="{!$Label.Email_Subject}"/>
-                        <apex:inputText value="{!emailSubject}"/>
-                    </apex:pageBlockSection>
-                    <apex:outputText value="{!$Label.Email_Message}"/>
-                    <apex:inputTextarea value="{!emailBody}" style="width:100%; height:100px;"/>
+                        <apex:outputField value="{!mechanicPageFormController.Email__c}"/>
+                        <apex:inputText value="{!emailSubject}" label="{!$Label.Email_Subject}"/>
+                    <apex:inputTextarea value="{!emailBody}" style="width:100%; height:100px;" label="{!$Label.Email_Message}"/>
                 </apex:pageBlockSection>
                 <div id="buttons" align="center" draggable="false">
                     <apex:commandButton action="{!sendEmailToMechanic}" value="{!$Label.Button_Send}"

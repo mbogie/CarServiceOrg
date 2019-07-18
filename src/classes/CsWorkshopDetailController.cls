@@ -5,25 +5,22 @@ public with sharing class CsWorkshopDetailController {
     public double lat { get; set; }
     public double lon { get; set; }
     public List<Contract__c> agreementsForWorkshopPageFormController { get; set; }
-    private CsSoqlQueryBuilder queryBuilder;
     public Contract__c editedContractFromAgreementsList { get; set; }
+    private CsSoqlQueryBuilder queryBuilder;
     public Mechanic__c mechanicSearchFormController { get; set; }
-    private List<Mechanic__c> mechanicsSearchResultList;
-    public Boolean isMechanicListSectionReady { get; set; }
-    public List<CsWrapperMechanic> wrappedMechanicResultList { get; set; }
-    public Boolean isContractSectionReady { get; set; }
     public Mechanic__c selectedMechanic { get; set; }
-    public Contract__c newContractToAdd { get; set; }
-    private Contract__c contractTemplate;
+    private List<Mechanic__c> mechanicsSearchResultList;
+    public List<CsWrapperMechanic> wrappedMechanicResultList { get; set; }
+    public Contract__c selectedContract { get; set; }
     public List<CsWrapperContract> wrappedContractsListToInsert { get; set; }
     private List<Contract__c> contractListToInsert;
-    private Boolean isMechanicOnTheWrapperContractList;
-    public Mechanic__c mechanicToDeleteFromContractList { get; set; }
-    public Mechanic__c mechanicToEditFromContractList { get; set; }
-    public Mechanic__c mechanicToSaveFromContractList { get; set; }
-    public Mechanic__c mechanicTemplateFromContractList { get; set; }
-    private Integer indexOfUpsertResult;
     public Boolean isAllInsertContractSuccess { get; set; }
+    public Boolean isMechanicListSectionReady { get; set; }
+    public Boolean isContractSectionReady { get; set; }
+    private Boolean isMechanicOnTheWrapperContractList;
+    private Boolean isButtonsDisabledAfterEditedContract;
+    private Integer indexOfUpsertResult;
+    public Contract__c editedContract { get; set; }
 
     public CsWorkshopDetailController(ApexPages.StandardController controller) {
         this.workshopFormPageController = (Workshop__c) controller.getRecord();
@@ -35,11 +32,12 @@ public with sharing class CsWorkshopDetailController {
         this.agreementsForWorkshopPageFormController = new List<Contract__c>();
         this.editedContractFromAgreementsList = new Contract__c();
         refreshAgreementsList();
-        this.mechanicSearchFormController = new Mechanic__c();
-        this.isMechanicListSectionReady = false;
-        this.isContractSectionReady = false;
-        this.wrappedContractsListToInsert = new List<CsWrapperContract>();
-        this.newContractToAdd = new Contract__c();
+        isButtonsDisabledAfterEditedContract = false;
+        isMechanicListSectionReady = false;
+        isContractSectionReady = false;
+        wrappedContractsListToInsert = new List<CsWrapperContract>();
+        mechanicSearchFormController = new Mechanic__c();
+        editedContract = new Contract__c();
     }
 
     public void refreshAgreementsList() {
@@ -83,11 +81,15 @@ public with sharing class CsWorkshopDetailController {
     }
 
     public String getHirePopupLabel() {
-        return String.format(System.Label.Hire_Workshop_Popup_Label, new List<String>{workshopFormPageController.Name});
+        return String.format(System.Label.Hire_Workshop_Popup_Label, new List<String>{
+                workshopFormPageController.Name
+        });
     }
 
     public void search() {
+        if (checkIfButtonsAreDisabled()) return;
         queryBuilder = new CsSoqlQueryBuilder();
+        selectedMechanic = new Mechanic__c();
         mechanicsSearchResultList = new List<Mechanic__c>();
         wrappedMechanicResultList = new List<CsWrapperMechanic>();
         queryBuilder.addResultField('Full_Name__c').
@@ -112,117 +114,114 @@ public with sharing class CsWorkshopDetailController {
             }
             wrappedMechanicResultList.add(new CsWrapperMechanic(mechanic, isMechanicOnTheWrapperContractList));
         }
-        selectedMechanic = new Mechanic__c();
     }
 
     public void clear() {
-        queryBuilder = new CsSoqlQueryBuilder();
+        if (checkIfButtonsAreDisabled()) return;
         mechanicsSearchResultList = new List<Mechanic__c>();
         isMechanicListSectionReady = false;
         mechanicSearchFormController = new Mechanic__c();
     }
 
     public void selectMechanic() {
-        mechanicTemplateFromContractList = new Mechanic__c();
-        mechanicToDeleteFromContractList = new Mechanic__c();
-        mechanicToEditFromContractList = new Mechanic__c();
-        mechanicToSaveFromContractList = new Mechanic__c();
-        isContractSectionReady = true;
+        if (checkIfButtonsAreDisabled()) return;
+        selectedContract = new Contract__c();
         for (CsWrapperMechanic wrappedMechanic : wrappedMechanicResultList) {
             if (wrappedMechanic.innerMechanic.Id == selectedMechanic.Id) {
                 wrappedMechanic.isSelectedFromList = true;
-                newContractToAdd.Mechanic__c = wrappedMechanic.innerMechanic.Id;
-                newContractToAdd.Mechanic__r = wrappedMechanic.innerMechanic;
-                newContractToAdd.Workshop__c = workshopFormPageController.Id;
-                newContractToAdd.Start_Date__c = null;
-                newContractToAdd.End_Date__c = null;
-                wrappedContractsListToInsert.add(new CsWrapperContract(newContractToAdd));
+                selectedContract.Mechanic__c = wrappedMechanic.innerMechanic.Id;
+                selectedContract.Mechanic__r = wrappedMechanic.innerMechanic;
+                selectedContract.Workshop__c = workshopFormPageController.Id;
+                selectedContract.Start_Date__c = null;
+                selectedContract.End_Date__c = null;
+                wrappedContractsListToInsert.add(new CsWrapperContract(selectedContract));
             }
         }
         selectedMechanic = new Mechanic__c();
-        newContractToAdd = new Contract__c();
+        isContractSectionReady = true;
     }
 
     public void removeContract() {
+        if (checkIfButtonsAreDisabled()) return;
         for (CsWrapperMechanic wrappedMechanic : wrappedMechanicResultList) {
-            if (wrappedMechanic.innerMechanic.Id == mechanicToDeleteFromContractList.Id) {
+            if (wrappedMechanic.innerMechanic.Id == selectedMechanic.Id) {
                 wrappedMechanic.isSelectedFromList = false;
             }
         }
         Integer indexToDelete;
         for (Integer i = 0; i < wrappedContractsListToInsert.size(); i++) {
-            if (wrappedContractsListToInsert.get(i).innerContract.Mechanic__r.Id == mechanicToDeleteFromContractList.Id) {
+            if (wrappedContractsListToInsert.get(i).innerContract.Mechanic__r.Id == selectedMechanic.Id) {
                 indexToDelete = i;
             }
         }
         wrappedContractsListToInsert.remove(indexToDelete);
         if (wrappedContractsListToInsert.size() == 0) isContractSectionReady = false;
-        mechanicToDeleteFromContractList = new Mechanic__c();
+        selectedMechanic = new Mechanic__c();
     }
 
     public void editContract() {
+        if (checkIfButtonsAreDisabled()) return;
         for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
-            if (wrappedContract.innerContract.Mechanic__r.Id == mechanicToEditFromContractList.Id) {
-                newContractToAdd.Start_Date__c = wrappedContract.innerContract.Start_Date__c;
-                newContractToAdd.End_Date__c = wrappedContract.innerContract.End_Date__c;
+            if (wrappedContract.innerContract.Mechanic__r.Id == selectedMechanic.Id) {
+                editedContract.Start_Date__c = wrappedContract.innerContract.Start_Date__c;
+                editedContract.End_Date__c = wrappedContract.innerContract.End_Date__c;
                 wrappedContract.isEdited = true;
             }
         }
-        mechanicToEditFromContractList = new Mechanic__c();
+        isButtonsDisabledAfterEditedContract = true;
+        selectedMechanic = new Mechanic__c();
     }
 
     public void saveContract() {
         for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
-            if (wrappedContract.innerContract.Mechanic__r.Id == mechanicToSaveFromContractList.Id) {
-                wrappedContract.innerContract.Start_Date__c = newContractToAdd.Start_Date__c;
-                wrappedContract.innerContract.End_Date__c = newContractToAdd.End_Date__c;
+            if (wrappedContract.innerContract.Mechanic__r.Id == selectedMechanic.Id) {
+                wrappedContract.innerContract.Start_Date__c = editedContract.Start_Date__c;
+                wrappedContract.innerContract.End_Date__c = editedContract.End_Date__c;
                 wrappedContract.errorMessage = '';
                 wrappedContract.isEdited = false;
             }
         }
-        mechanicToSaveFromContractList = new Mechanic__c();
-        newContractToAdd = new Contract__c();
+        isButtonsDisabledAfterEditedContract = false;
+        selectedMechanic = new Mechanic__c();
+        editedContract = new Contract__c();
     }
 
-    public PageReference template() {
-        contractTemplate = new Contract__c();
+    public void template() {
+        if (checkIfButtonsAreDisabled()) return;
         for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
-            if (wrappedContract.innerContract.Mechanic__r.Id == mechanicTemplateFromContractList.Id) {
-                if(wrappedContract.isEdited) return null;
-                contractTemplate = wrappedContract.innerContract.clone(true);
+            if (wrappedContract.innerContract.Mechanic__r.Id == selectedMechanic.Id) {
+                selectedContract = wrappedContract.innerContract.clone(true);
             }
         }
-        if (!((contractTemplate.Start_Date__c == null) && (contractTemplate.End_Date__c == null))) {
+        if (!((selectedContract.Start_Date__c == null) && (selectedContract.End_Date__c == null))) {
             for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
-                if(!wrappedContract.isInsertSuccess) {
-                    wrappedContract.innerContract.Start_Date__c = contractTemplate.Start_Date__c;
-                    wrappedContract.innerContract.End_Date__c = contractTemplate.End_Date__c;
+                if (!wrappedContract.isInsertSuccess) {
+                    wrappedContract.innerContract.Start_Date__c = selectedContract.Start_Date__c;
+                    wrappedContract.innerContract.End_Date__c = selectedContract.End_Date__c;
                     wrappedContract.errorMessage = '';
-                    wrappedContract.isEdited = false;
                 }
             }
+        }else {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.INFO, 'Cant copy empty date'));
         }
-        newContractToAdd = new Contract__c();
-        mechanicTemplateFromContractList = new Mechanic__c();
-        return null;
+        selectedContract = new Contract__c();
+        selectedMechanic = new Mechanic__c();
     }
 
     public void cancelHire() {
         isMechanicListSectionReady = false;
         isContractSectionReady = false;
-        mechanicToSaveFromContractList = new Mechanic__c();
-        mechanicToEditFromContractList = new Mechanic__c();
-        mechanicTemplateFromContractList = new Mechanic__c();
-        mechanicToDeleteFromContractList = new Mechanic__c();
         selectedMechanic = new Mechanic__c();
-        newContractToAdd = new Contract__c();
+        selectedContract = new Contract__c();
         mechanicSearchFormController = new Mechanic__c();
         mechanicsSearchResultList = new List<Mechanic__c>();
         wrappedContractsListToInsert = new List<CsWrapperContract>();
         wrappedMechanicResultList = new List<CsWrapperMechanic>();
+        isButtonsDisabledAfterEditedContract = false;
     }
 
     public void hire() {
+        if (checkIfButtonsAreDisabled()) return;
         isAllInsertContractSuccess = true;
         indexOfUpsertResult = 0;
         contractListToInsert = new List<Contract__c>();
@@ -248,7 +247,6 @@ public with sharing class CsWorkshopDetailController {
         isAllInsertContractSuccess = checkIfAllInsertsAreSuccess();
         refreshAgreementsList();
     }
-
     private Boolean checkIfAllInsertsAreSuccess(){
         for (CsWrapperContract wrapperContract : wrappedContractsListToInsert) {
             if(!wrapperContract.isInsertSuccess){
@@ -256,5 +254,13 @@ public with sharing class CsWorkshopDetailController {
             }
         }
         return true;
+    }
+
+    private Boolean checkIfButtonsAreDisabled() {
+        if (isButtonsDisabledAfterEditedContract) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.INFO, 'Save before another Action'));
+            return true;
+        }
+        return false;
     }
 }

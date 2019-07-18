@@ -2,17 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="378619f6-206d-4b97-be6c-0e71661895b4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/classes/CsUtils.cls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/classes/CsUtils.cls-meta.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarServiceOrg.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CarServiceOrg.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/CsMechanicImportController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsMechanicImportController.cls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/testClass.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/testClass.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/labels/CustomLabels.labels" beforeDir="false" afterPath="$PROJECT_DIR$/src/labels/CustomLabels.labels" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/CsWorkshopDetail.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsWorkshopDetail.page" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/triggers/OverlappingError.trigger" beforeDir="false" afterPath="$PROJECT_DIR$/src/triggers/OverlappingError.trigger" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,44 +33,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="87" column="5" lean-forward="true" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/triggers/OverlappingError.trigger">
+        <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="126" selection-start-line="21" selection-start-column="126" selection-end-line="21" selection-end-column="126" />
+            <state relative-caret-position="119">
+              <caret line="217" column="86" selection-start-line="217" selection-start-column="86" selection-end-line="217" selection-end-column="86" />
               <folding>
-                <element signature="e#182#195#0" expanded="true" />
-                <element signature="e#248#261#0" expanded="true" />
-                <element signature="e#322#349#0" expanded="true" />
-                <element signature="e#335#349#0" expanded="true" />
-                <element signature="e#403#407#0" expanded="true" />
-                <element signature="e#350#354#0" expanded="true" />
-                <element signature="e#693#706#0" expanded="true" />
-                <element signature="e#2299#2307#0" expanded="true" />
-                <element signature="e#3228#3236#0" expanded="true" />
-                <element signature="e#3762#3770#0" expanded="true" />
-                <element signature="e#3608#3621#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/CsUtils.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="24" column="58" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/testClass.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="42" column="1" lean-forward="true" selection-start-line="42" selection-start-column="1" selection-end-line="42" selection-end-column="1" />
-              <folding>
-                <element signature="e#79#92#0" expanded="true" />
+                <element signature="n#style#0;n#apex:inputTextarea#0;n#apex:pageBlockSection#0;n#apex:pageBlock#0;n#apex:form#0;n#div#1;n#apex:page#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,8 +57,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="677">
-              <caret line="179" column="49" selection-start-line="179" selection-start-column="49" selection-end-line="179" selection-end-column="49" />
+            <state relative-caret-position="609">
+              <caret line="204" column="105" selection-start-line="204" selection-start-column="105" selection-end-line="204" selection-end-column="105" />
+              <folding>
+                <element signature="e#1846#1859#0" expanded="true" />
+                <element signature="e#2148#2167#0" expanded="true" />
+                <element signature="e#4029#4037#0" expanded="true" />
+                <element signature="e#4321#4334#0" expanded="true" />
+                <element signature="e#4382#4401#0" expanded="true" />
+                <element signature="e#5840#5853#0" expanded="true" />
+                <element signature="e#10206#10219#0" expanded="true" />
+                <element signature="e#10270#10289#0" expanded="true" />
+                <element signature="e#10337#10356#0" expanded="true" />
+                <element signature="e#10610#10623#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pages/CsWorkshopDetail.page">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="165" column="42" selection-start-line="165" selection-start-column="42" selection-end-line="165" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -108,11 +100,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mechanic</find>
-      <find>MechanicWrapper</find>
-      <find>isSelectedFromList</find>
-      <find>saveResults</find>
-      <find>mechanicSearchStringToExport</find>
       <find>selectedWrapperMechanicList</find>
       <find>messages</find>
       <find>listPanel</find>
@@ -138,13 +125,13 @@
       <find>oldContract</find>
       <find>similarContract</find>
       <find>AgreementsContract</find>
+      <find>newContractToAdd</find>
+      <find>contractTemplate</find>
+      <find>mechanicSearchFormController</find>
+      <find>isButtonsDisabledAfterEditedContract</find>
+      <find>checkIfAllInsertsAreSuccess</find>
     </findStrings>
     <replaceStrings>
-      <replace>formMechanicController</replace>
-      <replace>workshopPageFormController</replace>
-      <replace>contractPageFormController</replace>
-      <replace>mechanicPageFormController</replace>
-      <replace>isWorkshopSectionReady</replace>
       <replace>isContractSectionReady</replace>
       <replace>mechanicSearchStringToExport</replace>
       <replace>setDataToShow</replace>
@@ -170,6 +157,11 @@
       <replace>oldContract</replace>
       <replace>triggerContract</replace>
       <replace>agreementsContract</replace>
+      <replace>selectedContract</replace>
+      <replace>selectedMechanic</replace>
+      <replace>checkIfAllInsertsAreSuccess()()</replace>
+      <replace>checkIfAllInsertsAreSuccess()</replace>
+      <replace>checkIfButtonsAreDisabled</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -218,18 +210,18 @@
         <option value="$PROJECT_DIR$/src/classes/CsWrapperContract.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsWrapperMechanic.cls" />
         <option value="$PROJECT_DIR$/src/pages/testPage.page" />
-        <option value="$PROJECT_DIR$/src/classes/CsMechanicImportController.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsRandomMechanicsController.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsRandomMechanicsController.cls-meta.xml" />
         <option value="$PROJECT_DIR$/src/pages/CsRandomMechanics.page" />
         <option value="$PROJECT_DIR$/src/pages/CsRandomMechanics.page-meta.xml" />
-        <option value="$PROJECT_DIR$/src/pages/CsWorkshopDetail.page" />
-        <option value="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" />
-        <option value="$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsUtils.cls" />
         <option value="$PROJECT_DIR$/src/classes/testClass.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsMechanicImportController.cls" />
         <option value="$PROJECT_DIR$/src/triggers/OverlappingError.trigger" />
+        <option value="$PROJECT_DIR$/src/pages/CsWorkshopDetail.page" />
+        <option value="$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls" />
+        <option value="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" />
       </list>
     </option>
   </component>
@@ -273,13 +265,13 @@
                       <entry key="CLASSES/CSLOCATIONCALLOUTS.CLS" value="1563229518173" />
                       <entry key="CLASSES/CSMECHANICDETAILCONTROLLER.CLS" value="1563401778622" />
                       <entry key="CLASSES/CSMECHANICEDITCONTROLLER.CLS" value="1563229518173" />
-                      <entry key="CLASSES/CSMECHANICIMPORTCONTROLLER.CLS" value="1563309196825" />
+                      <entry key="CLASSES/CSMECHANICIMPORTCONTROLLER.CLS" value="1563442830074" />
                       <entry key="CLASSES/CSMECHANICJSONWRAPPER.CLS" value="1563229518173" />
                       <entry key="CLASSES/CSMECHANICSEARCHCONTROLLER.CLS" value="1563229518173" />
                       <entry key="CLASSES/CSRANDOMMECHANICSCONTROLLER.CLS" value="1563358483000" />
                       <entry key="CLASSES/CSSOQLQUERYBUILDER.CLS" value="1563229518173" />
                       <entry key="CLASSES/CSUTILS.CLS" value="1563439287645" />
-                      <entry key="CLASSES/CSWORKSHOPDETAILCONTROLLER.CLS" value="1563439226584" />
+                      <entry key="CLASSES/CSWORKSHOPDETAILCONTROLLER.CLS" value="1563459319588" />
                       <entry key="CLASSES/CSWRAPPERCONTRACT.CLS" value="1563309012518" />
                       <entry key="CLASSES/CSWRAPPERMECHANIC.CLS" value="1563310503725" />
                       <entry key="CLASSES/LOCATIONCALLOUTS.CLS" value="1562698308791" />
@@ -305,7 +297,7 @@
                       <entry key="PAGES/CSCOPYRESULTMECHANICLISTTOCSV.PAGE" value="1563229448853" />
                       <entry key="PAGES/CSCOPYRESULTMECHANICLISTTOXML.PAGE" value="1563229447289" />
                       <entry key="PAGES/CSIMAGECROPPER.PAGE" value="1563229449184" />
-                      <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1563400554761" />
+                      <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1563459942044" />
                       <entry key="PAGES/CSMECHANICEDIT.PAGE" value="1563229448694" />
                       <entry key="PAGES/CSMECHANICIMPORT.PAGE" value="1563308285976" />
                       <entry key="PAGES/CSMECHANICIMPORTTEMPLATE.PAGE" value="1563303813875" />
@@ -313,7 +305,7 @@
                       <entry key="PAGES/CSPREPARERECORDTOSAVETOPDF.PAGE" value="1563229448039" />
                       <entry key="PAGES/CSRANDOMMECHANICS.PAGE" value="1563358565000" />
                       <entry key="PAGES/CSSAVEMECHANICRECORDTOPDF.PAGE" value="1563229447700" />
-                      <entry key="PAGES/CSWORKSHOPDETAIL.PAGE" value="1563389628499" />
+                      <entry key="PAGES/CSWORKSHOPDETAIL.PAGE" value="1563458991710" />
                       <entry key="PAGES/CSWORKSHOPEDIT.PAGE" value="1563229448996" />
                       <entry key="PAGES/MECHANICDETAILPAGE.PAGE" value="1562064925665" />
                       <entry key="PAGES/MECHANICEDITPAGE.PAGE" value="1562050098602" />
@@ -335,7 +327,7 @@
                       <entry key="TOPICSFOROBJECTS/CONTRACT__C.TOPICSFOROBJECTS" value="1562670584000" />
                       <entry key="TOPICSFOROBJECTS/MECHANIC__C.TOPICSFOROBJECTS" value="1562670584000" />
                       <entry key="TOPICSFOROBJECTS/WORKSHOP__C.TOPICSFOROBJECTS" value="1562670584000" />
-                      <entry key="TRIGGERS/OVERLAPPINGERROR.TRIGGER" value="1563440374515" />
+                      <entry key="TRIGGERS/OVERLAPPINGERROR.TRIGGER" value="1563451813299" />
                     </map>
                   </option>
                   <option name="lastBuildScope" value="CONTEXT" />
@@ -371,7 +363,7 @@
         <option name="logViewerSettings">
           <LogViewerSettings>
             <option name="logViewerSplitVertical" value="false" />
-            <option name="splitterProportion" value="0.5175277" />
+            <option name="splitterProportion" value="0.51107013" />
           </LogViewerSettings>
         </option>
         <option name="metadataContents">
@@ -1495,9 +1487,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="2388" />
-    <option name="y" value="209" />
-    <option name="width" value="1239" />
+    <option name="x" value="2176" />
+    <option name="y" value="71" />
+    <option name="width" value="1238" />
     <option name="height" value="664" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -1618,7 +1610,7 @@
       <workItem from="1563301898218" duration="42646000" />
       <workItem from="1563387861475" duration="7928000" />
       <workItem from="1563430060094" duration="4021000" />
-      <workItem from="1563435136401" duration="5217000" />
+      <workItem from="1563435136401" duration="20367000" />
     </task>
     <task id="LOCAL-00001" summary="First Commit">
       <created>1562265664633</created>
@@ -1631,13 +1623,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="502561000" />
+    <option name="totallyTimeSpent" value="517711000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22814499" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14658849" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -1652,15 +1644,15 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Log Viewer" order="7" sideWeight="0.586887" weight="0.29577464" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.5676972" weight="0.20585048" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.5772921" weight="0.24052005" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.413113" side_tool="true" weight="0.48970747" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50319827" side_tool="true" weight="0.23185265" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32827735" />
       <window_info anchor="bottom" id="Anonymous Apex" order="12" sideWeight="0.586887" weight="0.32936078" />
       <window_info anchor="bottom" id="Database Changes" order="13" />
       <window_info anchor="bottom" id="SOQL Query" order="14" sideWeight="0.49307036" weight="0.3531961" />
       <window_info anchor="bottom" id="Problems" order="15" sideWeight="0.49733475" weight="0.32827735" />
-      <window_info anchor="bottom" id="Version Control" order="16" sideWeight="0.49733475" weight="0.39111593" />
+      <window_info anchor="bottom" id="Version Control" order="16" sideWeight="0.4968017" weight="0.39111593" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1889,22 +1881,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicImport.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="37" column="77" selection-start-line="37" selection-start-column="77" selection-end-line="37" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsImportMechanicWrapper.cls" />
     <entry file="file://$PROJECT_DIR$/src/classes/CsContractInsertWrapper.cls" />
-    <entry file="file://$PROJECT_DIR$/src/classes/CsWrapperMechanic.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="45" lean-forward="true" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/testPage.page">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -1923,16 +1901,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicImportController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="104" column="40" lean-forward="true" selection-start-line="104" selection-start-column="40" selection-end-line="104" selection-end-column="40" />
-          <folding>
-            <element signature="e#4639#4652#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2001,45 +1969,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="113" column="64" lean-forward="true" selection-start-line="113" selection-start-column="64" selection-end-line="113" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsWrapperContract.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsWorkshopDetail.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="637">
-          <caret line="228" column="21" selection-start-line="228" selection-start-column="21" selection-end-line="228" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="711">
-          <caret line="256" column="5" lean-forward="true" selection-start-line="256" selection-start-column="5" selection-end-line="256" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="677">
-          <caret line="179" column="49" selection-start-line="179" selection-start-column="49" selection-end-line="179" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsUtils.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="58" selection-start-line="24" selection-start-column="58" selection-end-line="24" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -2053,22 +1986,86 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsUtils.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="35" lean-forward="true" selection-start-column="35" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/triggers/OverlappingError.trigger">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="126" selection-start-line="21" selection-start-column="126" selection-end-line="21" selection-end-column="126" />
+        <state relative-caret-position="47">
+          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           <folding>
             <element signature="e#182#195#0" expanded="true" />
             <element signature="e#248#261#0" expanded="true" />
             <element signature="e#322#349#0" expanded="true" />
             <element signature="e#335#349#0" expanded="true" />
-            <element signature="e#403#407#0" expanded="true" />
-            <element signature="e#350#354#0" expanded="true" />
-            <element signature="e#693#706#0" expanded="true" />
-            <element signature="e#2299#2307#0" expanded="true" />
-            <element signature="e#3228#3236#0" expanded="true" />
-            <element signature="e#3762#3770#0" expanded="true" />
-            <element signature="e#3608#3621#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsWrapperMechanic.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicImport.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="37" column="77" selection-start-line="37" selection-start-column="77" selection-end-line="37" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicImportController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="321">
+          <caret line="54" column="47" selection-start-line="54" selection-start-column="16" selection-end-line="54" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="609">
+          <caret line="204" column="105" selection-start-line="204" selection-start-column="105" selection-end-line="204" selection-end-column="105" />
+          <folding>
+            <element signature="e#1846#1859#0" expanded="true" />
+            <element signature="e#2148#2167#0" expanded="true" />
+            <element signature="e#4029#4037#0" expanded="true" />
+            <element signature="e#4321#4334#0" expanded="true" />
+            <element signature="e#4382#4401#0" expanded="true" />
+            <element signature="e#5840#5853#0" expanded="true" />
+            <element signature="e#10206#10219#0" expanded="true" />
+            <element signature="e#10270#10289#0" expanded="true" />
+            <element signature="e#10337#10356#0" expanded="true" />
+            <element signature="e#10610#10623#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsWorkshopDetail.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="165" column="42" selection-start-line="165" selection-start-column="42" selection-end-line="165" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="87" column="5" lean-forward="true" selection-start-line="87" selection-start-column="5" selection-end-line="87" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="217" column="86" selection-start-line="217" selection-start-column="86" selection-end-line="217" selection-end-column="86" />
+          <folding>
+            <element signature="n#style#0;n#apex:inputTextarea#0;n#apex:pageBlockSection#0;n#apex:pageBlock#0;n#apex:form#0;n#div#1;n#apex:page#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
