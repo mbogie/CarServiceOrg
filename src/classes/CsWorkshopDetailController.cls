@@ -163,6 +163,8 @@ public with sharing class CsWorkshopDetailController {
     public void editContract() {
         for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
             if (wrappedContract.innerContract.Mechanic__r.Id == mechanicToEditFromContractList.Id) {
+                newContractToAdd.Start_Date__c = wrappedContract.innerContract.Start_Date__c;
+                newContractToAdd.End_Date__c = wrappedContract.innerContract.End_Date__c;
                 wrappedContract.isEdited = true;
             }
         }
@@ -172,7 +174,6 @@ public with sharing class CsWorkshopDetailController {
     public void saveContract() {
         for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
             if (wrappedContract.innerContract.Mechanic__r.Id == mechanicToSaveFromContractList.Id) {
-                wrappedContract.innerContract.Mechanic__c = mechanicToSaveFromContractList.Id;
                 wrappedContract.innerContract.Start_Date__c = newContractToAdd.Start_Date__c;
                 wrappedContract.innerContract.End_Date__c = newContractToAdd.End_Date__c;
                 wrappedContract.errorMessage = '';
@@ -183,23 +184,27 @@ public with sharing class CsWorkshopDetailController {
         newContractToAdd = new Contract__c();
     }
 
-    public void template() {
+    public PageReference template() {
         contractTemplate = new Contract__c();
         for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
             if (wrappedContract.innerContract.Mechanic__r.Id == mechanicTemplateFromContractList.Id) {
+                if(wrappedContract.isEdited) return null;
                 contractTemplate = wrappedContract.innerContract.clone(true);
             }
         }
         if (!((contractTemplate.Start_Date__c == null) && (contractTemplate.End_Date__c == null))) {
-            for (CsWrapperContract wrapperContract : wrappedContractsListToInsert) {
-                wrapperContract.innerContract.Mechanic__c = wrapperContract.innerContract.Mechanic__c;
-                wrapperContract.innerContract.Start_Date__c = contractTemplate.Start_Date__c;
-                wrapperContract.innerContract.End_Date__c = contractTemplate.End_Date__c;
-                wrapperContract.errorMessage = '';
+            for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
+                if(!wrappedContract.isInsertSuccess) {
+                    wrappedContract.innerContract.Start_Date__c = contractTemplate.Start_Date__c;
+                    wrappedContract.innerContract.End_Date__c = contractTemplate.End_Date__c;
+                    wrappedContract.errorMessage = '';
+                    wrappedContract.isEdited = false;
+                }
             }
         }
         newContractToAdd = new Contract__c();
         mechanicTemplateFromContractList = new Mechanic__c();
+        return null;
     }
 
     public void cancelHire() {
@@ -240,13 +245,13 @@ public with sharing class CsWorkshopDetailController {
             }
             indexOfUpsertResult++;
         }
-        isAllInsertContractSuccess = check();
+        isAllInsertContractSuccess = checkIfAllInsertsAreSuccess();
         refreshAgreementsList();
     }
 
-    private Boolean check(){
+    private Boolean checkIfAllInsertsAreSuccess(){
         for (CsWrapperContract wrapperContract : wrappedContractsListToInsert) {
-            if(wrapperContract.isInsertSuccess == false){
+            if(!wrapperContract.isInsertSuccess){
                 return false;
             }
         }

@@ -255,4 +255,8 @@ public with sharing class CsMechanicDetailController {
     public String getEmailPopupLabel(){
         return String.format(System.Label.Send_Email_To, new List<String>{mechanicPageFormController.Full_Name__c});
     }
+
+    public static Boolean getIsLicenseNumberEnabled(){
+        return CsUtils.isCsEnabledForCurrentUser('MechanicLicenseNumberEnabled');
+    }
 }

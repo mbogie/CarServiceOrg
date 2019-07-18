@@ -246,6 +246,27 @@
         <value>Employees To Hire</value>
     </labels>
     <labels>
+        <fullName>Error_Overlapping</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Overlapping</shortDescription>
+        <value>Overlapping Dates:</value>
+    </labels>
+    <labels>
+        <fullName>Error_Overlapping_From</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Overlapping From</shortDescription>
+        <value>{0}: {1} - without notice.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Overlapping_From_To</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Overlapping From To</shortDescription>
+        <value>{0}: {1} - {2}.</value>
+    </labels>
+    <labels>
         <fullName>Error_To_Big_File</fullName>
         <language>en_US</language>
         <protected>true</protected>

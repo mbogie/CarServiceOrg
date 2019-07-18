@@ -54,7 +54,7 @@
                         <apex:outputField value="{!Mechanic__c.Speciality__c}"/>
                         <apex:outputField value="{!Mechanic__c.Name}"/>
                         <apex:outputField value="{!Mechanic__c.Skill__c}"/>
-                        <apex:outputField value="{!Mechanic__c.License_Number__c}"/>
+                        <apex:outputField value="{!Mechanic__c.License_Number__c}" rendered="{!isLicenseNumberEnabled}"/>
                         <apex:outputField value="{!Mechanic__c.Email__c}">
                             <apex:commandButton value="{!$Label.Send_Email}"
                                                 onClick="openEmailPopup()" onComplete="refresh"/>

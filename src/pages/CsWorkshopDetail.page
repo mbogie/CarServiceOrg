@@ -19,7 +19,7 @@
 
     <apex:form id="workshopForm">
         <apex:outputPanel id="inputHidden">
-            <apex:inputHidden id="isAllSuccess" value="{!isAllInsertContractSuccess}"/>
+            <apex:inputHidden id="isAllSuccess" value="{!IsAllInsertContractSuccess}"/>
         </apex:outputPanel>
         <apex:pageMessages id="workshopMessages"/>
         <apex:pageBlock id="workshopBlock" title="{!Workshop__c.Name}">
