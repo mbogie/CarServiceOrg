@@ -393,6 +393,13 @@
         <value>{0} is required.</value>
     </labels>
     <labels>
+        <fullName>Search_Empty_Record_List</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Search Empty Result List</shortDescription>
+        <value>Result list is empty.</value>
+    </labels>
+    <labels>
         <fullName>Search_For</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -517,5 +524,19 @@
         <protected>true</protected>
         <shortDescription>Upload Picture</shortDescription>
         <value>Upload</value>
+    </labels>
+    <labels>
+        <fullName>Workshop_Hire_Block_Button_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Workshop Hire Block Button Message</shortDescription>
+        <value>Must save first.</value>
+    </labels>
+    <labels>
+        <fullName>Workshop_Hire_Template_Message</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Workshop Hire Template Message</shortDescription>
+        <value>Empty Date can&apos;t be copied.</value>
     </labels>
 </CustomLabels>

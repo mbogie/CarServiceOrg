@@ -28,6 +28,12 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
+                            <option name="name" value="ChangePasswordController" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="ChangePasswordControllerTest" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsImageCropper" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -64,6 +70,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsUtils" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsWorkshopDetailController" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -76,16 +86,37 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="testClass" />
-                            <option name="selected" value="true" />
+                            <option name="name" value="ForgotPasswordController" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsUtils" />
+                            <option name="name" value="ForgotPasswordControllerTest" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="MyProfilePageController" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="MyProfilePageControllerTest" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteLoginController" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteLoginControllerTest" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteRegisterController" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteRegisterControllerTest" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="testClass" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="ApexClass" />
+                      <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
                       <option name="entries">
@@ -110,6 +141,15 @@
                     <MetadataType>
                       <option name="entries">
                         <list>
+                          <MetadataEntry>
+                            <option name="name" value="AnswersHome" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="BandwidthExceeded" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="ChangePassword" />
+                          </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsCopyMechanicListToJson" />
                             <option name="selected" value="true" />
@@ -167,12 +207,55 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Exception" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="FileNotFound" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="ForgotPassword" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="ForgotPasswordConfirm" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="IdeasHome" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="InMaintenance" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="MyProfilePage" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteLogin" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteRegister" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteRegisterConfirm" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="SiteTemplate" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="StdExceptionTemplate" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Unauthorized" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="UnderConstruction" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="testPage" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="ApexPage" />
+                      <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
                       <option name="name" value="ApexTestSuite" />
@@ -182,7 +265,11 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
-                            <option name="name" value="OverlappingError" />
+                            <option name="name" value="CsContractOverlapping" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsUserCountryUpdate" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -576,6 +663,9 @@
                             <option name="name" value="Opportunity.TrackingNumber__c" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Trigger_Exception__c.OverlappingErrorEnable__c" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="User.Country__c" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -756,6 +846,18 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Error_Overlapping" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Error_Overlapping_From" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Error_Overlapping_From_To" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Error_To_Big_File" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -828,6 +930,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Search_Empty_Record_List" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Search_For" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -897,6 +1003,14 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Upload_Picture" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Workshop_Hire_Block_Button_Message" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Workshop_Hire_Template_Message" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -1148,6 +1262,10 @@
                             <option name="name" value="TopicAssignment" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Trigger_Exception__c" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="User" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -1176,6 +1294,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Mechanic__c-en_US" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Trigger_Exception__c-en_US" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -2097,6 +2219,13 @@
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
+                      <option name="entries">
+                        <list>
+                          <MetadataEntry>
+                            <option name="name" value="Default" />
+                          </MetadataEntry>
+                        </list>
+                      </option>
                       <option name="name" value="PlatformCachePartition" />
                       <option name="wildcard" value="false" />
                     </MetadataType>
@@ -2223,6 +2352,9 @@
                             <option name="name" value="StandardAul" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Standard_User%5F%5Fc" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Work%2Ecom Only User" />
                           </MetadataEntry>
                         </list>
@@ -2234,7 +2366,13 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
+                            <option name="name" value="PT2_profilePasswordPolicy1563523636542" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Random_Mechanics_Profile_profilePasswordPolicy1563057247048" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Standard_User_c_profilePasswordPolicy1563523872927" />
                           </MetadataEntry>
                         </list>
                       </option>
@@ -2245,7 +2383,13 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
+                            <option name="name" value="PT2_profileSessionSetting1563523636644" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Random_Mechanics_Profile_profileSessionSetting1563057247115" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="null_profileSessionSetting1563523872950" />
                           </MetadataEntry>
                         </list>
                       </option>
@@ -2638,6 +2782,9 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Order" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Trigger_Exception__c" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="User" />

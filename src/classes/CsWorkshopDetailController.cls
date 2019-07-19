@@ -18,9 +18,8 @@ public with sharing class CsWorkshopDetailController {
     public Boolean isMechanicListSectionReady { get; set; }
     public Boolean isContractSectionReady { get; set; }
     private Boolean isMechanicOnTheWrapperContractList;
-    private Boolean isButtonsDisabledAfterEditedContract;
+    public Boolean isButtonsDisabledAfterEditedContract { get; set; }
     private Integer indexOfUpsertResult;
-    public Contract__c editedContract { get; set; }
 
     public CsWorkshopDetailController(ApexPages.StandardController controller) {
         this.workshopFormPageController = (Workshop__c) controller.getRecord();
@@ -32,12 +31,11 @@ public with sharing class CsWorkshopDetailController {
         this.agreementsForWorkshopPageFormController = new List<Contract__c>();
         this.editedContractFromAgreementsList = new Contract__c();
         refreshAgreementsList();
-        isButtonsDisabledAfterEditedContract = false;
-        isMechanicListSectionReady = false;
-        isContractSectionReady = false;
-        wrappedContractsListToInsert = new List<CsWrapperContract>();
-        mechanicSearchFormController = new Mechanic__c();
-        editedContract = new Contract__c();
+        this.isButtonsDisabledAfterEditedContract = false;
+        this.isMechanicListSectionReady = false;
+        this.isContractSectionReady = false;
+        this.wrappedContractsListToInsert = new List<CsWrapperContract>();
+        this.mechanicSearchFormController = new Mechanic__c();
     }
 
     public void refreshAgreementsList() {
@@ -88,6 +86,7 @@ public with sharing class CsWorkshopDetailController {
 
     public void search() {
         if (checkIfButtonsAreDisabled()) return;
+        isAllInsertContractSuccess = false;
         queryBuilder = new CsSoqlQueryBuilder();
         selectedMechanic = new Mechanic__c();
         mechanicsSearchResultList = new List<Mechanic__c>();
@@ -102,7 +101,10 @@ public with sharing class CsWorkshopDetailController {
                 addSearchFieldStartsWithValue('Email__c', mechanicSearchFormController.Email__c).
                 build();
         mechanicsSearchResultList = Database.query(queryBuilder.getQueryString());
-        if (mechanicsSearchResultList.size() > 0) {
+        if (mechanicsSearchResultList.size() == 0) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.INFO, System.Label.Search_Empty_Record_List));
+            isMechanicListSectionReady = false;
+        }else {
             isMechanicListSectionReady = true;
         }
         for (Mechanic__c mechanic : mechanicsSearchResultList) {
@@ -163,8 +165,6 @@ public with sharing class CsWorkshopDetailController {
         if (checkIfButtonsAreDisabled()) return;
         for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
             if (wrappedContract.innerContract.Mechanic__r.Id == selectedMechanic.Id) {
-                editedContract.Start_Date__c = wrappedContract.innerContract.Start_Date__c;
-                editedContract.End_Date__c = wrappedContract.innerContract.End_Date__c;
                 wrappedContract.isEdited = true;
             }
         }
@@ -175,15 +175,12 @@ public with sharing class CsWorkshopDetailController {
     public void saveContract() {
         for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
             if (wrappedContract.innerContract.Mechanic__r.Id == selectedMechanic.Id) {
-                wrappedContract.innerContract.Start_Date__c = editedContract.Start_Date__c;
-                wrappedContract.innerContract.End_Date__c = editedContract.End_Date__c;
                 wrappedContract.errorMessage = '';
                 wrappedContract.isEdited = false;
             }
         }
         isButtonsDisabledAfterEditedContract = false;
         selectedMechanic = new Mechanic__c();
-        editedContract = new Contract__c();
     }
 
     public void template() {
@@ -201,8 +198,8 @@ public with sharing class CsWorkshopDetailController {
                     wrappedContract.errorMessage = '';
                 }
             }
-        }else {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.INFO, 'Cant copy empty date'));
+        } else {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.INFO, System.Label.Workshop_Hire_Template_Message));
         }
         selectedContract = new Contract__c();
         selectedMechanic = new Mechanic__c();
@@ -222,7 +219,6 @@ public with sharing class CsWorkshopDetailController {
 
     public void hire() {
         if (checkIfButtonsAreDisabled()) return;
-        isAllInsertContractSuccess = true;
         indexOfUpsertResult = 0;
         contractListToInsert = new List<Contract__c>();
         for (CsWrapperContract wrappedContract : wrappedContractsListToInsert) {
@@ -247,9 +243,9 @@ public with sharing class CsWorkshopDetailController {
         isAllInsertContractSuccess = checkIfAllInsertsAreSuccess();
         refreshAgreementsList();
     }
-    private Boolean checkIfAllInsertsAreSuccess(){
+    private Boolean checkIfAllInsertsAreSuccess() {
         for (CsWrapperContract wrapperContract : wrappedContractsListToInsert) {
-            if(!wrapperContract.isInsertSuccess){
+            if (!wrapperContract.isInsertSuccess) {
                 return false;
             }
         }
@@ -258,7 +254,7 @@ public with sharing class CsWorkshopDetailController {
 
     private Boolean checkIfButtonsAreDisabled() {
         if (isButtonsDisabledAfterEditedContract) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.INFO, 'Save before another Action'));
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.INFO, System.Label.Workshop_Hire_Block_Button_Message));
             return true;
         }
         return false;
