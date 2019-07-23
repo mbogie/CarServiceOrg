@@ -29,6 +29,13 @@
         <value>Bad file extension. Only {0}.</value>
     </labels>
     <labels>
+        <fullName>Button_Add</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Add</shortDescription>
+        <value>Add</value>
+    </labels>
+    <labels>
         <fullName>Button_Cancel</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -246,6 +253,20 @@
         <value>Employees To Hire</value>
     </labels>
     <labels>
+        <fullName>Error_Field_Required</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Field Required</shortDescription>
+        <value>This field is required</value>
+    </labels>
+    <labels>
+        <fullName>Error_No_Object_Type</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error No Object Type</shortDescription>
+        <value>No Trigger Handler registered for Object Type:</value>
+    </labels>
+    <labels>
         <fullName>Error_Overlapping</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -412,6 +433,13 @@
         <protected>true</protected>
         <shortDescription>Search Results Label</shortDescription>
         <value>Results</value>
+    </labels>
+    <labels>
+        <fullName>Search_for_Tomeks_Mechanics</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Search for Tomeks Mechanics</shortDescription>
+        <value>Search for Tomek&apos;s Mechanics</value>
     </labels>
     <labels>
         <fullName>Section_Address</fullName>

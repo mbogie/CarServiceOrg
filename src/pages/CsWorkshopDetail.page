@@ -87,7 +87,7 @@
     <div id="agreement" title="{!HirePopupLabel}">
         <div id="myMessagess">
             <apex:outputPanel id="messages">
-                <apex:pageMessages id="messageTxt" showDetail="false"/>
+                <apex:pageMessages id="messageTxt" showDetail="false" escape="false"/>
                 <script>
                     let messageID = '{!$Component.messageTxt}';
                 </script>
@@ -198,16 +198,18 @@
                                 <apex:pageMessage title="{!$Label.Import_Status_Error}" severity="error"
                                                   strength="0"
                                                   rendered="{!(wrappedContract.errorMessage != '')}"
-                                                  summary="{!wrappedContract.errorMessage}"/>
+                                                  summary="{!wrappedContract.errorMessage}"
+                                                  escape="false"/>
                             </apex:column>
                         </apex:pageBlockTable>
                         <div id="agreementsButtons" align="center" draggable="false">
                             <apex:commandButton value="{!$Label.Button_Hire}" action="{!hire}"
-                                                reRender="messages,contractForm,agreementsBlock,inputHidden"
+                                                reRender="messages,contractForm,agreementsBlock,inputHidden,searchForm,listForm"
                                                 onComplete="checkHideModal();"/>
-                            <apex:actionFunction name="clearAfterHire" action="{!cancelHire}" reRender="hireForm"/>
+                            <apex:actionFunction name="clearAfterHire" action="{!cancelHire}" reRender="messages,contractForm,agreementsBlock,inputHidden,searchForm,listForm"/>
                             <apex:commandButton value="{!$Label.Button_Cancel}" action="{!cancelHire}" immediate="true"
-                                                reRender="messages,searchForm,listForm,contractForm" onComplete="closeHirePopup();"/>
+                                                reRender="messages,searchForm,listForm,contractForm"
+                                                onComplete="closeHirePopup();"/>
                         </div>
                     </apex:pageBlock>
                 </apex:actionRegion>
@@ -237,6 +239,7 @@
 
         function checkHideModal() {
             var isAllSuccessValue = $j("[id$='isAllSuccess']").val();
+            console.log('isSuccess --> ' + isAllSuccessValue);
             if (isAllSuccessValue == 'true') {
                 clearAfterHire();
                 $j('#agreement').dialog("close");

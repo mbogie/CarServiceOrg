@@ -1,23 +1,23 @@
 public with sharing class CsUtils {
 
     public static User getCurrentUser() {
-        return getUser(UserInfo.getUserId());
+        User currentUser = (User) Cache.Session.get('CurrentUser');
+        if (currentUser == null){
+            currentUser = getUser(UserInfo.getUserId());
+            Cache.Session.put('CurrentUser',currentUser);
+        }
+        return currentUser;
     }
 
     public static User getUser(String userId) {
-        if (Cache.Session.get('CurrentUser') != null) {
-            System.debug('user form cache --> ' + Cache.Session.get('CurrentUser'));
-            return (User) Cache.Session.get('CurrentUser');
-        } else {
-            List<User> userList = [SELECT Id, Username, Country__c FROM User WHERE Id = :userId];
-            if (userList.isEmpty()) {
-                return null;
-            }
-            System.debug('user from base --> ' + userList[0]);
-            Cache.Session.put('CurrentUser', userList.get(0));
-            return userList[0];
+        List<User> userList = [SELECT Id, Username, Country__c FROM User WHERE Id = :userId];
+        System.debug('user from base --> ' + userList[0]);
+        if (userList.isEmpty()) {
+            return null;
         }
+        return userList[0];
     }
+
 
     public static Boolean isCsEnabledForCurrentUser(String csName) {
         return isCsEnabledForGivenCountry(csName, getCurrentUser().Country__c);
@@ -34,11 +34,16 @@ public with sharing class CsUtils {
         }
     }
 
-    public static Boolean isContractOverlappingEnabled() {
+    public static Boolean isTriggerEnabled(String triggerName) {
+        Boolean isTriggerEnabled = true;
         Trigger_Exception__c teItem = Trigger_Exception__c.getInstance();
-        if (teItem == null) {
-            return false;
+        if (teItem != null) {
+            try {
+                isTriggerEnabled = Boolean.valueOf(teItem.get(triggerName + '__c'));
+            } catch (Exception err) {
+                System.debug(err.getMessage());
+            }
         }
-        return teItem.OverlappingErrorEnable__c;
+        return isTriggerEnabled;
     }
 }

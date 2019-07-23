@@ -1,13 +1,11 @@
-public with sharing class testClass {
+public with sharing class CsTomeksMechanicsSearchController {
 
-    public Mechanic__c mechanicPageFormController { get; set; }
-    public List<Mechanic__c> mechanicsSearchResultList { get; set; }
+    public Mechanic__c mechanicSearchFormController { get; set; }
     public List<WrapperForTomeksMechanics> tomeksMechanicsList { get; set; }
     private CsSoqlQueryBuilder queryBuilder;
     public Boolean isNameEmpty { get; set; }
-    public Mechanic__c editedMechanic { get; set; }
-    public Mechanic__c newMechanic { get; set; }
-    public Boolean isNewMechanicNameEmpty { get; set; }
+    public Mechanic__c mechanicToInsertOrUpdate { get; set; }
+    public Boolean isPopupMechanicNameEmpty { get; set; }
     public Boolean isEditedMechanicNameEmpty { get; set; }
     public Boolean isActionSuccess { get; set; }
     public String indexToDelete { get; set; }
@@ -34,15 +32,13 @@ public with sharing class testClass {
     }
 
     public CsTomeksMechanicsSearchController(ApexPages.StandardController controller) {
-        this.mechanicPageFormController = (Mechanic__c) controller.getRecord();
-        this.mechanicsSearchResultList = new List<Mechanic__c>();
+        this.mechanicSearchFormController = (Mechanic__c) controller.getRecord();
         this.isNameEmpty = false;
-        this.isNewMechanicNameEmpty = false;
+        this.isPopupMechanicNameEmpty = false;
         this.isEditedMechanicNameEmpty = false;
-        this.editedMechanic = new Mechanic__c();
-        this.newMechanic = new Mechanic__c();
-        this.isActionSuccess = true;
-        this.tomeksMechanicsList = new List<CsTomeksMechanicsSearchController.WrapperForTomeksMechanics>();
+        this.mechanicToInsertOrUpdate = new Mechanic__c();
+        this.isActionSuccess = false;
+        this.tomeksMechanicsList = new List<WrapperForTomeksMechanics>();
     }
 
     public static String loginToTomeksMechanics() {
@@ -57,7 +53,8 @@ public with sharing class testClass {
     }
 
     public void searchMechanic() {
-        if (String.isEmpty(mechanicPageFormController.Name)) {
+        if (String.isEmpty(mechanicSearchFormController.Name)) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, System.Label.Required_Input_Field_Error));
             isNameEmpty = true;
             return ;
         }
@@ -73,7 +70,7 @@ public with sharing class testClass {
             tomeksMechanicsList = new List<CsTomeksMechanicsSearchController.WrapperForTomeksMechanics>();
             List<CsSoapSforceComSchemasClassMwMechani.WrappedMechanic> wrappedMechanics = new List<CsSoapSforceComSchemasClassMwMechani.WrappedMechanic>();
             wrappedMechanics =
-                    tomeksWebService.fetchRecords(mechanicPageFormController.First_Name__c, mechanicPageFormController.Name, mechanicPageFormController.Email__c, mechanicPageFormController.City__c, mechanicPageFormController.Country__c);
+                    tomeksWebService.fetchRecords(mechanicSearchFormController.First_Name__c, mechanicSearchFormController.Name, mechanicSearchFormController.Email__c, mechanicSearchFormController.City__c, mechanicSearchFormController.Country__c);
             if(wrappedMechanics != null) {
                 for (CsSoapSforceComSchemasClassMwMechani.WrappedMechanic wrappedMechanic : wrappedMechanics) {
                     tomeksMechanicsList.add(new WrapperForTomeksMechanics(wrappedMechanic));
@@ -85,15 +82,15 @@ public with sharing class testClass {
     public void clearPage() {
         isNameEmpty = false;
         tomeksMechanicsList = new List<WrapperForTomeksMechanics>();
-        mechanicsSearchResultList = new List<Mechanic__c>();
-        mechanicPageFormController = new Mechanic__c();
+        mechanicSearchFormController = new Mechanic__c();
     }
 
-    public void addMechanic() {
+    public void saveMechanic() {
         isActionSuccess = true;
-        isNewMechanicNameEmpty = false;
-        if (String.isEmpty(newMechanic.Name)) {
-            isNewMechanicNameEmpty = true;
+        isPopupMechanicNameEmpty = false;
+        if (String.isEmpty(mechanicToInsertOrUpdate.Name)) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, 'Error field'));
+            isPopupMechanicNameEmpty = true;
             isActionSuccess = false;
             return ;
         } else {
@@ -105,28 +102,34 @@ public with sharing class testClass {
                 tomeksWebService.SessionHeader = new CsSoapSforceComSchemasClassMwMechani.SessionHeader_element();
                 tomeksWebService.SessionHeader.sessionId = sessionId;
 
-                CsSoapSforceComSchemasClassMwMechani.MechanicIdStatusWrapper statusWrapper = tomeksWebService.addOrEditMechanic(null,newMechanic.First_Name__c,newMechanic.Name,newMechanic.Email__c,newMechanic.City__c,newMechanic.Country__c);
-                System.debug('newMechanic --> ' + statusWrapper);
+                CsSoapSforceComSchemasClassMwMechani.MechanicIdStatusWrapper statusWrapper = tomeksWebService.addOrEditMechanic(indexToEdit,mechanicToInsertOrUpdate.First_Name__c,mechanicToInsertOrUpdate.Name,mechanicToInsertOrUpdate.Email__c,mechanicToInsertOrUpdate.City__c,mechanicToInsertOrUpdate.Country__c);
+                System.debug('status --> ' + statusWrapper);
+
             }
-            if (!String.isBlank(mechanicPageFormController.Name)) {
+            if (!String.isBlank(mechanicSearchFormController.Name)) {
                 searchMechanic();
             }
         }
     }
 
-    public void clearNewMechanic() {
-        isNewMechanicNameEmpty = false;
-        newMechanic = new Mechanic__c();
+    public void clearModal() {
+        isPopupMechanicNameEmpty = false;
+        mechanicToInsertOrUpdate = new Mechanic__c();
+    }
+
+    public void addMechanic() {
+        indexToEdit = null;
     }
 
     public void editMechanic() {
         for (WrapperForTomeksMechanics mechanic : tomeksMechanicsList) {
             if (mechanic.id == indexToEdit) {
-                editedMechanic.First_Name__c = mechanic.firstName;
-                editedMechanic.Name = mechanic.lastName;
-                editedMechanic.Email__c = mechanic.mail;
-                editedMechanic.City__c = mechanic.city;
-                editedMechanic.Country__c = mechanic.countryName;
+                mechanicToInsertOrUpdate.First_Name__c = mechanic.firstName;
+                mechanicToInsertOrUpdate.Name = mechanic.lastName;
+                mechanicToInsertOrUpdate.Email__c = mechanic.mail;
+                mechanicToInsertOrUpdate.City__c = mechanic.city;
+                mechanicToInsertOrUpdate.Country__c = mechanic.countryName;
+                System.debug('mechanicToInsert -->' + mechanic);
             }
         }
     }
@@ -139,43 +142,10 @@ public with sharing class testClass {
             CsSoapSforceComSchemasClassMwMechani.MW_MechanicWebService tomeksWebService = new CsSoapSforceComSchemasClassMwMechani.MW_MechanicWebService();
             tomeksWebService.SessionHeader = new CsSoapSforceComSchemasClassMwMechani.SessionHeader_element();
             tomeksWebService.SessionHeader.sessionId = sessionId;
-
             CsSoapSforceComSchemasClassMwMechani.MechanicIdStatusWrapper statusWrapper = tomeksWebService.deleteMechanic(indexToDelete);
-            System.debug('newMechanic --> ' + statusWrapper);
         }
-        if (!String.isBlank(mechanicPageFormController.Name)) {
+        if (!String.isBlank(mechanicSearchFormController.Name)) {
             searchMechanic();
         }
     }
-
-    public void clearEditMechanic() {
-        isEditedMechanicNameEmpty = false;
-        editedMechanic = new Mechanic__c();
-    }
-
-    public void saveEditedMechanic() {
-        isActionSuccess = true;
-        isEditedMechanicNameEmpty = false;
-        if (String.isBlank(editedMechanic.Name)) {
-            isEditedMechanicNameEmpty = true;
-            isActionSuccess = false;
-            return ;
-        }else {
-            String sessionId = loginToTomeksMechanics();
-            if (String.isBlank(sessionId)) {
-                ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, 'Empty SessionId'));
-            } else {
-                CsSoapSforceComSchemasClassMwMechani.MW_MechanicWebService tomeksWebService = new CsSoapSforceComSchemasClassMwMechani.MW_MechanicWebService();
-                tomeksWebService.SessionHeader = new CsSoapSforceComSchemasClassMwMechani.SessionHeader_element();
-                tomeksWebService.SessionHeader.sessionId = sessionId;
-
-                CsSoapSforceComSchemasClassMwMechani.MechanicIdStatusWrapper statusWrapper = tomeksWebService.addOrEditMechanic(indexToEdit,editedMechanic.First_Name__c,editedMechanic.Name,editedMechanic.Email__c,editedMechanic.City__c,editedMechanic.Country__c);
-                System.debug('newMechanic --> ' + statusWrapper);
-            }
-            if (!String.isBlank(mechanicPageFormController.Name)) {
-                searchMechanic();
-            }
-        }
-    }
-
 }
