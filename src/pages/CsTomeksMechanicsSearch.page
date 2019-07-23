@@ -166,7 +166,8 @@
             </div>
             <div class="slds-modal__container">
                 <div class="slds-modal__header">
-                    <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--icon-inverse slds-modal__close" onclick="closeModal()" value="X" reRender="modalForm,header"/>
+                    <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--icon-inverse slds-modal__close" onclick="closeModal()" value="X"
+                                        reRender="modalForm,header,messeges" immediate="true"/>
                     <apex:outputPanel id="header">
                     <apex:outputPanel rendered="{!indexToEdit == null}">
                     <h2 class="slds-text-heading--medium">{!$Label.Add_New_Mechanic}</h2>
@@ -244,7 +245,7 @@
                 <div class="slds-modal__footer">
                     <apex:actionFunction name="clearAfterSave" action="{!clearModal}" reRender="modalForm,messages,inputHidden,resultTable" immediate="true"/>
                     <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--neutral" onClick="closeModal()" value="{!$Label.Button_Cancel}"
-                                        reRender="messages,popupMechanicNamePanel,resultTable,header"/>
+                                        reRender="messages,popupMechanicNamePanel,resultTable,header" immediate="true"/>
                     <apex:commandButton action="{!saveMechanic}" styleClass="slds-button slds-button--brand" onComplete="checkHideModal()" value="{!$Label.Button_Save}"
                                         reRender="searchForm,messages,popupMechanicNamePanel,inputHidden,resultTable"/>
                 </div>
