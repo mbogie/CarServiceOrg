@@ -15,6 +15,13 @@
         <value>Actions</value>
     </labels>
     <labels>
+        <fullName>Add_New_Mechanic</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Add New Mechanic</shortDescription>
+        <value>Add New Mechanic</value>
+    </labels>
+    <labels>
         <fullName>Agreement</fullName>
         <language>en_US</language>
         <protected>true</protected>

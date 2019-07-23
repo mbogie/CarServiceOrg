@@ -7,7 +7,7 @@ public with sharing class CsTomeksMechanicsSearchController {
     public Mechanic__c mechanicToInsertOrUpdate { get; set; }
     public Boolean isPopupMechanicNameEmpty { get; set; }
     public Boolean isEditedMechanicNameEmpty { get; set; }
-    public Boolean isActionSuccess { get; set; }
+    public Boolean isUpserted { get; set; }
     public String indexToDelete { get; set; }
     public String indexToEdit { get; set; }
 
@@ -37,7 +37,7 @@ public with sharing class CsTomeksMechanicsSearchController {
         this.isPopupMechanicNameEmpty = false;
         this.isEditedMechanicNameEmpty = false;
         this.mechanicToInsertOrUpdate = new Mechanic__c();
-        this.isActionSuccess = false;
+        this.isUpserted = false;
         this.tomeksMechanicsList = new List<WrapperForTomeksMechanics>();
     }
 
@@ -86,14 +86,16 @@ public with sharing class CsTomeksMechanicsSearchController {
     }
 
     public void saveMechanic() {
-        isActionSuccess = true;
+        isUpserted = true;
         isPopupMechanicNameEmpty = false;
         if (String.isEmpty(mechanicToInsertOrUpdate.Name)) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, 'Error field'));
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, String.format(System.Label.Required_Input_Field_Error,
+                    new List<String>{Schema.getGlobalDescribe().get('Mechanic__c').getDescribe().fields.getMap().get('Name').getDescribe().getLabel()})));
             isPopupMechanicNameEmpty = true;
-            isActionSuccess = false;
+            isUpserted = false;
             return ;
         } else {
+            CsSoapSforceComSchemasClassMwMechani.MechanicIdStatusWrapper statusWrapper;
             String sessionId = loginToTomeksMechanics();
             if (String.isBlank(sessionId)) {
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, 'Empty SessionId'));
@@ -102,12 +104,16 @@ public with sharing class CsTomeksMechanicsSearchController {
                 tomeksWebService.SessionHeader = new CsSoapSforceComSchemasClassMwMechani.SessionHeader_element();
                 tomeksWebService.SessionHeader.sessionId = sessionId;
 
-                CsSoapSforceComSchemasClassMwMechani.MechanicIdStatusWrapper statusWrapper = tomeksWebService.addOrEditMechanic(indexToEdit,mechanicToInsertOrUpdate.First_Name__c,mechanicToInsertOrUpdate.Name,mechanicToInsertOrUpdate.Email__c,mechanicToInsertOrUpdate.City__c,mechanicToInsertOrUpdate.Country__c);
+                statusWrapper = tomeksWebService.addOrEditMechanic(indexToEdit,mechanicToInsertOrUpdate.First_Name__c,mechanicToInsertOrUpdate.Name,mechanicToInsertOrUpdate.Email__c,mechanicToInsertOrUpdate.City__c,mechanicToInsertOrUpdate.Country__c);
                 System.debug('status --> ' + statusWrapper);
 
             }
             if (!String.isBlank(mechanicSearchFormController.Name)) {
                 searchMechanic();
+            }
+            if(statusWrapper.id == null){
+                ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, statusWrapper.status));
+
             }
         }
     }
@@ -115,10 +121,11 @@ public with sharing class CsTomeksMechanicsSearchController {
     public void clearModal() {
         isPopupMechanicNameEmpty = false;
         mechanicToInsertOrUpdate = new Mechanic__c();
+        indexToEdit = null;
     }
 
     public void addMechanic() {
-        indexToEdit = null;
+
     }
 
     public void editMechanic() {

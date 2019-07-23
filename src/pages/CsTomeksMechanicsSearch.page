@@ -17,9 +17,8 @@
 
     <body class="slds-scope">
     <apex:form id="searchForm">
-        <apex:pageMessages id="errors"/>
         <apex:outputPanel id="inputHidden">
-            <apex:inputHidden id="isActionSuccess" value="{!IsActionSuccess}"/>
+            <apex:inputHidden id="isUpserted" value="{!isUpserted}"/>
         </apex:outputPanel>
         <div class="slds-scope">
             <div class="slds-grid slds-gutters">
@@ -31,7 +30,6 @@
 
                 <div class="slds-col slds-size--1-of-8">
                     <apex:commandButton style="width:100px;"
-                                        action="{!addMechanic}"
                                         value="{!$Label.Button_Add}"
                                         onComplete="openModal()"
                                         styleClass="slds-button slds-button_brand slds-m-top_medium"
@@ -168,8 +166,15 @@
             </div>
             <div class="slds-modal__container">
                 <div class="slds-modal__header">
-                    <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--icon-inverse slds-modal__close" onclick="closeModal()" value="X" reRender="modalForm"/>
-                    <h2 class="slds-text-heading--medium">Modal Header</h2>
+                    <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--icon-inverse slds-modal__close" onclick="closeModal()" value="X" reRender="modalForm,header"/>
+                    <apex:outputPanel id="header">
+                    <apex:outputPanel rendered="{!indexToEdit == null}">
+                    <h2 class="slds-text-heading--medium">{!$Label.Add_New_Mechanic}</h2>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!indexToEdit != null}">
+                        <h2 class="slds-text-heading--medium">{!$Label.Edit} '{!mechanicToInsertOrUpdate.First_Name__c} {!mechanicToInsertOrUpdate.Name}'</h2>
+                    </apex:outputPanel>
+                    </apex:outputPanel>
                 </div>
                     <div class="slds-modal__content slds-p-around--medium">
 
@@ -237,8 +242,9 @@
                         </apex:outputPanel>
                     </div>
                 <div class="slds-modal__footer">
+                    <apex:actionFunction name="clearAfterSave" action="{!clearModal}" reRender="modalForm,messages,inputHidden,resultTable" immediate="true"/>
                     <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--neutral" onClick="closeModal()" value="{!$Label.Button_Cancel}"
-                                        reRender="messages,popupMechanicNamePanel,resultTable"/>
+                                        reRender="messages,popupMechanicNamePanel,resultTable,header"/>
                     <apex:commandButton action="{!saveMechanic}" styleClass="slds-button slds-button--brand" onComplete="checkHideModal()" value="{!$Label.Button_Save}"
                                         reRender="searchForm,messages,popupMechanicNamePanel,inputHidden,resultTable"/>
                 </div>
@@ -263,9 +269,19 @@
         function checkHideModal() {
             if (jQuery('.errorM3').length <= 0){
                 j$('#modal').removeClass('slds-fade-in-open');
-                j$('#backdrop').removeClass('slds-backdrop--open')
+                j$('#backdrop').removeClass('slds-backdrop--open');
+                clearAfterSave();
             }
         }
+/*        function checkHideModal() {
+            console.log('isSuc --> ' + {!isUpserted});
+            var isSuccess = $j("[id$='isUpserted']").val();
+            console.log('isSuccess --> ' + isSuccess);
+            if (isAllSuccessValue == 'true') {
+                clearAfterHire();
+                $j('#agreement').dialog("close");
+            }
+        }*/
 </script>
     </body>
     </html>
