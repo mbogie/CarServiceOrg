@@ -153,6 +153,14 @@
                           <MetadataEntry>
                             <option name="name" value="SiteRegisterControllerTest" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsSoapSforceComSchemasClassMwMechaniMock" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsTomeksMechanicsSearchControllerTest" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="ApexClass" />

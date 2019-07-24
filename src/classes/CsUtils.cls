@@ -11,7 +11,6 @@ public with sharing class CsUtils {
 
     public static User getUser(String userId) {
         List<User> userList = [SELECT Id, Username, Country__c FROM User WHERE Id = :userId];
-        System.debug('user from base --> ' + userList[0]);
         if (userList.isEmpty()) {
             return null;
         }

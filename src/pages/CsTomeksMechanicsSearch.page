@@ -13,6 +13,39 @@
         <apex:stylesheet value="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
         <apex:stylesheet value="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.default.min.css"/>
         <apex:slds/>
+        <style>
+        .msgIcon {
+            display: none!important
+        }
+        .messageText {
+            color: #fff!important
+        }
+        .errorM3 {
+            color: red!important
+        }
+        .message {
+            background-color: #c23934!important
+        }
+        .message .messageText h4{
+            color: #fff!important
+        }
+        .customMessage * {
+            color: #fff!important
+        }
+        .customMessage {
+            margin: 5px 0!important;
+            max-width: 1280px;
+            opacity: 1!important;
+            width: 100%;
+            font-size: 12px;
+            border: 0px;
+            padding-left: 10px;
+            z-index: 900;
+        }
+        .message {
+            opacity: 1
+        }
+</style>
     </head>
 
     <body class="slds-scope">
@@ -31,7 +64,7 @@
                                         value="{!$Label.Button_Add}"
                                         onComplete="openModal()"
                                         styleClass="slds-button slds-button_brand slds-m-top_medium"
-                                        reRender="resultTable, errors">
+                                        reRender="resultTable, pageMessages">
                     </apex:commandButton>
                 </div>
             </div>
@@ -50,7 +83,8 @@
                         <apex:outputPanel id="nameNotEmpty" rendered="{!NOT(isNameEmpty)}">
                         <div class="slds-form-element">
                             <label class="slds-form-element__label" for="form-element-03">
-                                <abbr class="slds-required" title="required">* </abbr>{!$ObjectType.Mechanic__c.fields.Name.Label}</label>
+                                <abbr class="slds-required"
+                                      title="required">* </abbr>{!$ObjectType.Mechanic__c.fields.Name.Label}</label>
                             <div class="slds-form-element__control">
                               <apex:inputField value="{!mechanicSearchFormController.Name}" styleClass="slds-input"/>
                             </div>
@@ -59,11 +93,13 @@
                         <apex:outputPanel id="nameEmpty" rendered="{!isNameEmpty}">
                         <div class="slds-form-element slds-has-error">
                               <label class="slds-form-element__label" for="form-element-05">
-                                <abbr class="slds-required" title="required">* </abbr>{!$ObjectType.Mechanic__c.fields.Name.Label}</label>
+                                <abbr class="slds-required"
+                                      title="required">* </abbr>{!$ObjectType.Mechanic__c.fields.Name.Label}</label>
                               <div class="slds-form-element__control">
                               <apex:inputField value="{!mechanicSearchFormController.Name}" styleClass="slds-input"/>
                               </div>
-                              <div class="slds-form-element__help" id="form-error-01">{!$Label.Error_Field_Required}</div>
+                              <div class="slds-form-element__help"
+                                   id="form-error-01">{!$Label.Error_Field_Required}</div>
                             </div>
                         </apex:outputPanel>
                     </span>
@@ -116,7 +152,7 @@
                                                 value="{!$Label.Button_Clear}"
                                                 styleClass="slds-button slds-button_brand slds-m-top_medium"
                                                 style="width:125px;"
-                                                reRender="resultTable, searchForms, namePanel, errors">
+                                                reRender="resultTable, searchForms, namePanel, pageMessages">
                             </apex:commandButton>
                         </div>
                     </div>
@@ -130,10 +166,12 @@
                                 styleClass="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered"
                                 id="resultTable">
                     <apex:column headerValue="{!$Label.Actions_Label}">
-                        <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!editMechanic}" reRender="popupMechanicNamePanel,modalForm"
+                        <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!editMechanic}"
+                                            reRender="popupMechanicNamePanel,modalForm"
                                             onComplete="openModal()"
                                             value="{!$Label.Edit}">
-                            <apex:param name="editedMechanicId" value="{!mechanicFromTomek.id}" assignTo="{!indexToEdit}"/>
+                            <apex:param name="editedMechanicId" value="{!mechanicFromTomek.id}"
+                                        assignTo="{!indexToEdit}"/>
                         </apex:commandButton>
                         <apex:commandButton action="{!deleteMechanic}" styleClass="slds-button slds-button_neutral"
                                             reRender="resultTable, searchForm, namePanel"
@@ -142,10 +180,14 @@
                                         assignTo="{!indexToDelete}"/>
                         </apex:commandButton>
                     </apex:column>
-                    <apex:column value="{!mechanicFromTomek.firstName} {!mechanicFromTomek.lastName}" headerValue="{!$ObjectType.Mechanic__c.fields.Full_Name__c.Label}"/>
-                    <apex:column value="{!mechanicFromTomek.countryName}" headerValue="{!$ObjectType.Mechanic__c.fields.Country__c.Label}"/>
-                    <apex:column value="{!mechanicFromTomek.city}" headerValue="{!$ObjectType.Mechanic__c.fields.City__c.Label}"/>
-                    <apex:column value="{!mechanicFromTomek.mail}" headerValue="{!$ObjectType.Mechanic__c.fields.Email__c.Label}"/>
+                    <apex:column value="{!mechanicFromTomek.firstName} {!mechanicFromTomek.lastName}"
+                                 headerValue="{!$ObjectType.Mechanic__c.fields.Full_Name__c.Label}"/>
+                    <apex:column value="{!mechanicFromTomek.countryName}"
+                                 headerValue="{!$ObjectType.Mechanic__c.fields.Country__c.Label}"/>
+                    <apex:column value="{!mechanicFromTomek.city}"
+                                 headerValue="{!$ObjectType.Mechanic__c.fields.City__c.Label}"/>
+                    <apex:column value="{!mechanicFromTomek.mail}"
+                                 headerValue="{!$ObjectType.Mechanic__c.fields.Email__c.Label}"/>
                 </apex:dataTable>
             </div>
         </div>
@@ -153,25 +195,28 @@
     <apex:form id="modalForm">
         <div class="slds-modal" aria-hidden="false" role="dialog" id="modal">
             <div id="myMessagess">
-            <apex:outputPanel id="messages">
-                <apex:pageMessages id="messageTxt" showDetail="false" escape="false"/>
-                <script>
+                <apex:outputPanel id="messages">
+                    <apex:pageMessages id="messageTxt" showDetail="false" escape="false"/>
+                    <script>
                     let messageID = '{!$Component.messageTxt}';
-                </script>
-            </apex:outputPanel>
+
+                    </script>
+                </apex:outputPanel>
             </div>
             <div class="slds-modal__container">
                 <div class="slds-modal__header">
-                    <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--icon-inverse slds-modal__close" onclick="closeModal()" value="X"
+                    <apex:commandButton action="{!clearModal}"
+                                        styleClass="slds-button slds-button--icon-inverse slds-modal__close"
+                                        onclick="closeModal()" value="X"
                                         reRender="modalForm,header,messages,pageMessages" immediate="true"/>
                     <apex:outputPanel id="header">
-                    <h2 class="slds-text-heading--medium">{!popupHeader}</h2>
+                        <h2 class="slds-text-heading--medium">{!popupHeader}</h2>
                     </apex:outputPanel>
                 </div>
-                    <div class="slds-modal__content slds-p-around--medium">
-                        <apex:outputPanel id="popupMechanicNamePanel">
-                            <div class="slds-grid slds-gutters">
-                                <div class="slds-col slds-size&#45;&#45;1-of-2">
+                <div class="slds-modal__content slds-p-around--medium">
+                    <apex:outputPanel id="popupMechanicNamePanel">
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size&#45;&#45;1-of-2">
                                     <span>
                                         <div class="slds-form-element">
                                             <label class="slds-form-element__label"
@@ -181,35 +226,42 @@
                                                                styleClass="slds-input"/>
                                             </div>
                                         </div>
-                                        <apex:outputPanel id="newNameNotEmpty" rendered="{!NOT(isPopupMechanicNameEmpty)}">
+                                        <apex:outputPanel id="newNameNotEmpty"
+                                                          rendered="{!NOT(isPopupMechanicNameEmpty)}">
                                         <div class="slds-form-element">
                                             <label class="slds-form-element__label" for="form-element-03">
-                                                <abbr class="slds-required" title="required">* </abbr>{!$ObjectType.Mechanic__c.fields.Name.Label}</label>
+                                                <abbr class="slds-required"
+                                                      title="required">* </abbr>{!$ObjectType.Mechanic__c.fields.Name.Label}</label>
                                             <div class="slds-form-element__control">
-                                              <apex:inputField value="{!mechanicToInsertOrUpdate.Name}" styleClass="slds-input"/>
+                                              <apex:inputField value="{!mechanicToInsertOrUpdate.Name}"
+                                                               styleClass="slds-input"/>
                                             </div>
                                         </div>
                                         </apex:outputPanel>
                                         <apex:outputPanel id="newNameEmpty" rendered="{!isPopupMechanicNameEmpty}">
                                         <div class="slds-form-element slds-has-error">
                                               <label class="slds-form-element__label" for="form-element-05">
-                                                <abbr class="slds-required" title="required">* </abbr>{!$ObjectType.Mechanic__c.fields.Name.Label}</label>
+                                                <abbr class="slds-required"
+                                                      title="required">* </abbr>{!$ObjectType.Mechanic__c.fields.Name.Label}</label>
                                               <div class="slds-form-element__control">
-                                              <apex:inputField value="{!mechanicToInsertOrUpdate.Name}" styleClass="slds-input"/>
+                                              <apex:inputField value="{!mechanicToInsertOrUpdate.Name}"
+                                                               styleClass="slds-input"/>
                                               </div>
-                                              <div class="slds-form-element__help" id="form-error-01">{!$Label.Error_Field_Required}</div>
+                                              <div class="slds-form-element__help"
+                                                   id="form-error-01">{!$Label.Error_Field_Required}</div>
                                             </div>
                                         </apex:outputPanel>
                                     </span>
-                                </div>
-                                <div class="slds-col slds-size&#45;&#45;1-of-2">
+                            </div>
+                            <div class="slds-col slds-size&#45;&#45;1-of-2">
                                     <span>
 
                                         <div class="slds-form-element">
                                             <label class="slds-form-element__label"
                                                    for="form-element-01">{!$ObjectType.Mechanic__c.fields.City__c.Label}</label>
                                             <div class="slds-form-element__control">
-                                              <apex:inputField value="{!mechanicToInsertOrUpdate.City__c}" styleClass="slds-input"/>
+                                              <apex:inputField value="{!mechanicToInsertOrUpdate.City__c}"
+                                                               styleClass="slds-input"/>
                                             </div>
                                         </div>
                                         <div class="slds-form-element">
@@ -224,19 +276,23 @@
                                             <label class="slds-form-element__label"
                                                    for="form-element-01">{!$ObjectType.Mechanic__c.fields.Email__c.Label}</label>
                                             <div class="slds-form-element__control">
-                                              <apex:inputField value="{!mechanicToInsertOrUpdate.Email__c}" styleClass="slds-input"/>
+                                              <apex:inputField value="{!mechanicToInsertOrUpdate.Email__c}"
+                                                               styleClass="slds-input"/>
                                             </div>
                                         </div>
                                     </span>
-                                </div>
                             </div>
-                        </apex:outputPanel>
-                    </div>
+                        </div>
+                    </apex:outputPanel>
+                </div>
                 <div class="slds-modal__footer">
-                    <apex:actionFunction name="clearAfterSave" action="{!clearModal}" reRender="modalForm,messages,inputHidden,resultTable" immediate="true"/>
-                    <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--neutral" onClick="closeModal()" value="{!$Label.Button_Cancel}"
+                    <apex:actionFunction name="clearAfterSave" action="{!clearModal}"
+                                         reRender="modalForm,messages,inputHidden,resultTable" immediate="true"/>
+                    <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--neutral"
+                                        onClick="closeModal()" value="{!$Label.Button_Cancel}"
                                         reRender="messages,popupMechanicNamePanel,resultTable,header" immediate="true"/>
-                    <apex:commandButton action="{!saveMechanic}" styleClass="slds-button slds-button--brand" onComplete="checkHideModal()" value="{!$Label.Button_Save}"
+                    <apex:commandButton action="{!saveMechanic}" styleClass="slds-button slds-button--brand"
+                                        onComplete="checkHideModal()" value="{!$Label.Button_Save}"
                                         reRender="messages,popupMechanicNamePanel,inputHidden,resultTable"/>
                 </div>
             </div>
@@ -246,7 +302,6 @@
 
     <script>
         j$ = jQuery.noConflict();
-
         function openModal(){
             j$("[id$='backdrop']").addClass('slds-backdrop--open');
             j$("[id$='modal']").addClass('slds-fade-in-open');
@@ -263,7 +318,8 @@
                 clearAfterSave();
             }
         }
-</script>
+
+    </script>
     </body>
     </html>
 </apex:page>

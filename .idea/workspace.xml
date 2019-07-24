@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="378619f6-206d-4b97-be6c-0e71661895b4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechaniMock.cls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechaniMock.cls-meta.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchControllerTest.cls" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchControllerTest.cls-meta.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarServiceOrg.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CarServiceOrg.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/CsUtils.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsUtils.cls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/testClass.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/testClass.cls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/labels/CustomLabels.labels" beforeDir="false" afterPath="$PROJECT_DIR$/src/labels/CustomLabels.labels" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page" afterDir="false" />
     </list>
@@ -12,6 +20,9 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageViewManager">
+    <option name="myElementSize" value="75" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -33,23 +44,23 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls">
+        <entry file="file://$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="126" column="132" selection-start-line="126" selection-start-column="132" selection-end-line="126" selection-end-column="132" />
-              <folding>
-                <element signature="e#4272#4280#0" expanded="true" />
-                <element signature="e#6551#6559#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="272">
+              <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page">
+        <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="169" column="22" lean-forward="true" selection-start-line="169" selection-start-column="22" selection-end-line="169" selection-end-column="22" />
+            <state relative-caret-position="1269">
+              <caret line="126" column="17" selection-start-line="126" selection-start-column="17" selection-end-line="126" selection-end-column="17" />
+              <folding>
+                <element signature="e#3797#3805#0" expanded="true" />
+                <element signature="e#6225#6233#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,23 +74,14 @@
         <option value="Class" />
         <option value="Apex Trigger" />
         <option value="Apex Interface" />
-        <option value="Apex Class" />
         <option value="Visualforce Page" />
+        <option value="Apex Class" />
         <option value="Apex Metadata" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>editedContract</find>
-      <find>contractsMap</find>
-      <find>agreementsBlock</find>
-      <find>sear</find>
-      <find>save</find>
-      <find>valueOfImage</find>
-      <find>requ</find>
-      <find>editForm</find>
-      <find>idToEdit</find>
       <find>Full</find>
       <find>login</find>
       <find>Login</find>
@@ -101,6 +103,15 @@
       <find>isUpserted</find>
       <find>isPopupMechanicNameEmpty</find>
       <find>isEditedMechanicNameEmpty</find>
+      <find>wrapped mehanics &gt;&gt;</find>
+      <find>Session Id Is BLANK</find>
+      <find>Test</find>
+      <find>Mechanic was upserted</find>
+      <find>statusWrapper</find>
+      <find>'Mechanic was upserted'</find>
+      <find>errors</find>
+      <find>SaveMethod</find>
+      <find>UPSERT_FAIL_METHOD</find>
     </findStrings>
     <replaceStrings>
       <replace>AgreementsContract</replace>
@@ -142,13 +153,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/classes/22.cls" />
-        <option value="$PROJECT_DIR$/src/pages/CsMechanicEdit.page" />
-        <option value="$PROJECT_DIR$/src/pages/CsPrepareRecordToSaveToPdf.page" />
-        <option value="$PROJECT_DIR$/src/classes/CsMechanicEditController.cls" />
-        <option value="$PROJECT_DIR$/src/pages/CsImportMechanics.page" />
-        <option value="$PROJECT_DIR$/src/pages/CsMechanicSearch.page" />
-        <option value="$PROJECT_DIR$/src/classes/CsSoqlQueryBuilder.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsRandomMechanics.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsPublicSite.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicImport.cls" />
@@ -187,12 +191,19 @@
         <option value="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" />
         <option value="$PROJECT_DIR$/src/classes/CsTomeksMechanicsWebService.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicsWebService.cls" />
-        <option value="$PROJECT_DIR$/src/classes/CsUtils.cls" />
-        <option value="$PROJECT_DIR$/src/classes/testClass.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsWorkshopDetail.page" />
         <option value="$PROJECT_DIR$/src/pages/testPage.page" />
-        <option value="$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page" />
+        <option value="$PROJECT_DIR$/src/classes/CsMechanicWebServiceTest.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsMechanicsWebServiceTest.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsMechanicsWebServiceMock.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsUtils.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechani.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsMessagesAbstract.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechaniMock.cls" />
+        <option value="$PROJECT_DIR$/src/classes/testClass.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchControllerTest.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls" />
+        <option value="$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page" />
       </list>
     </option>
   </component>
@@ -202,7 +213,7 @@
         <entry key="CarServiceOrg">
           <value>
             <ModuleWorkspaceSettings>
-              <option name="moduleContentsLastModified" value="1563898753325" />
+              <option name="moduleContentsLastModified" value="1563993076934" />
               <option name="serverMetadataLastPopulated" value="1563898594109" />
             </ModuleWorkspaceSettings>
           </value>
@@ -213,14 +224,8 @@
       <ProjectWorkspaceSettings>
         <option name="anonymousApexSettings">
           <AnonymousApexSettings>
-            <option name="calloutsLogLevel" value="ERROR" />
             <option name="documentText" value="CsPartnerSoapSforceCom.Soap partnerSoap = new CsPartnerSoapSforceCom.Soap();&#10;CsPartnerSoapSforceCom.LoginResult loginResult = partnerSoap.login('tomek.starzak@gmail.com', 'Test1234sDKbP76CNGMdzE4aTTfL1gSEn');&#10;System.debug( loginResult.sessionId);" />
-            <option name="profilingLogLevel" value="ERROR" />
             <option name="splitterProportion" value="0.21710883" />
-            <option name="systemLogLevel" value="FINEST" />
-            <option name="validationLogLevel" value="ERROR" />
-            <option name="visualforceLogLevel" value="ERROR" />
-            <option name="workflowLogLevel" value="ERROR" />
           </AnonymousApexSettings>
         </option>
         <option name="connectionWorkspaceSettings">
@@ -243,12 +248,15 @@
                       <entry key="CLASSES/CSMECHANICSEARCHCONTROLLER.CLS" value="1563229518173" />
                       <entry key="CLASSES/CSMECHANICSWEBSERVICE.CLS" value="1563883945218" />
                       <entry key="CLASSES/CSRANDOMMECHANICSCONTROLLER.CLS" value="1563358483000" />
+                      <entry key="CLASSES/CSSOAPSFORCECOMSCHEMASCLASSMWMECHANI.CLS" value="1563968739000" />
+                      <entry key="CLASSES/CSSOAPSFORCECOMSCHEMASCLASSMWMECHANIMOCK.CLS" value="1563998103000" />
                       <entry key="CLASSES/CSSOQLQUERYBUILDER.CLS" value="1563229518173" />
-                      <entry key="CLASSES/CSTOMEKSMECHANICSSEARCHCONTROLLER.CLS" value="1563953111000" />
+                      <entry key="CLASSES/CSTOMEKSMECHANICSSEARCHCONTROLLER.CLS" value="1564000011000" />
+                      <entry key="CLASSES/CSTOMEKSMECHANICSSEARCHCONTROLLERTEST.CLS" value="1563999584000" />
                       <entry key="CLASSES/CSTOMEKSMECHANICSWEBSERVICE.CLS" value="1563874217035" />
                       <entry key="CLASSES/CSTRIGGERFACTORY.CLS" value="1563796179845" />
                       <entry key="CLASSES/CSUSERTRIGGERHANDLER.CLS" value="1563795819278" />
-                      <entry key="CLASSES/CSUTILS.CLS" value="1563891520239" />
+                      <entry key="CLASSES/CSUTILS.CLS" value="1563964999000" />
                       <entry key="CLASSES/CSWORKSHOPDETAILCONTROLLER.CLS" value="1563542097838" />
                       <entry key="CLASSES/CSWRAPPERCONTRACT.CLS" value="1563309012518" />
                       <entry key="CLASSES/CSWRAPPERMECHANIC.CLS" value="1563310503725" />
@@ -283,7 +291,7 @@
                       <entry key="PAGES/CSPREPARERECORDTOSAVETOPDF.PAGE" value="1563229448039" />
                       <entry key="PAGES/CSRANDOMMECHANICS.PAGE" value="1563358565000" />
                       <entry key="PAGES/CSSAVEMECHANICRECORDTOPDF.PAGE" value="1563229447700" />
-                      <entry key="PAGES/CSTOMEKSMECHANICSSEARCH.PAGE" value="1563952870000" />
+                      <entry key="PAGES/CSTOMEKSMECHANICSSEARCH.PAGE" value="1564000011000" />
                       <entry key="PAGES/CSWORKSHOPDETAIL.PAGE" value="1563913294000" />
                       <entry key="PAGES/CSWORKSHOPEDIT.PAGE" value="1563229448996" />
                       <entry key="PAGES/MECHANICDETAILPAGE.PAGE" value="1562064925665" />
@@ -1521,10 +1529,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="2334" />
+    <option name="y" value="199" />
+    <option name="width" value="1237" />
+    <option name="height" value="664" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
@@ -1535,6 +1543,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1575,8 +1585,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1603,6 +1611,204 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="Apex Unit Tests.CsTomeksMechanicsSearchControllerTest">
+    <configuration name="CsTomeksMechanicsSearchControllerTest" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allTests" value="false" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="apexLogLevel" value="DEBUG" />
+      <option name="calloutsLogLevel" value="INFO" />
+      <option name="connectionName" value="CarServiceOrg" />
+      <option name="contextConfiguration" value="true" />
+      <option name="databaseLogLevel" value="INFO" />
+      <option name="logLevelsInitialized" value="false" />
+      <option name="moduleToTestClassNames">
+        <map>
+          <entry key="CarServiceOrg">
+            <value>
+              <set>
+                <option value="CsTomeksMechanicsSearchControllerTest" />
+              </set>
+            </value>
+          </entry>
+        </map>
+      </option>
+      <option name="profilingLogLevel" value="INFO" />
+      <option name="systemLogLevel" value="DEBUG" />
+      <option name="testClassToTestMethodNames">
+        <map />
+      </option>
+      <option name="testSuiteName" />
+      <option name="validationLogLevel" value="INFO" />
+      <option name="visualforceLogLevel" value="INFO" />
+      <option name="workflowLogLevel" value="INFO" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfConnectError" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allTests" value="false" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="apexLogLevel" value="DEBUG" />
+      <option name="calloutsLogLevel" value="INFO" />
+      <option name="connectionName" value="CarServiceOrg" />
+      <option name="contextConfiguration" value="true" />
+      <option name="databaseLogLevel" value="INFO" />
+      <option name="logLevelsInitialized" value="false" />
+      <option name="moduleToTestClassNames">
+        <map>
+          <entry key="CarServiceOrg">
+            <value>
+              <set>
+                <option value="CsTomeksMechanicsSearchControllerTest" />
+              </set>
+            </value>
+          </entry>
+        </map>
+      </option>
+      <option name="profilingLogLevel" value="INFO" />
+      <option name="systemLogLevel" value="DEBUG" />
+      <option name="testClassToTestMethodNames">
+        <map>
+          <entry key="CsTomeksMechanicsSearchControllerTest">
+            <value>
+              <set>
+                <option value="shouldDisplayPageErrorMessageIfConnectError" />
+              </set>
+            </value>
+          </entry>
+        </map>
+      </option>
+      <option name="testSuiteName" />
+      <option name="validationLogLevel" value="INFO" />
+      <option name="visualforceLogLevel" value="INFO" />
+      <option name="workflowLogLevel" value="INFO" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfDeleteMethodWasFail" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allTests" value="false" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="apexLogLevel" value="DEBUG" />
+      <option name="calloutsLogLevel" value="INFO" />
+      <option name="connectionName" value="CarServiceOrg" />
+      <option name="contextConfiguration" value="true" />
+      <option name="databaseLogLevel" value="INFO" />
+      <option name="logLevelsInitialized" value="false" />
+      <option name="moduleToTestClassNames">
+        <map>
+          <entry key="CarServiceOrg">
+            <value>
+              <set>
+                <option value="CsTomeksMechanicsSearchControllerTest" />
+              </set>
+            </value>
+          </entry>
+        </map>
+      </option>
+      <option name="profilingLogLevel" value="INFO" />
+      <option name="systemLogLevel" value="DEBUG" />
+      <option name="testClassToTestMethodNames">
+        <map>
+          <entry key="CsTomeksMechanicsSearchControllerTest">
+            <value>
+              <set>
+                <option value="shouldDisplayPageErrorMessageIfDeleteMethodWasFail" />
+              </set>
+            </value>
+          </entry>
+        </map>
+      </option>
+      <option name="testSuiteName" />
+      <option name="validationLogLevel" value="INFO" />
+      <option name="visualforceLogLevel" value="INFO" />
+      <option name="workflowLogLevel" value="INFO" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfSaveMethodWasFail" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allTests" value="false" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="apexLogLevel" value="DEBUG" />
+      <option name="calloutsLogLevel" value="INFO" />
+      <option name="connectionName" value="CarServiceOrg" />
+      <option name="contextConfiguration" value="true" />
+      <option name="databaseLogLevel" value="INFO" />
+      <option name="logLevelsInitialized" value="false" />
+      <option name="moduleToTestClassNames">
+        <map>
+          <entry key="CarServiceOrg">
+            <value>
+              <set>
+                <option value="CsTomeksMechanicsSearchControllerTest" />
+              </set>
+            </value>
+          </entry>
+        </map>
+      </option>
+      <option name="profilingLogLevel" value="INFO" />
+      <option name="systemLogLevel" value="DEBUG" />
+      <option name="testClassToTestMethodNames">
+        <map>
+          <entry key="CsTomeksMechanicsSearchControllerTest">
+            <value>
+              <set>
+                <option value="shouldDisplayPageErrorMessageIfSaveMethodWasFail" />
+              </set>
+            </value>
+          </entry>
+        </map>
+      </option>
+      <option name="testSuiteName" />
+      <option name="validationLogLevel" value="INFO" />
+      <option name="visualforceLogLevel" value="INFO" />
+      <option name="workflowLogLevel" value="INFO" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfSearchMethodWasFail" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allTests" value="false" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="apexLogLevel" value="DEBUG" />
+      <option name="calloutsLogLevel" value="INFO" />
+      <option name="connectionName" value="CarServiceOrg" />
+      <option name="contextConfiguration" value="true" />
+      <option name="databaseLogLevel" value="INFO" />
+      <option name="logLevelsInitialized" value="false" />
+      <option name="moduleToTestClassNames">
+        <map>
+          <entry key="CarServiceOrg">
+            <value>
+              <set>
+                <option value="CsTomeksMechanicsSearchControllerTest" />
+              </set>
+            </value>
+          </entry>
+        </map>
+      </option>
+      <option name="profilingLogLevel" value="INFO" />
+      <option name="systemLogLevel" value="DEBUG" />
+      <option name="testClassToTestMethodNames">
+        <map>
+          <entry key="CsTomeksMechanicsSearchControllerTest">
+            <value>
+              <set>
+                <option value="shouldDisplayPageErrorMessageIfSearchMethodWasFail" />
+              </set>
+            </value>
+          </entry>
+        </map>
+      </option>
+      <option name="testSuiteName" />
+      <option name="validationLogLevel" value="INFO" />
+      <option name="visualforceLogLevel" value="INFO" />
+      <option name="workflowLogLevel" value="INFO" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Apex Unit Tests.CsTomeksMechanicsSearchControllerTest" />
+        <item itemvalue="Apex Unit Tests.CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfSaveMethodWasFail" />
+        <item itemvalue="Apex Unit Tests.CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfDeleteMethodWasFail" />
+        <item itemvalue="Apex Unit Tests.CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfSearchMethodWasFail" />
+        <item itemvalue="Apex Unit Tests.CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfConnectError" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -1661,6 +1867,38 @@
     <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="CsTomeksMechanicsSearchControllerTest_shouldDisplayPageErrorMessageIfDeleteMethodWasFail - 2019.07.24 at 22h 10m 20s.xml">
+      <configuration name="CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfDeleteMethodWasFail" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksMechanicsSearchControllerTest_shouldDisplayPageErrorMessageIfDeleteMethodWasFail - 2019.07.24 at 22h 10m 42s.xml">
+      <configuration name="CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfDeleteMethodWasFail" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksMechanicsSearchControllerTest - 2019.07.24 at 22h 13m 41s.xml">
+      <configuration name="CsTomeksMechanicsSearchControllerTest" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksMechanicsSearchControllerTest_shouldDisplayPageErrorMessageIfSaveMethodWasFail - 2019.07.24 at 22h 15m 28s.xml">
+      <configuration name="CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfSaveMethodWasFail" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksMechanicsSearchControllerTest_shouldDisplayPageErrorMessageIfSaveMethodWasFail - 2019.07.24 at 22h 16m 31s.xml">
+      <configuration name="CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfSaveMethodWasFail" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksMechanicsSearchControllerTest_shouldDisplayPageErrorMessageIfSaveMethodWasFail - 2019.07.24 at 22h 17m 55s.xml">
+      <configuration name="CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfSaveMethodWasFail" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksMechanicsSearchControllerTest_shouldDisplayPageErrorMessageIfSaveMethodWasFail - 2019.07.24 at 22h 18m 23s.xml">
+      <configuration name="CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfSaveMethodWasFail" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksMechanicsSearchControllerTest_shouldDisplayPageErrorMessageIfSaveMethodWasFail - 2019.07.24 at 22h 18m 50s.xml">
+      <configuration name="CsTomeksMechanicsSearchControllerTest.shouldDisplayPageErrorMessageIfSaveMethodWasFail" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksMechanicsSearchControllerTest - 2019.07.24 at 22h 19m 04s.xml">
+      <configuration name="CsTomeksMechanicsSearchControllerTest" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksMechanicsSearchControllerTest - 2019.07.24 at 22h 27m 31s.xml">
+      <configuration name="CsTomeksMechanicsSearchControllerTest" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="605341000" />
   </component>
@@ -1674,24 +1912,24 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.1716418" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.28411514" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4989339" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978678" weight="0.30119178" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Log Viewer" order="7" sideWeight="0.86567163" weight="0.45070422" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.57569295" visible="true" weight="0.24052005" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.5758389" weight="0.31419286" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32827735" />
-      <window_info anchor="bottom" id="Anonymous Apex" order="11" sideWeight="0.586887" weight="0.42998585" />
-      <window_info anchor="bottom" id="Database Changes" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="11" />
+      <window_info anchor="bottom" id="Anonymous Apex" order="12" sideWeight="0.586887" weight="0.42903575" />
       <window_info anchor="bottom" id="SOQL Query" order="13" sideWeight="0.49307036" weight="0.3531961" />
       <window_info anchor="bottom" id="Problems" order="14" sideWeight="0.49733475" weight="0.32827735" />
-      <window_info anchor="bottom" id="Version Control" order="15" sideWeight="0.49597314" weight="0.39093485" />
-      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.42430705" side_tool="true" visible="true" weight="0.24052005" />
+      <window_info anchor="bottom" id="Version Control" order="15" sideWeight="0.49520257" weight="0.3900325" />
+      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.50479746" side_tool="true" weight="0.3900325" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1702,6 +1940,7 @@
       <window_info anchor="right" id="Database" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" x="0" y="0" width="434" height="856" id="Documentation" order="9" side_tool="true" weight="0.32995737" />
+      <window_info anchor="right" id="Coverage" order="10" side_tool="true" />
     </layout>
     <layout-to-restore>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -1787,55 +2026,10 @@
     <MESSAGE value="First Commit" />
     <option name="LAST_COMMIT_MESSAGE" value="First Commit" />
   </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CarServiceOrg$CsTomeksMechanicsSearchControllerTest.null" NAME="CarServiceOrg Coverage Results" MODIFIED="1564000045055" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="Apex" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" PROJECT_NAME="CarServiceOrg" CONNECTION_NAME="CarServiceOrg" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/pages/CsRandomMechanics.page-meta.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="37" selection-start-line="3" selection-start-column="37" selection-end-line="3" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/Mechanic__c.object">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3264" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/Contract__c.object">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="261" column="26" selection-start-line="261" selection-start-column="26" selection-end-line="261" selection-end-column="26" />
-          <folding>
-            <element signature="e#7927#7931#0" expanded="true" />
-            <element signature="e#7960#7964#0" expanded="true" />
-            <element signature="e#7986#7992#0" expanded="true" />
-            <element signature="e#8042#8048#0" expanded="true" />
-            <element signature="e#8050#8056#0" expanded="true" />
-            <element signature="e#8065#8071#0" expanded="true" />
-            <element signature="e#8080#8086#0" expanded="true" />
-            <element signature="e#8136#8142#0" expanded="true" />
-            <element signature="e#8144#8150#0" expanded="true" />
-            <element signature="e#8161#8167#0" expanded="true" />
-            <element signature="e#10603#10607#0" expanded="true" />
-            <element signature="e#10950#10954#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsRandomMechanicsController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="16" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="89" />
-          <folding>
-            <element signature="e#456#464#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/objects/User.object">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsPublicSiteController.cls" />
-    <entry file="file://$PROJECT_DIR$/src/classes/CsPublicSite.cls" />
     <entry file="file://$PROJECT_DIR$/src/classes/CsRandomMechanicsPublicSiteController.cls" />
     <entry file="file://$PROJECT_DIR$/src/pages/CsRandomMechanics.page">
       <provider selected="true" editor-type-id="text-editor">
@@ -1885,13 +2079,6 @@
           <folding>
             <element signature="e#1304#1312#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicSearch.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1130">
-          <caret line="95" column="16" lean-forward="true" selection-start-line="1" selection-start-column="4" selection-end-line="95" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -1980,30 +2167,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicsWebService.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="56" column="49" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsUtils.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="9" lean-forward="true" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechani.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="201" column="76" selection-start-line="201" selection-start-column="76" selection-end-line="201" selection-end-column="76" />
-          <folding>
-            <element signature="e#19466#19541#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicEditController.cls">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -2018,13 +2181,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="118" column="40" selection-start-line="118" selection-start-column="40" selection-end-line="118" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -2056,17 +2212,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/testClass.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="82" column="5" lean-forward="true" selection-start-line="2" selection-start-column="3" selection-end-line="82" selection-end-column="5" />
-          <folding>
-            <element signature="e#1645#1658#0" expanded="true" />
-            <element signature="e#1964#2025#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/testPage.page">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-544">
@@ -2074,21 +2219,97 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page">
+    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicWebServiceTest.cls" />
+    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicsWebServiceTest.cls" />
+    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicsWebService.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="169" column="22" lean-forward="true" selection-start-line="169" selection-start-column="22" selection-end-line="169" selection-end-column="22" />
+        <state relative-caret-position="901">
+          <caret line="53" column="37" lean-forward="true" selection-start-line="53" selection-start-column="37" selection-end-line="53" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicsWebServiceMock.cls" />
+    <entry file="file://$PROJECT_DIR$/src/classes/CsUtils.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechani.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2930">
+          <caret line="3" column="17" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/IlluminatedCloud/CarServiceOrg/OfflineSymbolTable.zip!/System/ApexPages.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="40" selection-start-line="16" selection-start-column="23" selection-end-line="16" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsMessagesAbstract.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="44" column="1" selection-end-line="44" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicSearch.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="95" column="16" lean-forward="true" selection-start-line="95" selection-start-column="16" selection-end-line="95" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="126" column="14" lean-forward="true" selection-start-line="119" selection-start-column="8" selection-end-line="126" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechaniMock.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="35" column="32" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/testClass.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchControllerTest.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="52" lean-forward="true" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#3786#3847#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="126" column="132" selection-start-line="126" selection-start-column="132" selection-end-line="126" selection-end-column="132" />
+        <state relative-caret-position="1269">
+          <caret line="126" column="17" selection-start-line="126" selection-start-column="17" selection-end-line="126" selection-end-column="17" />
           <folding>
-            <element signature="e#4272#4280#0" expanded="true" />
-            <element signature="e#6551#6559#0" expanded="true" />
+            <element signature="e#3797#3805#0" expanded="true" />
+            <element signature="e#6225#6233#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
         </state>
       </provider>
     </entry>

@@ -316,6 +316,13 @@
         <value>The file is to big. Max size 1MB.</value>
     </labels>
     <labels>
+        <fullName>Error_WebService</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error WebService</shortDescription>
+        <value>Fail: Error In WebService</value>
+    </labels>
+    <labels>
         <fullName>Error_Wrong_Type</fullName>
         <language>en_US</language>
         <protected>true</protected>
