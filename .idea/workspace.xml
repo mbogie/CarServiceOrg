@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="378619f6-206d-4b97-be6c-0e71661895b4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/labels/CustomLabels.labels" beforeDir="false" afterPath="$PROJECT_DIR$/src/labels/CustomLabels.labels" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -35,20 +35,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="55" column="64" selection-start-line="55" selection-start-column="64" selection-end-line="55" selection-end-column="64" />
+            <state relative-caret-position="339">
+              <caret line="126" column="132" selection-start-line="126" selection-start-column="132" selection-end-line="126" selection-end-column="132" />
               <folding>
-                <element signature="e#4516#4524#0" expanded="true" />
+                <element signature="e#4272#4280#0" expanded="true" />
+                <element signature="e#6551#6559#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/testPage.page">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-544">
-              <caret line="335" column="60" lean-forward="true" selection-start-line="335" selection-end-line="336" />
             </state>
           </provider>
         </entry>
@@ -56,8 +48,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="245" column="50" selection-start-line="245" selection-start-column="50" selection-end-line="245" selection-end-column="50" />
+            <state relative-caret-position="354">
+              <caret line="169" column="22" lean-forward="true" selection-start-line="169" selection-start-column="22" selection-end-line="169" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -79,7 +71,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>checkIfAllInsertsAreSuccess</find>
       <find>editedContract</find>
       <find>contractsMap</find>
       <find>agreementsBlock</find>
@@ -102,13 +93,14 @@
       <find>mechanicPageFormController</find>
       <find>newMechanic</find>
       <find>editedMechanic</find>
-      <find>isEditedMechanicNameEmpty</find>
       <find>isNewMechanicNameEmpty</find>
       <find>inputHidden</find>
       <find>isAllInsertContractSuccess</find>
       <find>isAllSuccess</find>
       <find>isActionSuccess</find>
       <find>isUpserted</find>
+      <find>isPopupMechanicNameEmpty</find>
+      <find>isEditedMechanicNameEmpty</find>
     </findStrings>
     <replaceStrings>
       <replace>AgreementsContract</replace>
@@ -252,7 +244,7 @@
                       <entry key="CLASSES/CSMECHANICSWEBSERVICE.CLS" value="1563883945218" />
                       <entry key="CLASSES/CSRANDOMMECHANICSCONTROLLER.CLS" value="1563358483000" />
                       <entry key="CLASSES/CSSOQLQUERYBUILDER.CLS" value="1563229518173" />
-                      <entry key="CLASSES/CSTOMEKSMECHANICSSEARCHCONTROLLER.CLS" value="1563950539000" />
+                      <entry key="CLASSES/CSTOMEKSMECHANICSSEARCHCONTROLLER.CLS" value="1563953111000" />
                       <entry key="CLASSES/CSTOMEKSMECHANICSWEBSERVICE.CLS" value="1563874217035" />
                       <entry key="CLASSES/CSTRIGGERFACTORY.CLS" value="1563796179845" />
                       <entry key="CLASSES/CSUSERTRIGGERHANDLER.CLS" value="1563795819278" />
@@ -291,7 +283,7 @@
                       <entry key="PAGES/CSPREPARERECORDTOSAVETOPDF.PAGE" value="1563229448039" />
                       <entry key="PAGES/CSRANDOMMECHANICS.PAGE" value="1563358565000" />
                       <entry key="PAGES/CSSAVEMECHANICRECORDTOPDF.PAGE" value="1563229447700" />
-                      <entry key="PAGES/CSTOMEKSMECHANICSSEARCH.PAGE" value="1563950940000" />
+                      <entry key="PAGES/CSTOMEKSMECHANICSSEARCH.PAGE" value="1563952870000" />
                       <entry key="PAGES/CSWORKSHOPDETAIL.PAGE" value="1563913294000" />
                       <entry key="PAGES/CSWORKSHOPEDIT.PAGE" value="1563229448996" />
                       <entry key="PAGES/MECHANICDETAILPAGE.PAGE" value="1562064925665" />
@@ -2084,17 +2076,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="245" column="50" selection-start-line="245" selection-start-column="50" selection-end-line="245" selection-end-column="50" />
+        <state relative-caret-position="354">
+          <caret line="169" column="22" lean-forward="true" selection-start-line="169" selection-start-column="22" selection-end-line="169" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="55" column="64" selection-start-line="55" selection-start-column="64" selection-end-line="55" selection-end-column="64" />
+        <state relative-caret-position="339">
+          <caret line="126" column="132" selection-start-line="126" selection-start-column="132" selection-end-line="126" selection-end-column="132" />
           <folding>
-            <element signature="e#4516#4524#0" expanded="true" />
+            <element signature="e#4272#4280#0" expanded="true" />
+            <element signature="e#6551#6559#0" expanded="true" />
           </folding>
         </state>
       </provider>

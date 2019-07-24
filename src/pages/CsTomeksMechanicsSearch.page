@@ -165,16 +165,10 @@
                     <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--icon-inverse slds-modal__close" onclick="closeModal()" value="X"
                                         reRender="modalForm,header,messages,pageMessages" immediate="true"/>
                     <apex:outputPanel id="header">
-                    <apex:outputPanel rendered="{!indexToEdit == null}">
-                    <h2 class="slds-text-heading--medium">{!$Label.Add_New_Mechanic}</h2>
-                    </apex:outputPanel>
-                    <apex:outputPanel rendered="{!indexToEdit != null}">
-                        <h2 class="slds-text-heading--medium">{!$Label.Edit} '{!mechanicToInsertOrUpdate.First_Name__c} {!mechanicToInsertOrUpdate.Name}'</h2>
-                    </apex:outputPanel>
+                    <h2 class="slds-text-heading--medium">{!popupHeader}</h2>
                     </apex:outputPanel>
                 </div>
                     <div class="slds-modal__content slds-p-around--medium">
-
                         <apex:outputPanel id="popupMechanicNamePanel">
                             <div class="slds-grid slds-gutters">
                                 <div class="slds-col slds-size&#45;&#45;1-of-2">

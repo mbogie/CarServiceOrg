@@ -232,6 +232,13 @@
         <value>Edit</value>
     </labels>
     <labels>
+        <fullName>Edit_Mechanic_Header</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Edit Mechanic Header</shortDescription>
+        <value>Edit {0} {1}</value>
+    </labels>
+    <labels>
         <fullName>Edit_Picture</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -272,6 +279,13 @@
         <protected>true</protected>
         <shortDescription>Error No Object Type</shortDescription>
         <value>No Trigger Handler registered for Object Type:</value>
+    </labels>
+    <labels>
+        <fullName>Error_No_SOAP_SessionId</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error No SOAP SessionId</shortDescription>
+        <value>No SessionId</value>
     </labels>
     <labels>
         <fullName>Error_Overlapping</fullName>
