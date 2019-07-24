@@ -54,7 +54,6 @@ public with sharing class CsTomeksMechanicsSearchController {
 
     public void searchMechanic() {
         if (String.isEmpty(mechanicSearchFormController.Name)) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, System.Label.Required_Input_Field_Error));
             isNameEmpty = true;
             return ;
         }
@@ -103,17 +102,13 @@ public with sharing class CsTomeksMechanicsSearchController {
                 CsSoapSforceComSchemasClassMwMechani.MW_MechanicWebService tomeksWebService = new CsSoapSforceComSchemasClassMwMechani.MW_MechanicWebService();
                 tomeksWebService.SessionHeader = new CsSoapSforceComSchemasClassMwMechani.SessionHeader_element();
                 tomeksWebService.SessionHeader.sessionId = sessionId;
-
                 statusWrapper = tomeksWebService.addOrEditMechanic(indexToEdit,mechanicToInsertOrUpdate.First_Name__c,mechanicToInsertOrUpdate.Name,mechanicToInsertOrUpdate.Email__c,mechanicToInsertOrUpdate.City__c,mechanicToInsertOrUpdate.Country__c);
-                System.debug('status --> ' + statusWrapper);
-
             }
             if (!String.isBlank(mechanicSearchFormController.Name)) {
                 searchMechanic();
             }
             if(statusWrapper.id == null){
                 ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, statusWrapper.status));
-
             }
         }
     }
@@ -122,10 +117,6 @@ public with sharing class CsTomeksMechanicsSearchController {
         isPopupMechanicNameEmpty = false;
         mechanicToInsertOrUpdate = new Mechanic__c();
         indexToEdit = null;
-    }
-
-    public void addMechanic() {
-
     }
 
     public void editMechanic() {

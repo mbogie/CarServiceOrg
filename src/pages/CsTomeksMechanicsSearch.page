@@ -17,9 +17,7 @@
 
     <body class="slds-scope">
     <apex:form id="searchForm">
-        <apex:outputPanel id="inputHidden">
-            <apex:inputHidden id="isUpserted" value="{!isUpserted}"/>
-        </apex:outputPanel>
+        <apex:pageMessages id="pageMessages"/>
         <div class="slds-scope">
             <div class="slds-grid slds-gutters">
                 <div class="slds-col slds-size--7-of-8">
@@ -68,7 +66,6 @@
                               <div class="slds-form-element__help" id="form-error-01">{!$Label.Error_Field_Required}</div>
                             </div>
                         </apex:outputPanel>
-
                     </span>
                     </div>
                     <div class="slds-col slds-size--1-of-2">
@@ -112,7 +109,6 @@
                                             reRender="resultTable, searchForm, namePanel">
                         </apex:commandButton>
                     </div>
-
                     <div class="slds-col">
                         <div class="slds-col">
                             <apex:commandButton action="{!clearPage}"
@@ -134,7 +130,7 @@
                                 styleClass="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered"
                                 id="resultTable">
                     <apex:column headerValue="{!$Label.Actions_Label}">
-                        <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!editMechanic}" reRender="popupMechanicNamePanel, modalForm"
+                        <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!editMechanic}" reRender="popupMechanicNamePanel,modalForm"
                                             onComplete="openModal()"
                                             value="{!$Label.Edit}">
                             <apex:param name="editedMechanicId" value="{!mechanicFromTomek.id}" assignTo="{!indexToEdit}"/>
@@ -167,7 +163,7 @@
             <div class="slds-modal__container">
                 <div class="slds-modal__header">
                     <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--icon-inverse slds-modal__close" onclick="closeModal()" value="X"
-                                        reRender="modalForm,header,messeges" immediate="true"/>
+                                        reRender="modalForm,header,messages,pageMessages" immediate="true"/>
                     <apex:outputPanel id="header">
                     <apex:outputPanel rendered="{!indexToEdit == null}">
                     <h2 class="slds-text-heading--medium">{!$Label.Add_New_Mechanic}</h2>
@@ -247,7 +243,7 @@
                     <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--neutral" onClick="closeModal()" value="{!$Label.Button_Cancel}"
                                         reRender="messages,popupMechanicNamePanel,resultTable,header" immediate="true"/>
                     <apex:commandButton action="{!saveMechanic}" styleClass="slds-button slds-button--brand" onComplete="checkHideModal()" value="{!$Label.Button_Save}"
-                                        reRender="searchForm,messages,popupMechanicNamePanel,inputHidden,resultTable"/>
+                                        reRender="messages,popupMechanicNamePanel,inputHidden,resultTable"/>
                 </div>
             </div>
         </div>
@@ -256,12 +252,12 @@
 
     <script>
         j$ = jQuery.noConflict();
-        //Modal Open
+
         function openModal(){
             j$("[id$='backdrop']").addClass('slds-backdrop--open');
             j$("[id$='modal']").addClass('slds-fade-in-open');
         }
-        //Modal Close
+
         function closeModal(){
             j$('#modal').removeClass('slds-fade-in-open');
             j$('#backdrop').removeClass('slds-backdrop--open');
@@ -269,20 +265,10 @@
 
         function checkHideModal() {
             if (jQuery('.errorM3').length <= 0){
-                j$('#modal').removeClass('slds-fade-in-open');
-                j$('#backdrop').removeClass('slds-backdrop--open');
+                closeModal();
                 clearAfterSave();
             }
         }
-/*        function checkHideModal() {
-            console.log('isSuc --> ' + {!isUpserted});
-            var isSuccess = $j("[id$='isUpserted']").val();
-            console.log('isSuccess --> ' + isSuccess);
-            if (isAllSuccessValue == 'true') {
-                clearAfterHire();
-                $j('#agreement').dialog("close");
-            }
-        }*/
 </script>
     </body>
     </html>
