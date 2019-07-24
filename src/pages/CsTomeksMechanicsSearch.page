@@ -13,6 +13,7 @@
         <apex:stylesheet value="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
         <apex:stylesheet value="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.default.min.css"/>
         <apex:slds/>
+        <c:CsActionStatus/>
         <style>
         .msgIcon {
             display: none!important
@@ -45,9 +46,8 @@
         .message {
             opacity: 1
         }
-</style>
+        </style>
     </head>
-
     <body class="slds-scope">
     <apex:form id="searchForm">
         <apex:pageMessages id="pageMessages"/>
@@ -62,7 +62,7 @@
                 <div class="slds-col slds-size--1-of-8">
                     <apex:commandButton style="width:100px;"
                                         value="{!$Label.Button_Add}"
-                                        onComplete="openModal()"
+                                        onComplete="openModal()" status="actionStatus"
                                         styleClass="slds-button slds-button_brand slds-m-top_medium"
                                         reRender="resultTable, pageMessages">
                     </apex:commandButton>
@@ -135,11 +135,10 @@
             <div class="slds-grid slds-gutters">
                 <div class="slds-col">
                 </div>
-
                 <div class="slds-grid">
                     <div class="slds-col">
                         <apex:commandButton action="{!searchMechanic}"
-                                            style="width:125px;"
+                                            style="width:125px;" status="actionStatus"
                                             value="{!$Label.Button_Search}"
                                             styleClass="slds-button slds-button_brand slds-m-top_medium"
                                             reRender="resultTable, searchForm, namePanel">
@@ -151,7 +150,7 @@
                                                 onClick=" this.form.reset();"
                                                 value="{!$Label.Button_Clear}"
                                                 styleClass="slds-button slds-button_brand slds-m-top_medium"
-                                                style="width:125px;"
+                                                style="width:125px;" status="actionStatus"
                                                 reRender="resultTable, searchForms, namePanel, pageMessages">
                             </apex:commandButton>
                         </div>
@@ -168,12 +167,12 @@
                     <apex:column headerValue="{!$Label.Actions_Label}">
                         <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!editMechanic}"
                                             reRender="popupMechanicNamePanel,modalForm"
-                                            onComplete="openModal()"
+                                            onComplete="openModal()" status="actionStatus"
                                             value="{!$Label.Edit}">
                             <apex:param name="editedMechanicId" value="{!mechanicFromTomek.id}"
                                         assignTo="{!indexToEdit}"/>
                         </apex:commandButton>
-                        <apex:commandButton action="{!deleteMechanic}" styleClass="slds-button slds-button_neutral"
+                        <apex:commandButton action="{!deleteMechanic}" styleClass="slds-button slds-button_neutral" status="actionStatus"
                                             reRender="resultTable, searchForm, namePanel"
                                             value="{!$Label.Button_Delete}">
                             <apex:param name="mechanicToDelete" value="{!mechanicFromTomek.id}"
@@ -199,7 +198,6 @@
                     <apex:pageMessages id="messageTxt" showDetail="false" escape="false"/>
                     <script>
                     let messageID = '{!$Component.messageTxt}';
-
                     </script>
                 </apex:outputPanel>
             </div>
@@ -207,7 +205,7 @@
                 <div class="slds-modal__header">
                     <apex:commandButton action="{!clearModal}"
                                         styleClass="slds-button slds-button--icon-inverse slds-modal__close"
-                                        onclick="closeModal()" value="X"
+                                        onclick="closeModal()" value="X" status="actionStatus"
                                         reRender="modalForm,header,messages,pageMessages" immediate="true"/>
                     <apex:outputPanel id="header">
                         <h2 class="slds-text-heading--medium">{!popupHeader}</h2>
@@ -288,10 +286,10 @@
                 <div class="slds-modal__footer">
                     <apex:actionFunction name="clearAfterSave" action="{!clearModal}"
                                          reRender="modalForm,messages,inputHidden,resultTable" immediate="true"/>
-                    <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--neutral"
+                    <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--neutral" status="actionStatus"
                                         onClick="closeModal()" value="{!$Label.Button_Cancel}"
                                         reRender="messages,popupMechanicNamePanel,resultTable,header" immediate="true"/>
-                    <apex:commandButton action="{!saveMechanic}" styleClass="slds-button slds-button--brand"
+                    <apex:commandButton action="{!saveMechanic}" styleClass="slds-button slds-button--brand" status="actionStatus"
                                         onComplete="checkHideModal()" value="{!$Label.Button_Save}"
                                         reRender="messages,popupMechanicNamePanel,inputHidden,resultTable"/>
                 </div>
@@ -299,7 +297,6 @@
         </div>
         <div class="slds-backdrop" id="backdrop"></div>
     </apex:form>
-
     <script>
         j$ = jQuery.noConflict();
         function openModal(){
@@ -318,7 +315,6 @@
                 clearAfterSave();
             }
         }
-
     </script>
     </body>
     </html>

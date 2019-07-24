@@ -94,6 +94,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsSoapSforceComSchemasClassMwMechaniMock" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsSobjectPartnerSoapSforceCom" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -103,6 +107,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsTomeksMechanicsSearchController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsTomeksMechanicsSearchControllerTest" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -154,12 +162,7 @@
                             <option name="name" value="SiteRegisterControllerTest" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsSoapSforceComSchemasClassMwMechaniMock" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="CsTomeksMechanicsSearchControllerTest" />
-                            <option name="selected" value="true" />
+                            <option name="name" value="testClass" />
                           </MetadataEntry>
                         </list>
                       </option>
@@ -169,6 +172,10 @@
                     <MetadataType>
                       <option name="entries">
                         <list>
+                          <MetadataEntry>
+                            <option name="name" value="CsActionStatus" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="SiteFooter" />
                           </MetadataEntry>
@@ -299,6 +306,9 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="UnderConstruction" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="testPage" />
                           </MetadataEntry>
                         </list>
                       </option>
@@ -763,6 +773,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Add_New_Mechanic" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Agreement" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -883,6 +897,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Edit_Mechanic_Header" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Edit_Picture" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -907,6 +925,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Error_No_SOAP_SessionId" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Error_Overlapping" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -920,6 +942,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Error_To_Big_File" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Error_WebService" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -3089,6 +3115,10 @@
                     <MetadataType>
                       <option name="entries">
                         <list>
+                          <MetadataEntry>
+                            <option name="name" value="ActionStatusIcon" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="DefaultPicture" />
                             <option name="selected" value="true" />

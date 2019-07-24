@@ -1,0 +1,10 @@
+<apex:component id="CsActionStatus">
+  <apex:actionStatus id="actionStatus">
+    <apex:facet name="start">
+      <div style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.75; z-index: 5000; background-color: gray;"/>
+      <div style="display: block; padding: 2px; width: 125px;opacity:1; position: fixed; left: 0; top: 0; bottom: 0; right: 0; z-index: 10001; margin: 15% 50%">
+          <img src="{!URLFOR($Resource.ActionStatusIcon)}" style="float: left;"/>
+      </div>
+    </apex:facet>
+  </apex:actionStatus>
+</apex:component>

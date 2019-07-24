@@ -13,6 +13,10 @@
         <name>Address__c</name>
     </fields>
     <fields>
+        <label><!-- Birthday --></label>
+        <name>Birthday__c</name>
+    </fields>
+    <fields>
         <label><!-- City --></label>
         <name>City__c</name>
     </fields>
@@ -35,6 +39,10 @@
     <fields>
         <label><!-- License Number --></label>
         <name>License_Number__c</name>
+    </fields>
+    <fields>
+        <label><!-- Next Birthday --></label>
+        <name>Next_Birthday__c</name>
     </fields>
     <fields>
         <label><!-- Phone --></label>
@@ -108,4 +116,8 @@
         </sections>
     </layouts>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Last Name is required. --></errorMessage>
+        <name>Required_Name</name>
+    </validationRules>
 </CustomObjectTranslation>

@@ -6,7 +6,7 @@
 	background-color:rgba(10,10,10,0.7);
 	top:0px;
 	left: 0px;
-	z-index: 8;
+	z-index: 100;
 	opacity: 0;
 	-webkit-user-select: none;
 	-khtml-user-select: none;

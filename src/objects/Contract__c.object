@@ -231,7 +231,7 @@
     <fields>
         <fullName>Status__c</fullName>
         <externalId>false</externalId>
-        <formula>IF((TODAY() &lt;  Start_Date__c) || (TODAY() &gt;  End_Date__c), IMAGE(&quot;/servlet/servlet.FileDownload?file=0152p000006BcmF&quot;, &quot;RedSquare&quot;), IMAGE(&quot;/servlet/servlet.FileDownload?file=0152p000006BcmK&quot;, &quot;GreenSquare&quot;))</formula>
+        <formula>IF((TODAY() &lt;  Start_Date__c) || (TODAY() &gt;  End_Date__c), IMAGE(&quot;/servlet/servlet.FileDownload?file=0152p000006Bd1e&quot;, &quot;RedSquare&quot;), IMAGE(&quot;/servlet/servlet.FileDownload?file=0152p000006Bd1Z&quot;, &quot;GreenSquare&quot;))</formula>
         <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
         <label>Status</label>
         <required>false</required>

@@ -38,6 +38,10 @@
         <name>Start_Date__c</name>
     </fields>
     <fields>
+        <label><!-- Status --></label>
+        <name>Status__c</name>
+    </fields>
+    <fields>
         <label><!-- Workshop --></label>
         <name>Workshop__c</name>
         <relationshipLabel><!-- Agreements --></relationshipLabel>
@@ -57,5 +61,9 @@
     <validationRules>
         <errorMessage><!-- End Date must be after today. --></errorMessage>
         <name>End_Day_After_Today</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Start Date is required. --></errorMessage>
+        <name>Required_Start_Date</name>
     </validationRules>
 </CustomObjectTranslation>
