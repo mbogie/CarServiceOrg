@@ -164,6 +164,10 @@
                           <MetadataEntry>
                             <option name="name" value="testClass" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsWorkshopsRestWebService" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="ApexClass" />
@@ -3121,10 +3125,6 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="DefaultPicture" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="Default_Picture" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>

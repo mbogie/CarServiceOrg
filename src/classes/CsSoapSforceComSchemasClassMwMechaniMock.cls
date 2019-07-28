@@ -1,5 +1,6 @@
 @isTest
 global class CsSoapSforceComSchemasClassMwMechaniMock implements WebServiceMock {
+
     public String type;
     public CsSoapSforceComSchemasClassMwMechani.MechanicIdStatusWrapper mechanicIdStatusWrapper;
 

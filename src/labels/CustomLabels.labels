@@ -407,6 +407,13 @@
         <value>No file. Choose one.</value>
     </labels>
     <labels>
+        <fullName>Map_Unactive</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Map Unactive</shortDescription>
+        <value>Map not active without Address and City.</value>
+    </labels>
+    <labels>
         <fullName>Mechanic_Hire_Label</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -573,6 +580,13 @@
         <protected>true</protected>
         <shortDescription>To Import</shortDescription>
         <value>To Import</value>
+    </labels>
+    <labels>
+        <fullName>Tomeks_Country_List</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Tomeks Country List</shortDescription>
+        <value>AU,NL,PL,UA,USA</value>
     </labels>
     <labels>
         <fullName>Upload_Picture</fullName>

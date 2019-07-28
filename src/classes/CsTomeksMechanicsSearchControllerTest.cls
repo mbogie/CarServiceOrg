@@ -181,6 +181,28 @@ private class CsTomeksMechanicsSearchControllerTest {
         System.assertNotEquals(0, pageMessages.size());
     }
 
+    @isTest static void shouldDisplatPageErrorMessageIfDeleteMethodReturnEmptyId(){
+        //given
+        CsTomeksMechanicsSearchController controller = new CsTomeksMechanicsSearchController(new ApexPages.StandardController(new Mechanic__c()));
+        controller.indexToDelete = '123';
+        controller.mechanicToInsertOrUpdate.Name = 'Upsert';
+        controller.mechanicToInsertOrUpdate.First_Name__c = 'Upsert';
+        controller.mechanicToInsertOrUpdate.Email__c = 'test@test.pl';
+        controller.mechanicToInsertOrUpdate.City__c = 'Upsert';
+        controller.mechanicToInsertOrUpdate.Country__c = 'PL';
+
+        //when
+        Test.startTest();
+        Test.setMock(WebServiceMock.class, new CsSoapSforceComSchemasClassMwMechaniMock('FAIL_METHOD'));
+        controller.deleteMechanic();
+        ApexPages.Message[] pageMessages = ApexPages.getMessages();
+        Test.stopTest();
+
+        //then
+        System.assertEquals(null, controller.statusWrapper.id);
+        System.assertNotEquals(0, pageMessages.size());
+    }
+
 // other
     @isTest static void shouldClearModalValuesAfterClose() {
         //given
@@ -206,9 +228,7 @@ private class CsTomeksMechanicsSearchControllerTest {
         //given
         CsTomeksMechanicsSearchController controller = new CsTomeksMechanicsSearchController(new ApexPages.StandardController(new Mechanic__c()));
         controller.isNameEmpty = true;
-        controller.tomeksMechanicsList = new List<CsTomeksMechanicsSearchController.WrapperForTomeksMechanics>{
-                new CsTomeksMechanicsSearchController.WrapperForTomeksMechanics()
-        };
+        controller.tomeksMechanicsList = new List<CsTomeksMechanicsSearchController.WrapperForTomeksMechanics>{new CsTomeksMechanicsSearchController.WrapperForTomeksMechanics()};
         controller.mechanicSearchFormController = new Mechanic__c(Name = 'Test');
 
         //when

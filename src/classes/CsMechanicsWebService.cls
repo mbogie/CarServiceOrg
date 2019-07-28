@@ -67,6 +67,7 @@ global class CsMechanicsWebService {
         if(upsertResult.isSuccess()){
             databaseStatusWrapper.id = upsertResult.getId();
         }else{
+            databaseStatusWrapper.id = '';
             databaseStatusWrapper.message = upsertResult.getErrors().get(0).getMessage();
         }
         return databaseStatusWrapper;
