@@ -16,6 +16,13 @@ global class CsSoapSforceComSchemasClassMwMechaniMock implements WebServiceMock 
             deleteResponse.result = mechanicIdStatusWrapper;
             response.put('response_x', deleteResponse);
         }
+        if (type == 'FAIL_DELETE_METHOD') {
+            mechanicIdStatusWrapper.id = null;
+            mechanicIdStatusWrapper.status = 'delete method fail';
+            CsSoapSforceComSchemasClassMwMechani.deleteMechanicResponse_element deleteResponse = new CsSoapSforceComSchemasClassMwMechani.deleteMechanicResponse_element();
+            deleteResponse.result = mechanicIdStatusWrapper;
+            response.put('response_x', deleteResponse);
+        }
         if (type == 'SEARCH_METHOD') {
             CsSoapSforceComSchemasClassMwMechani.WrappedMechanic mechanic = new CsSoapSforceComSchemasClassMwMechani.WrappedMechanic();
             mechanic.id = 'id';
@@ -34,7 +41,7 @@ global class CsSoapSforceComSchemasClassMwMechaniMock implements WebServiceMock 
             addOrEditMechanicResponse.result = mechanicIdStatusWrapper;
             response.put('response_x', addOrEditMechanicResponse);
         }
-        if (type == 'FAIL_METHOD') {
+        if (type == 'FAIL_METHOD_ADD') {
             mechanicIdStatusWrapper.id = null;
             mechanicIdStatusWrapper.status = 'Method failed';
             CsSoapSforceComSchemasClassMwMechani.addOrEditMechanicResponse_element addOrEditMechanicResponse = new CsSoapSforceComSchemasClassMwMechani.addOrEditMechanicResponse_element();

@@ -11,7 +11,7 @@ public with sharing class CsTomeksMechanicsSearchController {
     public List<CsSoapSforceComSchemasClassMwMechani.WrappedMechanic> tomeksMechanicsList { get; set; }
     public CsSoapSforceComSchemasClassMwMechani.MechanicIdStatusWrapper statusWrapper { get; set; }
     private CsSoapSforceComSchemasClassMwMechani.MW_MechanicWebService tomeksWebService;
-    public List<SelectOption> tomeksCountryList;
+    public List<SelectOption> tomeksCountryList { get; set; }
     private String sessionId;
 
     public CsTomeksMechanicsSearchController() {
@@ -23,7 +23,7 @@ public with sharing class CsTomeksMechanicsSearchController {
         this.popupHeader = System.Label.Add_New_Mechanic;
         this.statusWrapper = new CsSoapSforceComSchemasClassMwMechani.MechanicIdStatusWrapper();
         this.tomeksWebService = new CsSoapSforceComSchemasClassMwMechani.MW_MechanicWebService();
-        this.tomeksCountryList = new List<SelectOption>();
+        this.tomeksCountryList = tomeksCountryList();
     }
 
     public static String loginToTomeksMechanics() {
@@ -32,18 +32,14 @@ public with sharing class CsTomeksMechanicsSearchController {
             CsPartnerSoapSforceCom.LoginResult loginResult = partnerSoap.login('tomek.starzak@gmail.com', 'Test1234sDKbP76CNGMdzE4aTTfL1gSEn');
             return loginResult.sessionId;
         } catch (Exception err) {
-            System.debug('Login error: ' + err.getMessage());
-            return null;
+            System.debug('Login error: ' + err.getMessage());return null;
         }
     }
 
     public Boolean isServiceInitialized() {
-        if (Cache.Session.get('SessionId') == null) {
-            sessionId = loginToTomeksMechanics();
-            Cache.Session.put('SessionId', sessionId);
-            System.debug('login');
+        if (Cache.Session.get('SessionId') == null && !Test.isRunningTest()) {
+            sessionId = loginToTomeksMechanics();Cache.Session.put('SessionId', sessionId);
         } else {
-            System.debug('cache');
             sessionId = (String) Cache.Session.get('SessionId');
         }
         if (String.isBlank(sessionId) && !Test.isRunningTest()) {
@@ -153,7 +149,7 @@ public with sharing class CsTomeksMechanicsSearchController {
         }
     }
 
-    Public List<SelectOption> getTomeksCountryList() {
+    Public List<SelectOption> tomeksCountryList() {
         List<SelectOption> listOfCountries = new List<SelectOption>();
         listOfCountries.add(new selectOption('', '- None -'));
         for (String country : System.Label.Tomeks_Country_List.split(',')) {
