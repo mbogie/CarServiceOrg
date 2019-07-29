@@ -6,33 +6,34 @@ public with sharing class CsTomeksMechanicsSearchController {
     public String indexToDelete { get; set; }
     public String indexToEdit { get; set; }
     public String popupHeader { get; set; }
-    public CsSoapSforceComSchemasClassMwMechani.WrappedMechanic searchFormMechanic { get; set; }
-    public CsSoapSforceComSchemasClassMwMechani.WrappedMechanic mechanicToInsertOrUpdate { get; set; }
-    public List<CsSoapSforceComSchemasClassMwMechani.WrappedMechanic> tomeksMechanicsList { get; set; }
-    public CsSoapSforceComSchemasClassMwMechani.MechanicIdStatusWrapper statusWrapper { get; set; }
-    private CsSoapSforceComSchemasClassMwMechani.MW_MechanicWebService tomeksWebService;
-    public List<SelectOption> tomeksCountryList { get; set; }
+    public CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic searchFormMechanic { get; set; }
+    public CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic mechanicToInsertOrUpdate { get; set; }
+    public List<CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic> tomeksMechanicsList { get; set; }
+    public CsSoapSforceComSchemasClassMwMechanic.MechanicIdStatusWrapper statusWrapper { get; set; }
+    private CsSoapSforceComSchemasClassMwMechanic.MW_MechanicWebService tomeksWebService;
+ //   public List<SelectOption> tomeksCountryList { get; set; }
     private String sessionId;
 
     public CsTomeksMechanicsSearchController() {
         this.isNameEmpty = false;
         this.isPopupMechanicNameEmpty = false;
-        this.searchFormMechanic = new CsSoapSforceComSchemasClassMwMechani.WrappedMechanic();
-        this.mechanicToInsertOrUpdate = new CsSoapSforceComSchemasClassMwMechani.WrappedMechanic();
-        this.tomeksMechanicsList = new List<CsSoapSforceComSchemasClassMwMechani.WrappedMechanic>();
+        this.searchFormMechanic = new CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic();
+        this.mechanicToInsertOrUpdate = new CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic();
+        this.tomeksMechanicsList = new List<CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic>();
         this.popupHeader = System.Label.Add_New_Mechanic;
-        this.statusWrapper = new CsSoapSforceComSchemasClassMwMechani.MechanicIdStatusWrapper();
-        this.tomeksWebService = new CsSoapSforceComSchemasClassMwMechani.MW_MechanicWebService();
-        this.tomeksCountryList = tomeksCountryList();
+        this.statusWrapper = new CsSoapSforceComSchemasClassMwMechanic.MechanicIdStatusWrapper();
+        this.tomeksWebService = new CsSoapSforceComSchemasClassMwMechanic.MW_MechanicWebService();
+      //  this.tomeksCountryList = tomeksCountryList();
     }
 
     public static String loginToTomeksMechanics() {
         try {
             CsPartnerSoapSforceCom.Soap partnerSoap = new CsPartnerSoapSforceCom.Soap();
-            CsPartnerSoapSforceCom.LoginResult loginResult = partnerSoap.login('tomek.starzak@gmail.com', 'Test1234sDKbP76CNGMdzE4aTTfL1gSEn');
+            CsPartnerSoapSforceCom.LoginResult loginResult = partnerSoap.login(CsUtils.getLoginValues('TomekSoapLogin'), CsUtils.getLoginValues('TomekSoapPassword'));
             return loginResult.sessionId;
         } catch (Exception err) {
-            System.debug('Login error: ' + err.getMessage());return null;
+            System.debug('Login error: ' + err.getMessage());
+            return null;
         }
     }
 
@@ -41,12 +42,11 @@ public with sharing class CsTomeksMechanicsSearchController {
             sessionId = loginToTomeksMechanics();Cache.Session.put('SessionId', sessionId);
         } else {
             sessionId = (String) Cache.Session.get('SessionId');
-        }
-        if (String.isBlank(sessionId) && !Test.isRunningTest()) {
+        }if (String.isBlank(sessionId) && !Test.isRunningTest()) {
             ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, System.Label.Error_No_SOAP_SessionId));
             return false;
         } else {
-            tomeksWebService.SessionHeader = new CsSoapSforceComSchemasClassMwMechani.SessionHeader_element();
+            tomeksWebService.SessionHeader = new CsSoapSforceComSchemasClassMwMechanic.SessionHeader_element();
             tomeksWebService.SessionHeader.sessionId = sessionId;
             return true;
         }
@@ -63,7 +63,7 @@ public with sharing class CsTomeksMechanicsSearchController {
         }
         isNameEmpty = false;
         if (isServiceInitialized()) {
-            tomeksMechanicsList = new List<CsSoapSforceComSchemasClassMwMechani.WrappedMechanic>();
+            tomeksMechanicsList = new List<CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic>();
             try {
                 tomeksMechanicsList =
                         tomeksWebService.fetchRecords(searchFormMechanic.firstName, searchFormMechanic.lastName, searchFormMechanic.mail, searchFormMechanic.city, searchFormMechanic.country);
@@ -77,10 +77,9 @@ public with sharing class CsTomeksMechanicsSearchController {
 
     public void clearPage() {
         isNameEmpty = false;
-        tomeksMechanicsList = new List<CsSoapSforceComSchemasClassMwMechani.WrappedMechanic>();
-        searchFormMechanic = new CsSoapSforceComSchemasClassMwMechani.WrappedMechanic();
+        tomeksMechanicsList = new List<CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic>();
+        searchFormMechanic = new CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic();
     }
-
 
     public void saveMechanic() {
         if (String.isEmpty(mechanicToInsertOrUpdate.lastName)) {
@@ -112,12 +111,12 @@ public with sharing class CsTomeksMechanicsSearchController {
     public void clearModal() {
         isPopupMechanicNameEmpty = false;
         indexToEdit = null;
-        this.mechanicToInsertOrUpdate = new CsSoapSforceComSchemasClassMwMechani.WrappedMechanic();
+        this.mechanicToInsertOrUpdate = new CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic();
         popupHeader = System.Label.Add_New_Mechanic;
     }
 
     public void editMechanic() {
-        for (CsSoapSforceComSchemasClassMwMechani.WrappedMechanic mechanic : tomeksMechanicsList) {
+        for (CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic mechanic : tomeksMechanicsList) {
             if (mechanic.id == indexToEdit) {
                 mechanicToInsertOrUpdate.firstName = mechanic.firstName;
                 mechanicToInsertOrUpdate.lastName = mechanic.lastName;
@@ -149,11 +148,13 @@ public with sharing class CsTomeksMechanicsSearchController {
         }
     }
 
-    Public List<SelectOption> tomeksCountryList() {
+    public List<SelectOption> getTomeksCountryList() {
         List<SelectOption> listOfCountries = new List<SelectOption>();
-        listOfCountries.add(new selectOption('', '- None -'));
-        for (String country : System.Label.Tomeks_Country_List.split(',')) {
-            listOfCountries.add(new selectoption(country, country));
+        if (isServiceInitialized()) {
+            listOfCountries.add(new selectOption('', '- None -'));
+            for (String country : tomeksWebService.getCountryList().split(',')) {
+                listOfCountries.add(new selectoption(country, country));
+            }
         }
         return listOfCountries;
     }

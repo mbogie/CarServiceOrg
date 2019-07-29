@@ -72,4 +72,15 @@ global class CsMechanicsWebService {
         }
         return databaseStatusWrapper;
     }
+
+    webService static String getCountryList(){
+        String countries = '';
+        Schema.DescribeFieldResult describeFieldResult = Mechanic__c.Country__c.getDescribe();
+        Schema.sObjectField sObjectField = describeFieldResult.getSObjectField();
+        List<PicklistEntry> entries = sObjectField.getDescribe().getPicklistValues();
+        for(PicklistEntry picklistEntry : entries){
+            countries +=picklistEntry.getValue()+',';
+        }
+        return countries.removeEnd(',');
+    }
 }

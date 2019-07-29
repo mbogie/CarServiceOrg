@@ -90,11 +90,11 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsSoapSforceComSchemasClassMwMechani" />
+                            <option name="name" value="CsSoapSforceComSchemasClassMwMechaniMock" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsSoapSforceComSchemasClassMwMechaniMock" />
+                            <option name="name" value="CsSoapSforceComSchemasClassMwMechanic" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -114,6 +114,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsTomeksWorkshopsRestController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsTriggerFactory" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -127,6 +131,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsWorkshopDetailController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsWorkshopsRestWebService" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -163,10 +171,6 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="testClass" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="CsWorkshopsRestWebService" />
-                            <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
                       </option>
@@ -259,6 +263,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsTomeksMechanicsSearch" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsTomeksWorkshopsSearch" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -465,6 +473,13 @@
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
+                      <option name="entries">
+                        <list>
+                          <MetadataEntry>
+                            <option name="name" value="Postman_REST_Workshops" />
+                          </MetadataEntry>
+                        </list>
+                      </option>
                       <option name="name" value="ConnectedApp" />
                       <option name="wildcard" value="false" />
                     </MetadataType>
@@ -1001,6 +1016,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Map_Unactive" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Mechanic_Hire_Label" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -1094,6 +1113,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="To_Import" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Tomeks_Country_List" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -1444,6 +1467,9 @@
                           <MetadataEntry>
                             <option name="name" value="Tomeks_Mechanics" />
                             <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Tomeks_Workshops" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Workshop__c" />
@@ -1826,6 +1852,13 @@
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
+                      <option name="entries">
+                        <list>
+                          <MetadataEntry>
+                            <option name="name" value="sf_com_apps" />
+                          </MetadataEntry>
+                        </list>
+                      </option>
                       <option name="name" value="InstalledPackage" />
                       <option name="wildcard" value="false" />
                     </MetadataType>

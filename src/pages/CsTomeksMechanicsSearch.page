@@ -120,7 +120,7 @@
                             <label class="slds-form-element__label"
                                    for="form-element-01">{!$ObjectType.Mechanic__c.fields.Country__c.Label}</label>
                             <div class="slds-form-element__control">
-                                <apex:selectList styleClass="slds-input" value="{!searchFormMechanic.country}" size="1" style="padding-top: 5px">
+                                <apex:selectList styleClass="slds-input" value="{!searchFormMechanic.country}" size="1">
                                         <apex:selectOptions value="{!tomeksCountryList}"/>
                             </apex:selectList>
                             </div>
@@ -258,7 +258,6 @@
                             </div>
                             <div class="slds-col slds-size&#45;&#45;1-of-2">
                                     <span>
-
                                         <div class="slds-form-element">
                                             <label class="slds-form-element__label"
                                                    for="form-element-01">{!$ObjectType.Mechanic__c.fields.City__c.Label}</label>
@@ -271,7 +270,7 @@
                                             <label class="slds-form-element__label"
                                                    for="form-element-01">{!$ObjectType.Mechanic__c.fields.Country__c.Label}</label>
                                             <div class="slds-form-element__control">
-                                                <apex:selectList styleClass="slds-input" value="{!mechanicToInsertOrUpdate.country}" size="1" style="padding-top:5px">
+                                                <apex:selectList styleClass="slds-input" value="{!mechanicToInsertOrUpdate.country}" size="1">
                                                         <apex:selectOptions value="{!tomeksCountryList}"/>
                                             </apex:selectList>
                                             </div>

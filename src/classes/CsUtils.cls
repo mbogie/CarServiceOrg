@@ -45,4 +45,13 @@ public with sharing class CsUtils {
         }
         return isTriggerEnabled;
     }
+
+    public static String getLoginValues(String csName) {
+        Cs_Settings__c csItem = Cs_Settings__c.getInstance(csName);
+        if (csItem == null) {
+            return '';
+        } else {
+            return csItem.Value__c;
+        }
+    }
 }

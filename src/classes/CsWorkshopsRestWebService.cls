@@ -34,7 +34,7 @@ global with sharing class CsWorkshopsRestWebService {
             if (deleteResult.isSuccess()) {
                 responseStatusList.add('Success,'+ deleteResult.getId());
             } else {
-                responseStatusList.add('Fail,'+ deleteResult.errors[0].getMessage());
+                responseStatusList.add('Error,'+deleteResult.getId()+','+ deleteResult.errors[0].getMessage());
             }
         }
         return responseStatusList;
@@ -81,7 +81,7 @@ global with sharing class CsWorkshopsRestWebService {
             if (upsertResult.isSuccess()) {
                 responseStatusList.add('Success,'+ upsertResult.getId());
             } else {
-                responseStatusList.add('Fail,'+ upsertResult.errors[0].getMessage());
+                responseStatusList.add('Error,'+upsertResult.getId()+','+ upsertResult.errors[0].getMessage());
             }
         }
         return responseStatusList;

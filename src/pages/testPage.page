@@ -1,72 +1,142 @@
 <apex:page id="testPage">
 
-    <div class="slds-form-element">
-        <label class="slds-form-element__label" for="combobox-unique-id-35">Search</label>
-        <div class="slds-form-element__control">
-            <div class="slds-combobox_container slds-size_small">
-                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open"
-                     aria-expanded="true" aria-haspopup="listbox" role="combobox">
-                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
-                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value"
-                               id="combobox-unique-id-35" aria-controls="listbox-unique-id" autoComplete="off"
-                               role="textbox" placeholder="Select an Option" readonly="" value="Option A"/>
-                        <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right"
-                              title="Description of icon when needed">
-                            <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
-                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
-                            </svg>
-                        <span class="slds-assistive-text">Description of icon when needed</span>
-                        </span>
-                    </div>
-                    <div id="listbox-unique-id" role="listbox" class="slds-dropdown slds-dropdown_fluid">
-                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">
-                            <li role="presentation" class="slds-listbox__item">
-                                <div id="listbox-option-unique-id-01"
-                                     class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center slds-is-selected"
-                                     role="option">
-                                    <span class="slds-media__figure">
-                                        <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                        <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                        </svg>
-                                    </span>
-                                    <span class="slds-media__body">
-                                        <span class="slds-truncate" title="Option A">
-                                        <span class="slds-assistive-text">Current Selection:</span> Option A</span>
-                                    </span>
-                                </div>
-                            </li>
-                            <li role="presentation" class="slds-listbox__item">
-                                <div id="listbox-option-unique-id-02"
-                                     class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                                     role="option">
-                                        <span class="slds-media__figure">
-                                            <svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-                                            <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-                                            </svg>
-                                        </span>
-                                    <span class="slds-media__body">
-                                        <span class="slds-truncate" title="Option B"> Option B</span>
-                                    </span>
-                                </div>
-                            </li>
-                            <li role="presentation" class="slds-listbox__item">
-                                <div id="listbox-option-unique-id-03"
-                                     class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-media_center"
-                                     role="option">
-<span class="slds-media__figure">
-<svg class="slds-icon slds-icon_x-small slds-listbox__icon-selected" aria-hidden="true">
-<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#check"></use>
-</svg>
-</span>
-                                    <span class="slds-media__body">
-<span class="slds-truncate" title="Option ABCDEFGHIJKLMNOPQRSTUVWXYZ"> Option ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
-</span>
-                                </div>
-                            </li>
-                        </ul>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col slds-size--7-of-8">
+                <legend id="newaccountform" class="slds-text-heading_medium slds-p-vertical_medium">
+                        {!$Label.Search_for_Tomeks_Mechanics}
+                </legend>
+            </div>
+
+            <div class="slds-col slds-size--1-of-8">
+                <apex:commandButton style="width:100px;"
+                                    value="{!$Label.Button_Add}"
+                                    onComplete="openModal()" status="actionStatus"
+                                    styleClass="slds-button slds-button_brand slds-m-top_medium"
+                                    reRender="resultTable, pageMessages,modalForm">
+                </apex:commandButton>
+            </div>
+        </div>
+        <apex:outputPanel id="namePanel">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size--1-of-2">
+                    <span>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Mechanic__c.fields.First_Name__c.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!searchFormMechanic.firstName}"
+                                              styleClass="slds-input"/>
+                            </div>
+                        </div>
+                        <apex:outputPanel id="nameNotEmpty" rendered="{!NOT(isNameEmpty)}">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="form-element-03">
+                                <abbr class="slds-required"
+                                      title="required">* </abbr>{!$ObjectType.Mechanic__c.fields.Name.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!searchFormMechanic.lastName}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                        </apex:outputPanel>
+                        <apex:outputPanel id="nameEmpty" rendered="{!isNameEmpty}">
+                        <div class="slds-form-element slds-has-error">
+                              <label class="slds-form-element__label" for="form-element-05">
+                                <abbr class="slds-required"
+                                      title="required">* </abbr>{!$ObjectType.Mechanic__c.fields.Name.Label}</label>
+                              <div class="slds-form-element__control">
+                              <apex:inputText value="{!searchFormMechanic.lastName}" styleClass="slds-input"/>
+                              </div>
+                              <div class="slds-form-element__help"
+                                   id="form-error-01">{!$Label.Error_Field_Required}</div>
+                            </div>
+                        </apex:outputPanel>
+                    </span>
+                </div>
+                <div class="slds-col slds-size--1-of-2">
+                    <span>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Mechanic__c.fields.City__c.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!searchFormMechanic.city}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Mechanic__c.fields.Country__c.Label}</label>
+                            <div class="slds-form-element__control">
+                                <apex:selectList styleClass="slds-input" value="{!searchFormMechanic.country}" size="1" style="padding-top: 5px">
+                                        <apex:selectOptions value="{!tomeksCountryList}"/>
+                            </apex:selectList>
+                            </div>
+                        </div>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Mechanic__c.fields.Email__c.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!searchFormMechanic.mail}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </apex:outputPanel>
+        <div class="slds-grid slds-gutters">
+            <div class="slds-col">
+            </div>
+            <div class="slds-grid">
+                <div class="slds-col">
+                    <apex:commandButton action="{!searchMechanic}"
+                                        style="width:125px;" status="actionStatus"
+                                        value="{!$Label.Button_Search}"
+                                        styleClass="slds-button slds-button_brand slds-m-top_medium"
+                                        reRender="resultTable, searchForm, namePanel">
+                    </apex:commandButton>
+                </div>
+                <div class="slds-col">
+                    <div class="slds-col">
+                        <apex:commandButton action="{!clearPage}"
+                                            onClick=" this.form.reset();"
+                                            value="{!$Label.Button_Clear}"
+                                            styleClass="slds-button slds-button_brand slds-m-top_medium"
+                                            style="width:125px;" status="actionStatus"
+                                            reRender="resultTable, searchForms, namePanel, pageMessages">
+                        </apex:commandButton>
                     </div>
                 </div>
             </div>
+            <div class="slds-col">
+            </div>
         </div>
-    </div>
+        <br/>
+        <div class="slds-table">
+            <apex:dataTable value="{!tomeksMechanicsList}" var="mechanicFromTomek"
+                            styleClass="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered"
+                            id="resultTable">
+                <apex:column headerValue="{!$Label.Actions_Label}">
+                    <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!editMechanic}"
+                                        reRender="popupMechanicNamePanel,modalForm"
+                                        onComplete="openModal()" status="actionStatus"
+                                        value="{!$Label.Edit}">
+                        <apex:param name="editedMechanicId" value="{!mechanicFromTomek.id}"
+                                    assignTo="{!indexToEdit}"/>
+                    </apex:commandButton>
+                    <apex:commandButton action="{!deleteMechanic}" styleClass="slds-button slds-button_neutral"
+                                        status="actionStatus"
+                                        reRender="resultTable, searchForm, namePanel"
+                                        value="{!$Label.Button_Delete}">
+                        <apex:param name="mechanicToDelete" value="{!mechanicFromTomek.id}"
+                                    assignTo="{!indexToDelete}"/>
+                    </apex:commandButton>
+                </apex:column>
+                <apex:column value="{!mechanicFromTomek.firstName} {!mechanicFromTomek.lastName}"
+                             headerValue="{!$ObjectType.Mechanic__c.fields.Full_Name__c.Label}"/>
+                <apex:column value="{!mechanicFromTomek.country}"
+                             headerValue="{!$ObjectType.Mechanic__c.fields.Country__c.Label}"/>
+                <apex:column value="{!mechanicFromTomek.city}"
+                             headerValue="{!$ObjectType.Mechanic__c.fields.City__c.Label}"/>
+                <apex:column value="{!mechanicFromTomek.mail}"
+                             headerValue="{!$ObjectType.Mechanic__c.fields.Email__c.Label}"/>
+            </apex:dataTable>
+        </div>
 </apex:page>

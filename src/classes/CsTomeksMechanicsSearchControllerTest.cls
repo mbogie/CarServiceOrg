@@ -1,5 +1,7 @@
 @isTest
 private class CsTomeksMechanicsSearchControllerTest {
+
+
 // search
     @isTest static void shouldReturnListOfTomeksMechanics() {
         //given
@@ -12,7 +14,7 @@ private class CsTomeksMechanicsSearchControllerTest {
 
         //when
         Test.startTest();
-        Test.setMock(WebServiceMock.class, new CsSoapSforceComSchemasClassMwMechaniMock('SEARCH_METHOD'));
+        Test.setMock(WebServiceMock.class, new CsSoapMwMechanicMock('SEARCH_METHOD'));
         controller.searchMechanic();
         Test.stopTest();
 
@@ -53,7 +55,7 @@ private class CsTomeksMechanicsSearchControllerTest {
 
         //when
         Test.startTest();
-        Test.setMock(WebServiceMock.class, new CsSoapSforceComSchemasClassMwMechaniMock('WEBSERVICE_FAILED'));
+        Test.setMock(WebServiceMock.class, new CsSoapMwMechanicMock('WEBSERVICE_FAILED'));
         controller.searchMechanic();
         ApexPages.Message[] pageMessages = ApexPages.getMessages();
         Test.stopTest();
@@ -75,7 +77,7 @@ private class CsTomeksMechanicsSearchControllerTest {
 
         //when
         Test.startTest();
-        Test.setMock(WebServiceMock.class, new CsSoapSforceComSchemasClassMwMechaniMock('UPSERT_METHOD'));
+        Test.setMock(WebServiceMock.class, new CsSoapMwMechanicMock('UPSERT_METHOD'));
         controller.saveMechanic();
         Test.stopTest();
 
@@ -116,7 +118,7 @@ private class CsTomeksMechanicsSearchControllerTest {
 
         //when
         Test.startTest();
-        Test.setMock(WebServiceMock.class, new CsSoapSforceComSchemasClassMwMechaniMock('FAIL_METHOD_ADD'));
+        Test.setMock(WebServiceMock.class, new CsSoapMwMechanicMock('FAIL_METHOD_ADD'));
         controller.saveMechanic();
         ApexPages.Message[] pageMessages = ApexPages.getMessages();
         Test.stopTest();
@@ -138,7 +140,7 @@ private class CsTomeksMechanicsSearchControllerTest {
 
         //when
         Test.startTest();
-        Test.setMock(WebServiceMock.class, new CsSoapSforceComSchemasClassMwMechaniMock('WEBSERVICE_FAILED'));
+        Test.setMock(WebServiceMock.class, new CsSoapMwMechanicMock('WEBSERVICE_FAILED'));
         ApexPages.Message[] pageMessagesBefore = ApexPages.getMessages();
         controller.saveMechanic();
         ApexPages.Message[] pageMessagesAfter = ApexPages.getMessages();
@@ -157,7 +159,7 @@ private class CsTomeksMechanicsSearchControllerTest {
 
         //when
         Test.startTest();
-        Test.setMock(WebServiceMock.class, new CsSoapSforceComSchemasClassMwMechaniMock('DELETE_METHOD'));
+        Test.setMock(WebServiceMock.class, new CsSoapMwMechanicMock('DELETE_METHOD'));
         controller.deleteMechanic();
         Test.stopTest();
 
@@ -172,7 +174,7 @@ private class CsTomeksMechanicsSearchControllerTest {
 
         //when
         Test.startTest();
-        Test.setMock(WebServiceMock.class, new CsSoapSforceComSchemasClassMwMechaniMock('WEBSERVICE_FAILED'));
+        Test.setMock(WebServiceMock.class, new CsSoapMwMechanicMock('WEBSERVICE_FAILED'));
         controller.deleteMechanic();
         ApexPages.Message[] pageMessages = ApexPages.getMessages();
         Test.stopTest();
@@ -181,14 +183,14 @@ private class CsTomeksMechanicsSearchControllerTest {
         System.assertNotEquals(0, pageMessages.size());
     }
 
-    @isTest static void shouldDisplatPageErrorMessageIfDeleteMethodReturnEmptyId(){
+    @isTest static void shouldDisplayPageErrorMessageIfDeleteMethodReturnEmptyId(){
         //given
         CsTomeksMechanicsSearchController controller = new CsTomeksMechanicsSearchController();
         controller.indexToDelete = null;
 
         //when
         Test.startTest();
-        Test.setMock(WebServiceMock.class, new CsSoapSforceComSchemasClassMwMechaniMock('FAIL_DELETE_METHOD'));
+        Test.setMock(WebServiceMock.class, new CsSoapMwMechanicMock('FAIL_DELETE_METHOD'));
         controller.deleteMechanic();
         ApexPages.Message[] pageMessages = ApexPages.getMessages();
         Test.stopTest();
@@ -224,7 +226,7 @@ private class CsTomeksMechanicsSearchControllerTest {
         //given
         CsTomeksMechanicsSearchController controller = new CsTomeksMechanicsSearchController();
         controller.isNameEmpty = true;
-        controller.tomeksMechanicsList = new List<CsSoapSforceComSchemasClassMwMechani.WrappedMechanic>{new CsSoapSforceComSchemasClassMwMechani.WrappedMechanic()};
+        controller.tomeksMechanicsList = new List<CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic>{new CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic()};
         controller.searchFormMechanic.lastName = 'Test';
 
         //when
@@ -241,7 +243,7 @@ private class CsTomeksMechanicsSearchControllerTest {
     @isTest static void shouldCopyFieldValuesOfMechanicFromResultListIfIdIsEqualBeforeOpenEditPopup(){
         //given
         CsTomeksMechanicsSearchController controller = new CsTomeksMechanicsSearchController();
-        CsSoapSforceComSchemasClassMwMechani.WrappedMechanic tomeksMechanic = new CsSoapSforceComSchemasClassMwMechani.WrappedMechanic();
+        CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic tomeksMechanic = new CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic();
         tomeksMechanic.id = '123456';
         tomeksMechanic.firstName = 'FNTest';
         tomeksMechanic.lastName = 'LNTest';
@@ -254,7 +256,7 @@ private class CsTomeksMechanicsSearchControllerTest {
         controller.mechanicToInsertOrUpdate.city = null;
         controller.mechanicToInsertOrUpdate.country = null;
         controller.indexToEdit = '123456';
-        controller.tomeksMechanicsList = new List<CsSoapSforceComSchemasClassMwMechani.WrappedMechanic>{tomeksMechanic};
+        controller.tomeksMechanicsList = new List<CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic>{tomeksMechanic};
 
         //when
         Test.startTest();
@@ -267,5 +269,20 @@ private class CsTomeksMechanicsSearchControllerTest {
         System.assertEquals(tomeksMechanic.mail, controller.mechanicToInsertOrUpdate.mail);
         System.assertEquals(tomeksMechanic.country, controller.mechanicToInsertOrUpdate.country);
         System.assertEquals(tomeksMechanic.city, controller.mechanicToInsertOrUpdate.city);
+    }
+
+    @isTest static void shouldReturnCountryList(){
+        //given
+        CsTomeksMechanicsSearchController controller = new CsTomeksMechanicsSearchController();
+        List<SelectOption> countryList = new List<SelectOption>();
+
+        //when
+        Test.startTest();
+        Test.setMock(WebServiceMock.class, new CsSoapMwMechanicMock('COUNTRY_LIST'));
+        countryList = controller.getTomeksCountryList();
+        Test.stopTest();
+
+        //than
+        System.assert(countryList.size()>0);
     }
 }
