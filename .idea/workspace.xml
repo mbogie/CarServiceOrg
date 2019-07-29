@@ -2,22 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="378619f6-206d-4b97-be6c-0e71661895b4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/CsTomeksWorkshopsSearch.page" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/CsTomeksWorkshopsSearch.page-meta.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarServiceOrg.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CarServiceOrg.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsMechanicsWebService.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsMechanicsWebService.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechani.cls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechani.cls-meta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsSoapMwMechanicMock.cls-meta.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechaniMock.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsSoapMwMechanicMock.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechaniMock.cls-meta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls-meta.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchControllerTest.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchControllerTest.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsUtils.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsUtils.cls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/CsWorkshopsRestWebService.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsWorkshopsRestWebService.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/testPage.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/testPage.page" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/labels/CustomLabels.labels" beforeDir="false" afterPath="$PROJECT_DIR$/src/labels/CustomLabels.labels" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/CsTomeksWorkshopsSearch.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsTomeksWorkshopsSearch.page" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/CsWorkshopDetail.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsWorkshopDetail.page" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,50 +42,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="150" column="30" selection-start-line="150" selection-start-column="30" selection-end-line="150" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchControllerTest.cls">
+        <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="273" column="37" selection-start-line="273" selection-start-column="37" selection-end-line="273" selection-end-column="37" />
+            <state relative-caret-position="425">
+              <caret line="66" column="9" selection-start-line="66" selection-start-column="7" selection-end-line="71" selection-end-column="11" />
               <folding>
-                <element signature="e#11667#11681#0" expanded="true" />
+                <element signature="e#3160#3176#0" expanded="true" />
+                <element signature="e#3544#3567#0" expanded="true" />
+                <element signature="e#4622#4645#0" expanded="true" />
+                <element signature="e#5495#5503#0" expanded="true" />
+                <element signature="e#5004#5012#0" expanded="true" />
+                <element signature="e#7116#7139#0" expanded="true" />
+                <element signature="e#7187#7195#0" expanded="true" />
+                <element signature="e#7318#7355#0" expanded="true" />
+                <element signature="e#7331#7355#0" expanded="true" />
+                <element signature="e#8018#8026#0" expanded="true" />
+                <element signature="e#8069#8077#0" expanded="true" />
+                <element signature="e#8723#8731#0" expanded="true" />
+                <element signature="e#9924#9979#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/CsSoapMwMechanicMock.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-141">
-              <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="81" column="67" lean-forward="true" selection-start-line="81" selection-start-column="67" selection-end-line="81" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopsRestWebService.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
+            <state relative-caret-position="395">
+              <caret line="88" column="20" lean-forward="true" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
+              <folding>
+                <element signature="e#946#959#0" expanded="true" />
+                <element signature="e#1013#1021#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -113,15 +96,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>isNewMechanicNameEmpty</find>
-      <find>inputHidden</find>
-      <find>isAllInsertContractSuccess</find>
-      <find>isAllSuccess</find>
-      <find>isActionSuccess</find>
-      <find>isUpserted</find>
-      <find>isEditedMechanicNameEmpty</find>
-      <find>wrapped mehanics &gt;&gt;</find>
-      <find>Session Id Is BLANK</find>
       <find>Test</find>
       <find>Mechanic was upserted</find>
       <find>statusWrapper</find>
@@ -143,9 +117,17 @@
       <find>CsSoapSforceComSchemasClassMwMechaniMock</find>
       <find>CsSoapSforceComSchemasClassMwMechani</find>
       <find>CsSoapSforceComSchemasClassMwMechanicMock</find>
+      <find>.WrappedTomeksWorkshop</find>
+      <find>WrappedTomeksWorkshop</find>
+      <find>popup</find>
+      <find>wrappedTomeksWorkshopToAdd</find>
+      <find>mechanic</find>
+      <find>add</find>
+      <find>popupMechanic</find>
+      <find>countries</find>
+      <find>workshops</find>
     </findStrings>
     <replaceStrings>
-      <replace>isDefaultPhotoDisplayed</replace>
       <replace>workshopFormPageController</replace>
       <replace>wrappedMechanic</replace>
       <replace>CsImportMechanicWrapper</replace>
@@ -175,6 +157,7 @@
       <replace>CsSoapSforceComSchemasClassMwMechani</replace>
       <replace>CsSoapSforceComSchemasClassMwMechanic</replace>
       <replace>CsSoapMwMechanicMock</replace>
+      <replace>wrappedTomeksWorkshopToUpsert</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -192,10 +175,8 @@
         <option value="$PROJECT_DIR$/src/classes/CsRandomMechanicsController.cls-meta.xml" />
         <option value="$PROJECT_DIR$/src/pages/CsRandomMechanics.page" />
         <option value="$PROJECT_DIR$/src/pages/CsRandomMechanics.page-meta.xml" />
-        <option value="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicImportController.cls" />
         <option value="$PROJECT_DIR$/src/triggers/OverlappingError.trigger" />
-        <option value="$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsTriggerException.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsITrigger.cls" />
         <option value="$PROJECT_DIR$/src/triggers/CsUserCountryUpdate.trigger" />
@@ -207,7 +188,6 @@
         <option value="$PROJECT_DIR$/src/classes/CsTriggerFactory.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsWrapperMechanic.cls" />
         <option value="$PROJECT_DIR$/src/classes/MechanicsWebService.cls" />
-        <option value="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" />
         <option value="$PROJECT_DIR$/src/classes/CsTomeksMechanicsWebService.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicWebServiceTest.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicsWebServiceTest.cls" />
@@ -217,24 +197,27 @@
         <option value="$PROJECT_DIR$/src/classes/CsActionStatusComponent.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsActionStatusComponent.page" />
         <option value="$PROJECT_DIR$/src/components/CsActionStatus.component" />
-        <option value="$PROJECT_DIR$/src/pages/CsWorkshopDetail.page" />
         <option value="$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechani.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsMechanicSearch.page" />
         <option value="$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechaniMock.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsTomeksMechanicRestWebServiceController.cls" />
         <option value="$PROJECT_DIR$/src/pages/testPage.page" />
         <option value="$PROJECT_DIR$/src/pages/CsTomeksMechanicRestSearch.page" />
-        <option value="$PROJECT_DIR$/src/pages/CsTomeksWorkshopsSearch.page" />
         <option value="$PROJECT_DIR$/src/classes/CsUtils.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicsWebService.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page" />
         <option value="$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechanic.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechanicMock.cls" />
-        <option value="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls" />
-        <option value="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls" />
-        <option value="$PROJECT_DIR$/src/classes/CsWorkshopsRestWebService.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsSoapMwMechanicMock.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchControllerTest.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls" />
+        <option value="$PROJECT_DIR$/src/pages/CsTomeksWorkshopsSearch.page" />
+        <option value="$PROJECT_DIR$/src/pages/CsMechanicDetail.page" />
+        <option value="$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls" />
+        <option value="$PROJECT_DIR$/src/pages/CsWorkshopDetail.page" />
+        <option value="$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsWorkshopsRestWebService.cls" />
       </list>
     </option>
   </component>
@@ -272,26 +255,26 @@
                       <entry key="CLASSES/CSIMAGECROPPER.CLS" value="1563229518173" />
                       <entry key="CLASSES/CSITRIGGER.CLS" value="1563708705842" />
                       <entry key="CLASSES/CSLOCATIONCALLOUTS.CLS" value="1563229518173" />
-                      <entry key="CLASSES/CSMECHANICDETAILCONTROLLER.CLS" value="1563401778622" />
+                      <entry key="CLASSES/CSMECHANICDETAILCONTROLLER.CLS" value="1564433909000" />
                       <entry key="CLASSES/CSMECHANICEDITCONTROLLER.CLS" value="1563229518173" />
                       <entry key="CLASSES/CSMECHANICIMPORTCONTROLLER.CLS" value="1563442830074" />
                       <entry key="CLASSES/CSMECHANICJSONWRAPPER.CLS" value="1563229518173" />
                       <entry key="CLASSES/CSMECHANICSEARCHCONTROLLER.CLS" value="1563229518173" />
-                      <entry key="CLASSES/CSMECHANICSWEBSERVICE.CLS" value="1564396180000" />
+                      <entry key="CLASSES/CSMECHANICSWEBSERVICE.CLS" value="1564434351000" />
                       <entry key="CLASSES/CSRANDOMMECHANICSCONTROLLER.CLS" value="1563358483000" />
                       <entry key="CLASSES/CSSOAPMWMECHANICMOCK.CLS" value="1564400544000" />
                       <entry key="CLASSES/CSSOAPSFORCECOMSCHEMASCLASSMWMECHANIC.CLS" value="1564396888000" />
                       <entry key="CLASSES/CSSOAPSFORCECOMSCHEMASCLASSMWMECHANIMOCK.CLS" value="1564319739000" />
                       <entry key="CLASSES/CSSOQLQUERYBUILDER.CLS" value="1563229518173" />
-                      <entry key="CLASSES/CSTOMEKSMECHANICSSEARCHCONTROLLER.CLS" value="1564399720000" />
-                      <entry key="CLASSES/CSTOMEKSMECHANICSSEARCHCONTROLLERTEST.CLS" value="1564400744000" />
+                      <entry key="CLASSES/CSTOMEKSMECHANICSSEARCHCONTROLLER.CLS" value="1564425245000" />
+                      <entry key="CLASSES/CSTOMEKSMECHANICSSEARCHCONTROLLERTEST.CLS" value="1564400791000" />
                       <entry key="CLASSES/CSTOMEKSMECHANICSWEBSERVICE.CLS" value="1563874217035" />
-                      <entry key="CLASSES/CSTOMEKSWORKSHOPSRESTCONTROLLER.CLS" value="1564398218000" />
+                      <entry key="CLASSES/CSTOMEKSWORKSHOPSRESTCONTROLLER.CLS" value="1564435943000" />
                       <entry key="CLASSES/CSTRIGGERFACTORY.CLS" value="1563796179845" />
                       <entry key="CLASSES/CSUSERTRIGGERHANDLER.CLS" value="1563795819278" />
                       <entry key="CLASSES/CSUTILS.CLS" value="1564395002000" />
-                      <entry key="CLASSES/CSWORKSHOPDETAILCONTROLLER.CLS" value="1563542097838" />
-                      <entry key="CLASSES/CSWORKSHOPSRESTWEBSERVICE.CLS" value="1564400386000" />
+                      <entry key="CLASSES/CSWORKSHOPDETAILCONTROLLER.CLS" value="1564434352000" />
+                      <entry key="CLASSES/CSWORKSHOPSRESTWEBSERVICE.CLS" value="1564435702000" />
                       <entry key="CLASSES/CSWRAPPERCONTRACT.CLS" value="1563309012518" />
                       <entry key="CLASSES/CSWRAPPERMECHANIC.CLS" value="1563310503725" />
                       <entry key="CLASSES/LOCATIONCALLOUTS.CLS" value="1562698308791" />
@@ -318,7 +301,7 @@
                       <entry key="PAGES/CSCOPYRESULTMECHANICLISTTOCSV.PAGE" value="1563229448853" />
                       <entry key="PAGES/CSCOPYRESULTMECHANICLISTTOXML.PAGE" value="1563229447289" />
                       <entry key="PAGES/CSIMAGECROPPER.PAGE" value="1563229449184" />
-                      <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1563459942044" />
+                      <entry key="PAGES/CSMECHANICDETAIL.PAGE" value="1564434379000" />
                       <entry key="PAGES/CSMECHANICEDIT.PAGE" value="1563229448694" />
                       <entry key="PAGES/CSMECHANICIMPORT.PAGE" value="1564388493000" />
                       <entry key="PAGES/CSMECHANICIMPORTTEMPLATE.PAGE" value="1563303813875" />
@@ -327,8 +310,8 @@
                       <entry key="PAGES/CSRANDOMMECHANICS.PAGE" value="1563358565000" />
                       <entry key="PAGES/CSSAVEMECHANICRECORDTOPDF.PAGE" value="1563229447700" />
                       <entry key="PAGES/CSTOMEKSMECHANICSSEARCH.PAGE" value="1564396888000" />
-                      <entry key="PAGES/CSTOMEKSWORKSHOPSSEARCH.PAGE" value="1564388848000" />
-                      <entry key="PAGES/CSWORKSHOPDETAIL.PAGE" value="1564144624000" />
+                      <entry key="PAGES/CSTOMEKSWORKSHOPSSEARCH.PAGE" value="1564430577000" />
+                      <entry key="PAGES/CSWORKSHOPDETAIL.PAGE" value="1564434383000" />
                       <entry key="PAGES/CSWORKSHOPEDIT.PAGE" value="1563229448996" />
                       <entry key="PAGES/MECHANICDETAILPAGE.PAGE" value="1562064925665" />
                       <entry key="PAGES/MECHANICEDITPAGE.PAGE" value="1562050098602" />
@@ -1610,7 +1593,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1633,13 +1616,19 @@
               <item name="CarServiceOrg" type="b2602c69:ProjectViewProjectNode" />
               <item name="CarServiceOrg" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="labels" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="CarServiceOrg" type="b2602c69:ProjectViewProjectNode" />
+              <item name="CarServiceOrg" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1967,16 +1956,16 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.2889126" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.29211086" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4989339" weight="0.32936078" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4936034" visible="true" weight="0.33694476" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4936034" weight="0.33694476" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49932885" weight="0.39943343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Log Viewer" order="7" sideWeight="0.86567163" weight="0.45070422" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.53198296" weight="0.312026" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.51119405" weight="0.31310943" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32827735" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
@@ -1984,7 +1973,7 @@
       <window_info anchor="bottom" id="SOQL Query" order="13" sideWeight="0.49307036" weight="0.25135428" />
       <window_info anchor="bottom" id="Problems" order="14" sideWeight="0.49733475" weight="0.32719547" />
       <window_info anchor="bottom" id="Version Control" order="15" sideWeight="0.4946695" weight="0.3900325" />
-      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.5063966" side_tool="true" weight="0.33694476" />
+      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.48880598" side_tool="true" visible="true" weight="0.13976164" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -2086,11 +2075,6 @@
     <SUITE FILE_PATH="coverage/CarServiceOrg$CsTomeksMechanicsSearchControllerTest.null" NAME="CarServiceOrg Coverage Results" MODIFIED="1564400770274" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="Apex" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" PROJECT_NAME="CarServiceOrg" CONNECTION_NAME="CarServiceOrg" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/classes/AsyncCsPartnerSoapSforceCom.cls" />
-    <entry file="file://$PROJECT_DIR$/src/classes/MechanicsWebService.cls" />
-    <entry file="file://$PROJECT_DIR$/src/classes/CsFaultPartnerSoapSforceCom.cls">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsSobjectPartnerSoapSforceCom.cls">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -2191,27 +2175,6 @@
     <entry file="file://$PROJECT_DIR$/src/pages/CsWorkshopEdit.page">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsWorkshopDetail.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="85" column="36" selection-start-line="85" selection-start-column="36" selection-end-line="85" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5">
-          <caret line="72" column="46" selection-start-line="72" selection-start-column="46" selection-end-line="72" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="185" column="28" lean-forward="true" selection-start-line="185" selection-start-column="28" selection-end-line="185" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/globalValueSets/Country.globalValueSet">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -2250,13 +2213,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1519">
-          <caret line="242" column="58" lean-forward="true" selection-start-line="242" selection-start-column="58" selection-end-line="242" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsSoqlQueryBuilder.cls">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -2289,13 +2245,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsTomeksWorkshopsSearch.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="186" column="70" lean-forward="true" selection-start-line="186" selection-start-column="70" selection-end-line="186" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsUtils.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="597">
@@ -2311,58 +2260,152 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsSoapSforceComSchemasClassMwMechani.cls" />
-    <entry file="file://$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="166" column="36" selection-start-line="166" selection-start-column="36" selection-end-line="166" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsSoapMwMechanicMock.cls-meta.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicsWebService.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopsRestWebService.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="34" selection-start-line="10" selection-start-column="34" selection-end-line="10" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="81" column="67" lean-forward="true" selection-start-line="81" selection-start-column="67" selection-end-line="81" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsSoapMwMechanicMock.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-141">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        <state relative-caret-position="918">
+          <caret line="54" column="34" selection-start-line="54" selection-start-column="34" selection-end-line="54" selection-end-column="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchControllerTest.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="273" column="37" selection-start-line="273" selection-start-column="37" selection-end-line="273" selection-end-column="37" />
+        <state relative-caret-position="406">
+          <caret line="257" column="42" lean-forward="true" selection-start-line="257" selection-start-column="42" selection-end-line="257" selection-end-column="42" />
           <folding>
             <element signature="e#11667#11681#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsContractTriggerHandler.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="66" lean-forward="true" selection-start-line="17" selection-start-column="66" selection-end-line="17" selection-end-column="66" />
+          <folding>
+            <element signature="e#887#900#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsTomeksMechanicsSearch.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-475">
+          <caret line="207" column="68" selection-start-line="207" selection-start-column="68" selection-end-line="207" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksMechanicsSearchController.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="150" column="30" selection-start-line="150" selection-start-column="30" selection-end-line="150" selection-end-column="30" />
+        <state relative-caret-position="323">
+          <caret line="124" column="61" selection-start-line="124" selection-start-column="61" selection-end-line="124" selection-end-column="61" />
+          <folding>
+            <element signature="e#4079#4134#0" expanded="true" />
+            <element signature="e#6504#6512#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsTomeksWorkshopsSearch.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="275" column="86" selection-start-line="275" selection-start-column="86" selection-end-line="275" selection-end-column="86" />
+          <folding>
+            <element signature="n#style#0;n#apex:commandButton#0;n#div#1;n#div#0;n#div#0;n#apex:form#0;n#body#0;n#html#0;n#apex:page#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsContractTriggerHandlerHelper.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+          <folding>
+            <element signature="e#2486#2494#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/labels/CustomLabels.labels">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="205" column="4" selection-start-line="205" selection-start-column="4" selection-end-line="205" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="64" column="55" lean-forward="true" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
+          <folding>
+            <element signature="e#3308#3316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopDetailController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="267" selection-start-line="267" selection-end-line="267" />
+          <folding>
+            <element signature="e#12610#12618#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicsWebService.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="310">
+          <caret line="64" column="44" lean-forward="true" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="67" column="35" lean-forward="true" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pages/CsWorkshopDetail.page">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="47" column="21" lean-forward="true" selection-start-line="47" selection-start-column="21" selection-end-line="47" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="66" column="9" selection-start-line="66" selection-start-column="7" selection-end-line="71" selection-end-column="11" />
+          <folding>
+            <element signature="e#3160#3176#0" expanded="true" />
+            <element signature="e#3544#3567#0" expanded="true" />
+            <element signature="e#4622#4645#0" expanded="true" />
+            <element signature="e#5495#5503#0" expanded="true" />
+            <element signature="e#5004#5012#0" expanded="true" />
+            <element signature="e#7116#7139#0" expanded="true" />
+            <element signature="e#7187#7195#0" expanded="true" />
+            <element signature="e#7318#7355#0" expanded="true" />
+            <element signature="e#7331#7355#0" expanded="true" />
+            <element signature="e#8018#8026#0" expanded="true" />
+            <element signature="e#8069#8077#0" expanded="true" />
+            <element signature="e#8723#8731#0" expanded="true" />
+            <element signature="e#9924#9979#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopsRestWebService.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="88" column="20" lean-forward="true" selection-start-line="88" selection-start-column="20" selection-end-line="88" selection-end-column="20" />
+          <folding>
+            <element signature="e#946#959#0" expanded="true" />
+            <element signature="e#1013#1021#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -20,7 +20,7 @@
     </style>
 
     <apex:form id="mechanicForm">
-        <apex:message/>
+        <apex:pageMessages />
         <apex:pageBlock id="mechanicBlock" title="{!Mechanic__c.Full_Name__c}">
             <apex:panelGrid columns="2" columnClasses="picture,details" style="width:100%">
 

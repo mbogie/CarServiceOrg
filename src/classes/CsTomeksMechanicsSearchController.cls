@@ -11,7 +11,6 @@ public with sharing class CsTomeksMechanicsSearchController {
     public List<CsSoapSforceComSchemasClassMwMechanic.WrappedMechanic> tomeksMechanicsList { get; set; }
     public CsSoapSforceComSchemasClassMwMechanic.MechanicIdStatusWrapper statusWrapper { get; set; }
     private CsSoapSforceComSchemasClassMwMechanic.MW_MechanicWebService tomeksWebService;
- //   public List<SelectOption> tomeksCountryList { get; set; }
     private String sessionId;
 
     public CsTomeksMechanicsSearchController() {
@@ -23,13 +22,12 @@ public with sharing class CsTomeksMechanicsSearchController {
         this.popupHeader = System.Label.Add_New_Mechanic;
         this.statusWrapper = new CsSoapSforceComSchemasClassMwMechanic.MechanicIdStatusWrapper();
         this.tomeksWebService = new CsSoapSforceComSchemasClassMwMechanic.MW_MechanicWebService();
-      //  this.tomeksCountryList = tomeksCountryList();
     }
 
     public static String loginToTomeksMechanics() {
         try {
             CsPartnerSoapSforceCom.Soap partnerSoap = new CsPartnerSoapSforceCom.Soap();
-            CsPartnerSoapSforceCom.LoginResult loginResult = partnerSoap.login(CsUtils.getLoginValues('TomekSoapLogin'), CsUtils.getLoginValues('TomekSoapPassword'));
+            CsPartnerSoapSforceCom.LoginResult loginResult = partnerSoap.login(CsUtils.getLoginValues('TomekUsername'), CsUtils.getLoginValues('TomekPassword'));
             return loginResult.sessionId;
         } catch (Exception err) {
             System.debug('Login error: ' + err.getMessage());
@@ -124,8 +122,7 @@ public with sharing class CsTomeksMechanicsSearchController {
                 mechanicToInsertOrUpdate.city = mechanic.city;
                 mechanicToInsertOrUpdate.country = mechanic.country;
                 popupHeader = String.format(System.Label.Edit_Mechanic_Header, new List<String>{
-                        mechanic.firstName, mechanic.lastName
-                });
+                        mechanic.firstName, mechanic.lastName});
             }
         }
     }

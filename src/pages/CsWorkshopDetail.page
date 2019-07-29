@@ -55,7 +55,7 @@
                 <apex:commandButton value="{!$Label.Button_Hire}" onClick="openHirePopup()" onComplete="refresh"/>
                 <apex:commandButton value="{!$Label.Button_Delete}"
                                     onclick="if(!confirm('{!$Label.Delete_Confirm_Message}')) return false;"
-                                    action="{!delete}"/>
+                                    action="{!deleteWorkshop}"/>
             </div>
         </apex:pageBlock>
         <apex:pageBlock id="historyBlock" title="{!$Label.Section_History_Tracking}">

@@ -20,6 +20,7 @@ public with sharing class CsWorkshopDetailController {
     private Boolean isMechanicOnTheWrapperContractList;
     public Boolean isButtonsDisabledAfterEditedContract { get; set; }
     private Integer indexOfUpsertResult;
+    private PageReference pageReference;
 
     public CsWorkshopDetailController(ApexPages.StandardController controller) {
         this.workshopFormPageController = (Workshop__c) controller.getRecord();
@@ -258,5 +259,17 @@ public with sharing class CsWorkshopDetailController {
             return true;
         }
         return false;
+    }
+
+    public PageReference deleteWorkshop() {
+        try{
+            delete workshopFormPageController;
+        } catch (Exception err){
+            workshopFormPageController.addError(String.format(System.Label.Error_Delete_With_Contracts, new List<String>{workshopFormPageController.Name}));
+            return null;
+        }
+        pageReference = new PageReference('/' + SObjectType.Workshop__c.getKeyPrefix() + '/o');
+        pageReference.setRedirect(true);
+        return pageReference;
     }
 }

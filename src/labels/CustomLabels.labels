@@ -22,6 +22,13 @@
         <value>Add New Mechanic</value>
     </labels>
     <labels>
+        <fullName>Add_New_Workshop</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Add New Workshop</shortDescription>
+        <value>Add New Workshop</value>
+    </labels>
+    <labels>
         <fullName>Agreement</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -246,6 +253,13 @@
         <value>Edit</value>
     </labels>
     <labels>
+        <fullName>Edit_Workshop_Header</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Edit Workshop Header</shortDescription>
+        <value>Edit {0}</value>
+    </labels>
+    <labels>
         <fullName>Email_Message</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -267,6 +281,13 @@
         <value>Employees To Hire</value>
     </labels>
     <labels>
+        <fullName>Error_Delete_With_Contracts</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Delete With Contracts</shortDescription>
+        <value>Your attempt to delete {0} could not be completed because it is associated with the contracts.</value>
+    </labels>
+    <labels>
         <fullName>Error_Field_Required</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -279,6 +300,13 @@
         <protected>true</protected>
         <shortDescription>Error No Object Type</shortDescription>
         <value>No Trigger Handler registered for Object Type:</value>
+    </labels>
+    <labels>
+        <fullName>Error_No_On_Country_List</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error No On Country List</shortDescription>
+        <value>Country not allowed. Only: {0}.</value>
     </labels>
     <labels>
         <fullName>Error_No_SOAP_SessionId</fullName>
@@ -307,6 +335,13 @@
         <protected>true</protected>
         <shortDescription>Error Overlapping From To</shortDescription>
         <value>{0}: {1} - {2}.</value>
+    </labels>
+    <labels>
+        <fullName>Error_Phone_Pattern</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Error Phone Pattern</shortDescription>
+        <value>Invalid phone. Only numbers, space and &apos;-&apos;, starts with or without &apos;+&apos;.</value>
     </labels>
     <labels>
         <fullName>Error_To_Big_File</fullName>
@@ -428,6 +463,13 @@
         <value>Search Mechanic</value>
     </labels>
     <labels>
+        <fullName>Phone_Pattern</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Phone Pattern</shortDescription>
+        <value>[+]{0,1}+[1-9-\ ]{0,15}</value>
+    </labels>
+    <labels>
         <fullName>Picture_Default</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -475,6 +517,13 @@
         <protected>true</protected>
         <shortDescription>Search for Tomeks Mechanics</shortDescription>
         <value>Search for Tomek&apos;s Mechanics</value>
+    </labels>
+    <labels>
+        <fullName>Search_for_Tomeks_Workshops</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Search for Tomeks Workshops</shortDescription>
+        <value>Search for Tomek&apos;s Workshops</value>
     </labels>
     <labels>
         <fullName>Section_Address</fullName>
@@ -540,6 +589,20 @@
         <value>▲</value>
     </labels>
     <labels>
+        <fullName>Status_Error</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Status Error</shortDescription>
+        <value>Error</value>
+    </labels>
+    <labels>
+        <fullName>Status_Success</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Status Success</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
         <fullName>Table_All_Records</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -580,13 +643,6 @@
         <protected>true</protected>
         <shortDescription>To Import</shortDescription>
         <value>To Import</value>
-    </labels>
-    <labels>
-        <fullName>Tomeks_Country_List</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Tomeks Country List</shortDescription>
-        <value>AU,NL,PL,UA,USA</value>
     </labels>
     <labels>
         <fullName>Upload_Picture</fullName>

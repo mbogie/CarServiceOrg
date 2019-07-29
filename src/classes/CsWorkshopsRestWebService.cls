@@ -32,9 +32,9 @@ global with sharing class CsWorkshopsRestWebService {
         Database.DeleteResult[] deleteResults = Database.delete(workshopsToDelete, false);
         for (Database.DeleteResult deleteResult : deleteResults) {
             if (deleteResult.isSuccess()) {
-                responseStatusList.add('Success,'+ deleteResult.getId());
+                responseStatusList.add('Success,' + deleteResult.getId());
             } else {
-                responseStatusList.add('Error,'+deleteResult.getId()+','+ deleteResult.errors[0].getMessage());
+                responseStatusList.add('Error,' + deleteResult.getId() + ',' + deleteResult.errors[0].getMessage());
             }
         }
         return responseStatusList;
@@ -45,7 +45,7 @@ global with sharing class CsWorkshopsRestWebService {
         List<WrappedWorkshop> resultList = new List<WrappedWorkshop>();
         List<Workshop__c> workshopsList = new List<Workshop__c>();
         CsSoqlQueryBuilder queryBuilder = new CsSoqlQueryBuilder();
-        Map<String,String> paramsMap = RestContext.request.params;
+        Map<String, String> paramsMap = RestContext.request.params;
         queryBuilder.addResultField('Id')
                 .addResultField('Name')
                 .addResultField('Phone__c')
@@ -54,7 +54,7 @@ global with sharing class CsWorkshopsRestWebService {
                 .addResultField('City__c')
                 .addResultField('Zip_Code__c')
                 .addTableName('Workshop__c');
-        for (String key : paramsMap.keySet()){
+        for (String key : paramsMap.keySet()) {
             queryBuilder.addSearchFieldWithValue(key, paramsMap.get(key));
         }
         queryBuilder.build();
@@ -65,23 +65,39 @@ global with sharing class CsWorkshopsRestWebService {
         return resultList;
     }
 
-
     @HttpPost
     global static List<String> upsertWorkshops(List<WrappedWorkshop> wrappedWorkshopsList) {
         String id;
         List<Workshop__c> workshopsToUpsert = new List<Workshop__c>();
         List<String> responseStatusList = new List<String>();
+        Set<String> countries = new Set<String>();
+        countries.add('');
+        String countyString = '';
+        Schema.DescribeFieldResult describeFieldResult = Workshop__c.Country__c.getDescribe();
+        Schema.sObjectField sObjectField = describeFieldResult.getSObjectField();
+        List<PicklistEntry> entries = sObjectField.getDescribe().getPicklistValues();
+        for (PicklistEntry picklistEntry : entries) {
+            countries.add(picklistEntry.getValue());
+            countyString += picklistEntry.getValue() + ',';
+        }
         for (WrappedWorkshop wrappedWorkshop : wrappedWorkshopsList) {
-            id = (wrappedWorkshop.id == '') ? null : wrappedWorkshop.id;
-            workshopsToUpsert.add(new Workshop__c(Id = id, Name = wrappedWorkshop.name, Phone__c = wrappedWorkshop.phone,
-                    Website__c = wrappedWorkshop.website, City__c = wrappedWorkshop.city, Country__c = wrappedWorkshop.country, Zip_Code__c = wrappedWorkshop.zipCode));
+            if (!countries.contains(wrappedWorkshop.country) && String.isNotBlank(wrappedWorkshop.country)) {
+                responseStatusList.add(System.Label.Status_Error + ',' + wrappedWorkshop.id + ',' +
+                        String.format(System.Label.Error_No_On_Country_List, new List<String>{countyString.removeEnd(',')}));
+            } else if (String.isNotBlank(wrappedWorkshop.phone) && !Pattern.matches(System.Label.Phone_Pattern, wrappedWorkshop.phone)) {
+                responseStatusList.add(System.Label.Status_Error + ',' + wrappedWorkshop.id + ',' + System.Label.Error_Phone_Pattern);
+            } else {
+                id = (wrappedWorkshop.id == '') ? null : wrappedWorkshop.id;
+                workshopsToUpsert.add(new Workshop__c(Id = id, Name = wrappedWorkshop.name, Phone__c = wrappedWorkshop.phone,
+                        Website__c = wrappedWorkshop.website, City__c = wrappedWorkshop.city, Country__c = wrappedWorkshop.country, Zip_Code__c = wrappedWorkshop.zipCode));
+            }
         }
         Database.UpsertResult[] upsertResults = Database.upsert(workshopsToUpsert, false);
         for (Database.UpsertResult upsertResult : upsertResults) {
             if (upsertResult.isSuccess()) {
-                responseStatusList.add('Success,'+ upsertResult.getId());
+                responseStatusList.add('Success,' + upsertResult.getId());
             } else {
-                responseStatusList.add('Error,'+upsertResult.getId()+','+ upsertResult.errors[0].getMessage());
+                responseStatusList.add('Error,' + upsertResult.getId() + ',' + upsertResult.errors[0].getMessage());
             }
         }
         return responseStatusList;

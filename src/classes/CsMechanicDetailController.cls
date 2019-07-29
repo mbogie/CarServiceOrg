@@ -66,7 +66,12 @@ public with sharing class CsMechanicDetailController {
     }
 
     public PageReference deleteMechanic() {
-        delete mechanicPageFormController;
+        try{
+            delete mechanicPageFormController;
+        } catch (Exception err){
+            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.Error, String.format(System.Label.Error_Delete_With_Contracts, new List<String>{mechanicPageFormController.Full_Name__c})));
+            return null;
+        }
         pageReference = new PageReference('/' + SObjectType.Mechanic__c.getKeyPrefix() + '/o');
         pageReference.setRedirect(true);
         return pageReference;
