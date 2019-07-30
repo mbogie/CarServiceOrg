@@ -273,8 +273,9 @@
                             <label class="slds-form-element__label"
                                    for="form-element-01">{!$ObjectType.Workshop__c.fields.Country__c.Label}</label>
                             <div class="slds-form-element__control">
-                                <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.country}" styleClass="slds-input"/>
-
+                                <apex:selectList styleClass="slds-input" value="{!wrappedTomeksWorkshopToUpsert.country}" size="1">
+                                     <apex:selectOptions value="{!countryList}"/>
+                                </apex:selectList>
                             </div>
                         </div>
                         <div class="slds-form-element">

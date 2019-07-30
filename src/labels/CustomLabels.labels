@@ -285,7 +285,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Error Delete With Contracts</shortDescription>
-        <value>Your attempt to delete {0} could not be completed because it is associated with the contracts.</value>
+        <value>Your attempt to delete {0} could not be completed because it is associated with contracts.</value>
     </labels>
     <labels>
         <fullName>Error_Field_Required</fullName>
@@ -341,7 +341,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Error Phone Pattern</shortDescription>
-        <value>Invalid phone. Only numbers, space and &apos;-&apos;, starts with or without &apos;+&apos;.</value>
+        <value>Invalid phone. Only numbers, space and &apos;-&apos;. Starts with or without &apos;+&apos;.</value>
     </labels>
     <labels>
         <fullName>Error_To_Big_File</fullName>

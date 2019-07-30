@@ -21,27 +21,39 @@ global with sharing class CsWorkshopsRestWebService {
         }
     }
 
+    global class ResponseStatus {
+        webService Boolean isActionSuccess;
+        webService String id;
+        webService String message;
+
+        global ResponseStatus(Boolean status, String id, String message) {
+            this.isActionSuccess = status;
+            this.id = id;
+            this.message = message;
+        }
+    }
+
     @HttpDelete
-    global static List<String> deleteWorkshops() {
+    global static List<ResponseStatus> deleteWorkshops() {
         List<String> idToDelete = RestContext.request.params.get('Ids').split(',');
         List<Workshop__c> workshopsToDelete = new List<Workshop__c>();
-        List<String> responseStatusList = new List<String>();
+        List<ResponseStatus> responseStatusList = new List<ResponseStatus>();
         for (String id : idToDelete) {
             workshopsToDelete.add(new Workshop__c(Id = id));
         }
         Database.DeleteResult[] deleteResults = Database.delete(workshopsToDelete, false);
         for (Database.DeleteResult deleteResult : deleteResults) {
             if (deleteResult.isSuccess()) {
-                responseStatusList.add('Success,' + deleteResult.getId());
+                responseStatusList.add(new ResponseStatus(true, deleteResult.getId(), null));
             } else {
-                responseStatusList.add('Error,' + deleteResult.getId() + ',' + deleteResult.errors[0].getMessage());
+                responseStatusList.add(new ResponseStatus(false, deleteResult.getId(), deleteResult.errors[0].getMessage()));
             }
         }
         return responseStatusList;
     }
 
     @HttpGet
-    global static List<WrappedWorkshop> searchWorkshops() {
+    global static List<WrappedWorkshop> doGet() {
         List<WrappedWorkshop> resultList = new List<WrappedWorkshop>();
         List<Workshop__c> workshopsList = new List<Workshop__c>();
         CsSoqlQueryBuilder queryBuilder = new CsSoqlQueryBuilder();
@@ -66,38 +78,19 @@ global with sharing class CsWorkshopsRestWebService {
     }
 
     @HttpPost
-    global static List<String> upsertWorkshops(List<WrappedWorkshop> wrappedWorkshopsList) {
-        String id;
+    global static List<ResponseStatus> doPost(List<WrappedWorkshop> wrappedWorkshopsList) {
         List<Workshop__c> workshopsToUpsert = new List<Workshop__c>();
-        List<String> responseStatusList = new List<String>();
-        Set<String> countries = new Set<String>();
-        countries.add('');
-        String countyString = '';
-        Schema.DescribeFieldResult describeFieldResult = Workshop__c.Country__c.getDescribe();
-        Schema.sObjectField sObjectField = describeFieldResult.getSObjectField();
-        List<PicklistEntry> entries = sObjectField.getDescribe().getPicklistValues();
-        for (PicklistEntry picklistEntry : entries) {
-            countries.add(picklistEntry.getValue());
-            countyString += picklistEntry.getValue() + ',';
-        }
+        List<ResponseStatus> responseStatusList = new List<ResponseStatus>();
         for (WrappedWorkshop wrappedWorkshop : wrappedWorkshopsList) {
-            if (!countries.contains(wrappedWorkshop.country) && String.isNotBlank(wrappedWorkshop.country)) {
-                responseStatusList.add(System.Label.Status_Error + ',' + wrappedWorkshop.id + ',' +
-                        String.format(System.Label.Error_No_On_Country_List, new List<String>{countyString.removeEnd(',')}));
-            } else if (String.isNotBlank(wrappedWorkshop.phone) && !Pattern.matches(System.Label.Phone_Pattern, wrappedWorkshop.phone)) {
-                responseStatusList.add(System.Label.Status_Error + ',' + wrappedWorkshop.id + ',' + System.Label.Error_Phone_Pattern);
-            } else {
-                id = (wrappedWorkshop.id == '') ? null : wrappedWorkshop.id;
-                workshopsToUpsert.add(new Workshop__c(Id = id, Name = wrappedWorkshop.name, Phone__c = wrappedWorkshop.phone,
+                workshopsToUpsert.add(new Workshop__c(Id = (wrappedWorkshop.id == '') ? null : wrappedWorkshop.id, Name = wrappedWorkshop.name, Phone__c = wrappedWorkshop.phone,
                         Website__c = wrappedWorkshop.website, City__c = wrappedWorkshop.city, Country__c = wrappedWorkshop.country, Zip_Code__c = wrappedWorkshop.zipCode));
             }
-        }
         Database.UpsertResult[] upsertResults = Database.upsert(workshopsToUpsert, false);
         for (Database.UpsertResult upsertResult : upsertResults) {
             if (upsertResult.isSuccess()) {
-                responseStatusList.add('Success,' + upsertResult.getId());
+                responseStatusList.add(new ResponseStatus(true, upsertResult.getId(), null));
             } else {
-                responseStatusList.add('Error,' + upsertResult.getId() + ',' + upsertResult.errors[0].getMessage());
+                responseStatusList.add(new ResponseStatus(false, upsertResult.getId(), upsertResult.errors[0].getMessage()));
             }
         }
         return responseStatusList;

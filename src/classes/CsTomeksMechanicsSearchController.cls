@@ -27,7 +27,7 @@ public with sharing class CsTomeksMechanicsSearchController {
     public static String loginToTomeksMechanics() {
         try {
             CsPartnerSoapSforceCom.Soap partnerSoap = new CsPartnerSoapSforceCom.Soap();
-            CsPartnerSoapSforceCom.LoginResult loginResult = partnerSoap.login(CsUtils.getLoginValues('TomekUsername'), CsUtils.getLoginValues('TomekPassword'));
+            CsPartnerSoapSforceCom.LoginResult loginResult = partnerSoap.login(CsUtils.getCredentialsValues('TomekUsername'), CsUtils.getCredentialsValues('TomekPassword'));
             return loginResult.sessionId;
         } catch (Exception err) {
             System.debug('Login error: ' + err.getMessage());

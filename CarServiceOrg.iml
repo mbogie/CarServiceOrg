@@ -172,6 +172,14 @@
                           <MetadataEntry>
                             <option name="name" value="testClass" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsCountryRest" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsTomeksWorkshopsRestHandler" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="ApexClass" />

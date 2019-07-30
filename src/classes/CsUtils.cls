@@ -46,7 +46,7 @@ public with sharing class CsUtils {
         return isTriggerEnabled;
     }
 
-    public static String getLoginValues(String csName) {
+    public static String getCredentialsValues(String csName) {
         Cs_Settings__c csItem = Cs_Settings__c.getInstance(csName);
         if (csItem == null) {
             return '';
