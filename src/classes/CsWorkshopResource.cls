@@ -1,7 +1,8 @@
-@RestResource(urlMapping='/workshops/*')
-global with sharing class CsWorkshopsRestWebService {
+@RestResource(urlMapping='/workshops')
+global class CsWorkshopResource {
 
     global class WrappedWorkshop {
+        webService String externalId;
         webService String id;
         webService String name;
         webService String phone;
@@ -34,8 +35,8 @@ global with sharing class CsWorkshopsRestWebService {
     }
 
     @HttpDelete
-    global static List<ResponseStatus> deleteWorkshops() {
-        List<String> idToDelete = RestContext.request.params.get('Ids').split(',');
+    global static List<ResponseStatus> deleteWorkshopList() {
+        List<String> idToDelete = RestContext.request.params.get('ids').split(',');
         List<Workshop__c> workshopsToDelete = new List<Workshop__c>();
         List<ResponseStatus> responseStatusList = new List<ResponseStatus>();
         for (String id : idToDelete) {
@@ -53,7 +54,7 @@ global with sharing class CsWorkshopsRestWebService {
     }
 
     @HttpGet
-    global static List<WrappedWorkshop> doGet() {
+    global static List<WrappedWorkshop> getWorkshopList() {
         List<WrappedWorkshop> resultList = new List<WrappedWorkshop>();
         List<Workshop__c> workshopsList = new List<Workshop__c>();
         CsSoqlQueryBuilder queryBuilder = new CsSoqlQueryBuilder();
@@ -78,13 +79,13 @@ global with sharing class CsWorkshopsRestWebService {
     }
 
     @HttpPost
-    global static List<ResponseStatus> doPost(List<WrappedWorkshop> wrappedWorkshopsList) {
+    global static List<ResponseStatus> upsertWorkshopList(List<WrappedWorkshop> wrappedWorkshopsList) {
         List<Workshop__c> workshopsToUpsert = new List<Workshop__c>();
         List<ResponseStatus> responseStatusList = new List<ResponseStatus>();
         for (WrappedWorkshop wrappedWorkshop : wrappedWorkshopsList) {
-                workshopsToUpsert.add(new Workshop__c(Id = (wrappedWorkshop.id == '') ? null : wrappedWorkshop.id, Name = wrappedWorkshop.name, Phone__c = wrappedWorkshop.phone,
-                        Website__c = wrappedWorkshop.website, City__c = wrappedWorkshop.city, Country__c = wrappedWorkshop.country, Zip_Code__c = wrappedWorkshop.zipCode));
-            }
+            workshopsToUpsert.add(new Workshop__c(Id = (wrappedWorkshop.id == '') ? null : wrappedWorkshop.id, Name = wrappedWorkshop.name, Phone__c = wrappedWorkshop.phone,
+                    Website__c = wrappedWorkshop.website, City__c = wrappedWorkshop.city, Country__c = wrappedWorkshop.country, Zip_Code__c = wrappedWorkshop.zipCode));
+        }
         Database.UpsertResult[] upsertResults = Database.upsert(workshopsToUpsert, false);
         for (Database.UpsertResult upsertResult : upsertResults) {
             if (upsertResult.isSuccess()) {

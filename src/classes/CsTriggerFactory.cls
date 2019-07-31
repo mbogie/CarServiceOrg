@@ -32,8 +32,9 @@ public with sharing class CsTriggerFactory {
         if (soType == Contract__c.sObjectType) {
             return (CsUtils.isTriggerEnabled('CsContractOverlapping'))? new CsContractTriggerHandler() : null;
         } else if (soType == User.sObjectType) {
-                return new CsUserTriggerHandler();
-        }
-        return null;
+            return new CsUserTriggerHandler();
+        } else if (soType == Workshop__c.sObjectType) {
+            return new CsWorkshopTriggerHandler();
+        } return null;
     }
 }

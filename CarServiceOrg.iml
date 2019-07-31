@@ -42,6 +42,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsCountryResource" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsFaultPartnerSoapSforceCom" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -82,12 +86,23 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsMultiRequestMock" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsPartnerSoapSforceCom" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsRandomMechanicsController" />
                             <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsSingleRequestMock" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsSoapMwMechanicMock" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsSoapSforceComSchemasClassMwMechaniMock" />
@@ -118,6 +133,14 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsTomeksWorkshopsRestControllerTest" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsTomeksWorkshopsRestHandler" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsTriggerFactory" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -134,7 +157,15 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsWorkshopsRestWebService" />
+                            <option name="name" value="CsWorkshopResource" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsWorkshopTriggerHandler" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsWorkshopTriggerHandlerHelper" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -171,14 +202,6 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="testClass" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="CsCountryRest" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="CsTomeksWorkshopsRestHandler" />
-                            <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
                       </option>
@@ -348,6 +371,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsUserCountryUpdate" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsWorkshopsCopyToTomek" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -768,7 +795,15 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Workshop__c.Custom_Name__c" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Workshop__c.Phone__c" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Workshop__c.Tomeks_External_Id__c" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -801,6 +836,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Add_New_Mechanic" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Add_New_Workshop" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -932,6 +971,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Edit_Workshop_Header" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Email_Message" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -944,11 +987,19 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Error_Delete_With_Contracts" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Error_Field_Required" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Error_No_Object_Type" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Error_No_On_Country_List" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -965,6 +1016,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Error_Overlapping_From_To" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Error_Phone_Pattern" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -1036,6 +1091,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Phone_Pattern" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Picture_Default" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -1061,6 +1120,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Search_for_Tomeks_Mechanics" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Search_for_Tomeks_Workshops" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -1100,6 +1163,14 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Status_Error" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Status_Success" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Table_All_Records" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -1121,10 +1192,6 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="To_Import" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="Tomeks_Country_List" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -1574,6 +1641,9 @@
                             <option name="name" value="standard-OtherUserProfile" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="standard-PartnerNetworkConnection" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="standard-Pricebook2" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -1689,11 +1759,27 @@
                             <option name="name" value="unfiled$public" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="unfiled$public/AcceptanceEmail" />
+                            <option name="parentFolder" value="unfiled$public" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="unfiled$public/Birthday_Reminder" />
                             <option name="parentFolder" value="unfiled$public" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="unfiled$public/DeactivationEmail" />
+                            <option name="parentFolder" value="unfiled$public" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="unfiled$public/InvitationEmail" />
+                            <option name="parentFolder" value="unfiled$public" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="unfiled$public/MarketingProductInquiryResponse" />
+                            <option name="parentFolder" value="unfiled$public" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="unfiled$public/RejectionEmail" />
                             <option name="parentFolder" value="unfiled$public" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -1742,6 +1828,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="unfiled$public/SupportSelfServiceResetPassword" />
+                            <option name="parentFolder" value="unfiled$public" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="unfiled$public/UpdateConnEmail" />
                             <option name="parentFolder" value="unfiled$public" />
                           </MetadataEntry>
                         </list>
@@ -2375,6 +2465,13 @@
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
+                      <option name="entries">
+                        <list>
+                          <MetadataEntry>
+                            <option name="name" value="SalesforceToSalesforce" />
+                          </MetadataEntry>
+                        </list>
+                      </option>
                       <option name="name" value="PermissionSet" />
                       <option name="wildcard" value="false" />
                     </MetadataType>
@@ -3280,6 +3377,14 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Mechanic__c.Required_Name" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Workshop__c.Phone_Pattern" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Workshop__c.Required_Name" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>

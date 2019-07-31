@@ -54,13 +54,13 @@
         <apex:pageMessages id="pageMessages"/>
         <div class="slds-scope">
             <div class="slds-grid slds-gutters">
-                <div class="slds-col slds-size&#45;&#45;7-of-8">
+                <div class="slds-col slds-size--7-of-8">
                     <legend id="newaccountform" class="slds-text-heading_medium slds-p-vertical_medium">
                             {!$Label.Search_for_Tomeks_Workshops}
                     </legend>
                 </div>
 
-                <div class="slds-col slds-size&#45;&#45;1-of-8">
+                <div class="slds-col slds-size--1-of-8">
                     <apex:commandButton style="width:100px;"
                                         value="{!$Label.Button_Add}"
                                         onComplete="openModal()" status="actionStatus"

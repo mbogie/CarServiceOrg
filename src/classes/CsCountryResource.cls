@@ -1,8 +1,8 @@
-@RestResource(urlMapping='/workshops/countries/*')
-global class CsCountryRest {
+@RestResource(urlMapping='/workshops/countries')
+global class CsCountryResource {
 
     @HttpGet
-    global static List<String> getCountries(){
+    global static List<String> getCountryList(){
         List<String> countries = new List<String>();
         Schema.DescribeFieldResult describeFieldResult = Workshop__c.Country__c.getDescribe();
         Schema.sObjectField sObjectField = describeFieldResult.getSObjectField();

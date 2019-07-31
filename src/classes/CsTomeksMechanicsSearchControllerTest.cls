@@ -234,7 +234,7 @@ private class CsTomeksMechanicsSearchControllerTest {
         controller.clearPage();
         Test.stopTest();
 
-        //than
+        //then
         System.assertEquals(0, controller.tomeksMechanicsList.size());
         System.assertEquals(false, controller.isNameEmpty);
         System.assertEquals(null, controller.searchFormMechanic.lastName);
@@ -263,7 +263,7 @@ private class CsTomeksMechanicsSearchControllerTest {
         controller.editMechanic();
         Test.stopTest();
 
-        //than
+        //then
         System.assertEquals(tomeksMechanic.firstName, controller.mechanicToInsertOrUpdate.firstName);
         System.assertEquals(tomeksMechanic.lastName, controller.mechanicToInsertOrUpdate.lastName);
         System.assertEquals(tomeksMechanic.mail, controller.mechanicToInsertOrUpdate.mail);
@@ -282,7 +282,9 @@ private class CsTomeksMechanicsSearchControllerTest {
         countryList = controller.getTomeksCountryList();
         Test.stopTest();
 
-        //than
+        //then
         System.assert(countryList.size()>0);
     }
+
+
 }

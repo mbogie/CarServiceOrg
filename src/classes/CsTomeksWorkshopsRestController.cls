@@ -9,8 +9,12 @@ public with sharing class CsTomeksWorkshopsRestController {
     public String idToDelete { get; set; }
     public String popupHeader { get; set; }
     private CsTomeksWorkshopsRestHandler restHandler;
+    public List<String> responseStatusList;
+    public List<WrappedTomeksWorkshop> workshops;
+
 
     public class WrappedTomeksWorkshop {
+        public String externalId { get; set; }
         public String id { get; set; }
         public String name { get; set; }
         public String phone { get; set; }
@@ -28,6 +32,8 @@ public with sharing class CsTomeksWorkshopsRestController {
         this.wrappedTomeksWorkshopToUpsert = new WrappedTomeksWorkshop();
         this.popupHeader = System.Label.Add_New_Workshop;
         this.restHandler = new CsTomeksWorkshopsRestHandler();
+        this.responseStatusList = new List<String>();
+        this.workshops = new List<WrappedTomeksWorkshop>();
     }
 
     public String createQuery() {
@@ -46,10 +52,6 @@ public with sharing class CsTomeksWorkshopsRestController {
             isSearchWorkshopNameEmpty = true;
             ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, String.format(System.Label.Required_Input_Field_Error,
                     new List<String>{Schema.getGlobalDescribe().get('Workshop__c').getDescribe().fields.getMap().get('Name').getDescribe().getLabel()})));
-            return ;
-        }
-        if(!Pattern.matches(System.Label.Phone_Pattern, wrappedSearchFormTomeksWorkshop.phone) && String.isNotBlank(wrappedSearchFormTomeksWorkshop.phone)) {
-            ApexPages.addMessage(new ApexPages.message(ApexPages.severity.Error, System.Label.Error_Phone_Pattern));
             return ;
         }
         isSearchWorkshopNameEmpty = false;
@@ -89,14 +91,14 @@ public with sharing class CsTomeksWorkshopsRestController {
         }
         isPopupWorkshopNameEmpty = false;
         String bodyString = '';
-        List<WrappedTomeksWorkshop> workshops = new List<WrappedTomeksWorkshop>();
+        workshops = new List<WrappedTomeksWorkshop>();
         List<String> upsertStatus = new List<String>();
         workshops.add(wrappedTomeksWorkshopToUpsert);
         Map<String,List<WrappedTomeksWorkshop>> jsonMap = new Map<String, List<WrappedTomeksWorkshop>>();
         jsonMap.put('workshops',workshops);
         HttpResponse response = new Http().send(restHandler.createRequest('','POST',jsonMap));
         if (response.getStatusCode() == 200) {
-            List<String> responseStatusList = (List<String>) JSON.deserialize(response.getBody(), List<String>.class);
+            responseStatusList = (List<String>) JSON.deserialize(response.getBody(), List<String>.class);
             for (String status : responseStatusList) {
                 upsertStatus = status.split(',');
                 if (upsertStatus.get(0) == System.Label.Status_Error) {
@@ -112,7 +114,7 @@ public with sharing class CsTomeksWorkshopsRestController {
         List<String> deleteStatus = new List<String>();
         HttpResponse response = new Http().send(restHandler.createRequest('?id=' + idToDelete,'DELETE',null));
         if (response.getStatusCode() == 200) {
-            List<String> responseStatusList = (List<String>) JSON.deserialize(response.getBody(), List<String>.class);
+            responseStatusList = (List<String>) JSON.deserialize(response.getBody(), List<String>.class);
             for (String status : responseStatusList) {
                 deleteStatus = status.split(',');
                 if (deleteStatus.get(0) == System.Label.Status_Error) {
@@ -144,7 +146,7 @@ public with sharing class CsTomeksWorkshopsRestController {
             List<String> countries = (List<String>) JSON.deserialize(response.getBody(), List<String>.class);
             listOfCountries.add(new selectOption('', '- None -'));
             for (String country : countries) {
-                listOfCountries.add(new selectoption(country, country));
+                listOfCountries.add(new selectOption(country, country));
             }
             return listOfCountries;
         } else {
