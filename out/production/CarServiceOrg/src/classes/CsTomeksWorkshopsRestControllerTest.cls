@@ -1,7 +1,6 @@
 @IsTest
 private class CsTomeksWorkshopsRestControllerTest {
 
-// other
     @isTest static void shouldClearModalValuesAfterClose() {
         //given
         CsTomeksWorkshopsRestController controller = new CsTomeksWorkshopsRestController();
@@ -89,33 +88,125 @@ private class CsTomeksWorkshopsRestControllerTest {
         System.assertEquals('?Name__c=test',query);
     }
 
-    @isTest static void shouldReturnWorkshopListAfterGetMethod() {
+    @isTest static void shouldDisplayErrorMessageIfSearchNameIsEmpty() {
         //given
         CsTomeksWorkshopsRestController controller = new CsTomeksWorkshopsRestController();
-        controller.wrappedSearchFormTomeksWorkshop.name = 'test';
+        controller.wrappedSearchFormTomeksWorkshop.name = null;
 
         //when
         Test.startTest();
-        Test.setMock(HttpCalloutMock.class, new CsSingleRequestMock());
-        controller.saveWorkshop();
+        controller.searchWorkshop();
+        ApexPages.Message[] pageMessages = ApexPages.getMessages();
         Test.stopTest();
 
         //than
-        System.assertEquals(1, controller.wrappedTomeksWorkshopsList.size());
+        System.assertEquals(true, controller.isSearchWorkshopNameEmpty);
+        System.assertEquals(1, pageMessages.size());
     }
 
-    @isTest static void shouldReturnStatus300() {
+    @isTest static void shouldDisplayErrorMessageIfPopupSearchNameIsEmpty() {
         //given
         CsTomeksWorkshopsRestController controller = new CsTomeksWorkshopsRestController();
-        controller.wrappedSearchFormTomeksWorkshop.name = 'fail';
+        controller.wrappedTomeksWorkshopToUpsert.name = null;
 
         //when
         Test.startTest();
-        Test.setMock(HttpCalloutMock.class, new CsSingleRequestMock());
+        controller.saveWorkshop();
+        ApexPages.Message[] pageMessages = ApexPages.getMessages();
+        Test.stopTest();
+
+        //than
+        System.assertEquals(true, controller.isPopupWorkshopNameEmpty);
+        System.assertEquals(1, pageMessages.size());
+    }
+
+    @isTest static void shouldReturnGoodResponseListsWithStatus200(){
+        //given
+        CsTomeksWorkshopsRestController controller = new CsTomeksWorkshopsRestController();
+        List<SelectOption> countryList = new List<SelectOption>();
+        controller.wrappedSearchFormTomeksWorkshop.name = 'test';
+        controller.wrappedTomeksWorkshopToUpsert.name = 'testupsert';
+        controller.idToDelete = '1111';
+
+        Map<String, HttpCalloutMock> responseMap = new Map<String, HttpCalloutMock>();
+        responseMap.put('/countries', new CsSingleRequestMock(200, '["AU","NL","PL","UA","USA"]'));
+        responseMap.put('?Name__c=test', new CsSingleRequestMock(200,'[{"zipCode":null,"website":null,"phone":null,"name":"testname","id":"a012p00001GYD05AAH","country":null,"city":"testcity"}]'));
+        responseMap.put('?id=1111', new CsSingleRequestMock(200,'["Success, a002p00000uNavUAAS"]'));
+        responseMap.put('', new CsSingleRequestMock(200,'["Success, a002p00000uNavUAAS"]'));
+
+        HttpCalloutMock multiCalloutMock = new CsMultiRequestMock(responseMap);
+
+        //when
+        Test.startTest();
+        Test.setMock(HttpCalloutMock.class, multiCalloutMock);
+        countryList = controller.getCountryList();
+        controller.searchWorkshop();
+        controller.deleteWorkshop();
         controller.saveWorkshop();
         Test.stopTest();
 
         //than
+        System.assertEquals(6, countryList.size());
+        System.assertEquals(1, controller.wrappedTomeksWorkshopsList.size());
+        System.assertEquals(1, controller.responseStatusList.size());
+    }
+
+    @isTest static void shouldDisplayErrorMessageIfResponseStatusCode200(){
+        //given
+        CsTomeksWorkshopsRestController controller = new CsTomeksWorkshopsRestController();
+        List<SelectOption> countryList = new List<SelectOption>();
+        controller.wrappedSearchFormTomeksWorkshop.name = 'test';
+        controller.wrappedTomeksWorkshopToUpsert.name = 'testupsert';
+        controller.idToDelete = '1111';
+
+        Map<String, HttpCalloutMock> responseMap = new Map<String, HttpCalloutMock>();
+        responseMap.put('/countries', new CsSingleRequestMock(400, '[]'));
+        responseMap.put('?Name__c=test', new CsSingleRequestMock(400,'[]'));
+        responseMap.put('?id=1111', new CsSingleRequestMock(400,'[]'));
+        responseMap.put('', new CsSingleRequestMock(400,'[]'));
+
+        HttpCalloutMock multiCalloutMock = new CsMultiRequestMock(responseMap);
+
+        //when
+        Test.startTest();
+        Test.setMock(HttpCalloutMock.class, multiCalloutMock);
+        countryList = controller.getCountryList();
+        controller.searchWorkshop();
+        controller.deleteWorkshop();
+        controller.saveWorkshop();
+        ApexPages.Message[] pageMessages = ApexPages.getMessages();
+        Test.stopTest();
+
+        //than
+        System.assertEquals(null, countryList);
         System.assertEquals(0, controller.wrappedTomeksWorkshopsList.size());
+        System.assertEquals(0, controller.responseStatusList.size());
+        System.assert(pageMessages.size()>0);
+    }
+
+    @isTest static void shouldDisplayErrorMessageIfDeleteAndSaveMethodWasFail(){
+        //given
+        CsTomeksWorkshopsRestController controller = new CsTomeksWorkshopsRestController();
+        List<SelectOption> countryList = new List<SelectOption>();
+        controller.wrappedTomeksWorkshopToUpsert.name = 'testupsert';
+        controller.idToDelete = '1111';
+
+        Map<String, HttpCalloutMock> responseMap = new Map<String, HttpCalloutMock>();
+        responseMap.put('?id=1111', new CsSingleRequestMock(200,'["Error, a002p00000uNavUAAS, entity is deleted"]'));
+        responseMap.put('', new CsSingleRequestMock(200,'["Error, a002p00000uNavUAAS, entity is deleted"]'));
+
+        HttpCalloutMock multiCalloutMock = new CsMultiRequestMock(responseMap);
+
+        //when
+        Test.startTest();
+        Test.setMock(HttpCalloutMock.class, multiCalloutMock);
+        controller.deleteWorkshop();
+        controller.saveWorkshop();
+        ApexPages.Message[] pageMessages = ApexPages.getMessages();
+        Test.stopTest();
+
+        //than
+        System.assertEquals(1, controller.responseStatusList.size());
+        System.assert(pageMessages.size()>0);
     }
 }

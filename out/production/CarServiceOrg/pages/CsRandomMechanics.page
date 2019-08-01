@@ -1,0 +1,39 @@
+<apex:page id="CsRandomMechanics" controller="CsRandomMechanicsController" showHeader="false">
+
+    <style>
+        #mechanicTable {
+            width: 100%;
+            border: 1px solid black;
+            text-align: center;
+            font-size: large;
+            margin-top: 20px;
+
+        }
+
+        #mechanicTable th {
+            text-align: center;
+            background-color: #aaaaaa;
+            border: 1px solid brown;
+        }
+
+        #mechanicTable td {
+            border: 1px solid black;
+        }
+    </style>
+    <body>
+    <table id="mechanicTable">
+        <tr>
+            <th>{!$ObjectType.Mechanic__c.fields.First_Name__c.Label}</th>
+            <th>{!$ObjectType.Mechanic__c.fields.Name.Label}</th>
+            <th>{!$ObjectType.Mechanic__c.fields.Email__c.Label}</th>
+        </tr>
+        <apex:repeat value="{!randomMechanicList}" var="mechanic">
+            <tr>
+                <td>{! mechanic.First_Name__c }</td>
+                <td>{! mechanic.Name }</td>
+                <td>{! mechanic.Email__c }</td>
+            </tr>
+        </apex:repeat>
+    </table>
+    </body>
+</apex:page>

@@ -1,0 +1,26 @@
+<apex:page id="CsSaveMechanicRecordToPdf" standardController="Mechanic__c" extensions="CsMechanicDetailController" applyBodyTag="true" applyHtmlTag="true"
+           cache="true" contentType="application/x-pdf#{!MechanicFullNameToPdfName}.pdf">
+    <head>
+        <link class="user" href="/sCSS/46.0/sprites/1560229840000/Theme3/default/gc/zen-componentsCompatible.css"
+              rel="stylesheet" type="text/css"/>
+        <link class="user" href="/sCSS/46.0/sprites/1560229840000/Theme3/default/gc/elements.css" rel="stylesheet"
+              type="text/css"/>
+        <link class="user" href="/sCSS/46.0/sprites/1560229840000/Theme3/default/gc/common.css" rel="stylesheet"
+              type="text/css"/>
+        <link class="user" href="/sCSS/46.0/sprites/1561134738000/Theme3/gc/dStandard.css" rel="stylesheet"
+              type="text/css"/>
+        <link class="user"
+              href="/sCSS/46.0/sprites/1562068973000/Theme3/00D2p00000131rC/0052p0000091imX/gc/dCustom0.css"
+              rel="stylesheet" type="text/css"/>
+        <link class="user" href="/sCSS/46.0/sprites/1560229840000/Theme3/default/gc/extended.css" rel="stylesheet"
+              type="text/css"/>
+        <link class="user" href="/sCSS/46.0/sprites/1560229840000/Theme3/default/gc/setup.css" rel="stylesheet"
+              type="text/css"/>
+        <link class="user" href="/resource/1562054034000/jQueryUI/jquery-ui-1.12.1.custom/jquery-ui.css"
+              rel="stylesheet" type="text/css"/>
+        <link class="component"
+              href="/faces/a4j/s/3_3_3.Finalorg/richfaces/renderkit/html/css/table.xcss/DATB/eAEz2rRkV-jyGdIAEoQD8g__"
+              rel="stylesheet" type="text/css"/>
+    </head>
+    <apex:include pageName="CsPrepareRecordToSaveToPdf"/>
+</apex:page>

@@ -1,0 +1,10 @@
+<apex:page id="CsCopyResultMechanicListToXml" standardController="Mechanic__c" extensions="CsMechanicSearchController"
+           cache="true" contentType="text/xls#Mechanics.xls" language="en-US">
+    <apex:pageBlock >
+        <apex:pageBlockTable value="{!mechanicsSearchResultList}" var="mechanic">
+            <apex:column value="{!mechanic.Full_Name__c}"/>
+            <apex:column value="{!mechanic.Email__c}"/>
+            <apex:column value="{!mechanic.Country__c}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,97 @@
+<apex:page standardController="Mechanic__c" extensions="CsMechanicSearchController" tabStyle="Search_Mechanic__tab">
+    <apex:form id="mechanicSearchform">
+        <apex:pageBlock id="searchBlock" Title="{!$Label.Mechanic_Search_Page_Label}">
+            <apex:pageMessages />
+            <apex:pageBlockSection id="searchFields">
+                <apex:inputField value="{!mechanicPageFormController.First_Name__c}"/>
+                <apex:inputText value="{!mechanicPageFormController.Email__c}"/>
+                <apex:inputField value="{!mechanicPageFormController.Name}" required="true"/>
+                <apex:inputField value="{!mechanicPageFormController.Country__c}"/>
+            </apex:pageBlockSection>
+            <div id="buttonsSection" align="center" draggable="false">
+                <apex:outputPanel id="buttons">
+                    <apex:commandButton value="{!$Label.Button_Search}" action="{!searchMechanic}"
+                                        reRender="mechanicSearchform"/>
+                    <apex:commandButton value="{!$Label.Button_Clear}" action="{!clearPage}" immediate="true"
+                                        reRender="mechanicSearchform"
+                                        onClick="this.form.reset();"/>
+                </apex:outputPanel>
+                <apex:outputPanel id="buttonsToExport" rendered="{!isResultListNotEmpty}">
+                    <apex:commandButton value="{!$Label.Export_to_CSV}" action="{!exportToCsv}"/>
+                    <apex:commandButton value="{!$Label.Export_To_XML}" action="{!exportToXml}"/>
+                    <apex:commandButton value="{!$Label.Export_To_Json}" action="{!saveToJson}"/>
+                </apex:outputPanel>
+            </div>
+        </apex:pageBlock>
+        <apex:pageBlock id="resultsList" title="{!$Label.Search_Results_Label}">
+            <apex:pageBlockTable id="resultsTable" value="{!mechanicsSearchResultListToShow}" var="mechanic">
+                <apex:column headerValue="{!$Label.Actions_Label}">
+                    <apex:outputLink value="{! URLFOR($Action.Mechanic__c.View, mechanic.Id)}" target="_blank">View
+                    </apex:outputLink>&nbsp;|&nbsp;
+                    <apex:outputLink value="{! URLFOR($Action.Mechanic__c.Edit, mechanic.Id)}" target="_blank">Edit
+                    </apex:outputLink>
+                </apex:column>
+                <apex:column value="{!mechanic.Full_Name__c}">
+                    <apex:facet name="header">
+                        <apex:commandLink action="{!sortByFullName}"
+                                          reRender="resultsList">{!$ObjectType.Mechanic__c.fields.Full_Name__c.Label}
+                            {!IF(sortField == 'Full_Name__c', IF(sortDirection=="ASC", $Label.Sign_Down, $Label.Sign_Up
+                                ), '')}
+                        </apex:commandLink>
+                    </apex:facet>
+                </apex:column>
+                <apex:column value="{!mechanic.Email__c}">
+                    <apex:facet name="header">
+                        <apex:commandLink action="{!sortByEmail}"
+                                          reRender="resultsList">{!$ObjectType.Mechanic__c.fields.Email__c.Label}
+                            {!IF(sortField == 'Email__c', IF(sortDirection=="ASC", $Label.Sign_Down, $Label.Sign_Up ),
+                                '')}
+                        </apex:commandLink>
+                    </apex:facet>
+                </apex:column>
+                <apex:column value="{!mechanic.Country__c}">
+                    <apex:facet name="header">
+                        <apex:commandLink action="{!sortByCountry}"
+                                          reRender="resultsList">{!$ObjectType.Mechanic__c.fields.Country__c.Label}
+                            {!IF(sortField == 'Country__c', IF(sortDirection=="ASC", $Label.Sign_Down, $Label.Sign_Up ),
+                                '')}
+                        </apex:commandLink>
+                    </apex:facet>
+                </apex:column>
+            </apex:pageBlockTable>
+            <apex:outputPanel id="resultListPanel" rendered="{!isResultListNotEmpty}">
+                <table style="width: 100%">
+                    <tr>
+                        <td>
+                             <apex:outputText value="{!pageOf}"/>
+                        </td>
+                        <td align="center">
+                            <apex:commandLink action="{! previous }" value="{!$Label.Table_Pagination_Previous}"
+                                              rendered="{!isMechanicResultListHasPrevious}" reRender="resultsList"/>
+                            <apex:outputText style="color: #ccc;" value="{!$Label.Table_Pagination_Previous}"
+                                             rendered="{!NOT(isMechanicResultListHasPrevious)}"/>
+                            &nbsp;&nbsp;
+                            <apex:commandLink action="{! next }" value="{!$Label.Table_Pagination_Next}"
+                                              rendered="{!isMechanicResultListHasNext}" reRender="resultsList"/>
+                            <apex:outputText style="color: #ccc;" value="{!$Label.Table_Pagination_Next}"
+                                             rendered="{!NOT(isMechanicResultListHasNext)}"/>
+                        </td>
+                        <td align="right">
+                            {!$Label.Table_Records_Per_Page}
+                            <apex:selectList value="{! recordsOnPage }" size="1">
+                                <apex:selectOption itemValue="2" itemLabel="2"/>
+                                <apex:selectOption itemValue="4" itemLabel="4"/>
+                                <apex:selectOption itemValue="6" itemLabel="6"/>
+                                <apex:selectOption itemValue="8" itemLabel="8"/>
+                                <apex:selectOption itemValue="10" itemLabel="10"/>
+                                <apex:selectOption itemValue="{!mechanicsSearchResultList.size}" itemLabel="{!$Label.Table_All_Records}"/>
+                                <apex:actionSupport event="onchange" action="{!setRecordOnPage}"
+                                                    reRender="resultsList"/>
+                            </apex:selectList>
+                        </td>
+                    </tr>
+                </table>
+            </apex:outputPanel>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

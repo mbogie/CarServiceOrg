@@ -1,0 +1,26 @@
+<apex:page standardController="Mechanic__c" extensions="CsMechanicEditController" tabStyle="Mechanic__c">
+
+    <apex:pageMessages />
+    <apex:form id="mechanicEditForm">
+        <apex:pageBlock id="mechanicBlock" title="{!$Label.Edit} '{!Mechanic__c.Full_Name__c}'">
+            <apex:pageBlockSection id="detailSection" columns="1">
+                <apex:inputField value="{!Mechanic__c.First_Name__c}"/>
+                <apex:inputField value="{!Mechanic__c.Name}" required="true"/>
+                <apex:inputField value="{!Mechanic__c.License_Number__c}"/>
+                <apex:inputField value="{!Mechanic__c.Speciality__c}"/>
+                <apex:inputField value="{!Mechanic__c.Skill__c}"/>
+                <apex:inputField value="{!Mechanic__c.Email__c}"/>
+                <apex:inputField value="{!Mechanic__c.Phone__c}"/>
+                <apex:inputField value="{!Mechanic__c.Birthday__c}"/>
+                <apex:inputField value="{!Mechanic__c.Address__c}"/>
+                <apex:inputField value="{!Mechanic__c.City__c}"/>
+                <apex:inputField value="{!Mechanic__c.Zip_Code__c}"/>
+                <apex:inputField value="{!Mechanic__c.Country__c}"/>
+            </apex:pageBlockSection>
+            <div id="buttonSection" align="center" draggable="false">
+                <apex:commandButton value="{!$Label.Button_Save}" action="{!save}"/>
+                <apex:commandButton value="{!$Label.Button_Cancel}" action="{!cancel}"/>
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,330 @@
+<apex:page id="CsTomeksWorkshopsSearch" controller="CsTomeksWorkshopsRestController">
+    <html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>{!$Label.Search_for_Tomeks_Workshops}</title>
+
+        <apex:includeScript value="{!$Resource.jQuery}"/>
+
+        <apex:stylesheet value="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
+        <apex:stylesheet value="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.default.min.css"/>
+        <apex:slds/>
+        <c:CsActionStatus/>
+        <style>
+        .msgIcon {
+            display: none!important
+        }
+        .messageText {
+            color: #fff!important;
+            font-size: 15px;
+        }
+        .errorM3 {
+            color: red!important
+        }
+        .message {
+            background-color: #c23934!important;
+        }
+        .message .messageText h4{
+            color: #fff!important;
+            display: none
+        }
+        .customMessage * {
+            color: #fff!important
+        }
+        .customMessage {
+            margin: 5px 0!important;
+            max-width: 1280px;
+            opacity: 1!important;
+            width: 100%;
+            font-size: 12px;
+            border: 0px;
+            padding-left: 10px;
+            z-index: 900;
+            font-family: Verdana!important
+        }
+        .message {
+            opacity: 1
+        }
+        </style>
+    </head>
+    <body class="slds-scope">
+    <apex:form id="searchForm">
+        <apex:pageMessages id="pageMessages"/>
+        <div class="slds-scope">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col slds-size--7-of-8">
+                    <legend id="newaccountform" class="slds-text-heading_medium slds-p-vertical_medium">
+                            {!$Label.Search_for_Tomeks_Workshops}
+                    </legend>
+                </div>
+
+                <div class="slds-col slds-size--1-of-8">
+                    <apex:commandButton style="width:100px;"
+                                        value="{!$Label.Button_Add}"
+                                        onComplete="openModal()" status="actionStatus"
+                                        styleClass="slds-button slds-button_brand slds-m-top_medium"
+                                        reRender="resultTable, pageMessages,modalForm">
+                    </apex:commandButton>
+                </div>
+            </div>
+            <apex:outputPanel id="namePanel">
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col slds-size&#45;&#45;1-of-2">
+                    <span>
+                        <apex:outputPanel id="nameNotEmpty" rendered="{!NOT(isSearchWorkshopNameEmpty)}">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="form-element-03">
+                                <abbr class="slds-required"
+                                      title="required">* </abbr>{!$ObjectType.Workshop__c.fields.Name.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.name}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                        </apex:outputPanel>
+                        <apex:outputPanel id="nameEmpty" rendered="{!isSearchWorkshopNameEmpty}">
+                        <div class="slds-form-element slds-has-error">
+                              <label class="slds-form-element__label" for="form-element-05">
+                                <abbr class="slds-required"
+                                      title="required">* </abbr>{!$ObjectType.Workshop__c.fields.Name.Label}</label>
+                              <div class="slds-form-element__control">
+                              <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.name}" styleClass="slds-input"/>
+                              </div>
+                              <div class="slds-form-element__help"
+                                   id="form-error-01">{!$Label.Error_Field_Required}</div>
+                            </div>
+                        </apex:outputPanel>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Phone__c.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.phone}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Website__c.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.website}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                    </span>
+                    </div>
+                    <div class="slds-col slds-size&#45;&#45;1-of-2">
+                    <span>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.City__c.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.city}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Country__c.Label}</label>
+                            <div class="slds-form-element__control">
+                                <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.country}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Zip_Code__c.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.zipCode}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                    </span>
+                    </div>
+                </div>
+            </apex:outputPanel>
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                </div>
+                <div class="slds-grid">
+                    <div class="slds-col">
+                        <apex:commandButton action="{!searchWorkshop}"
+                                            style="width:125px;" status="actionStatus"
+                                            value="{!$Label.Button_Search}"
+                                            styleClass="slds-button slds-button_brand slds-m-top_medium"
+                                            reRender="resultTable, searchForm, namePanel">
+                        </apex:commandButton>
+                    </div>
+                    <div class="slds-col">
+                        <div class="slds-col">
+                            <apex:commandButton action="{!clearPage}"
+                                                onClick=" this.form.reset();"
+                                                value="{!$Label.Button_Clear}"
+                                                styleClass="slds-button slds-button_brand slds-m-top_medium"
+                                                style="width:125px;" status="actionStatus"
+                                                reRender="resultTable, searchForms, namePanel, pageMessages">
+                            </apex:commandButton>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col">
+                </div>
+            </div>
+            <br/>
+            <div class="slds-table">
+                <apex:dataTable value="{!wrappedTomeksWorkshopsList}" var="workshopFromTomek"
+                                styleClass="slds-table slds-table_cell-buffer slds-table_header-hidden slds-table_bordered"
+                                id="resultTable">
+                    <apex:column headerValue="{!$Label.Actions_Label}">
+                        <apex:commandButton styleClass="slds-button slds-button_neutral" action="{!editWorkshop}"
+                                            reRender="popupMechanicNamePanel,modalForm"
+                                            onComplete="openModal()" status="actionStatus"
+                                            value="{!$Label.Edit}">
+                            <apex:param name="editedMechanicId" value="{!workshopFromTomek.id}"
+                                        assignTo="{!idToEdit}"/>
+                        </apex:commandButton>
+                        <apex:commandButton action="{!deleteWorkshop}" styleClass="slds-button slds-button_neutral"
+                                            status="actionStatus"
+                                            reRender="resultTable, searchForm, namePanel"
+                                            value="{!$Label.Button_Delete}">
+                            <apex:param name="mechanicToDelete" value="{!workshopFromTomek.id}"
+                                        assignTo="{!idToDelete}"/>
+                        </apex:commandButton>
+                    </apex:column>
+                    <apex:column value="{!workshopFromTomek.name}" headerValue="{!$ObjectType.Workshop__c.fields.Name.Label}"/>
+                    <apex:column value="{!workshopFromTomek.phone}" headerValue="{!$ObjectType.Workshop__c.fields.Phone__c.Label}"/>
+                    <apex:column value="{!workshopFromTomek.website}" headerValue="{!$ObjectType.Workshop__c.fields.Website__c.Label}"/>
+                    <apex:column value="{!workshopFromTomek.country}" headerValue="{!$ObjectType.Workshop__c.fields.Country__c.Label}"/>
+                    <apex:column value="{!workshopFromTomek.city}" headerValue="{!$ObjectType.Workshop__c.fields.City__c.Label}"/>
+                    <apex:column value="{!workshopFromTomek.zipCode}" headerValue="{!$ObjectType.Workshop__c.fields.Zip_Code__c.Label}"/>
+                </apex:dataTable>
+            </div>
+
+        </div>
+    </apex:form>
+    <apex:form id="modalForm">
+        <div class="slds-modal" aria-hidden="false" role="dialog" id="modal">
+            <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                    <apex:commandButton action="{!clearModal}"
+                                        styleClass="slds-button slds-button--icon-inverse slds-modal__close"
+                                        onclick="closeModal()" value="X" status="actionStatus"
+                                        reRender="modalForm,header,messages,pageMessages" immediate="true"/>
+                    <apex:outputPanel id="header">
+                        <h2 class="slds-text-heading--medium">{!popupHeader}</h2>
+                    </apex:outputPanel>
+                    <div id="myMessagess">
+                        <apex:outputPanel id="messages">
+                            <apex:pageMessages id="messageTxt" showDetail="false" escape="false"/>
+                            <script>
+                                let messageID = '{!$Component.messageTxt}';
+                            </script>
+                        </apex:outputPanel>
+                    </div>
+                </div>
+                <div class="slds-modal__content slds-p-around--medium">
+                    <apex:outputPanel id="popupNamePanel">
+                        <div class="slds-grid slds-gutters">
+                            <div class="slds-col slds-size&#45;&#45;1-of-2">
+                    <span>
+                        <apex:outputPanel id="nameNotEmpty" rendered="{!NOT(isPopupWorkshopNameEmpty)}">
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label" for="form-element-03">
+                                <abbr class="slds-required"
+                                      title="required">* </abbr>{!$ObjectType.Workshop__c.fields.Name.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.name}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                        </apex:outputPanel>
+                        <apex:outputPanel id="nameEmpty" rendered="{!isPopupWorkshopNameEmpty}">
+                        <div class="slds-form-element slds-has-error">
+                              <label class="slds-form-element__label" for="form-element-05">
+                                <abbr class="slds-required"
+                                      title="required">* </abbr>{!$ObjectType.Workshop__c.fields.Name.Label}</label>
+                              <div class="slds-form-element__control">
+                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.name}" styleClass="slds-input"/>
+                              </div>
+                              <div class="slds-form-element__help"
+                                   id="form-error-01">{!$Label.Error_Field_Required}</div>
+                            </div>
+                        </apex:outputPanel>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Phone__c.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.phone}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Website__c.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.website}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                    </span>
+                            </div>
+                            <div class="slds-col slds-size&#45;&#45;1-of-2">
+                    <span>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.City__c.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.city}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Country__c.Label}</label>
+                            <div class="slds-form-element__control">
+                                <apex:selectList styleClass="slds-input" value="{!wrappedTomeksWorkshopToUpsert.country}" size="1">
+                                     <apex:selectOptions value="{!countryList}"/>
+                                </apex:selectList>
+                            </div>
+                        </div>
+                        <div class="slds-form-element">
+                            <label class="slds-form-element__label"
+                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Zip_Code__c.Label}</label>
+                            <div class="slds-form-element__control">
+                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.zipCode}" styleClass="slds-input"/>
+                            </div>
+                        </div>
+                    </span>
+                            </div>
+                        </div>
+                    </apex:outputPanel>
+                </div>
+                <div class="slds-modal__footer">
+                    <apex:actionFunction name="clearAfterSave" action="{!clearModal}"
+                                         reRender="modalForm,messages,inputHidden,resultTable" immediate="true"/>
+                    <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--neutral"
+                                        status="actionStatus"
+                                        onClick="closeModal()" value="{!$Label.Button_Cancel}"
+                                        reRender="messages,popupNamePanel,resultTable,header" immediate="true"/>
+                    <apex:commandButton action="{!saveWorkshop}" styleClass="slds-button slds-button--brand"
+                                        status="actionStatus"
+                                        onComplete="checkHideModal()" value="{!$Label.Button_Save}"
+                                        reRender="messages,popupNamePanel,inputHidden,resultTable"/>
+                </div>
+            </div>
+        </div>
+        <div class="slds-backdrop" id="backdrop"></div>
+    </apex:form>
+    <script>
+        j$ = jQuery.noConflict();
+        function openModal(){
+            j$("[id$='backdrop']").addClass('slds-backdrop--open');
+            j$("[id$='modal']").addClass('slds-fade-in-open');
+        }
+
+        function closeModal(){
+            j$('#modal').removeClass('slds-fade-in-open');
+            j$('#backdrop').removeClass('slds-backdrop--open');
+        }
+
+        function checkHideModal() {
+            if (jQuery('.errorM3').length <= 0){
+                closeModal();
+                clearAfterSave();
+            }
+        }
+    </script>
+    </body>
+    </html>
+</apex:page>
