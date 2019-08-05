@@ -77,7 +77,7 @@
                         <div class="slds-form-element">
                             <label class="slds-form-element__label" for="form-element-03">
                                 <abbr class="slds-required"
-                                      title="required">* </abbr>{!$ObjectType.Workshop__c.fields.Name.Label}</label>
+                                      title="required">* </abbr>{!$Label.Tomek_Workshop_Name}</label>
                             <div class="slds-form-element__control">
                               <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.name}" styleClass="slds-input"/>
                             </div>
@@ -87,7 +87,7 @@
                         <div class="slds-form-element slds-has-error">
                               <label class="slds-form-element__label" for="form-element-05">
                                 <abbr class="slds-required"
-                                      title="required">* </abbr>{!$ObjectType.Workshop__c.fields.Name.Label}</label>
+                                      title="required">* </abbr>{!$Label.Tomek_Workshop_Name}</label>
                               <div class="slds-form-element__control">
                               <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.name}" styleClass="slds-input"/>
                               </div>
@@ -97,14 +97,14 @@
                         </apex:outputPanel>
                         <div class="slds-form-element">
                             <label class="slds-form-element__label"
-                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Phone__c.Label}</label>
+                                   for="form-element-01">{!$Label.Tomeks_Workshop_Phone}</label>
                             <div class="slds-form-element__control">
                               <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.phone}" styleClass="slds-input"/>
                             </div>
                         </div>
                         <div class="slds-form-element">
                             <label class="slds-form-element__label"
-                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Website__c.Label}</label>
+                                   for="form-element-01">{!$Label.Tomeks_Workshop_Website}</label>
                             <div class="slds-form-element__control">
                               <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.website}" styleClass="slds-input"/>
                             </div>
@@ -115,21 +115,21 @@
                     <span>
                         <div class="slds-form-element">
                             <label class="slds-form-element__label"
-                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.City__c.Label}</label>
+                                   for="form-element-01">{!$Label.Tomeks_Workshop_City}</label>
                             <div class="slds-form-element__control">
                               <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.city}" styleClass="slds-input"/>
                             </div>
                         </div>
                         <div class="slds-form-element">
                             <label class="slds-form-element__label"
-                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Country__c.Label}</label>
+                                   for="form-element-01">{!$Label.Tomeks_Workshop_Country}</label>
                             <div class="slds-form-element__control">
                                 <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.country}" styleClass="slds-input"/>
                             </div>
                         </div>
                         <div class="slds-form-element">
                             <label class="slds-form-element__label"
-                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Zip_Code__c.Label}</label>
+                                   for="form-element-01">{!$Label.Tomeks_Workshop_Zip_Code}</label>
                             <div class="slds-form-element__control">
                               <apex:inputText value="{!wrappedSearchFormTomeksWorkshop.zipCode}" styleClass="slds-input"/>
                             </div>
@@ -181,17 +181,17 @@
                         <apex:commandButton action="{!deleteWorkshop}" styleClass="slds-button slds-button_neutral"
                                             status="actionStatus"
                                             reRender="resultTable, searchForm, namePanel"
-                                            value="{!$Label.Button_Delete}">
+                                            value="{!$Label.Button_Delete}" onComplete="searchAfterSave();">
                             <apex:param name="mechanicToDelete" value="{!workshopFromTomek.id}"
                                         assignTo="{!idToDelete}"/>
                         </apex:commandButton>
                     </apex:column>
-                    <apex:column value="{!workshopFromTomek.name}" headerValue="{!$ObjectType.Workshop__c.fields.Name.Label}"/>
-                    <apex:column value="{!workshopFromTomek.phone}" headerValue="{!$ObjectType.Workshop__c.fields.Phone__c.Label}"/>
-                    <apex:column value="{!workshopFromTomek.website}" headerValue="{!$ObjectType.Workshop__c.fields.Website__c.Label}"/>
-                    <apex:column value="{!workshopFromTomek.country}" headerValue="{!$ObjectType.Workshop__c.fields.Country__c.Label}"/>
-                    <apex:column value="{!workshopFromTomek.city}" headerValue="{!$ObjectType.Workshop__c.fields.City__c.Label}"/>
-                    <apex:column value="{!workshopFromTomek.zipCode}" headerValue="{!$ObjectType.Workshop__c.fields.Zip_Code__c.Label}"/>
+                    <apex:column value="{!workshopFromTomek.name}" headerValue="{!$Label.Tomek_Workshop_Name}"/>
+                    <apex:column value="{!workshopFromTomek.phone}" headerValue="{!$Label.Tomeks_Workshop_Phone}"/>
+                    <apex:column value="{!workshopFromTomek.website}" headerValue="{!$Label.Tomeks_Workshop_Website}"/>
+                    <apex:column value="{!workshopFromTomek.country}" headerValue="{!$Label.Tomeks_Workshop_Country}"/>
+                    <apex:column value="{!workshopFromTomek.city}" headerValue="{!$Label.Tomeks_Workshop_City}"/>
+                    <apex:column value="{!workshopFromTomek.zipCode}" headerValue="{!$Label.Tomeks_Workshop_Zip_Code}"/>
                 </apex:dataTable>
             </div>
 
@@ -226,7 +226,7 @@
                         <div class="slds-form-element">
                             <label class="slds-form-element__label" for="form-element-03">
                                 <abbr class="slds-required"
-                                      title="required">* </abbr>{!$ObjectType.Workshop__c.fields.Name.Label}</label>
+                                      title="required">* </abbr>{!$Label.Tomek_Workshop_Name}</label>
                             <div class="slds-form-element__control">
                               <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.name}" styleClass="slds-input"/>
                             </div>
@@ -236,7 +236,7 @@
                         <div class="slds-form-element slds-has-error">
                               <label class="slds-form-element__label" for="form-element-05">
                                 <abbr class="slds-required"
-                                      title="required">* </abbr>{!$ObjectType.Workshop__c.fields.Name.Label}</label>
+                                      title="required">* </abbr>{!$Label.Tomek_Workshop_Name}</label>
                               <div class="slds-form-element__control">
                               <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.name}" styleClass="slds-input"/>
                               </div>
@@ -246,14 +246,14 @@
                         </apex:outputPanel>
                         <div class="slds-form-element">
                             <label class="slds-form-element__label"
-                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Phone__c.Label}</label>
+                                   for="form-element-01">{!$Label.Tomeks_Workshop_Phone}</label>
                             <div class="slds-form-element__control">
                               <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.phone}" styleClass="slds-input"/>
                             </div>
                         </div>
                         <div class="slds-form-element">
                             <label class="slds-form-element__label"
-                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Website__c.Label}</label>
+                                   for="form-element-01">{!$Label.Tomeks_Workshop_Website}</label>
                             <div class="slds-form-element__control">
                               <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.website}" styleClass="slds-input"/>
                             </div>
@@ -264,14 +264,14 @@
                     <span>
                         <div class="slds-form-element">
                             <label class="slds-form-element__label"
-                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.City__c.Label}</label>
+                                   for="form-element-01">{!$Label.Tomeks_Workshop_City}</label>
                             <div class="slds-form-element__control">
                               <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.city}" styleClass="slds-input"/>
                             </div>
                         </div>
                         <div class="slds-form-element">
                             <label class="slds-form-element__label"
-                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Country__c.Label}</label>
+                                   for="form-element-01">{!$Label.Tomeks_Workshop_Country}</label>
                             <div class="slds-form-element__control">
                                 <apex:selectList styleClass="slds-input" value="{!wrappedTomeksWorkshopToUpsert.country}" size="1">
                                      <apex:selectOptions value="{!countryList}"/>
@@ -280,7 +280,7 @@
                         </div>
                         <div class="slds-form-element">
                             <label class="slds-form-element__label"
-                                   for="form-element-01">{!$ObjectType.Workshop__c.fields.Zip_Code__c.Label}</label>
+                                   for="form-element-01">{!$Label.Tomeks_Workshop_Zip_Code}</label>
                             <div class="slds-form-element__control">
                               <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.zipCode}" styleClass="slds-input"/>
                             </div>
@@ -292,15 +292,16 @@
                 </div>
                 <div class="slds-modal__footer">
                     <apex:actionFunction name="clearAfterSave" action="{!clearModal}"
-                                         reRender="modalForm,messages,inputHidden,resultTable" immediate="true"/>
+                                         reRender="modalForm,messages,inputHidden,resultTable,searchForm" immediate="true"/>
                     <apex:commandButton action="{!clearModal}" styleClass="slds-button slds-button--neutral"
                                         status="actionStatus"
                                         onClick="closeModal()" value="{!$Label.Button_Cancel}"
                                         reRender="messages,popupNamePanel,resultTable,header" immediate="true"/>
+                    <apex:actionFunction name="search" action="{!searchWorkshop}" reRender="resultTable,modalForm" onComplete="clearAfterSave();"/>
                     <apex:commandButton action="{!saveWorkshop}" styleClass="slds-button slds-button--brand"
                                         status="actionStatus"
-                                        onComplete="checkHideModal()" value="{!$Label.Button_Save}"
-                                        reRender="messages,popupNamePanel,inputHidden,resultTable"/>
+                                        onComplete="checkHideModal();" value="{!$Label.Button_Save}"
+                                        reRender="messages,popupNamePanel,inputHidden,resultTable,searchForm"/>
                 </div>
             </div>
         </div>
@@ -322,7 +323,13 @@
             if (jQuery('.errorM3').length <= 0){
                 closeModal();
                 clearAfterSave();
+                searchAfterSave();
             }
+        }
+        function searchAfterSave(){
+            setTimeout(function(){
+            search();
+            }, 500);
         }
     </script>
     </body>

@@ -1,4 +1,4 @@
-<apex:page standardController="Workshop__c" tabStyle="Workshop__c">
+<apex:page standardController="Workshop__c" extensions="CsWorkshopEditController" tabStyle="Workshop__c">
     <apex:form >
         <apex:pageBlock id="workshopBlock" title="{!$Label.Edit} '{!Workshop__c.Name}'">
             <apex:pageMessages />

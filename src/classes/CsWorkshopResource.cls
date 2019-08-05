@@ -10,6 +10,7 @@ global class CsWorkshopResource {
         webService String website;
         webService String city;
         webService String zipCode;
+        webService Boolean isSynchronized;
 
         global WrappedWorkshop(Workshop__c workshop) {
             this.externalId = workshop.External_Id__c;
@@ -20,6 +21,7 @@ global class CsWorkshopResource {
             this.website = workshop.Website__c;
             this.city = workshop.City__c;
             this.zipCode = workshop.Zip_Code__c;
+            this.isSynchronized = workshop.Is_Synchronized__c;
         }
     }
 
@@ -42,46 +44,11 @@ global class CsWorkshopResource {
 
     @HttpGet
     global static List<WrappedWorkshop> getWorkshopList() {
-        List<WrappedWorkshop> resultList = new List<WrappedWorkshop>();
-        List<Workshop__c> workshopsList = new List<Workshop__c>();
-        CsSoqlQueryBuilder queryBuilder = new CsSoqlQueryBuilder();
-        Map<String, String> paramsMap = RestContext.request.params;
-        queryBuilder.addResultField('Id')
-                .addResultField('External_Id__c')
-                .addResultField('Name')
-                .addResultField('Phone__c')
-                .addResultField('Country__c')
-                .addResultField('Website__c')
-                .addResultField('City__c')
-                .addResultField('Zip_Code__c')
-                .addTableName('Workshop__c');
-        for (String key : paramsMap.keySet()) {
-            queryBuilder.addSearchFieldWithValue(key, paramsMap.get(key));
-        }
-        queryBuilder.build();
-        workshopsList = Database.query(queryBuilder.getQueryString());
-        for (Workshop__c workshop : workshopsList) {
-            resultList.add(new WrappedWorkshop(workshop));
-        }
-        return resultList;
+        return CsWorkshopResourceHandler.getWorkshopList(RestContext.request);
     }
 
     @HttpPost
     global static List<ResponseStatus> upsertWorkshopList(List<WrappedWorkshop> wrappedWorkshopsList) {
-        List<Workshop__c> workshopsToUpsert = new List<Workshop__c>();
-        List<ResponseStatus> responseStatusList = new List<ResponseStatus>();
-        for (WrappedWorkshop wrappedWorkshop : wrappedWorkshopsList) {
-            workshopsToUpsert.add(new Workshop__c(Id = (wrappedWorkshop.id == '') ? null : wrappedWorkshop.id, External_Id__c = wrappedWorkshop.externalId, Name = wrappedWorkshop.name, Phone__c = wrappedWorkshop.phone,
-                    Website__c = wrappedWorkshop.website, City__c = wrappedWorkshop.city, Country__c = wrappedWorkshop.country, Zip_Code__c = wrappedWorkshop.zipCode));
-        }
-        Database.UpsertResult[] upsertResults = Database.upsert(workshopsToUpsert, false);
-        for (Database.UpsertResult upsertResult : upsertResults) {
-            if (upsertResult.isSuccess()) {
-                responseStatusList.add(new ResponseStatus(true, upsertResult.getId(), null));
-            } else {
-                responseStatusList.add(new ResponseStatus(false, upsertResult.getId(), upsertResult.errors[0].getMessage()));
-            }
-        }
-        return responseStatusList;
+        return CsWorkshopResourceHandler.updateWorkshopList(wrappedWorkshopsList);
     }
 }

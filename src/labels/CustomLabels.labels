@@ -341,7 +341,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Error Phone Pattern</shortDescription>
-        <value>Invalid phone. Only numbers, space and &apos;-&apos;. Starts with or without &apos;+&apos;.</value>
+        <value>Invalid phone. Only numbers space and &apos;-&apos;. Starts with or without &apos;+&apos;.</value>
     </labels>
     <labels>
         <fullName>Error_To_Big_File</fullName>
@@ -561,6 +561,13 @@
         <value>Select</value>
     </labels>
     <labels>
+        <fullName>Select_Option_None</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Select Option None</shortDescription>
+        <value>- None -</value>
+    </labels>
+    <labels>
         <fullName>Send_Email</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -643,6 +650,55 @@
         <protected>true</protected>
         <shortDescription>To Import</shortDescription>
         <value>To Import</value>
+    </labels>
+    <labels>
+        <fullName>Tomek_Workshop_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Tomeks Workshop Name</shortDescription>
+        <value>Workshop Name</value>
+    </labels>
+    <labels>
+        <fullName>Tomeks_Oath2</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Tomeks Oath2</shortDescription>
+        <value>https://login.salesforce.com/services/oauth2/token?grant_type=password&amp;client_id={0}&amp;client_secret={1}&amp;username={2}&amp;password={3}</value>
+    </labels>
+    <labels>
+        <fullName>Tomeks_Workshop_City</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Tomeks Workshop City</shortDescription>
+        <value>City</value>
+    </labels>
+    <labels>
+        <fullName>Tomeks_Workshop_Country</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Tomeks Workshop Country</shortDescription>
+        <value>Country</value>
+    </labels>
+    <labels>
+        <fullName>Tomeks_Workshop_Phone</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Tomeks Workshop Phone</shortDescription>
+        <value>Phone</value>
+    </labels>
+    <labels>
+        <fullName>Tomeks_Workshop_Website</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Tomeks Workshop Website</shortDescription>
+        <value>Website</value>
+    </labels>
+    <labels>
+        <fullName>Tomeks_Workshop_Zip_Code</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Tomeks Workshop Zip Code</shortDescription>
+        <value>Zip Code</value>
     </labels>
     <labels>
         <fullName>Upload_Picture</fullName>
