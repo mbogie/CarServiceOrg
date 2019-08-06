@@ -165,10 +165,6 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsWorkshopTriggerHandlerHelper" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
                             <option name="name" value="CsWrapperContract" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -221,6 +217,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsException" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsQueueableCallouts" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>

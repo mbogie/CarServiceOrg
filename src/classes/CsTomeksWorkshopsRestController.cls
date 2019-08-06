@@ -1,16 +1,15 @@
 public with sharing class CsTomeksWorkshopsRestController {
 
     public WrappedTomeksWorkshop wrappedSearchFormTomeksWorkshop { get; set; }
-    public WrappedTomeksWorkshop wrappedTomeksWorkshopToUpsert { get; set; }
+    public WrappedTomeksWorkshop wrappedTomeksWorkshopToUpsertOrDelete { get; set; }
     public List<WrappedTomeksWorkshop> wrappedTomeksWorkshopsList { get; set; }
     public Boolean isSearchWorkshopNameEmpty { get; set; }
     public Boolean isPopupWorkshopNameEmpty { get; set; }
-    public String idToDelete { get; set; }
     private CsTomeksWorkshopsRestHandler restHandler;
-    public List<String> responseStatusList;
-    public List<WrappedTomeksWorkshop> workshops;
+    private List<String> responseStatusList;
     private String responseBody;
     private List<String> responseStatus;
+    private Map<String, String> countries;
 
     public class WrappedTomeksWorkshop {
         public String externalId { get; set; }
@@ -29,15 +28,19 @@ public with sharing class CsTomeksWorkshopsRestController {
         this.wrappedTomeksWorkshopsList = new List<WrappedTomeksWorkshop>();
         this.isSearchWorkshopNameEmpty = false;
         this.isPopupWorkshopNameEmpty = false;
-        this.wrappedTomeksWorkshopToUpsert = new WrappedTomeksWorkshop();
+        this.wrappedTomeksWorkshopToUpsertOrDelete = new WrappedTomeksWorkshop();
         this.restHandler = new CsTomeksWorkshopsRestHandler();
         this.responseStatusList = new List<String>();
-        this.workshops = new List<WrappedTomeksWorkshop>();
         this.responseStatus = new List<String>();
+        this.countries = new Map<String,String>();
+    }
+
+    public void generatePageErrorMessage(String message){
+        ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, message));
     }
 
     public String createQuery() {
-        String query = '?';
+        String query = '';
         if (String.isNotBlank(wrappedSearchFormTomeksWorkshop.name)) query += 'Name__c=' + wrappedSearchFormTomeksWorkshop.name + '&';
         if (String.isNotBlank(wrappedSearchFormTomeksWorkshop.phone)) query += 'Phone__c=' + wrappedSearchFormTomeksWorkshop.phone + '&';
         if (String.isNotBlank(wrappedSearchFormTomeksWorkshop.country)) query += 'Country__c=' + wrappedSearchFormTomeksWorkshop.country + '&';
@@ -50,58 +53,54 @@ public with sharing class CsTomeksWorkshopsRestController {
     public void searchWorkshop() {
         if (String.isBlank(wrappedSearchFormTomeksWorkshop.name)) {
             isSearchWorkshopNameEmpty = true;
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR,
-                    String.format(System.Label.Required_Input_Field_Error, new List<String>{System.Label.Tomek_Workshop_Name})));
+            generatePageErrorMessage(String.format(System.Label.Required_Input_Field_Error, new List<String>{System.Label.Tomek_Workshop_Name}));
             return ;
         }
         isSearchWorkshopNameEmpty = false;
         wrappedTomeksWorkshopsList = new List<WrappedTomeksWorkshop>();
         try {
-            responseBody = restHandler.createRequest(createQuery(), 'GET', null);
+            responseBody = restHandler.createRequest(CsUtils.getCredentialsValues('TomekGetWorkshopsEndpoint') + createQuery(), 'GET', null);
             wrappedTomeksWorkshopsList = (List<WrappedTomeksWorkshop>) JSON.deserialize(responseBody, List<WrappedTomeksWorkshop>.class);
         } catch (CsException csError) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, csError.getMessage()));
+            generatePageErrorMessage(csError.getMessage());
         }
     }
 
     public void editWorkshop() {
         for (WrappedTomeksWorkshop workshop : wrappedTomeksWorkshopsList) {
-            if (workshop.id == wrappedTomeksWorkshopToUpsert.id) {
-                wrappedTomeksWorkshopToUpsert.name = workshop.name;
-                wrappedTomeksWorkshopToUpsert.website = workshop.website;
-                wrappedTomeksWorkshopToUpsert.phone = workshop.phone;
-                wrappedTomeksWorkshopToUpsert.city = workshop.city;
-                wrappedTomeksWorkshopToUpsert.country = workshop.country;
-                wrappedTomeksWorkshopToUpsert.zipCode = workshop.zipCode;
-                wrappedTomeksWorkshopToUpsert.externalId = workshop.externalId;
-                wrappedTomeksWorkshopToUpsert.isSynchronized = false;
+            if (workshop.id == wrappedTomeksWorkshopToUpsertOrDelete.id) {
+                wrappedTomeksWorkshopToUpsertOrDelete.name = workshop.name;
+                wrappedTomeksWorkshopToUpsertOrDelete.website = workshop.website;
+                wrappedTomeksWorkshopToUpsertOrDelete.phone = workshop.phone;
+                wrappedTomeksWorkshopToUpsertOrDelete.city = workshop.city;
+                wrappedTomeksWorkshopToUpsertOrDelete.country = workshop.country;
+                wrappedTomeksWorkshopToUpsertOrDelete.zipCode = workshop.zipCode;
+                wrappedTomeksWorkshopToUpsertOrDelete.externalId = workshop.externalId;
             }
         }
     }
 
     public void saveWorkshop() {
-        if (String.isBlank(wrappedTomeksWorkshopToUpsert.name)) {
+        if (String.isBlank(wrappedTomeksWorkshopToUpsertOrDelete.name)) {
             isPopupWorkshopNameEmpty = true;
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR,
-                    String.format(System.Label.Required_Input_Field_Error, new List<String>{System.Label.Tomek_Workshop_Name})));
+            generatePageErrorMessage(String.format(System.Label.Required_Input_Field_Error, new List<String>{System.Label.Tomek_Workshop_Name}));
             return ;
         }
         isPopupWorkshopNameEmpty = false;
-        workshops = new List<WrappedTomeksWorkshop>();
         responseStatus = new List<String>();
-        workshops.add(wrappedTomeksWorkshopToUpsert);
+        wrappedTomeksWorkshopToUpsertOrDelete.isSynchronized = false;
         try {
-            responseBody = restHandler.createRequest('', 'POST', workshops);
+            responseBody = restHandler.createRequest(CsUtils.getCredentialsValues('TomekPostWorkshopsEndpoint'), 'POST', new List<WrappedTomeksWorkshop>{wrappedTomeksWorkshopToUpsertOrDelete});
             responseStatusList = (List<String>) JSON.deserialize(responseBody, List<String>.class);
             responseStatus = responseStatusList.get(0).split(',');
             if (responseStatus.get(0) == System.Label.Status_Error) {
-                ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, responseStatus.get(2)));
+                generatePageErrorMessage(responseStatus.get(2));
             } /*else {
-                wrappedTomeksWorkshopToUpsert.id = responseStatus.get(1);
-                Id jobId = System.enqueueJob(new CsUpsertWorkshop(wrappedTomeksWorkshopToUpsert));
+                wrappedTomeksWorkshopToUpsertOrDelete.id = responseStatus.get(1);
+                Id jobId = System.enqueueJob(new CsUpsertWorkshop(wrappedTomeksWorkshopToUpsertOrDelete));
             }*/
         } catch (CsException csError) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, csError.getMessage()));
+            generatePageErrorMessage(csError.getMessage());
         }
 
     }
@@ -110,11 +109,11 @@ public with sharing class CsTomeksWorkshopsRestController {
     public void deleteWorkshop() {
         responseStatus = new List<String>();
         try {
-            responseBody = restHandler.createRequest('?id=' + idToDelete, 'DELETE', null);
+            responseBody = restHandler.createRequest(CsUtils.getCredentialsValues('TomekDeleteWorkshopsEndpoint') + wrappedTomeksWorkshopToUpsertOrDelete.id, 'DELETE', null);
             responseStatusList = (List<String>) JSON.deserialize(responseBody, List<String>.class);
             responseStatus = responseStatusList.get(0).split(',');
             if (responseStatus.get(0) == System.Label.Status_Error) {
-                ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, responseStatus.get(2)));
+                generatePageErrorMessage(responseStatus.get(2));
             } /*else {
                 for (WrappedTomeksWorkshop tomeksWorkshop : wrappedTomeksWorkshopsList) {
                     if (tomeksWorkshop.id == idToDelete) {
@@ -129,7 +128,7 @@ public with sharing class CsTomeksWorkshopsRestController {
                 }
             }*/
         } catch (CsException csError) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, csError.getMessage()));
+            generatePageErrorMessage(csError.getMessage());
         }
     }
 
@@ -141,24 +140,24 @@ public with sharing class CsTomeksWorkshopsRestController {
 
     public void clearModal() {
         isPopupWorkshopNameEmpty = false;
-        wrappedTomeksWorkshopToUpsert = new WrappedTomeksWorkshop();
+        wrappedTomeksWorkshopToUpsertOrDelete = new WrappedTomeksWorkshop();
     }
 
     public String getPopupHeader() {
-        return(String.isBlank(wrappedTomeksWorkshopToUpsert.id)) ? System.Label.Add_New_Workshop : String.format(
-                System.Label.Edit_Workshop_Header, new List<String>{wrappedTomeksWorkshopToUpsert.name});
+        return(String.isBlank(wrappedTomeksWorkshopToUpsertOrDelete.id)) ? System.Label.Add_New_Workshop : String.format(
+                System.Label.Edit_Workshop_Header, new List<String>{wrappedTomeksWorkshopToUpsertOrDelete.name});
     }
 
     public List<SelectOption> getCountryList() {
         List<SelectOption> listOfCountries = new List<SelectOption>();
         try {
-            responseBody = restHandler.createRequest('/countries', 'GET', null);
-            Map<String, String> countries = (Map<String, String>) JSON.deserialize(responseBody, Map<String, String>.class);
+            responseBody = restHandler.createRequest(CsUtils.getCredentialsValues('TomekGetCountriesEndpoint'), 'GET', null);
+            countries = (Map<String, String>) JSON.deserialize(responseBody, Map<String, String>.class);
             for (String mapKey : countries.keySet()) {
                 listOfCountries.add(new selectOption(mapKey, countries.get(mapKey)));
             }
         } catch (CsException csError) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, csError.getMessage()));
+            generatePageErrorMessage(csError.getMessage());
         }
         return listOfCountries;
     }

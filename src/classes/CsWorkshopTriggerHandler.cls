@@ -1,8 +1,7 @@
 public with sharing class CsWorkshopTriggerHandler implements CsITrigger {
 
     public List<Workshop__c> newWorkshops = new List<Workshop__c>();
-    public List<Workshop__c> deletedWorkshops = new List<Workshop__c>();
-    public static boolean firstRun = true;
+    public List<Workshop__c> listToUpsert = new List<Workshop__c>();
 
     public CsWorkshopTriggerHandler() {
     }
@@ -23,36 +22,20 @@ public with sharing class CsWorkshopTriggerHandler implements CsITrigger {
     }
 
     public void afterInsert(List<SObject> newlstObj, Map<Id, SObject> newMapObj) {
-        if (firstRun) {
-            newWorkshops = (List<Workshop__c>) newlstObj;
-            Set<String> newWorkshopsIds = new Set<String>();
-            for (Workshop__c workshop : newWorkshops) {
-                if(workshop.Is_Synchronized__c == false)
-                    newWorkshopsIds.add(workshop.Id);
-            }
-            if(!newWorkshops.isEmpty()) CsWorkshopTriggerHandlerHelper.copyNewWorkshopToTomek(newWorkshopsIds);
-        }
+        System.enqueueJob(new CsQueueableCallouts((List<Workshop__c>) newlstObj, 'POST'));
     }
 
     public void afterUpdate(List<SObject> newlstObj, List<SObject> oldlstObj, Map<Id, SObject> newMapObj, Map<Id, SObject> oldMapObj) {
-        if (firstRun) {
-            newWorkshops = (List<Workshop__c>) newlstObj;
-            Set<String> newWorkshopsIds = new Set<String>();
-            for (Workshop__c workshop : newWorkshops) {
-                if(workshop.Is_Synchronized__c == false)
-                    newWorkshopsIds.add(workshop.Id);
-            }
-            if(!newWorkshops.isEmpty()) CsWorkshopTriggerHandlerHelper.copyNewWorkshopToTomek(newWorkshopsIds);
+        newWorkshops = (List<Workshop__c>) newlstObj;
+        for (Workshop__c workshop : newWorkshops) {
+            if (workshop.Is_Synchronized__c == false)
+                listToUpsert.add(workshop);
         }
+        if (!listToUpsert.isEmpty()) System.enqueueJob(new CsQueueableCallouts(newWorkshops, 'POST'));
     }
 
     public void afterDelete(List<SObject> oldlstObj, Map<Id, SObject> oldMapObj) {
-        String idsToDelete = '';
-        deletedWorkshops = (List<Workshop__c>) oldlstObj;
-        for (Workshop__c workshop : deletedWorkshops) {
-            idsToDelete += workshop.External_Id__c + ',';
-        }
-        CsWorkshopTriggerHandlerHelper.deleteWorkshopsInTomeksOrg(idsToDelete.removeEnd(','));
+        System.enqueueJob(new CsQueueableCallouts((List<Workshop__c>) oldlstObj, 'DELETE'));
     }
 
     public void andFinally() {

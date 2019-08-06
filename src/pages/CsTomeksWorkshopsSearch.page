@@ -176,14 +176,14 @@
                                             onComplete="openModal()" status="actionStatus"
                                             value="{!$Label.Edit}">
                             <apex:param name="editedMechanicId" value="{!workshopFromTomek.id}"
-                                        assignTo="{!wrappedTomeksWorkshopToUpsert.id}"/>
+                                        assignTo="{!wrappedTomeksWorkshopToUpsertOrDelete.id}"/>
                         </apex:commandButton>
                         <apex:commandButton action="{!deleteWorkshop}" styleClass="slds-button slds-button_neutral"
                                             status="actionStatus"
                                             reRender="resultTable, searchForm, namePanel"
                                             value="{!$Label.Button_Delete}" onComplete="searchAfterSave();">
                             <apex:param name="mechanicToDelete" value="{!workshopFromTomek.id}"
-                                        assignTo="{!idToDelete}"/>
+                                        assignTo="{!wrappedTomeksWorkshopToUpsertOrDelete.id}"/>
                         </apex:commandButton>
                     </apex:column>
                     <apex:column value="{!workshopFromTomek.name}" headerValue="{!$Label.Tomek_Workshop_Name}"/>
@@ -228,7 +228,7 @@
                                 <abbr class="slds-required"
                                       title="required">* </abbr>{!$Label.Tomek_Workshop_Name}</label>
                             <div class="slds-form-element__control">
-                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.name}" styleClass="slds-input"/>
+                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsertOrDelete.name}" styleClass="slds-input"/>
                             </div>
                         </div>
                         </apex:outputPanel>
@@ -238,7 +238,7 @@
                                 <abbr class="slds-required"
                                       title="required">* </abbr>{!$Label.Tomek_Workshop_Name}</label>
                               <div class="slds-form-element__control">
-                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.name}" styleClass="slds-input"/>
+                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsertOrDelete.name}" styleClass="slds-input"/>
                               </div>
                               <div class="slds-form-element__help"
                                    id="form-error-01">{!$Label.Error_Field_Required}</div>
@@ -248,14 +248,14 @@
                             <label class="slds-form-element__label"
                                    for="form-element-01">{!$Label.Tomeks_Workshop_Phone}</label>
                             <div class="slds-form-element__control">
-                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.phone}" styleClass="slds-input"/>
+                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsertOrDelete.phone}" styleClass="slds-input"/>
                             </div>
                         </div>
                         <div class="slds-form-element">
                             <label class="slds-form-element__label"
                                    for="form-element-01">{!$Label.Tomeks_Workshop_Website}</label>
                             <div class="slds-form-element__control">
-                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.website}" styleClass="slds-input"/>
+                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsertOrDelete.website}" styleClass="slds-input"/>
                             </div>
                         </div>
                     </span>
@@ -266,14 +266,14 @@
                             <label class="slds-form-element__label"
                                    for="form-element-01">{!$Label.Tomeks_Workshop_City}</label>
                             <div class="slds-form-element__control">
-                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.city}" styleClass="slds-input"/>
+                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsertOrDelete.city}" styleClass="slds-input"/>
                             </div>
                         </div>
                         <div class="slds-form-element">
                             <label class="slds-form-element__label"
                                    for="form-element-01">{!$Label.Tomeks_Workshop_Country}</label>
                             <div class="slds-form-element__control">
-                                <apex:selectList styleClass="slds-input" value="{!wrappedTomeksWorkshopToUpsert.country}" size="1">
+                                <apex:selectList styleClass="slds-input" value="{!wrappedTomeksWorkshopToUpsertOrDelete.country}" size="1">
                                      <apex:selectOptions value="{!countryList}"/>
                                 </apex:selectList>
                             </div>
@@ -282,7 +282,7 @@
                             <label class="slds-form-element__label"
                                    for="form-element-01">{!$Label.Tomeks_Workshop_Zip_Code}</label>
                             <div class="slds-form-element__control">
-                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsert.zipCode}" styleClass="slds-input"/>
+                              <apex:inputText value="{!wrappedTomeksWorkshopToUpsertOrDelete.zipCode}" styleClass="slds-input"/>
                             </div>
                         </div>
                     </span>
