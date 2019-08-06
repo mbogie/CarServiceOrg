@@ -1,6 +1,8 @@
 public with sharing class CsTomeksWorkshopsRestHandler {
 
     private final String TOMEKS_URL = CsUtils.getCredentialsValues('TomekUrl');
+    private Map<String, List<CsTomeksWorkshopsRestController.WrappedTomeksWorkshop>> requestBody;
+
 
     public String getSessionId() {
         String sessionId = null;
@@ -23,22 +25,20 @@ public with sharing class CsTomeksWorkshopsRestHandler {
         return sessionId;
     }
 
-    public String createRequest(String parameters, String method, Map<String, List<CsTomeksWorkshopsRestController.WrappedTomeksWorkshop>> body) {
-        String responseString = '';
+    public String createRequest(String parameters, String method, List<CsTomeksWorkshopsRestController.WrappedTomeksWorkshop> wrappedTomeksWorkshops) {
         HttpRequest request = new HttpRequest();
         request.setEndpoint(TOMEKS_URL + parameters);
         request.setHeader('Authorization', 'Bearer ' + getSessionId());
         request.setMethod(method);
-        if (body != null) {
+        if (wrappedTomeksWorkshops != null) {
+            requestBody = new Map<String, List<CsTomeksWorkshopsRestController.WrappedTomeksWorkshop>>();
+            requestBody.put('workshops', wrappedTomeksWorkshops);
             request.setHeader('Content-Type', 'application/json;charset=UTF-8');
-            request.setBody(JSON.serialize(body));
+            request.setBody(JSON.serialize(requestBody));
         }
         HttpResponse response = new Http().send(request);
         if (response.getStatusCode() == 200) {
-            responseString = response.getBody();
-        } else {
-            responseString = System.Label.Status_Error + ' ' + response.getStatusCode() + ' ' + response.getStatus();
-        }
-        return responseString;
+            return response.getBody();
+        } else throw new CsException(response.getStatusCode() + ' ' + response.getStatus());
     }
 }

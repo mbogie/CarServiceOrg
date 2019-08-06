@@ -176,7 +176,7 @@
                                             onComplete="openModal()" status="actionStatus"
                                             value="{!$Label.Edit}">
                             <apex:param name="editedMechanicId" value="{!workshopFromTomek.id}"
-                                        assignTo="{!idToEdit}"/>
+                                        assignTo="{!wrappedTomeksWorkshopToUpsert.id}"/>
                         </apex:commandButton>
                         <apex:commandButton action="{!deleteWorkshop}" styleClass="slds-button slds-button_neutral"
                                             status="actionStatus"
@@ -206,7 +206,7 @@
                                         onclick="closeModal()" value="X" status="actionStatus"
                                         reRender="modalForm,header,messages,pageMessages" immediate="true"/>
                     <apex:outputPanel id="header">
-                        <h2 class="slds-text-heading--medium">{!popupHeader}</h2>
+                        <h2 class="slds-text-heading--medium">{!PopupHeader}</h2>
                     </apex:outputPanel>
                     <div id="myMessagess">
                         <apex:outputPanel id="messages">
@@ -301,7 +301,7 @@
                     <apex:commandButton action="{!saveWorkshop}" styleClass="slds-button slds-button--brand"
                                         status="actionStatus"
                                         onComplete="checkHideModal();" value="{!$Label.Button_Save}"
-                                        reRender="messages,popupNamePanel,inputHidden,resultTable,searchForm"/>
+                                        reRender="messages,popupNamePanel,inputHidden,resultTable"/>
                 </div>
             </div>
         </div>

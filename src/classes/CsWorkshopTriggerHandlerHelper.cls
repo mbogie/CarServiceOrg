@@ -19,9 +19,7 @@ public with sharing class CsWorkshopTriggerHandlerHelper {
             wrappedTomeksWorkshop.isSynchronized = (workshop.Is_Synchronized__c == null)?false : workshop.Is_Synchronized__c;
             workshops.add(wrappedTomeksWorkshop);
         }
-        Map<String, List<CsTomeksWorkshopsRestController.WrappedTomeksWorkshop>> jsonMap = new Map<String, List<CsTomeksWorkshopsRestController.WrappedTomeksWorkshop>>();
-        jsonMap.put('workshops', workshops);
-        responseString = restHandler.createRequest('', 'POST', jsonMap);
+        responseString = restHandler.createRequest('', 'POST', workshops);
         CsWorkshopTriggerHandler.firstRun = false;
         List<Workshop__c> workshopsToUpdate = new List<Workshop__c>();
         if (responseString.startsWith(System.Label.Status_Error)) {
@@ -38,7 +36,7 @@ public with sharing class CsWorkshopTriggerHandlerHelper {
             }
         }
         try{
-            update newWorkshops;
+            update workshopsToUpdate;
         } catch (Exception err){
             System.debug(err.getMessage());
         }

@@ -5,9 +5,7 @@ public with sharing class CsTomeksWorkshopsRestController {
     public List<WrappedTomeksWorkshop> wrappedTomeksWorkshopsList { get; set; }
     public Boolean isSearchWorkshopNameEmpty { get; set; }
     public Boolean isPopupWorkshopNameEmpty { get; set; }
-    public String idToEdit { get; set; }
     public String idToDelete { get; set; }
-    public String popupHeader { get; set; }
     private CsTomeksWorkshopsRestHandler restHandler;
     public List<String> responseStatusList;
     public List<WrappedTomeksWorkshop> workshops;
@@ -32,7 +30,6 @@ public with sharing class CsTomeksWorkshopsRestController {
         this.isSearchWorkshopNameEmpty = false;
         this.isPopupWorkshopNameEmpty = false;
         this.wrappedTomeksWorkshopToUpsert = new WrappedTomeksWorkshop();
-        this.popupHeader = System.Label.Add_New_Workshop;
         this.restHandler = new CsTomeksWorkshopsRestHandler();
         this.responseStatusList = new List<String>();
         this.workshops = new List<WrappedTomeksWorkshop>();
@@ -53,23 +50,23 @@ public with sharing class CsTomeksWorkshopsRestController {
     public void searchWorkshop() {
         if (String.isBlank(wrappedSearchFormTomeksWorkshop.name)) {
             isSearchWorkshopNameEmpty = true;
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, String.format(System.Label.Required_Input_Field_Error, new List<String>{System.Label.Tomek_Workshop_Name})));
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR,
+                    String.format(System.Label.Required_Input_Field_Error, new List<String>{System.Label.Tomek_Workshop_Name})));
             return ;
         }
         isSearchWorkshopNameEmpty = false;
         wrappedTomeksWorkshopsList = new List<WrappedTomeksWorkshop>();
-        responseBody = restHandler.createRequest(createQuery(), 'GET', null);
-        if (responseBody.startsWith(System.Label.Status_Error)) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, responseBody));
-        } else {
+        try {
+            responseBody = restHandler.createRequest(createQuery(), 'GET', null);
             wrappedTomeksWorkshopsList = (List<WrappedTomeksWorkshop>) JSON.deserialize(responseBody, List<WrappedTomeksWorkshop>.class);
+        } catch (CsException csError) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, csError.getMessage()));
         }
     }
 
     public void editWorkshop() {
         for (WrappedTomeksWorkshop workshop : wrappedTomeksWorkshopsList) {
-            if (workshop.id == idToEdit) {
-                wrappedTomeksWorkshopToUpsert.id = idToEdit;
+            if (workshop.id == wrappedTomeksWorkshopToUpsert.id) {
                 wrappedTomeksWorkshopToUpsert.name = workshop.name;
                 wrappedTomeksWorkshopToUpsert.website = workshop.website;
                 wrappedTomeksWorkshopToUpsert.phone = workshop.phone;
@@ -77,79 +74,62 @@ public with sharing class CsTomeksWorkshopsRestController {
                 wrappedTomeksWorkshopToUpsert.country = workshop.country;
                 wrappedTomeksWorkshopToUpsert.zipCode = workshop.zipCode;
                 wrappedTomeksWorkshopToUpsert.externalId = workshop.externalId;
-                popupHeader = String.format(System.Label.Edit_Workshop_Header, new List<String>{workshop.name});
+                wrappedTomeksWorkshopToUpsert.isSynchronized = false;
             }
         }
-        popupHeader = String.format(System.Label.Edit_Workshop_Header, new List<String>{
-                wrappedTomeksWorkshopToUpsert.name
-        });
     }
 
     public void saveWorkshop() {
         if (String.isBlank(wrappedTomeksWorkshopToUpsert.name)) {
             isPopupWorkshopNameEmpty = true;
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, String.format(System.Label.Required_Input_Field_Error, new List<String>{System.Label.Tomek_Workshop_Name})));
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR,
+                    String.format(System.Label.Required_Input_Field_Error, new List<String>{System.Label.Tomek_Workshop_Name})));
             return ;
         }
-        Workshop__c workshopToUpsert = new Workshop__c();
-        wrappedTomeksWorkshopToUpsert.isSynchronized = false;
         isPopupWorkshopNameEmpty = false;
         workshops = new List<WrappedTomeksWorkshop>();
         responseStatus = new List<String>();
         workshops.add(wrappedTomeksWorkshopToUpsert);
-        Map<String, List<WrappedTomeksWorkshop>> jsonMap = new Map<String, List<WrappedTomeksWorkshop>>();
-        jsonMap.put('workshops', workshops);
-        responseBody = restHandler.createRequest('', 'POST', jsonMap);
-        if (responseBody.startsWith(System.Label.Status_Error)) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, responseBody));
-        } else {
+        try {
+            responseBody = restHandler.createRequest('', 'POST', workshops);
             responseStatusList = (List<String>) JSON.deserialize(responseBody, List<String>.class);
-            for (String status : responseStatusList) {
-                responseStatus = status.split(',');
-                if (responseStatus.get(0) == System.Label.Status_Error) {
-                    ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, responseStatus.get(2)));
-                } else {
-                    workshopToUpsert.External_Id__c = responseStatus.get(1);
-                    workshopToUpsert.Name = wrappedTomeksWorkshopToUpsert.name;
-                    workshopToUpsert.Website__c = wrappedTomeksWorkshopToUpsert.website;
-                    workshopToUpsert.Phone__c = wrappedTomeksWorkshopToUpsert.phone;
-                    workshopToUpsert.City__c = wrappedTomeksWorkshopToUpsert.city;
-                    workshopToUpsert.Country__c = wrappedTomeksWorkshopToUpsert.country;
-                    workshopToUpsert.Zip_Code__c = wrappedTomeksWorkshopToUpsert.zipCode;
-                    workshopToUpsert.Id = wrappedTomeksWorkshopToUpsert.externalId;
-                    workshopToUpsert.Is_Synchronized__c = false;
-                    System.enqueueJob(new CsUpsertWorkshop(new List<Workshop__c>{workshopToUpsert}));
-                }
-            }
+            responseStatus = responseStatusList.get(0).split(',');
+            if (responseStatus.get(0) == System.Label.Status_Error) {
+                ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, responseStatus.get(2)));
+            } /*else {
+                wrappedTomeksWorkshopToUpsert.id = responseStatus.get(1);
+                Id jobId = System.enqueueJob(new CsUpsertWorkshop(wrappedTomeksWorkshopToUpsert));
+            }*/
+        } catch (CsException csError) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, csError.getMessage()));
         }
+
     }
+
 
     public void deleteWorkshop() {
         responseStatus = new List<String>();
-        Workshop__c workshopToDelete = new Workshop__c();
-        responseBody = restHandler.createRequest('?id=' + idToDelete, 'DELETE', null);
-        if (responseBody.startsWith(System.Label.Status_Error)) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, responseBody));
-        } else {
+        try {
+            responseBody = restHandler.createRequest('?id=' + idToDelete, 'DELETE', null);
             responseStatusList = (List<String>) JSON.deserialize(responseBody, List<String>.class);
-            for (String status : responseStatusList) {
-                responseStatus = status.split(',');
-                if (responseStatus.get(0) == System.Label.Status_Error) {
-                    ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, responseStatus.get(2)));
-                } else {
-                    for (WrappedTomeksWorkshop tomeksWorkshop : wrappedTomeksWorkshopsList) {
-                        if (tomeksWorkshop.id == idToDelete) {
-                            if (String.isNotBlank(tomeksWorkshop.externalId)) {
-                                try {
-                                    delete new Workshop__c(Id = tomeksWorkshop.externalId);
-                                } catch (Exception err) {
-                                    System.debug(err.getMessage());
-                                }
+            responseStatus = responseStatusList.get(0).split(',');
+            if (responseStatus.get(0) == System.Label.Status_Error) {
+                ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, responseStatus.get(2)));
+            } /*else {
+                for (WrappedTomeksWorkshop tomeksWorkshop : wrappedTomeksWorkshopsList) {
+                    if (tomeksWorkshop.id == idToDelete) {
+                        if (String.isNotBlank(tomeksWorkshop.externalId)) {
+                            try {
+                                delete new Workshop__c(Id = tomeksWorkshop.externalId);
+                            } catch (Exception err) {
+                                System.debug(err.getMessage());
                             }
                         }
                     }
                 }
-            }
+            }*/
+        } catch (CsException csError) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, csError.getMessage()));
         }
     }
 
@@ -161,24 +141,25 @@ public with sharing class CsTomeksWorkshopsRestController {
 
     public void clearModal() {
         isPopupWorkshopNameEmpty = false;
-        idToEdit = null;
         wrappedTomeksWorkshopToUpsert = new WrappedTomeksWorkshop();
-        popupHeader = System.Label.Add_New_Workshop;
+    }
+
+    public String getPopupHeader() {
+        return(String.isBlank(wrappedTomeksWorkshopToUpsert.id)) ? System.Label.Add_New_Workshop : String.format(
+                System.Label.Edit_Workshop_Header, new List<String>{wrappedTomeksWorkshopToUpsert.name});
     }
 
     public List<SelectOption> getCountryList() {
         List<SelectOption> listOfCountries = new List<SelectOption>();
-        responseBody = restHandler.createRequest('/countries', 'GET', null);
-        if (responseBody.startsWith(System.Label.Status_Error)) {
-            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, responseBody));
-            return null;
-        } else {
-            List<String> countries = (List<String>) JSON.deserialize(responseBody, List<String>.class);
-            listOfCountries.add(new selectOption('', System.Label.Select_Option_None));
-            for (String country : countries) {
-                listOfCountries.add(new selectOption(country, country));
+        try {
+            responseBody = restHandler.createRequest('/countries', 'GET', null);
+            Map<String, String> countries = (Map<String, String>) JSON.deserialize(responseBody, Map<String, String>.class);
+            for (String mapKey : countries.keySet()) {
+                listOfCountries.add(new selectOption(mapKey, countries.get(mapKey)));
             }
-            return listOfCountries;
+        } catch (CsException csError) {
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.severity.ERROR, csError.getMessage()));
         }
+        return listOfCountries;
     }
 }
