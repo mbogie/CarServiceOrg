@@ -2,17 +2,22 @@ public with sharing class CsWorkshopResourceHandler {
 
     public static List<CsWorkshopResource.ResponseStatus> deleteWorkshopList(RestRequest request) {
         List<String> idToDelete = request.params.get('ids').split(',');
-        List<Workshop__c> workshopsToDelete = new List<Workshop__c>();
+        List<Workshop__c> workshopsList = new List<Workshop__c>();
         List<CsWorkshopResource.ResponseStatus> responseStatusList = new List<CsWorkshopResource.ResponseStatus>();
         for (String id : idToDelete) {
-            workshopsToDelete.add(new Workshop__c(Id = id));
+            workshopsList.add(new Workshop__c(Id = id));
         }
-        Database.DeleteResult[] deleteResults = Database.delete(workshopsToDelete, false);
+        Database.DeleteResult[] deleteResults = Database.delete(workshopsList, false);
+        workshopsList = new List<Workshop__c>();
         for (Database.DeleteResult deleteResult : deleteResults) {
             if (deleteResult.isSuccess()) {
                 responseStatusList.add(new CsWorkshopResource.ResponseStatus(true, deleteResult.getId(), null));
             } else {
                 responseStatusList.add(new CsWorkshopResource.ResponseStatus(false, deleteResult.getId(), deleteResult.errors[0].getMessage()));
+                if(String.isNotBlank(deleteResult.getId())){
+                    workshopsList.add(new Workshop__c(Id = deleteResult.getId(),Is_Synchronized__c = false));
+                }
+                upsert workshopsList;
             }
         }
         return responseStatusList;

@@ -28,24 +28,24 @@ public with sharing class CsQueueableCallouts implements Queueable, Database.All
                 wrappedTomeksWorkshop.zipCode = workshop.Zip_Code__c;
                 wrappedTomeksWorkshop.externalId = workshop.id;
                 wrappedTomeksWorkshop.id = workshop.External_Id__c;
-                wrappedTomeksWorkshop.isSynchronized = false;
+                wrappedTomeksWorkshop.isSynchronized = true;
                 tomeksWorkshops.add(wrappedTomeksWorkshop);
             }
             try {
                 String responseBody = restHandler.createRequest(CsUtils.getCredentialsValues('TomekPostWorkshopsEndpoint'), 'POST', tomeksWorkshops);
                 List<String> responseStatusList = (List<String>) JSON.deserialize(responseBody, List<String>.class);
                 for(Integer i=0; i<responseStatusList.size(); i++){
-                    List<String> responseForIterObject = responseStatusList.get(i).split(',');
-                    if(responseForIterObject.get(0)== System.Label.Status_Success){
+                    List<String> responseFromTomek = responseStatusList.get(i).split(',');
+                    if(responseFromTomek.get(0)== System.Label.Status_Success){
                         workshopToUpsert = workshops.get(i).clone(true,true);
                         workshopToUpsert.Is_Synchronized__c = true;
-                        workshopToUpsert.External_Id__c = responseForIterObject.get(1);
+                        workshopToUpsert.External_Id__c = responseFromTomek.get(1);
                         listToUpdate.add(workshopToUpsert);
                     }
                 }
                 update listToUpdate;
-            }catch (CsException csError){
-                System.debug(csError.getMessage());
+            }catch (Exception error){
+                System.debug(error.getMessage());
             }
         }
         if(method == 'DELETE') {

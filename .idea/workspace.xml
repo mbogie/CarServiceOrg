@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="378619f6-206d-4b97-be6c-0e71661895b4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/classes/CsQueueableCallouts.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarServiceOrg.iml" beforeDir="false" afterPath="$PROJECT_DIR$/CarServiceOrg.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsException.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsException.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/CsQueueableCallouts.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsQueueableCallouts.cls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestControllerTest.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestControllerTest.cls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestHandler.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestHandler.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsUpsertWorkshop.cls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsUpsertWorkshop.cls-meta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsQueueableCallouts.cls-meta.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/classes/CsWorkshopResourceHandler.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsWorkshopResourceHandler.cls" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/classes/CsWorkshopTriggerHandler.cls" beforeDir="false" afterPath="$PROJECT_DIR$/src/classes/CsWorkshopTriggerHandler.cls" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsWorkshopTriggerHandlerHelper.cls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/classes/CsWorkshopTriggerHandlerHelper.cls-meta.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/CsTomeksWorkshopsSearch.page" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/CsTomeksWorkshopsSearch.page" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,19 +40,46 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
+            <state relative-caret-position="543">
+              <caret line="63" column="39" lean-forward="true" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
               <folding>
                 <element signature="e#1337#1360#0" expanded="true" />
                 <element signature="e#1638#1646#0" expanded="true" />
                 <element signature="e#1748#1756#0" expanded="true" />
                 <element signature="e#1793#1801#0" expanded="true" />
                 <element signature="e#3167#3175#0" expanded="true" />
+                <element signature="e#3379#3402#0" expanded="true" />
                 <element signature="e#4809#4817#0" expanded="true" />
+                <element signature="e#5874#5882#0" expanded="true" />
                 <element signature="e#6358#6366#0" expanded="true" />
                 <element signature="e#6403#6411#0" expanded="true" />
                 <element signature="e#8231#8245#0" expanded="true" />
                 <element signature="e#8417#8433#0" expanded="true" />
+                <element signature="e#8247#8263#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopResource.cls">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="592">
+              <caret line="41" column="31" lean-forward="true" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopResourceHandler.cls">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+              <folding>
+                <element signature="e#281#294#0" expanded="true" />
+                <element signature="e#375#410#0" expanded="true" />
+                <element signature="e#635#648#0" expanded="true" />
+                <element signature="e#1553#1566#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -69,30 +88,26 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestHandler.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+            <state relative-caret-position="268">
+              <caret line="16" column="77" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="77" />
               <folding>
                 <element signature="e#429#437#0" expanded="true" />
-                <element signature="e#1758#1827#0" expanded="true" />
+                <element signature="e#952#968#0" expanded="true" />
+                <element signature="e#1696#1765#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pages/CsTomeksWorkshopsSearch.page">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="163" column="22" lean-forward="true" selection-start-line="163" selection-start-column="22" selection-end-line="163" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/classes/CsQueueableCallouts.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+            <state relative-caret-position="646">
+              <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
+              <folding>
+                <element signature="e#661#716#0" expanded="true" />
+                <element signature="e#819#832#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,14 +115,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopTriggerHandler.cls">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+            <state relative-caret-position="728">
+              <caret line="43" column="68" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
               <folding>
                 <element signature="e#128#141#0" expanded="true" />
                 <element signature="e#270#283#0" expanded="true" />
                 <element signature="e#960#973#0" expanded="true" />
                 <element signature="e#977#990#0" expanded="true" />
-                <element signature="e#1422#1435#0" expanded="true" />
+                <element signature="e#1788#1801#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,7 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>closeModal</find>
       <find>WrappedMechanic</find>
       <find>mechanicToInsertOrUpdate</find>
       <find>clearModal</find>
@@ -156,16 +170,14 @@
       <find>listOfCountries</find>
       <find>popupHeader</find>
       <find>csException</find>
-      <find>workshops</find>
-      <find>wrappedTomeksWorkshopToUpsert</find>
       <find>wrappedTomeksWorkshopToUpsertOfDelete</find>
       <find>idToDelete</find>
       <find>deletedWorkshops</find>
+      <find>wrappedTomeksWorkshopToUpsert</find>
+      <find>listToUpsert</find>
+      <find>workshops</find>
     </findStrings>
     <replaceStrings>
-      <replace>editedContractFromAgreementsList</replace>
-      <replace>mechanicsSearchResultList</replace>
-      <replace>Contract__c</replace>
       <replace>End_Date__c</replace>
       <replace>workshopsIdFromTrigger</replace>
       <replace>oldContract</replace>
@@ -193,6 +205,9 @@
       <replace>csError</replace>
       <replace>wrappedTomeksWorkshopToUpsertOfDelete</replace>
       <replace>wrappedTomeksWorkshopToUpsertOrDelete</replace>
+      <replace>listFromTrigger</replace>
+      <replace>listToCallout</replace>
+      <replace>workshopsList</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -234,7 +249,6 @@
         <option value="$PROJECT_DIR$/src/pages/CsWorkshopDetail.page" />
         <option value="$PROJECT_DIR$/src/classes/CsWorkshopResourceHelper.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsWorkshopResource.cls" />
-        <option value="$PROJECT_DIR$/src/classes/CsWorkshopResourceHandler.cls" />
         <option value="$PROJECT_DIR$/src/triggers/CsWorkshopsCopyToTomek.trigger" />
         <option value="$PROJECT_DIR$/src/classes/CsMechanicEditController.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsMechanicEdit.page" />
@@ -244,15 +258,16 @@
         <option value="$PROJECT_DIR$/src/classes/CsCountryResourceHandler.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsCountryResource.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsExceptions.cls" />
-        <option value="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestControllerTest.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsException.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsWorkshopTriggerHandlerHelper.cls" />
         <option value="$PROJECT_DIR$/src/pages/CsTomeksWorkshopsSearch.page" />
         <option value="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsUpsertWorkshop.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestHandler.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestControllerTest.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsQueueableCallouts.cls" />
         <option value="$PROJECT_DIR$/src/classes/CsWorkshopTriggerHandler.cls" />
-        <option value="$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestHandler.cls" />
+        <option value="$PROJECT_DIR$/src/classes/CsWorkshopResourceHandler.cls" />
       </list>
     </option>
   </component>
@@ -273,7 +288,7 @@
       <ProjectWorkspaceSettings>
         <option name="anonymousApexSettings">
           <AnonymousApexSettings>
-            <option name="documentText" value="List&lt;Workshop__c&gt; workshops  = [SELECT Id, Name FROM Workshop__c WHERE Name LIKE 'tal%'];&#10;delete workshops;" />
+            <option name="documentText" value="List&lt;Workshop__c&gt; workshops  = [SELECT Id, Name FROM Workshop__c WHERE Name LIKE 'dupa%'];&#10;delete workshops;" />
             <option name="splitterProportion" value="0.4791239" />
           </AnonymousApexSettings>
         </option>
@@ -300,7 +315,7 @@
                       <entry key="CLASSES/CSMECHANICSEARCHCONTROLLER.CLS" value="1563229518173" />
                       <entry key="CLASSES/CSMECHANICSWEBSERVICE.CLS" value="1564434351000" />
                       <entry key="CLASSES/CSMULTIREQUESTMOCK.CLS" value="1564510447000" />
-                      <entry key="CLASSES/CSQUEUEABLECALLOUTS.CLS" value="1565121410000" />
+                      <entry key="CLASSES/CSQUEUEABLECALLOUTS.CLS" value="1565125192000" />
                       <entry key="CLASSES/CSRANDOMMECHANICSCONTROLLER.CLS" value="1563358483000" />
                       <entry key="CLASSES/CSSINGLEREQUESTMOCK.CLS" value="1564560017000" />
                       <entry key="CLASSES/CSSOAPMWMECHANICMOCK.CLS" value="1564400544000" />
@@ -310,9 +325,9 @@
                       <entry key="CLASSES/CSTOMEKSMECHANICSSEARCHCONTROLLER.CLS" value="1564483995000" />
                       <entry key="CLASSES/CSTOMEKSMECHANICSSEARCHCONTROLLERTEST.CLS" value="1564516616000" />
                       <entry key="CLASSES/CSTOMEKSMECHANICSWEBSERVICE.CLS" value="1563874217035" />
-                      <entry key="CLASSES/CSTOMEKSWORKSHOPSRESTCONTROLLER.CLS" value="1565120718000" />
-                      <entry key="CLASSES/CSTOMEKSWORKSHOPSRESTCONTROLLERTEST.CLS" value="1565103133000" />
-                      <entry key="CLASSES/CSTOMEKSWORKSHOPSRESTHANDLER.CLS" value="1565121569000" />
+                      <entry key="CLASSES/CSTOMEKSWORKSHOPSRESTCONTROLLER.CLS" value="1565123461000" />
+                      <entry key="CLASSES/CSTOMEKSWORKSHOPSRESTCONTROLLERTEST.CLS" value="1565123665000" />
+                      <entry key="CLASSES/CSTOMEKSWORKSHOPSRESTHANDLER.CLS" value="1565122412000" />
                       <entry key="CLASSES/CSTRIGGERFACTORY.CLS" value="1564518268000" />
                       <entry key="CLASSES/CSUPDATEWORKSHOP.CLS" value="1565014095000" />
                       <entry key="CLASSES/CSUSERTRIGGERHANDLER.CLS" value="1563795819278" />
@@ -320,8 +335,8 @@
                       <entry key="CLASSES/CSWORKSHOPDETAILCONTROLLER.CLS" value="1564434352000" />
                       <entry key="CLASSES/CSWORKSHOPEDITCONTROLLER.CLS" value="1564957386000" />
                       <entry key="CLASSES/CSWORKSHOPRESOURCE.CLS" value="1564952866000" />
-                      <entry key="CLASSES/CSWORKSHOPRESOURCEHANDLER.CLS" value="1564952883000" />
-                      <entry key="CLASSES/CSWORKSHOPTRIGGERHANDLER.CLS" value="1565121410000" />
+                      <entry key="CLASSES/CSWORKSHOPRESOURCEHANDLER.CLS" value="1565127235000" />
+                      <entry key="CLASSES/CSWORKSHOPTRIGGERHANDLER.CLS" value="1565126969000" />
                       <entry key="CLASSES/CSWRAPPERCONTRACT.CLS" value="1563309012518" />
                       <entry key="CLASSES/CSWRAPPERMECHANIC.CLS" value="1563310503725" />
                       <entry key="CLASSES/LOCATIONCALLOUTS.CLS" value="1562698308791" />
@@ -1751,6 +1766,37 @@
     </option>
   </component>
   <component name="RunManager" selected="Apex Unit Tests.CsTomeksWorkshopsRestControllerTest.shouldReturnGoodResponseListsWithStatus200">
+    <configuration name="CsTomeksMechanicsSearchControllerTest" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
+      <option name="allTests" value="false" />
+      <option name="allowRunningInParallel" value="false" />
+      <option name="apexLogLevel" value="DEBUG" />
+      <option name="calloutsLogLevel" value="INFO" />
+      <option name="connectionName" value="CarServiceOrg" />
+      <option name="contextConfiguration" value="true" />
+      <option name="databaseLogLevel" value="INFO" />
+      <option name="logLevelsInitialized" value="false" />
+      <option name="moduleToTestClassNames">
+        <map>
+          <entry key="CarServiceOrg">
+            <value>
+              <set>
+                <option value="CsTomeksMechanicsSearchControllerTest" />
+              </set>
+            </value>
+          </entry>
+        </map>
+      </option>
+      <option name="profilingLogLevel" value="INFO" />
+      <option name="systemLogLevel" value="DEBUG" />
+      <option name="testClassToTestMethodNames">
+        <map />
+      </option>
+      <option name="testSuiteName" />
+      <option name="validationLogLevel" value="INFO" />
+      <option name="visualforceLogLevel" value="INFO" />
+      <option name="workflowLogLevel" value="INFO" />
+      <method v="2" />
+    </configuration>
     <configuration name="CsTomeksWorkshopsRestControllerTest" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allTests" value="false" />
       <option name="allowRunningInParallel" value="false" />
@@ -1860,45 +1906,6 @@
       <option name="workflowLogLevel" value="INFO" />
       <method v="2" />
     </configuration>
-    <configuration name="CsTomeksWorkshopsRestControllerTest.shouldDisplayErrorMessageIfResponseStatusCode200" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
-      <option name="allTests" value="false" />
-      <option name="allowRunningInParallel" value="false" />
-      <option name="apexLogLevel" value="DEBUG" />
-      <option name="calloutsLogLevel" value="INFO" />
-      <option name="connectionName" value="CarServiceOrg" />
-      <option name="contextConfiguration" value="true" />
-      <option name="databaseLogLevel" value="INFO" />
-      <option name="logLevelsInitialized" value="false" />
-      <option name="moduleToTestClassNames">
-        <map>
-          <entry key="CarServiceOrg">
-            <value>
-              <set>
-                <option value="CsTomeksWorkshopsRestControllerTest" />
-              </set>
-            </value>
-          </entry>
-        </map>
-      </option>
-      <option name="profilingLogLevel" value="INFO" />
-      <option name="systemLogLevel" value="DEBUG" />
-      <option name="testClassToTestMethodNames">
-        <map>
-          <entry key="CsTomeksWorkshopsRestControllerTest">
-            <value>
-              <set>
-                <option value="shouldDisplayErrorMessageIfResponseStatusCode200" />
-              </set>
-            </value>
-          </entry>
-        </map>
-      </option>
-      <option name="testSuiteName" />
-      <option name="validationLogLevel" value="INFO" />
-      <option name="visualforceLogLevel" value="INFO" />
-      <option name="workflowLogLevel" value="INFO" />
-      <method v="2" />
-    </configuration>
     <configuration name="CsTomeksWorkshopsRestControllerTest.shouldReturnGoodResponseListsWithStatus200" type="com.illuminatedcloud.intellij" factoryName="Apex Unit Tests" temporary="true" show_console_on_std_err="false" show_console_on_std_out="false">
       <option name="allTests" value="false" />
       <option name="allowRunningInParallel" value="false" />
@@ -1941,10 +1948,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Apex Unit Tests.CsTomeksWorkshopsRestControllerTest.shouldReturnGoodResponseListsWithStatus200" />
-        <item itemvalue="Apex Unit Tests.CsTomeksWorkshopsRestControllerTest.shouldCopyFieldValuesOfMechanicFromResultListIfIdIsEqualBeforeOpenEditPopup" />
         <item itemvalue="Apex Unit Tests.CsTomeksWorkshopsRestControllerTest" />
+        <item itemvalue="Apex Unit Tests.CsTomeksMechanicsSearchControllerTest" />
+        <item itemvalue="Apex Unit Tests.CsTomeksWorkshopsRestControllerTest.shouldCopyFieldValuesOfMechanicFromResultListIfIdIsEqualBeforeOpenEditPopup" />
         <item itemvalue="Apex Unit Tests.CsTomeksWorkshopsRestControllerTest.shouldDisplayErrorMessageIfDeleteAndSaveMethodWasFail" />
-        <item itemvalue="Apex Unit Tests.CsTomeksWorkshopsRestControllerTest.shouldDisplayErrorMessageIfResponseStatusCode200" />
       </list>
     </recent_temporary>
   </component>
@@ -2006,21 +2013,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CsTomeksWorkshopsRestControllerTest_shouldReturnGoodResponseListsWithStatus200 - 2019.08.06 at 16h 27m 17s.xml">
-      <configuration name="CsTomeksWorkshopsRestControllerTest.shouldReturnGoodResponseListsWithStatus200" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
-    <history-entry file="CsTomeksWorkshopsRestControllerTest_shouldReturnGoodResponseListsWithStatus200 - 2019.08.06 at 16h 30m 54s.xml">
-      <configuration name="CsTomeksWorkshopsRestControllerTest.shouldReturnGoodResponseListsWithStatus200" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
-    <history-entry file="CsTomeksWorkshopsRestControllerTest_shouldReturnGoodResponseListsWithStatus200 - 2019.08.06 at 16h 32m 04s.xml">
-      <configuration name="CsTomeksWorkshopsRestControllerTest.shouldReturnGoodResponseListsWithStatus200" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
-    <history-entry file="CsTomeksWorkshopsRestControllerTest_shouldReturnGoodResponseListsWithStatus200 - 2019.08.06 at 16h 39m 07s.xml">
-      <configuration name="CsTomeksWorkshopsRestControllerTest.shouldReturnGoodResponseListsWithStatus200" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
-    <history-entry file="CsTomeksWorkshopsRestControllerTest_shouldReturnGoodResponseListsWithStatus200 - 2019.08.06 at 16h 40m 57s.xml">
-      <configuration name="CsTomeksWorkshopsRestControllerTest.shouldReturnGoodResponseListsWithStatus200" configurationId="com.illuminatedcloud.intellij" />
-    </history-entry>
     <history-entry file="CsTomeksWorkshopsRestControllerTest_shouldReturnGoodResponseListsWithStatus200 - 2019.08.06 at 16h 41m 24s.xml">
       <configuration name="CsTomeksWorkshopsRestControllerTest.shouldReturnGoodResponseListsWithStatus200" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
@@ -2034,6 +2026,21 @@
       <configuration name="CsTomeksWorkshopsRestControllerTest.shouldReturnGoodResponseListsWithStatus200" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
     <history-entry file="CsTomeksWorkshopsRestControllerTest_shouldReturnGoodResponseListsWithStatus200 - 2019.08.06 at 16h 50m 52s.xml">
+      <configuration name="CsTomeksWorkshopsRestControllerTest.shouldReturnGoodResponseListsWithStatus200" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksMechanicsSearchControllerTest - 2019.08.06 at 22h 24m 15s.xml">
+      <configuration name="CsTomeksMechanicsSearchControllerTest" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksWorkshopsRestControllerTest - 2019.08.06 at 22h 24m 27s.xml">
+      <configuration name="CsTomeksWorkshopsRestControllerTest" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksWorkshopsRestControllerTest - 2019.08.06 at 22h 24m 51s.xml">
+      <configuration name="CsTomeksWorkshopsRestControllerTest" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksWorkshopsRestControllerTest - 2019.08.06 at 22h 28m 00s.xml">
+      <configuration name="CsTomeksWorkshopsRestControllerTest" configurationId="com.illuminatedcloud.intellij" />
+    </history-entry>
+    <history-entry file="CsTomeksWorkshopsRestControllerTest_shouldReturnGoodResponseListsWithStatus200 - 2019.08.06 at 22h 28m 39s.xml">
       <configuration name="CsTomeksWorkshopsRestControllerTest.shouldReturnGoodResponseListsWithStatus200" configurationId="com.illuminatedcloud.intellij" />
     </history-entry>
   </component>
@@ -2050,24 +2057,24 @@
       <window_info id="Capture Tool" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.2803838" />
+      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.2803838" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4989339" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.5986141" weight="0.24918744" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.59808105" weight="0.24918744" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798658" weight="0.398017" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Log Viewer" order="7" sideWeight="0.8651386" weight="0.45042494" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.5181237" weight="0.16576381" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.51759064" weight="0.16576381" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.32827735" />
       <window_info anchor="bottom" id="Database Changes" order="11" />
-      <window_info anchor="bottom" id="Anonymous Apex" order="12" sideWeight="0.7292111" weight="0.65763813" />
+      <window_info active="true" anchor="bottom" id="Anonymous Apex" order="12" sideWeight="0.72761196" visible="true" weight="0.35536295" />
       <window_info anchor="bottom" id="SOQL Query" order="13" sideWeight="0.53837955" weight="0.34560907" />
       <window_info anchor="bottom" id="Problems" order="14" sideWeight="0.49733475" weight="0.32719547" />
-      <window_info anchor="bottom" id="Version Control" order="15" sideWeight="0.49413645" weight="0.3895184" />
-      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.2707889" side_tool="true" visible="true" weight="0.24918744" />
+      <window_info anchor="bottom" id="Version Control" order="15" sideWeight="0.4936034" weight="0.38894907" />
+      <window_info anchor="bottom" id="Event Log" order="16" sideWeight="0.27238807" side_tool="true" visible="true" weight="0.35536295" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -2166,27 +2173,9 @@
     <option name="LAST_COMMIT_MESSAGE" value="First Commit" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/CarServiceOrg$CsTomeksWorkshopsRestControllerTest_shouldReturnGoodResponseListsWithStatus200.null" NAME="CarServiceOrg Coverage Results" MODIFIED="1565103049899" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="Apex" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" PROJECT_NAME="CarServiceOrg" CONNECTION_NAME="CarServiceOrg" />
+    <SUITE FILE_PATH="coverage/CarServiceOrg$CsTomeksWorkshopsRestControllerTest_shouldReturnGoodResponseListsWithStatus200.null" NAME="CarServiceOrg Coverage Results" MODIFIED="1565123316514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="Apex" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="true" PROJECT_NAME="CarServiceOrg" CONNECTION_NAME="CarServiceOrg" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="64" column="55" lean-forward="true" selection-start-line="64" selection-start-column="55" selection-end-line="64" selection-end-column="55" />
-          <folding>
-            <element signature="e#3308#3316#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pages/CsMechanicDetail.page">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="67" column="35" lean-forward="true" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsRestHandler.cls" />
     <entry file="file://$PROJECT_DIR$/src/classes/CsUtils.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-331">
@@ -2311,13 +2300,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicEditController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="39" column="5" lean-forward="true" selection-start-line="16" selection-start-column="4" selection-end-line="39" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/CsWorkshopEdit.page">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -2424,41 +2406,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestControllerTest.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="132" column="9" selection-start-line="132" selection-start-column="9" selection-end-line="132" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsException.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="55" selection-start-column="55" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopResource.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="41" column="47" lean-forward="true" selection-start-line="41" selection-start-column="47" selection-end-line="41" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopResourceHandler.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="34" lean-forward="true" selection-start-line="17" selection-start-column="34" selection-end-line="17" selection-end-column="34" />
-          <folding>
-            <element signature="e#1329#1342#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/IlluminatedCloud/CarServiceOrg/OfflineSymbolTable.zip!/System/System.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -2469,54 +2420,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopTriggerHandler.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding>
-            <element signature="e#128#141#0" expanded="true" />
-            <element signature="e#270#283#0" expanded="true" />
-            <element signature="e#960#973#0" expanded="true" />
-            <element signature="e#977#990#0" expanded="true" />
-            <element signature="e#1422#1435#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="28" lean-forward="true" selection-start-line="7" selection-start-column="28" selection-end-line="7" selection-end-column="28" />
-          <folding>
-            <element signature="e#1337#1360#0" expanded="true" />
-            <element signature="e#1638#1646#0" expanded="true" />
-            <element signature="e#1748#1756#0" expanded="true" />
-            <element signature="e#1793#1801#0" expanded="true" />
-            <element signature="e#3167#3175#0" expanded="true" />
-            <element signature="e#4809#4817#0" expanded="true" />
-            <element signature="e#6358#6366#0" expanded="true" />
-            <element signature="e#6403#6411#0" expanded="true" />
-            <element signature="e#8231#8245#0" expanded="true" />
-            <element signature="e#8417#8433#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestHandler.cls">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="28" lean-forward="true" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-          <folding>
-            <element signature="e#429#437#0" expanded="true" />
-            <element signature="e#1758#1827#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsUpsertWorkshop.cls">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="28" column="59" selection-start-line="28" selection-start-column="59" selection-end-line="28" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/IlluminatedCloud/CarServiceOrg/OfflineSymbolTable.zip!/System/System.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="52" column="21" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -2527,10 +2441,120 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicEditController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/IlluminatedCloud/CarServiceOrg/OfflineSymbolTable.zip!/System/JSON.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="24" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestControllerTest.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="562">
+          <caret line="132" column="7" selection-start-line="132" selection-start-column="7" selection-end-line="132" selection-end-column="7" />
+          <folding>
+            <element signature="e#1103#1158#0" expanded="true" />
+            <element signature="e#2830#2885#0" expanded="true" />
+            <element signature="e#5609#5623#0" expanded="true" />
+            <element signature="e#5870#5895#0" expanded="true" />
+            <element signature="e#7483#7497#0" expanded="true" />
+            <element signature="e#7744#7769#0" expanded="true" />
+            <element signature="e#9222#9236#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsLocationCallouts.cls">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsMechanicDetailController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-459" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestController.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="543">
+          <caret line="63" column="39" lean-forward="true" selection-start-line="63" selection-start-column="39" selection-end-line="63" selection-end-column="39" />
+          <folding>
+            <element signature="e#1337#1360#0" expanded="true" />
+            <element signature="e#1638#1646#0" expanded="true" />
+            <element signature="e#1748#1756#0" expanded="true" />
+            <element signature="e#1793#1801#0" expanded="true" />
+            <element signature="e#3167#3175#0" expanded="true" />
+            <element signature="e#3379#3402#0" expanded="true" />
+            <element signature="e#4809#4817#0" expanded="true" />
+            <element signature="e#5874#5882#0" expanded="true" />
+            <element signature="e#6358#6366#0" expanded="true" />
+            <element signature="e#6403#6411#0" expanded="true" />
+            <element signature="e#8231#8245#0" expanded="true" />
+            <element signature="e#8417#8433#0" expanded="true" />
+            <element signature="e#8247#8263#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopResource.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="592">
+          <caret line="41" column="31" lean-forward="true" selection-start-line="41" selection-start-column="31" selection-end-line="41" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/classes/CsQueueableCallouts.cls">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="30" selection-start-line="10" selection-start-column="30" selection-end-line="10" selection-end-column="30" />
+        <state relative-caret-position="646">
+          <caret line="56" column="29" lean-forward="true" selection-start-line="56" selection-start-column="29" selection-end-line="56" selection-end-column="29" />
+          <folding>
+            <element signature="e#661#716#0" expanded="true" />
+            <element signature="e#819#832#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopTriggerHandler.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="43" column="68" selection-start-line="43" selection-start-column="68" selection-end-line="43" selection-end-column="68" />
+          <folding>
+            <element signature="e#128#141#0" expanded="true" />
+            <element signature="e#270#283#0" expanded="true" />
+            <element signature="e#960#973#0" expanded="true" />
+            <element signature="e#977#990#0" expanded="true" />
+            <element signature="e#1788#1801#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsTomeksWorkshopsRestHandler.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="16" column="77" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="77" />
+          <folding>
+            <element signature="e#429#437#0" expanded="true" />
+            <element signature="e#952#968#0" expanded="true" />
+            <element signature="e#1696#1765#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/classes/CsWorkshopResourceHandler.cls">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="37" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+          <folding>
+            <element signature="e#281#294#0" expanded="true" />
+            <element signature="e#375#410#0" expanded="true" />
+            <element signature="e#635#648#0" expanded="true" />
+            <element signature="e#1553#1566#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

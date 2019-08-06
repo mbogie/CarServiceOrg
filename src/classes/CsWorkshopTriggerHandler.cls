@@ -1,7 +1,7 @@
 public with sharing class CsWorkshopTriggerHandler implements CsITrigger {
 
-    public List<Workshop__c> newWorkshops = new List<Workshop__c>();
-    public List<Workshop__c> listToUpsert = new List<Workshop__c>();
+    public List<Workshop__c> listFromTrigger = new List<Workshop__c>();
+    public List<Workshop__c> listToCallout = new List<Workshop__c>();
 
     public CsWorkshopTriggerHandler() {
     }
@@ -26,16 +26,23 @@ public with sharing class CsWorkshopTriggerHandler implements CsITrigger {
     }
 
     public void afterUpdate(List<SObject> newlstObj, List<SObject> oldlstObj, Map<Id, SObject> newMapObj, Map<Id, SObject> oldMapObj) {
-        newWorkshops = (List<Workshop__c>) newlstObj;
-        for (Workshop__c workshop : newWorkshops) {
+        listFromTrigger = (List<Workshop__c>) newlstObj;
+        for (Workshop__c workshop : listFromTrigger) {
             if (workshop.Is_Synchronized__c == false)
-                listToUpsert.add(workshop);
+                listToCallout.add(workshop);
         }
-        if (!listToUpsert.isEmpty()) System.enqueueJob(new CsQueueableCallouts(newWorkshops, 'POST'));
+        if (!listToCallout.isEmpty()) System.enqueueJob(new CsQueueableCallouts(listToCallout, 'POST'));
     }
 
     public void afterDelete(List<SObject> oldlstObj, Map<Id, SObject> oldMapObj) {
-        System.enqueueJob(new CsQueueableCallouts((List<Workshop__c>) oldlstObj, 'DELETE'));
+    /*    listFromTrigger = (List<Workshop__c>) oldlstObj;
+        for (Workshop__c workshop : listFromTrigger) {
+            if (workshop.Is_Synchronized__c == true)
+                listToCallout.add(workshop);
+        }
+        if (!listToCallout.isEmpty()) System.enqueueJob(new CsQueueableCallouts(listToCallout, 'DELETE'));*/
+        if (!listToCallout.isEmpty()) System.enqueueJob(new CsQueueableCallouts((List<Workshop__c>) oldlstObj, 'DELETE'));
+
     }
 
     public void andFinally() {

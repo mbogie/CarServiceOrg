@@ -5,8 +5,8 @@ private class CsTomeksWorkshopsRestControllerTest {
         //given
         CsTomeksWorkshopsRestController controller = new CsTomeksWorkshopsRestController();
         controller.isPopupWorkshopNameEmpty = true;
-        controller.wrappedTomeksWorkshopToUpsert.name = 'Upsert';
-        controller.wrappedTomeksWorkshopToUpsert.id = '123';
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.name = 'Upsert';
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.id = '123';
 
         //when
         Test.startTest();
@@ -15,8 +15,8 @@ private class CsTomeksWorkshopsRestControllerTest {
 
         //then
         System.assertEquals(false, controller.isPopupWorkshopNameEmpty);
-        System.assertEquals(null, controller.wrappedTomeksWorkshopToUpsert.id);
-        System.assertEquals(null, controller.wrappedTomeksWorkshopToUpsert.name);
+        System.assertEquals(null, controller.wrappedTomeksWorkshopToUpsertOrDelete.id);
+        System.assertEquals(null, controller.wrappedTomeksWorkshopToUpsertOrDelete.name);
     }
 
     @isTest static void shouldClearResultListAndFormValuesAfterPressingButtonClear() {
@@ -48,13 +48,13 @@ private class CsTomeksWorkshopsRestControllerTest {
         tomeksWorkshop.city = 'Test';
         tomeksWorkshop.zipCode = '23';
         tomeksWorkshop.id = '123456';
-        controller.wrappedTomeksWorkshopToUpsert.name = 'test';
-        controller.wrappedTomeksWorkshopToUpsert.phone = null;
-        controller.wrappedTomeksWorkshopToUpsert.website = null;
-        controller.wrappedTomeksWorkshopToUpsert.city = null;
-        controller.wrappedTomeksWorkshopToUpsert.country = null;
-        controller.wrappedTomeksWorkshopToUpsert.zipCode = null;
-        controller.wrappedTomeksWorkshopToUpsert.id = '123456';
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.name = 'test';
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.phone = null;
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.website = null;
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.city = null;
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.country = null;
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.zipCode = null;
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.id = '123456';
         controller.wrappedTomeksWorkshopsList = new List<CsTomeksWorkshopsRestController.WrappedTomeksWorkshop>{tomeksWorkshop};
         String popupHeader;
 
@@ -65,12 +65,12 @@ private class CsTomeksWorkshopsRestControllerTest {
         Test.stopTest();
 
         //then
-        System.assertEquals(tomeksWorkshop.name, controller.wrappedTomeksWorkshopToUpsert.name);
-        System.assertEquals(tomeksWorkshop.phone, controller.wrappedTomeksWorkshopToUpsert.phone);
-        System.assertEquals(tomeksWorkshop.website, controller.wrappedTomeksWorkshopToUpsert.website);
-        System.assertEquals(tomeksWorkshop.country, controller.wrappedTomeksWorkshopToUpsert.country);
-        System.assertEquals(tomeksWorkshop.city, controller.wrappedTomeksWorkshopToUpsert.city);
-        System.assertEquals(tomeksWorkshop.zipCode, controller.wrappedTomeksWorkshopToUpsert.zipCode);
+        System.assertEquals(tomeksWorkshop.name, controller.wrappedTomeksWorkshopToUpsertOrDelete.name);
+        System.assertEquals(tomeksWorkshop.phone, controller.wrappedTomeksWorkshopToUpsertOrDelete.phone);
+        System.assertEquals(tomeksWorkshop.website, controller.wrappedTomeksWorkshopToUpsertOrDelete.website);
+        System.assertEquals(tomeksWorkshop.country, controller.wrappedTomeksWorkshopToUpsertOrDelete.country);
+        System.assertEquals(tomeksWorkshop.city, controller.wrappedTomeksWorkshopToUpsertOrDelete.city);
+        System.assertEquals(tomeksWorkshop.zipCode, controller.wrappedTomeksWorkshopToUpsertOrDelete.zipCode);
         System.assertEquals('Edit Test', popupHeader);
     }
 
@@ -108,7 +108,7 @@ private class CsTomeksWorkshopsRestControllerTest {
     @isTest static void shouldDisplayErrorMessageIfPopupSearchNameIsEmpty() {
         //given
         CsTomeksWorkshopsRestController controller = new CsTomeksWorkshopsRestController();
-        controller.wrappedTomeksWorkshopToUpsert.name = null;
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.name = null;
 
         //when
         Test.startTest();
@@ -126,11 +126,11 @@ private class CsTomeksWorkshopsRestControllerTest {
         CsTomeksWorkshopsRestController controller = new CsTomeksWorkshopsRestController();
         List<SelectOption> countryList = new List<SelectOption>();
         controller.wrappedSearchFormTomeksWorkshop.name = 'test';
-        controller.wrappedTomeksWorkshopToUpsert.name = 'testupsert';
-        controller.idToDelete = '1111';
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.name = 'testupsert';
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.id = '1111';
 
         Map<String, HttpCalloutMock> responseMap = new Map<String, HttpCalloutMock>();
-       // responseMap.put(CsUtils.getCredentialsValues('TomekGetCountriesEndpoint'), new CsSingleRequestMock(200, '{"":"- None -","USA":"USA","UA":"UA","PL":"PL","NL":"NL","AU":"AU"}'));
+     //   responseMap.put(CsUtils.getCredentialsValues('TomekGetCountriesEndpoint'), new CsSingleRequestMock(200, '{"":"- None -","USA":"USA","UA":"UA","PL":"PL","NL":"NL","AU":"AU"}'));
         responseMap.put(CsUtils.getCredentialsValues('TomekGetWorkshopsEndpoint') + 'Name__c=test', new CsSingleRequestMock(200,'[{"zipCode":null,"website":null,"phone":null,"name":"testname","id":"a012p00001GYD05AAH","country":null,"city":"testcity"}]'));
         responseMap.put(CsUtils.getCredentialsValues('TomekDeleteWorkshopsEndpoint') + '1111', new CsSingleRequestMock(200,'["Success, a002p00000uNavUAAS"]'));
         responseMap.put(CsUtils.getCredentialsValues('TomekPostWorkshopsEndpoint'), new CsSingleRequestMock(200,'["Success, a002p00000uNavUAAS"]'));
@@ -140,7 +140,7 @@ private class CsTomeksWorkshopsRestControllerTest {
         //when
         Test.startTest();
         Test.setMock(HttpCalloutMock.class, multiCalloutMock);
-     //   countryList = controller.getCountryList();
+//        countryList = controller.getCountryList();
         controller.searchWorkshop();
         controller.deleteWorkshop();
         controller.saveWorkshop();
@@ -149,7 +149,6 @@ private class CsTomeksWorkshopsRestControllerTest {
         //than
      //   System.assertEquals(6, countryList.size());
         System.assertEquals(1, controller.wrappedTomeksWorkshopsList.size());
-        System.assertEquals(1, controller.responseStatusList.size());
     }
 
     @isTest static void shouldDisplayErrorMessageIfResponseStatusCode200(){
@@ -157,8 +156,8 @@ private class CsTomeksWorkshopsRestControllerTest {
         CsTomeksWorkshopsRestController controller = new CsTomeksWorkshopsRestController();
         List<SelectOption> countryList = new List<SelectOption>();
         controller.wrappedSearchFormTomeksWorkshop.name = 'test';
-        controller.wrappedTomeksWorkshopToUpsert.name = 'testupsert';
-        controller.idToDelete = '1111';
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.name = 'testupsert';
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.id = '1111';
 
         Map<String, HttpCalloutMock> responseMap = new Map<String, HttpCalloutMock>();
         responseMap.put(CsUtils.getCredentialsValues('TomekGetCountriesEndpoint'), new CsSingleRequestMock(400, '[]'));
@@ -181,7 +180,6 @@ private class CsTomeksWorkshopsRestControllerTest {
         //than
         System.assertEquals(0, countryList.size());
         System.assertEquals(0, controller.wrappedTomeksWorkshopsList.size());
-        System.assertEquals(0, controller.responseStatusList.size());
         System.assert(pageMessages.size()>0);
     }
 
@@ -189,8 +187,8 @@ private class CsTomeksWorkshopsRestControllerTest {
         //given
         CsTomeksWorkshopsRestController controller = new CsTomeksWorkshopsRestController();
         List<SelectOption> countryList = new List<SelectOption>();
-        controller.wrappedTomeksWorkshopToUpsert.name = 'testupsert';
-        controller.idToDelete = '1111';
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.name = 'testupsert';
+        controller.wrappedTomeksWorkshopToUpsertOrDelete.id = '1111';
 
         Map<String, HttpCalloutMock> responseMap = new Map<String, HttpCalloutMock>();
         responseMap.put(CsUtils.getCredentialsValues('TomekDeleteWorkshopsEndpoint')+'1111', new CsSingleRequestMock(200,'["Error, a002p00000uNavUAAS, entity is deleted"]'));
@@ -207,7 +205,6 @@ private class CsTomeksWorkshopsRestControllerTest {
         Test.stopTest();
 
         //than
-        System.assertEquals(1, controller.responseStatusList.size());
         System.assert(pageMessages.size()>0);
     }
 }
