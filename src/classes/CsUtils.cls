@@ -54,4 +54,20 @@ public with sharing class CsUtils {
             return csItem.Value__c;
         }
     }
+
+    public static void changePublicGroup(String username, String fromGroup, String toGroup){
+        Group groupFrom = [SELECT Id FROM Group WHERE DeveloperName = :fromGroup];
+        Group groupTo = [SELECT Id FROM Group WHERE DeveloperName = :toGroup];
+
+        User user = [SELECT Id FROM user WHERE Username LIKE :username][0];
+
+        GroupMember oldGroupMember  = [SELECT Id from GroupMember WHERE GroupId = :groupFrom.Id AND UserOrGroupId = :user.Id];
+        delete oldGroupMember;
+
+        GroupMember newGroupMember = new GroupMember();
+        newGroupMember.GroupId = groupTo.Id;
+        newGroupMember.UserOrGroupId = user.Id;
+        insert newGroupMember;
+    }
+
 }
