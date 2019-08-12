@@ -9,8 +9,8 @@
         <value>Trigger_Exception</value>
     </caseValues>
     <fields>
-        <label><!-- OverlappingErrorEnable --></label>
-        <name>OverlappingErrorEnable__c</name>
+        <label><!-- CsContractOverlapping --></label>
+        <name>CsContractOverlapping__c</name>
     </fields>
     <startsWith>Consonant</startsWith>
 </CustomObjectTranslation>

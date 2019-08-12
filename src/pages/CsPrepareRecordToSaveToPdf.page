@@ -16,14 +16,14 @@
     </head>
         <apex:pageBlock id="mechanicBlock" title="{!Mechanic__c.Full_Name__c}">
             <apex:panelGrid columns="2" columnClasses="picture,details" style="width:100%">
-                <apex:outputPanel id ="picturePanel">
+                <apex:outputPanel id="picturePanel">
                     <apex:image value="{!URLFOR($Action.Attachment.Download, idOfAttachment)}" width="150"
                                 height="150" id="final" rendered="{!!isDefaultPhotoDisplayed}"/>
                     <apex:image url="{!URLFOR($Resource.DefaultPicture, 'default.png')}" width="150" height="150"
                                 id="default"
                                 rendered="{!isDefaultPhotoDisplayed}"/>
                 </apex:outputPanel>
-                <apex:outputPanel id ="detailsPanel">
+                <apex:outputPanel id="detailsPanel">
                     <apex:pageBlockSection id="detailSection" title="{!$Label.Section_Details}">
                         <apex:outputField value="{!Mechanic__c.First_Name__c}"/>
                         <apex:outputField value="{!Mechanic__c.Speciality__c}"/>

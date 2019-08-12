@@ -191,9 +191,9 @@
                                         rendered="{!isContractSectionReady}">
                             <apex:pageBlockSection id="mechanicWorkshopNameSection">
                                 <apex:outputField value="{!Mechanic__c.Full_Name__c}"/>
-                                <apex:pageBlockSectionItem/>
+                                <apex:pageBlockSectionItem />
                                 <apex:outputField value="{!workshopChoosen.Name}"/>
-                                <apex:pageBlockSectionItem/>
+                                <apex:pageBlockSectionItem />
                                 <apex:inputField value="{!contractPageFormController.Start_Date__c}"
                                                  required="true"/>
                                 <apex:inputField value="{!contractPageFormController.End_Date__c}"/>

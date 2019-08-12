@@ -14,10 +14,6 @@ public with sharing class CsWorkshopResourceHandler {
                 responseStatusList.add(new CsWorkshopResource.ResponseStatus(true, deleteResult.getId(), null));
             } else {
                 responseStatusList.add(new CsWorkshopResource.ResponseStatus(false, deleteResult.getId(), deleteResult.errors[0].getMessage()));
-                if(String.isNotBlank(deleteResult.getId())){
-                    workshopsList.add(new Workshop__c(Id = deleteResult.getId(),Is_Synchronized__c = false));
-                }
-                upsert workshopsList;
             }
         }
         return responseStatusList;

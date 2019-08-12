@@ -1,6 +1,22 @@
 public with sharing class testClass {
 
     public void clearPage() {
+        List<Workshop__c> ids = [SELECT External_Id__c from Workshop__c WHERE Is_Synchronized__c = true];
+        Set<String> setek = new Set<String>();
+        for(Workshop__c id : ids){
+            setek.add(id.External_Id__c);
+        }
+
+        System.debug('ids - ' + ids);
+
+
+
+        List<AggregateResult> calloutLogs = [SELECT Name ,max(CreatedDate) From Callout_Log__c GROUP BY Name];
+        System.debug('callouts - ' + calloutLogs);
+
+
+
+
         isNameEmpty = false;
         tomeksMechanicsList = new List<WrapperForTomeksMechanics>();
         mechanicsSearchResultList = new List<Mechanic__c>();
@@ -8,6 +24,7 @@ public with sharing class testClass {
     }
 
     public void addMechanic() {
+
         isActionSuccess = true;
         isNewMechanicNameEmpty = false;
         if (String.isEmpty(newMechanic.Name)) {

@@ -180,7 +180,7 @@
         <fullName>City__c</fullName>
         <externalId>false</externalId>
         <label>City</label>
-        <length>50</length>
+        <length>250</length>
         <required>false</required>
         <trackHistory>false</trackHistory>
         <trackTrending>false</trackTrending>
@@ -214,7 +214,7 @@
         <fullName>First_Name__c</fullName>
         <externalId>false</externalId>
         <label>First Name</label>
-        <length>30</length>
+        <length>250</length>
         <required>false</required>
         <trackHistory>true</trackHistory>
         <trackTrending>false</trackTrending>
@@ -399,10 +399,10 @@
         <columns>First_Name__c</columns>
         <columns>Address__c</columns>
         <columns>Email__c</columns>
-        <columns>City__c</columns>
         <columns>Country__c</columns>
         <columns>Birthday__c</columns>
         <columns>Next_Birthday__c</columns>
+        <columns>OWNER.ALIAS</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
         <language>en_US</language>
@@ -424,7 +424,7 @@
         <lookupDialogsAdditionalFields>Skill__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Speciality__c</lookupDialogsAdditionalFields>
     </searchLayouts>
-    <sharingModel>ReadWrite</sharingModel>
+    <sharingModel>Private</sharingModel>
     <validationRules>
         <fullName>Required_Name</fullName>
         <active>true</active>

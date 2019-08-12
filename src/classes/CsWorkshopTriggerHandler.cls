@@ -35,14 +35,13 @@ public with sharing class CsWorkshopTriggerHandler implements CsITrigger {
     }
 
     public void afterDelete(List<SObject> oldlstObj, Map<Id, SObject> oldMapObj) {
-    /*    listFromTrigger = (List<Workshop__c>) oldlstObj;
+        listFromTrigger = (List<Workshop__c>) oldlstObj;
         for (Workshop__c workshop : listFromTrigger) {
-            if (workshop.Is_Synchronized__c == true)
+            if (String.isNotBlank(workshop.External_Id__c))
                 listToCallout.add(workshop);
         }
-        if (!listToCallout.isEmpty()) System.enqueueJob(new CsQueueableCallouts(listToCallout, 'DELETE'));*/
-        if (!listToCallout.isEmpty()) System.enqueueJob(new CsQueueableCallouts((List<Workshop__c>) oldlstObj, 'DELETE'));
-
+        if (!listToCallout.isEmpty()) System.enqueueJob(new CsQueueableCallouts(listToCallout, 'DELETE'));
+      //  System.enqueueJob(new CsQueueableCallouts((List<Workshop__c>)oldlstObj, 'DELETE'));
     }
 
     public void andFinally() {

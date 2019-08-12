@@ -46,6 +46,14 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsCountryResourceHandler" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsException" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsFaultPartnerSoapSforceCom" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -94,6 +102,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsQueueableCallouts" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsRandomMechanicsController" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -103,10 +115,6 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsSoapMwMechanicMock" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="CsSoapSforceComSchemasClassMwMechaniMock" />
-                            <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="CsSoapSforceComSchemasClassMwMechanic" />
@@ -157,7 +165,15 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="CsWorkshopEditController" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="CsWorkshopResource" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="CsWorkshopResourceHandler" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -200,27 +216,23 @@
                             <option name="name" value="testClass" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsWorkshopResourceHandler" />
+                            <option name="name" value="CsQueueableCalloutLogs" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsUpdateWorkshop" />
+                            <option name="name" value="CsRepeatPostCallout" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsWorkshopEditController" />
+                            <option name="name" value="CsRepeatDeleteCallout" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsCountryResourceHandler" />
+                            <option name="name" value="CsScheduleBatch" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="CsException" />
-                            <option name="selected" value="true" />
-                          </MetadataEntry>
-                          <MetadataEntry>
-                            <option name="name" value="CsQueueableCallouts" />
+                            <option name="name" value="CsRepeatCallouts" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -539,6 +551,16 @@
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
+                      <option name="entries">
+                        <list>
+                          <MetadataEntry>
+                            <option name="name" value="carrentallogo" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="lg1" />
+                          </MetadataEntry>
+                        </list>
+                      </option>
                       <option name="name" value="ContentAsset" />
                       <option name="wildcard" value="false" />
                     </MetadataType>
@@ -556,6 +578,9 @@
                           <MetadataEntry>
                             <option name="name" value="Car_Service" />
                             <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Rent_Car" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="standard__AppLauncher" />
@@ -641,6 +666,22 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Account.UpsellOpportunity__c" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Callout_Log__c.Callout_Response__c" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Callout_Log__c.Is_Synchronized__c" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Callout_Log__c.Operation_Type__c" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Callout_Log__c.Response_Time__c" />
+                            <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Case.EngineeringReqNumber__c" />
@@ -819,11 +860,13 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="Workshop__c.Phone__c" />
-                            <option name="selected" value="true" />
+                            <option name="name" value="Workshop__c.External_Id__c" />
                           </MetadataEntry>
                           <MetadataEntry>
-                            <option name="name" value="Workshop__c.Tomeks_External_Id__c" />
+                            <option name="name" value="Workshop__c.Is_Synchronized__c" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Workshop__c.Phone__c" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -1071,6 +1114,14 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Group_PL_Users" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Group_Usa_Users" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Hire_Workshop_Popup_Label" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -1167,6 +1218,10 @@
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Select_Option_None" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Send_Email" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -1212,6 +1267,34 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="To_Import" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Tomek_Workshop_Name" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Tomeks_Oath2" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Tomeks_Workshop_City" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Tomeks_Workshop_Country" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Tomeks_Workshop_Phone" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Tomeks_Workshop_Website" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Tomeks_Workshop_Zip_Code" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -1272,6 +1355,10 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="AssistantProgress" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Callout_Log__c" />
+                            <option name="selected" value="true" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Campaign" />
@@ -1498,6 +1585,10 @@
                       <option name="entries">
                         <list>
                           <MetadataEntry>
+                            <option name="name" value="Callout_Log__c-en_US" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Contract__c-en_US" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
@@ -1543,6 +1634,9 @@
                     <MetadataType>
                       <option name="entries">
                         <list>
+                          <MetadataEntry>
+                            <option name="name" value="Callout_Log__c" />
+                          </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Contract__c" />
                             <option name="selected" value="true" />
@@ -1914,6 +2008,9 @@
                           <MetadataEntry>
                             <option name="name" value="LightningService_UtilityBar" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Rent_Car_UtilityBar" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="FlexiPage" />
@@ -1947,6 +2044,16 @@
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
+                      <option name="entries">
+                        <list>
+                          <MetadataEntry>
+                            <option name="name" value="PL_Users" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="USA_Users" />
+                          </MetadataEntry>
+                        </list>
+                      </option>
                       <option name="name" value="Group" />
                       <option name="wildcard" value="false" />
                     </MetadataType>
@@ -2000,6 +2107,9 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="AssetRelationship-Asset Relationship Layout" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Callout_Log__c-Callout Log Layout" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Campaign-Campaign Layout" />
@@ -2231,6 +2341,9 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Asset.AllAssets" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Callout_Log__c.All" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Campaign.AllActiveCampaigns" />
@@ -2611,6 +2724,12 @@
                             <option name="name" value="PlatformPortal" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="RC_SalesRep" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="RC_Service" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Random Mechanics Profile" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -2649,6 +2768,12 @@
                             <option name="name" value="Random_Mechanics_Profile_profilePasswordPolicy1563057247048" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Sales_Rep_profilePasswordPolicy1565183012433" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Service_profilePasswordPolicy1565183542933" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Standard_User_c_profilePasswordPolicy1563523872927" />
                           </MetadataEntry>
                         </list>
@@ -2667,6 +2792,12 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="null_profileSessionSetting1563523872950" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="null_profileSessionSetting1565183012459" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="null_profileSessionSetting1565183542954" />
                           </MetadataEntry>
                         </list>
                       </option>
@@ -3014,6 +3145,16 @@
                       <option name="wildcard" value="false" />
                     </MetadataType>
                     <MetadataType>
+                      <option name="entries">
+                        <list>
+                          <MetadataEntry>
+                            <option name="name" value="Mechanic__c.PL_Sharing" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Mechanic__c.USA_Sharing" />
+                          </MetadataEntry>
+                        </list>
+                      </option>
                       <option name="name" value="SharingCriteriaRule" />
                       <option name="wildcard" value="false" />
                     </MetadataType>
@@ -3033,6 +3174,9 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Asset" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Callout_Log__c" />
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Campaign" />
@@ -3323,6 +3467,9 @@
                             <option name="name" value="Asset" />
                           </MetadataEntry>
                           <MetadataEntry>
+                            <option name="name" value="Callout_Log__c" />
+                          </MetadataEntry>
+                          <MetadataEntry>
                             <option name="name" value="Campaign" />
                           </MetadataEntry>
                           <MetadataEntry>
@@ -3438,6 +3585,10 @@
                             <option name="name" value="Mechanic__c" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Workshop__c" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
                         </list>
                       </option>
                       <option name="name" value="Workflow" />
@@ -3458,6 +3609,14 @@
                         <list>
                           <MetadataEntry>
                             <option name="name" value="Mechanic__c.Next_Birthday_Evaluate" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Workshop__c.Assign_External_Id" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Workshop__c.Copy_value_From_Custom_Name_To_Name" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>
@@ -3481,6 +3640,14 @@
                           </MetadataEntry>
                           <MetadataEntry>
                             <option name="name" value="Mechanic__c.Send Birthday Reminder" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Workshop__c.Copy Custom Name to Name" />
+                            <option name="selected" value="true" />
+                          </MetadataEntry>
+                          <MetadataEntry>
+                            <option name="name" value="Workshop__c.Create External Id" />
                             <option name="selected" value="true" />
                           </MetadataEntry>
                         </list>

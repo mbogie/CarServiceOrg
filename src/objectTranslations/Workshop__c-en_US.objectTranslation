@@ -21,6 +21,18 @@
         <name>Country__c</name>
     </fields>
     <fields>
+        <label><!-- Custom Name --></label>
+        <name>Custom_Name__c</name>
+    </fields>
+    <fields>
+        <label><!-- External Id --></label>
+        <name>External_Id__c</name>
+    </fields>
+    <fields>
+        <label><!-- Is Synchronized --></label>
+        <name>Is_Synchronized__c</name>
+    </fields>
+    <fields>
         <label><!-- Phone --></label>
         <name>Phone__c</name>
     </fields>
@@ -44,4 +56,12 @@
         </sections>
     </layouts>
     <startsWith>Consonant</startsWith>
+    <validationRules>
+        <errorMessage><!-- Invalid phone. Only numbers, space and &apos;-&apos;. Starts with or without &apos;+&apos;. --></errorMessage>
+        <name>Phone_Pattern</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage><!-- Workshop Name is required. --></errorMessage>
+        <name>Required_Name</name>
+    </validationRules>
 </CustomObjectTranslation>

@@ -3,10 +3,10 @@
     <customSettingsType>Hierarchy</customSettingsType>
     <enableFeeds>false</enableFeeds>
     <fields>
-        <fullName>OverlappingErrorEnable__c</fullName>
+        <fullName>CsContractOverlapping__c</fullName>
         <defaultValue>true</defaultValue>
         <externalId>false</externalId>
-        <label>OverlappingErrorEnable</label>
+        <label>CsContractOverlapping</label>
         <trackTrending>false</trackTrending>
         <type>Checkbox</type>
     </fields>

@@ -83,8 +83,7 @@
                     </apex:outputLink>
                 </apex:column>
                 <apex:column headerValue="{!$ObjectType.Mechanic__c.fields.Full_Name__c.Label}">
-                    <apex:outputLink
-                            value="{! URLFOR($Action.Mechanic__c.View, contract.Mechanic__c)}"> {!contract.Mechanic__r.Full_Name__c}
+                    <apex:outputLink value="{! URLFOR($Action.Mechanic__c.View, contract.Mechanic__c)}"> {!contract.Mechanic__r.Full_Name__c}
                     </apex:outputLink>
                 </apex:column>
                 <apex:column value="{!contract.Start_Date__c}"/>

@@ -1,3 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata"/>
-
+<SharingRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sharingCriteriaRules>
+        <fullName>PL_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>PL Sharing</label>
+        <sharedTo>
+            <group>PL_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>PL</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+    <sharingCriteriaRules>
+        <fullName>USA_Sharing</fullName>
+        <accessLevel>Edit</accessLevel>
+        <label>USA Sharing</label>
+        <sharedTo>
+            <group>USA_Users</group>
+        </sharedTo>
+        <criteriaItems>
+            <field>Country__c</field>
+            <operation>equals</operation>
+            <value>USA</value>
+        </criteriaItems>
+    </sharingCriteriaRules>
+</SharingRules>

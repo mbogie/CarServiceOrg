@@ -17,7 +17,6 @@ public with sharing class CsUtils {
         return userList[0];
     }
 
-
     public static Boolean isCsEnabledForCurrentUser(String csName) {
         return isCsEnabledForGivenCountry(csName, getCurrentUser().Country__c);
     }
@@ -55,11 +54,19 @@ public with sharing class CsUtils {
         }
     }
 
-    public static void changePublicGroup(String username, String fromGroup, String toGroup){
-        Group groupFrom = [SELECT Id FROM Group WHERE DeveloperName = :fromGroup];
-        Group groupTo = [SELECT Id FROM Group WHERE DeveloperName = :toGroup];
+    public static Decimal getNumberValues(String csName) {
+        Cs_Settings__c csItem = Cs_Settings__c.getInstance(csName);
+        if (csItem == null) {
+            return 0;
+        } else {
+            return csItem.Number__c;
+        }
+    }
 
-        User user = [SELECT Id FROM user WHERE Username LIKE :username][0];
+    public static void changePublicGroup(String username, String fromGroup, String toGroup){
+        Group groupFrom = getGroupByName(fromGroup);
+        Group groupTo = getGroupByName(toGroup);
+        User user = getUserByUsername(username);
 
         GroupMember oldGroupMember  = [SELECT Id from GroupMember WHERE GroupId = :groupFrom.Id AND UserOrGroupId = :user.Id];
         delete oldGroupMember;
@@ -70,4 +77,24 @@ public with sharing class CsUtils {
         insert newGroupMember;
     }
 
+    public static void switchPublicGroup(String username){
+        User user = getUserByUsername(username);
+        Group groupPl = getGroupByName(getCredentialsValues('Group_PL_Users'));
+        Group groupUsa = getGroupByName(getCredentialsValues('Group_Usa_Users'));
+
+        GroupMember oldGroupMember  = [SELECT Id, GroupId from GroupMember WHERE  UserOrGroupId = :user.Id];
+        Group groupTo = (oldGroupMember.GroupId == groupPl.Id) ? groupUsa : groupPl;
+        delete oldGroupMember;
+
+        GroupMember newGroupMember = new GroupMember(GroupId = groupTo.Id,UserOrGroupId = user.Id);
+        insert newGroupMember;
+    }
+
+    public static Group getGroupByName(String name){
+        return [SELECT Id FROM Group WHERE DeveloperName LIKE :name];
+    }
+
+    public static User getUserByUsername(String username){
+        return [SELECT Id FROM user WHERE Username LIKE :username][0];
+    }
 }

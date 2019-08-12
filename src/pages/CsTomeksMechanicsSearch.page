@@ -12,8 +12,8 @@
 
         <apex:stylesheet value="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
         <apex:stylesheet value="//cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.default.min.css"/>
-        <apex:slds/>
-        <c:CsActionStatus/>
+        <apex:slds />
+        <c:CsActionStatus />
         <style>
         .msgIcon {
             display: none!important

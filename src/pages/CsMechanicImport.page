@@ -7,9 +7,9 @@
     <apex:stylesheet value="{!URLFOR($Resource.jQueryUI,'/jquery-ui-1.12.1.custom/jquery-ui.css')}"/>
 
     <apex:form id="formMechanicImport">
-        <apex:pageMessages/>
+        <apex:pageMessages />
         <apex:pageBlock id="fileBlock" title="{!$Label.Import_File}">
-            <apex:outputPanel>
+            <apex:outputPanel >
                 <div align="center" draggable="false">
                     <apex:inputFile value="{!fileContent}" filename="{!selectedFile}" accept=".csv"
                                     onChange="TestFileType(this.id, ['.csv']);"/>

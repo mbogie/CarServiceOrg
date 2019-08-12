@@ -95,16 +95,11 @@ public with sharing class CsTomeksWorkshopsRestController {
             responseStatus = responseStatusList.get(0).split(',');
             if (responseStatus.get(0) == System.Label.Status_Error) {
                 generatePageErrorMessage(responseStatus.get(2));
-            } /*else {
-                wrappedTomeksWorkshopToUpsertOrDelete.id = responseStatus.get(1);
-                Id jobId = System.enqueueJob(new CsUpsertWorkshop(wrappedTomeksWorkshopToUpsertOrDelete));
-            }*/
+            }
         } catch (CsException csError) {
             generatePageErrorMessage(csError.getMessage());
         }
-
     }
-
 
     public void deleteWorkshop() {
         responseStatus = new List<String>();
@@ -114,19 +109,7 @@ public with sharing class CsTomeksWorkshopsRestController {
             responseStatus = responseStatusList.get(0).split(',');
             if (responseStatus.get(0) == System.Label.Status_Error) {
                 generatePageErrorMessage(responseStatus.get(2));
-            } /*else {
-                for (WrappedTomeksWorkshop tomeksWorkshop : wrappedTomeksWorkshopsList) {
-                    if (tomeksWorkshop.id == idToDelete) {
-                        if (String.isNotBlank(tomeksWorkshop.externalId)) {
-                            try {
-                                delete new Workshop__c(Id = tomeksWorkshop.externalId);
-                            } catch (Exception err) {
-                                System.debug(err.getMessage());
-                            }
-                        }
-                    }
-                }
-            }*/
+            }
         } catch (CsException csError) {
             generatePageErrorMessage(csError.getMessage());
         }
