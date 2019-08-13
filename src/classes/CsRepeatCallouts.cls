@@ -4,6 +4,8 @@ global class CsRepeatCallouts implements Database.Batchable<sObject>, Database.S
     global Integer numberOfFails = 0;
     global List<Callout_Log__c> newCalloutLogs = new List<Callout_Log__c>();
     global Decimal maxNumberOfRecall = CsUtils.getNumberValues('NumberOfRecalls');
+    global final static String POST_METHOD = 'POST';
+    global final static String DELETE_METHOD = 'DELETE';
 
     global Database.QueryLocator start(Database.BatchableContext bc) {
         Map<Id, Workshop__c> workshopsMap = new Map<Id, Workshop__c>([SELECT Id,Name From Workshop__c WHERE Is_Synchronized__c = false]);
@@ -21,15 +23,15 @@ global class CsRepeatCallouts implements Database.Batchable<sObject>, Database.S
             }
         }
         for (String key : calloutLogMap.keySet()) {
-            if (calloutLogMap.get(key).Operation_Type__c == 'DELETE' && calloutLogMap.get(key).Number_Of_Repeats__c < maxNumberOfRecall && calloutLogMap.get(key).Callout_Status__c == System.Label.Status_Error) {
+            if (calloutLogMap.get(key).Operation_Type__c == DELETE_METHOD && calloutLogMap.get(key).Number_Of_Repeats__c < maxNumberOfRecall && calloutLogMap.get(key).Callout_Status__c == System.Label.Status_Error) {
                 deleteList.add(calloutLogMap.get(key));
             }
-            if (calloutLogMap.get(key).Operation_Type__c == 'POST' && calloutLogMap.get(key).Number_Of_Repeats__c < maxNumberOfRecall) {
+            if (calloutLogMap.get(key).Operation_Type__c == POST_METHOD && calloutLogMap.get(key).Number_Of_Repeats__c < maxNumberOfRecall) {
                 postList.add(calloutLogMap.get(key));
             }
         }
-        calloutMethod(deleteList, 'DELETE', CsUtils.getCredentialsValues('TomekDeleteWorkshopsEndpoint'));
-        calloutMethod(postList, 'POST', CsUtils.getCredentialsValues('TomekPostWorkshopsEndpoint'));
+        if (!deleteList.isEmpty()) calloutMethod(deleteList, DELETE_METHOD, CsUtils.getCredentialsValues('TomekDeleteWorkshopsEndpoint'));
+        if (!postList.isEmpty()) calloutMethod(postList, POST_METHOD, CsUtils.getCredentialsValues('TomekPostWorkshopsEndpoint'));
         try {
             insert newCalloutLogs;
         } catch (DmlException error) {
@@ -40,7 +42,7 @@ global class CsRepeatCallouts implements Database.Batchable<sObject>, Database.S
     global void finish(Database.BatchableContext bc) {
         if (!newCalloutLogs.isEmpty()) {
             List<User> userList = new List<User>();
-            userList = [SELECT Id,Email,IsActive FROM User WHERE Profile.Name = 'System Administrator' AND IsActive = True] ;
+            userList = CsUtils.getUsersByGroupName(System.Label.Batch_Mail_Group);
             List<String> toAddress = new List<String>();
             for (User u : userList) {
                 toAddress.add(u.Email);
@@ -50,13 +52,10 @@ global class CsRepeatCallouts implements Database.Batchable<sObject>, Database.S
             Datetime local = now.addSeconds(offset / 1000);
             Messaging.SingleEmailMessage mail = new Messaging.SingleEmailMessage();
             mail.setToAddresses(toAddress);
-            mail.setSubject('Repeats Callouts');
+            mail.setSubject(System.Label.Batch_Mail_Subject);
             mail.setSaveAsActivity(false);
-            mail.setPlainTextBody
-                    ('The batch Apex job completed on  ' + local + ',\n' +
-                            'Number Of Processed Logs : ' + newCalloutLogs.size() + '\n' +
-                            'Number Of Success : ' + numberOfSuccess + '\n' +
-                            'Number Of Fails : ' + numberOfFails);
+            mail.setPlainTextBody(String.format(System.Label.Batch_Mail_Body,new List<String>{
+                    String.valueOf(local),String.valueOf(newCalloutLogs.size()),String.valueOf(numberOfSuccess),String.valueOf(numberOfFails)}));
             System.debug('body-->' + mail.plainTextBody);
             try {
                 Messaging.sendEmail(new Messaging.SingleEmailMessage[]{mail});
@@ -72,7 +71,7 @@ global class CsRepeatCallouts implements Database.Batchable<sObject>, Database.S
         String responseBody = '';
         List<Workshop__c> workshopsToUpsert = new List<Workshop__c>();
         try {
-            if (method == 'POST') {
+            if (method == POST_METHOD) {
                 for (Callout_Log__c log : logs) {
                     tomeksWorkshops.add((CsTomeksWorkshopsRestController.WrappedTomeksWorkshop) JSON.deserialize(log.Request_Body__c, CsTomeksWorkshopsRestController.WrappedTomeksWorkshop.class));
                 }
@@ -87,7 +86,7 @@ global class CsRepeatCallouts implements Database.Batchable<sObject>, Database.S
             for (Integer i = 0; i < responseStatusList.size(); i++) {
                 List<String> responseFromTomek = responseStatusList.get(i).split(',');
                 if (responseFromTomek.get(0) == System.Label.Status_Success) {
-                    if (method == 'POST') workshopsToUpsert.add(new Workshop__c(Id = logs.get(i).Name, Is_Synchronized__c = true, External_Id__c = responseFromTomek.get(1)));
+                    workshopsToUpsert.add(new Workshop__c(Id = logs.get(i).Name, Is_Synchronized__c = true, External_Id__c = responseFromTomek.get(1)));
                     Callout_Log__c newLog = new Callout_Log__c(Name = logs.get(i).Name,
                             Parent_External_Id__c = responseFromTomek.get(1),
                             Endpoint__c = endpoint,
@@ -111,7 +110,7 @@ global class CsRepeatCallouts implements Database.Batchable<sObject>, Database.S
                     numberOfFails++;
                 }
             }
-            if (!workshopsToUpsert.isEmpty()) update workshopsToUpsert;
+            if (method == POST_METHOD) update workshopsToUpsert;
         } catch (Exception error) {
             for (Callout_Log__c log : logs) {
                 Callout_Log__c newLog = new Callout_Log__c(Name = log.Name,

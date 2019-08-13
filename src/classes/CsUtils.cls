@@ -97,4 +97,12 @@ public with sharing class CsUtils {
     public static User getUserByUsername(String username){
         return [SELECT Id FROM user WHERE Username LIKE :username][0];
     }
+
+    public static List<User> getUsersByGroupName(String groupName){
+        Group groupId = [SELECT Id FROM Group WHERE DeveloperName LIKE :groupName][0];
+        return [SELECT Id, Username, Email FROM user WHERE  Id IN (SELECT UserOrGroupId from GroupMember WHERE GroupId = :groupId.Id)];
+    }
 }
+
+
+

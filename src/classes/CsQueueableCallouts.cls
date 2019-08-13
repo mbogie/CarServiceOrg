@@ -48,7 +48,7 @@ public with sharing class CsQueueableCallouts implements Queueable, Database.All
                 tomeksWorkshops.add(wrappedTomeksWorkshop);
             }
             try {
-                String responseBody = restHandler.createRequest(TOMEK_POST_ENDPOINT, 'POST', tomeksWorkshops);
+                String responseBody = restHandler.createRequest(TOMEK_POST_ENDPOINT, method, tomeksWorkshops);
                 List<String> responseStatusList = (List<String>) JSON.deserialize(responseBody, List<String>.class);
                 for(Integer i=0; i<responseStatusList.size(); i++) {
                     List<String> responseFromTomek = responseStatusList.get(i).split(',');

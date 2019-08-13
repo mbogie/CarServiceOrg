@@ -43,6 +43,30 @@
         <value>Bad file extension. Only {0}.</value>
     </labels>
     <labels>
+        <fullName>Batch_Mail_Body</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Batch Mail Body</shortDescription>
+        <value>The batch Apex job completed on {0},
+Number Of Processed Logs : {1}
+Number Of Success : {2},
+Number Of Fails : {3}.</value>
+    </labels>
+    <labels>
+        <fullName>Batch_Mail_Group</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Batch Mail Group</shortDescription>
+        <value>System_Administrators</value>
+    </labels>
+    <labels>
+        <fullName>Batch_Mail_Subject</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Batch Mail Subject</shortDescription>
+        <value>Repeats Callouts</value>
+    </labels>
+    <labels>
         <fullName>Button_Add</fullName>
         <language>en_US</language>
         <protected>true</protected>
